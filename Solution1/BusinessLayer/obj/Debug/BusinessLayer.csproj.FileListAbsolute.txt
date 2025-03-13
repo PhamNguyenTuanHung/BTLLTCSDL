@@ -1,0 +1,11 @@
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\DataLayer.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\DOT.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\DataLayer.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\DOT.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\Business.EA331CBA.Up2Date
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\BusinessLayer.pdb

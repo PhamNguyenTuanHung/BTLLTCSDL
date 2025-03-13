@@ -1,0 +1,6 @@
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DOT\bin\Debug\DOT.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DOT\bin\Debug\DOT.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DOT\obj\Debug\DOT.csproj.AssemblyReference.cache
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DOT\obj\Debug\DOT.csproj.CoreCompileInputs.cache
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DOT\obj\Debug\DOT.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DOT\obj\Debug\DOT.pdb

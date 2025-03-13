@@ -1,0 +1,9 @@
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\obj\Debug\DataLayer.csproj.AssemblyReference.cache
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\bin\Debug\DataLayer.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\bin\Debug\DataLayer.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\bin\Debug\DOT.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\bin\Debug\DOT.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\obj\Debug\DataLayer.csproj.Up2Date
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\obj\Debug\DataLayer.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\DataLayer\obj\Debug\DataLayer.pdb
