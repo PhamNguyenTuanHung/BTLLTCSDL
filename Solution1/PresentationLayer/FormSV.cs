@@ -141,8 +141,8 @@ namespace PresentationLayer
 
         private void xemĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SinhVienBL sinhVienBL = new SinhVienBL();
-            DataTable dt = sinhVienBL.DiemSVBL(sv.MSSV);
+            SinhVien_BUS sinhVienBL = new SinhVien_BUS();
+            DataTable dt = sinhVienBL.DiemSVBUS(sv.MSSV);
             DataGridView dgv = TaoDataGridView(dt);
             Panel panelSearch = TaoPanelTimKiem(dgv, dt);
 
@@ -160,8 +160,8 @@ namespace PresentationLayer
 
         private void thờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SinhVienBL sinhVienBL = new SinhVienBL();
-            DataTable dt = sinhVienBL.TKBSinhVienBL(sv.MSSV);
+            SinhVien_BUS sinhVienBL = new SinhVien_BUS();
+            DataTable dt = sinhVienBL.TKBSinhVienBUS(sv.MSSV);
             DataGridView dgv = TaoDataGridView(dt);
             Panel panelSearch = TaoPanelTimKiem(dgv, dt);
 

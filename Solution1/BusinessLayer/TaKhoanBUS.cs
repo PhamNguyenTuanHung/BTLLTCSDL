@@ -7,12 +7,12 @@ using DataLayer;
 using DOT;
 namespace BusinessLayer
 {
-    public class TaiKhoanBL
+    public class TaiKhoan_BUS
     {
-        TaiKhoanDl TaiKhoanDl = new TaiKhoanDl();
-        public TaiKhoan CheckLoginBl(TaiKhoan TaiKhoan)
+        TaiKhoan_DAl TaiKhoanDAl = new TaiKhoan_DAl();
+        public TaiKhoan CheckLoginBAl(TaiKhoan TaiKhoan)
         {
-            return TaiKhoanDl.CheckLoginDL(TaiKhoan);
+            return TaiKhoanDAl.CheckLoginDAL(TaiKhoan);
         }
     }
 }

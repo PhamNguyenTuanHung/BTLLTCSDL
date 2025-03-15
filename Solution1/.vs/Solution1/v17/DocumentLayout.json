@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\datalayer\\sinhviendal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\sinhviendal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\presentationlayer\\formsv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formsv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\presentationlayer\\formgv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formgv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\datalayer\\sinhviendl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\sinhviendl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\presentationlayer\\formgv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formgv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\datalayer\\dbconnectdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\dbconnectdl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\datalayer\\giangviendl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\giangviendl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{316107E5-D041-4FFA-9E02-D27E6228DE29}|DOT\\DOT.csproj|c:\\users\\blue\\desktop\\qlsv1\\solution1\\dot\\lophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316107E5-D041-4FFA-9E02-D27E6228DE29}|DOT\\DOT.csproj|solutionrelative:dot\\lophoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,53 +39,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormGV.cs",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormGV.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FormGV.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormGV.cs",
-              "RelativeToolTip": "PresentationLayer\\FormGV.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAYwG0AAAA2AAAA",
+              "Title": "SinhVienDAL.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\SinhVienDAL.cs",
+              "RelativeDocumentMoniker": "DataLayer\\SinhVienDAL.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\SinhVienDAL.cs",
+              "RelativeToolTip": "DataLayer\\SinhVienDAL.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAmwGMAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:06:37.73Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GiangVienDL.cs",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\GiangVienDL.cs",
-              "RelativeDocumentMoniker": "DataLayer\\GiangVienDL.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\GiangVienDL.cs",
-              "RelativeToolTip": "DataLayer\\GiangVienDL.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAnwFoAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:06:34.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DBConnectDL.cs",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\DBConnectDL.cs",
-              "RelativeDocumentMoniker": "DataLayer\\DBConnectDL.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\DBConnectDL.cs",
-              "RelativeToolTip": "DataLayer\\DBConnectDL.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T02:03:03.814Z",
+              "WhenOpened": "2025-03-14T09:20:10.987Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SinhVienDL.cs",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\SinhVienDL.cs",
-              "RelativeDocumentMoniker": "DataLayer\\SinhVienDL.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DataLayer\\SinhVienDL.cs",
-              "RelativeToolTip": "DataLayer\\SinhVienDL.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Title": "FormSV.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormSV.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormSV.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormSV.cs",
+              "RelativeToolTip": "PresentationLayer\\FormSV.cs",
+              "ViewState": "AQIAAJ0AAAAAAAAAAAAwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T01:49:14.167Z",
+              "WhenOpened": "2025-03-14T09:19:56.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormGV.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormGV.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormGV.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormGV.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FormGV.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T07:58:08.137Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LopHoc.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DOT\\LopHoc.cs",
+              "RelativeDocumentMoniker": "DOT\\LopHoc.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\DOT\\LopHoc.cs",
+              "RelativeToolTip": "DOT\\LopHoc.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T07:57:54.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormGV.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormGV.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormGV.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV1\\Solution1\\PresentationLayer\\FormGV.cs",
+              "RelativeToolTip": "PresentationLayer\\FormGV.cs",
+              "ViewState": "AQIAAJUAAAAAAAAAAAAjwKUAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T02:06:37.73Z",
               "EditorCaption": ""
             }
           ]

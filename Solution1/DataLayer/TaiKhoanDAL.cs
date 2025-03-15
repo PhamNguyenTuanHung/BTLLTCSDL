@@ -8,11 +8,11 @@ using DOT;
 
 namespace DataLayer
 {
-    public class TaiKhoanDl
+    public class TaiKhoan_DAl
     {
-        public TaiKhoan CheckLoginDL(TaiKhoan taikhoan)
+        public TaiKhoan CheckLoginDAL(TaiKhoan taikhoan)
         {
-            using (SqlConnection conn = DBConnectDL.Connect())
+            using (SqlConnection conn = DBConnect_DAL.Connect())
             {
                 conn.Open();
                 string query = "SELECT * FROM TaiKhoan WHERE Ten_dang_nhap = @username AND Mat_khau = @password";

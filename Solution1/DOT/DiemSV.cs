@@ -36,10 +36,10 @@ namespace DOT
             this.lanthi = lanthi;
         }
 
-        public double TinhDiem(double hesoquatrinh,double hesodiemthi)
+        /*public double TinhDiem(double hesoquatrinh,double hesodiemthi)
         {
             return this.DiemQuaTrinh * hesoquatrinh + this.DiemThi * hesodiemthi;
-        }
+        }*/
 
         public string MSSV { get => mssv; set => mssv = value; }
         public string TenDayDu { get => tendaydu; set => tendaydu = value; }

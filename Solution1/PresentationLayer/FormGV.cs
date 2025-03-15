@@ -21,7 +21,6 @@ namespace PresentationLayer
         {
             InitializeComponent();
             this.gv = giangvien;  // Gán giảng viên truyền vào
-            
             panelContent = new Panel { Dock = DockStyle.Fill };
             this.Controls.Add(panelContent);
             ThongTinCacLopCuaGV();
@@ -112,8 +111,6 @@ namespace PresentationLayer
 
                 // Cập nhật lại DataGridView với dữ liệu đã lọc
                 dgv.DataSource = dt.DefaultView;
-
-
             };
 
             // Thêm TextBox và Button vào Panel
@@ -162,11 +159,11 @@ namespace PresentationLayer
 
         private void Lop_Click(object sender, EventArgs e)
         {
-            GiangVienBL giangVienBL = new GiangVienBL();
+            GiangVien_BUS giangVienBL = new GiangVien_BUS();
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
 
             // 🔹 Lấy danh sách điểm sinh viên
-            List<DiemSV> ds = giangVienBL.DanhSachDiemSVBL(gv.MSGV, item.Tag.ToString());
+            List<DiemSV> ds = giangVienBL.DanhSachDiemSVBUS(gv.MSGV, item.Tag.ToString());
 
             if (ds.Count > 0)
             {
@@ -218,8 +215,8 @@ namespace PresentationLayer
         {
             this.QLLHToolStripMenuItem.DropDownItems.Clear();
 
-            GiangVienBL gvBL = new GiangVienBL();
-            List<LopHoc> ds = gvBL.DanhSachLopHocBL(gv.MSGV);
+            GiangVien_BUS gvBL = new GiangVien_BUS();
+            List<LopHoc> ds = gvBL.DanhSachLopHocBUS(gv.MSGV);
 
             foreach (var lop in ds)
             {
@@ -232,8 +229,8 @@ namespace PresentationLayer
 
         private void thờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GiangVienBL giangVienBL = new GiangVienBL();
-            DataTable dt = giangVienBL.TKBGiangVienBL(gv.MSGV);
+            GiangVien_BUS giangVienBL = new GiangVien_BUS();
+            DataTable dt = giangVienBL.TKBGiangVienBUS(gv.MSGV);
             DataGridView dgv = TaoDataGridView(dt);
             Panel panelSearch = TaoPanelTimKiem(dgv, dt);
 

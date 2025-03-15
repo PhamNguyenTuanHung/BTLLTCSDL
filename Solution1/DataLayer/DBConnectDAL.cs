@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class DBConnectDL
+    public class DBConnect_DAL
     {
         public static SqlConnection Connect()
         {
@@ -27,12 +27,12 @@ namespace DataLayer
                 throw ex;
             }
         }
-        public static DataTable GetData(string query)
+        /*public static DataTable GetData(string query)
         {
             DataTable dt = new DataTable();
 
 
-            using (SqlConnection connect = DBConnectDL.Connect())
+            using (SqlConnection connect = DBConnect_DAL.Connect())
             {
                 connect.Open();
                 using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -44,6 +44,6 @@ namespace DataLayer
                 }
             }
             return dt;
-        }
+        }*/
     }
 }

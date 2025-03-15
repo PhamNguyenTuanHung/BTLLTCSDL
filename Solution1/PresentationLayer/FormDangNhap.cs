@@ -15,7 +15,7 @@ namespace PresentationLayer
     public partial class FormDangNhap : Form
     {
         TaiKhoan taikhoan = new TaiKhoan();
-        TaiKhoanBL taikhoanBL = new TaiKhoanBL();
+        TaiKhoan_BUS taikhoanBAL = new TaiKhoan_BUS();
         public FormDangNhap()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace PresentationLayer
             taikhoan.User_name = txt_TaiKhoan.Text;
             taikhoan.Pass_word = txt_MatKhau.Text;
 
-            TaiKhoan CheckLogin = taikhoanBL.CheckLoginBl(taikhoan);
+            TaiKhoan CheckLogin = taikhoanBAL.CheckLoginBAl(taikhoan);
             if (CheckLogin == null)
             {
                 MessageBox.Show("Thông tin tài khoarn mật khẩu không chính xác");
@@ -48,8 +48,8 @@ namespace PresentationLayer
 
             if (CheckLogin.Type==1)
             { 
-                SinhVienBL svBL = new SinhVienBL();
-                SinhVien sv = svBL.ThongTinSVBL(txt_TaiKhoan.Text); 
+                SinhVien_BUS svBUS = new SinhVien_BUS();
+                SinhVien sv = svBUS.ThongTinSVBUS(txt_TaiKhoan.Text); 
                 Form form = new FormSV(sv);
                 this.Hide();
                 form.ShowDialog();
@@ -58,8 +58,8 @@ namespace PresentationLayer
             
             if (CheckLogin.Type==2)
             {
-                GiangVienBL giangvienBL = new GiangVienBL();
-                GiangVien gv = giangvienBL.ThongTinGVBL(txt_TaiKhoan.Text);
+                GiangVien_BUS gvBUS = new GiangVien_BUS();
+                GiangVien gv = gvBUS.ThongTinGVBUS(txt_TaiKhoan.Text);
                 Form form = new FormGV(gv);
                 this.Hide();
                 form.ShowDialog();

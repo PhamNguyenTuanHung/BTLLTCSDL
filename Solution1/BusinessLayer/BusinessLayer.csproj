@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GiangVienBL.cs" />
-    <Compile Include="SinhVienBL.cs" />
-    <Compile Include="TaKhoanBL.cs" />
+    <Compile Include="GiangVienBUS.cs" />
+    <Compile Include="SinhVienBUS.cs" />
+    <Compile Include="TaKhoanBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnectDL.cs" />
-    <Compile Include="GiangVienDL.cs" />
-    <Compile Include="SinhVienDL.cs" />
-    <Compile Include="TaiKhoanDL.cs" />
+    <Compile Include="DBConnectDAL.cs" />
+    <Compile Include="GiangVienDAL.cs" />
+    <Compile Include="SinhVienDAL.cs" />
+    <Compile Include="TaiKhoanDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

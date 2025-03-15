@@ -9,12 +9,12 @@ using DOT;
 
 namespace DataLayer
 {
-    public class GiangVienDL
+    public class GiangVien_DAL
     {
-        public GiangVien ThongTinGVDL(string msgv)
+        public GiangVien ThongTinGVDAL(string msgv)
         {
             GiangVien gv = null;
-            using (SqlConnection conn = DBConnectDL.Connect())
+            using (SqlConnection conn = DBConnect_DAL.Connect())
             {
                 string query = "SELECT * FROM GiaoVien WHERE MSGV = @msgv";
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -39,11 +39,11 @@ namespace DataLayer
             }
             return gv;
         }
-        public List<LopHoc> DanhSachLopHocDL(string msgv)
+        public List<LopHoc> DanhSachLopHocDAL(string msgv)
         {
             List<LopHoc> ds = new List<LopHoc>();
             LopHoc lh = null;
-            using (SqlConnection conn = DBConnectDL.Connect())
+            using (SqlConnection conn = DBConnect_DAL.Connect())
             {
                 string query = "SELECT LopMonHoc.Ma_Mon_Hoc,Ten_Mon_Hoc,Ngay_Hoc,Gio_Bat_Dau,Gio_Ket_Thuc FROM DayMonHoc,LopMonHoc, MonHoc" +
                     "\r\nWHERE @msgv = DayMonHoc.MSGV AND DayMonHoc.Ma_Mon_Hoc=LopMonHoc.Ma_Mon_Hoc" +
@@ -68,13 +68,13 @@ namespace DataLayer
             }
              return ds;
         }
-        public DataTable TKBGiangVienDL(string msgv)
+        public DataTable TKBGiangVienDAL(string msgv)
         {
             DataTable dt = new DataTable();
             string query = "SELECT Ten_Mon_Hoc,Ngay_Hoc,Gio_Bat_Dau,Gio_Ket_Thuc FROM DayMonHoc,LopMonHoc, MonHoc "
                             + "WHERE DayMonHoc.MSGV = @msgv AND DayMonHoc.Ma_Mon_Hoc = LopMonHoc.Ma_Mon_Hoc "
                             + "AND MonHoc.Ma_Mon_Hoc = LopMonHoc.Ma_Mon_Hoc";
-            using (SqlConnection conn = DBConnectDL.Connect())
+            using (SqlConnection conn = DBConnect_DAL.Connect())
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@msgv", msgv);
@@ -85,11 +85,11 @@ namespace DataLayer
             return dt;
         }
 
-        public List<DiemSV> DanhSachDiemSVDL(string msgv, string mamonhoc)
+        public List<DiemSV> DanhSachDiemSVDAL(string msgv, string mamonhoc)
         {
             List<DiemSV> ds = new List<DiemSV>();
             DiemSV DiemSV = null;
-            using (SqlConnection conn = DBConnectDL.Connect())
+            using (SqlConnection conn = DBConnect_DAL.Connect())
             {
                 conn.Open();
                 string query = "SELECT SinhVien.Ten_Day_Du,Diem.* " +
