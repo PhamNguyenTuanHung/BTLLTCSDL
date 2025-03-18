@@ -11,138 +11,37 @@ namespace PresentationLayer
     public partial class FormGV : Form
     {
         private Panel panelContent;// Panel chứa nội dung động
-        private DataGridView dataGridView;
-        private Panel panelQuanLyDiem;
-        private TextBox txtMSSV, txtHoTen, txtDiemQT, txtDiemThi, txtDiemTongKet;
-        private Button btnSua;
         private GiangVien gv;
+        private TaiKhoan tk;
+        List<DiemSV> ds;
+        private string mamonhoc;
 
-        public FormGV(GiangVien giangvien)
+        public FormGV(GiangVien giangvien, TaiKhoan taikhoan)
         {
             InitializeComponent();
-            this.gv = giangvien;  // Gán giảng viên truyền vào
-            panelContent = new Panel { Dock = DockStyle.Fill };
+            this.tk = taikhoan;
+            this.gv = giangvien;
+            panelContent = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(0, menuStrip1.Height, 0, 0)
+            };
             this.Controls.Add(panelContent);
             ThongTinCacLopCuaGV();
             ThongTinGVPL();
-        }
-
-
-        private void KhoiTaoPanelQuanLyDiem()
-        {
-            panelQuanLyDiem = new Panel { Dock = DockStyle.Fill };
-            Panel panelSearch = new Panel { Dock = DockStyle.Top, Height = 40 };
-            TextBox txtSearch = new TextBox { Width = 200, Location = new Point(10, 10) };
-            Button btnSearch = new Button { Text = "Tìm kiếm", Location = new Point(220, 8) };
-            //btnSearch.Click += (s, e) => TimKiem(txtSearch.Text);
-            panelSearch.Controls.Add(txtSearch);
-            panelSearch.Controls.Add(btnSearch);
-
-            dataGridView = new DataGridView { Dock = DockStyle.Fill, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, AllowUserToAddRows = false };
-            dataGridView.SelectionChanged += DataGridView_SelectionChanged;
-
-            Panel panelEdit = new Panel { Dock = DockStyle.Bottom, Height = 100 };
-            txtMSSV = new TextBox { ReadOnly = true, Location = new Point(10, 10), Width = 100 };
-            txtHoTen = new TextBox { ReadOnly = true, Location = new Point(120, 10), Width = 150 };
-            txtDiemQT = new TextBox { Location = new Point(280, 10), Width = 50 };
-            txtDiemThi = new TextBox { Location = new Point(340, 10), Width = 50 };
-            txtDiemTongKet = new TextBox { ReadOnly = true, Location = new Point(400, 10), Width = 50 };
-            btnSua = new Button { Text = "Sửa", Location = new Point(460, 8) };
-            //btnSua.Click += BtnSua_Click;
-
-            panelEdit.Controls.AddRange(new Control[] { txtMSSV, txtHoTen, txtDiemQT, txtDiemThi, txtDiemTongKet, btnSua });
-            panelQuanLyDiem.Controls.AddRange(new Control[] { panelSearch, dataGridView, panelEdit });
-            this.Controls.Add(panelQuanLyDiem);
-        }
-        private Panel TaoPanelTimKiem(DataGridView dgv, DataTable dt)
-        {
-            // Tạo Panel chứa ô tìm kiếm
-            Panel panelSearch = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 40
-            };
-
-            // Tạo TextBox nhập từ khóa tìm kiếm
-            TextBox txtSearch = new TextBox
-            {
-                Width = 200,
-                Location = new Point(10, 10)
-            };
-
-            // Tạo Button tìm kiếm
-            Button btnSearch = new Button
-            {
-                Text = "Tìm kiếm",
-                Location = new Point(220, 8)
-            };
-
-            // Gắn sự kiện tìm kiếm
-            btnSearch.Click += (s, e) =>
-            {
-
-                string keyword = txtSearch.Text.Trim().ToLower();
-
-                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
-                if (string.IsNullOrWhiteSpace(keyword))
-                {
-                    dt.DefaultView.RowFilter = string.Empty;
-                }
-                else
-                {
-                    // Kiểm tra xem bảng có chứa cả hai cột không
-                    bool coTenSV = dt.Columns.Contains("Tên sinh viên");
-                    bool coTenMonHoc = dt.Columns.Contains("Ten_Mon_Hoc");
-
-                    // Tạo bộ lọc linh hoạt
-                    string filter = "";
-
-                    if (coTenSV)
-                        filter += $"[Tên sinh viên] LIKE '%{keyword}%'";
-
-                    if (coTenMonHoc)
-                    {
-                        if (!string.IsNullOrEmpty(filter))
-                            filter += " OR ";
-                        filter += $"[Ten_Mon_Hoc] LIKE '%{keyword}%'";
-                    }
-                    dt.DefaultView.RowFilter = filter;
-                }
-
-                // Cập nhật lại DataGridView với dữ liệu đã lọc
-                dgv.DataSource = dt.DefaultView;
-            };
-
-            // Thêm TextBox và Button vào Panel
-            panelSearch.Controls.Add(txtSearch);
-            panelSearch.Controls.Add(btnSearch);
-
-            return panelSearch;
-        }
-
-        private DataGridView TaoDataGridView(DataTable dt)
-        {
-            DataGridView dgv = new DataGridView
-            {
-                DataSource = dt,
-                Dock = DockStyle.Fill,
-                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                AllowUserToAddRows = false
-            };
-            return dgv;
+            HienThiPanel(panel1);
         }
 
         private void HienThiPanel(Control control)
         {
             panelContent.Controls.Clear();
             panelContent.Controls.Add(control);
-            control.Dock = DockStyle.Fill;
-            control.BringToFront();
-            if (control != panel1)
-            {
-                panel1.Visible = false;
-            }
-            else panel1.Visible = true;
+            panel1.Visible = false;
+            flowLayoutPanel1.Visible = false;
+            panelDoiMatKhau.Visible = false;
+            control.Dock= DockStyle.Fill;
+            control.Visible = true;
+
         }
 
         private void ThongTinGVPL()
@@ -157,13 +56,19 @@ namespace PresentationLayer
             }
         }
 
+        private void LoadDSSV(DataTable d)
+        {
+            
+        }
+        
         private void Lop_Click(object sender, EventArgs e)
         {
             GiangVien_BUS giangVienBL = new GiangVien_BUS();
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-
+            mamonhoc = item.Tag.ToString();
+            
             // 🔹 Lấy danh sách điểm sinh viên
-            List<DiemSV> ds = giangVienBL.DanhSachDiemSVBUS(gv.MSGV, item.Tag.ToString());
+            ds = giangVienBL.DanhSachDiemSVBUS(gv.MSGV, mamonhoc);
 
             if (ds.Count > 0)
             {
@@ -173,44 +78,30 @@ namespace PresentationLayer
                 dt.Columns.Add("Điểm quá trình");
                 dt.Columns.Add("Điểm thi");
                 dt.Columns.Add("Điểm tổng kết");
+                dt.Columns.Add("Lần thi");
 
                 foreach (var sv in ds)
                 {
-                    dt.Rows.Add(sv.MSSV, sv.TenDayDu, sv.DiemQuaTrinh, sv.DiemThi, sv.DiemTongKet);
+                    dt.Rows.Add(sv.MSSV, sv.TenDayDu, sv.DiemQuaTrinh, sv.DiemThi, sv.DiemTongKet,sv.LanThi);
                 }
-
-                DataGridView dgv = TaoDataGridView(dt);
-                Panel panelSearch = TaoPanelTimKiem(dgv, dt);
-
-                Panel panelDiemSV = new Panel { Dock = DockStyle.Fill };
-                panelDiemSV.Controls.Add(dgv);
-                panelDiemSV.Controls.Add(panelSearch);
-                panelContent.Padding = new Padding(0, menuStrip1.Height, 0, 0); // Đẩy xuống dưới MenuStrip
-
-                HienThiPanel(panelDiemSV);
-                //dataGridView.SelectionChanged += DataGridView_SelectionChanged;
+                dgv.DataSource = dt;
+                dgv.Dock = DockStyle.Fill;
+                dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv.AllowUserToAddRows = false;
+                dgv.ReadOnly = true;
+                dgv.Dock = DockStyle.Fill;
+                dgv.ClearSelection();
+                panelSua.Visible = true;
             }
+
+            HienThiPanel(flowLayoutPanel1);
         }
 
-        private void DataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dataGridView.SelectedRows[0];
-                txtDiemQT.Text = row.Cells["Diem_Qua_Trinh"].Value.ToString();
-                txtDiemThi.Text = row.Cells["Diem_Thi"].Value.ToString();
-                txtDiemTongKet.Text = row.Cells["Diem_Tong_Ket"].Value.ToString();
-                //panelBottom.Visible = true;
-            }
-        }
-
-
-        private void thôngTinGVToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ThongTinGVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HienThiPanel(panel1);
             ThongTinGVPL();
         }
-
         private void ThongTinCacLopCuaGV()
         {
             this.QLLHToolStripMenuItem.DropDownItems.Clear();
@@ -226,24 +117,165 @@ namespace PresentationLayer
                 this.QLLHToolStripMenuItem.DropDownItems.Add(menuItem);
             }
         }
+        private void dgv_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv.SelectedRows[0];
+                txtMSSV.Text = row.Cells["MSSV"].Value.ToString();
+                txtHoTen.Text = row.Cells["Tên sinh viên"].Value.ToString();
+                txtDiemQT.Text = row.Cells["Điểm quá trình"].Value.ToString();
+                txtDiemThi.Text = row.Cells["Điểm thi"].Value.ToString();
+                txtDiemTongKet.Text = row.Cells["Điểm tổng kết"].Value.ToString();
+            }
+        }
 
-        private void thờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = (DataTable) dgv.DataSource;
+            string keyword = txtTimKiem.Text.Trim().ToLower();
+
+            // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                dt.DefaultView.RowFilter = string.Empty;
+            }
+            else
+            {
+                // Kiểm tra xem bảng có chứa cả hai cột không
+                bool coTenSV = dt.Columns.Contains("Tên sinh viên");
+                bool coTenMonHoc = dt.Columns.Contains("Ten_Mon_Hoc");
+
+                // Tạo bộ lọc linh hoạt
+                string filter = "";
+
+                if (coTenSV)
+                    filter += $"[Tên sinh viên] LIKE '%{keyword}%'";
+
+                if (coTenMonHoc)
+                {
+                    if (!string.IsNullOrEmpty(filter))
+                        filter += " OR ";
+                    filter += $"[Ten_Mon_Hoc] LIKE '%{keyword}%'";
+                }
+                dt.DefaultView.RowFilter = filter;
+            }
+            dgv.DataSource = dt;
+        }
+
+        private void TKBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GiangVien_BUS giangVienBL = new GiangVien_BUS();
             DataTable dt = giangVienBL.TKBGiangVienBUS(gv.MSGV);
-            DataGridView dgv = TaoDataGridView(dt);
-            Panel panelSearch = TaoPanelTimKiem(dgv, dt);
-
-            // Đảm bảo panelSearch hiển thị đúng vị trí
-            panelSearch.Dock = DockStyle.Top;
+            // Đổi tên cột trong DataGridView
+            dgv.DataSource = dt;
+            dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn Học";
+            dgv.Columns["Ngay_Hoc"].HeaderText = "Ngày Học";
+            dgv.Columns["Gio_Bat_Dau"].HeaderText = "Giờ Bắt Đầu";
+            dgv.Columns["Gio_Ket_Thuc"].HeaderText = "Giờ Kết Thúc";
             dgv.Dock = DockStyle.Fill;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AllowUserToAddRows = false;
 
-            Panel panelTKB = new Panel { Dock = DockStyle.Fill };
-            panelTKB.Controls.Add(dgv);       // Thêm DataGridView trước
-            panelTKB.Controls.Add(panelSearch); // Sau đó thêm panel tìm kiếm
-            panelContent.Dock = DockStyle.Fill;
-            panelContent.Padding = new Padding(0, menuStrip1.Height, 0, 0); // Đẩy xuống dưới MenuStrip
-            HienThiPanel(panelTKB);
+            panelSua.Visible = false;
+            HienThiPanel(flowLayoutPanel1);
+        }
+
+        private void ChangePassToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panelDoiMatKhau.Dock = DockStyle.Fill;
+
+            int panelWidth = panelContent.Width;
+            int panelHeight = panelContent.Height;
+            int textBoxWidth = 250;
+            int labelWidth = 180;
+            int spacing = 15;
+
+            int centerX = (panelWidth - textBoxWidth - labelWidth - spacing) / 2;
+            int centerY = (panelHeight - 200) / 2;
+
+            Label lblOld = new Label { Text = "Mật khẩu cũ:", Width = labelWidth, TextAlign = ContentAlignment.MiddleRight, Location = new Point(centerX, centerY) };
+            Label lblNew = new Label { Text = "Mật khẩu mới:", Width = labelWidth, TextAlign = ContentAlignment.MiddleRight, Location = new Point(centerX, centerY + 50) };
+            Label lblConfirm = new Label { Text = "Nhập lại mật khẩu:", Width = labelWidth, TextAlign = ContentAlignment.MiddleRight, Location = new Point(centerX, centerY + 100) };
+
+            TextBox txtOldPass = new TextBox { Location = new Point(centerX + labelWidth + spacing, centerY), Width = textBoxWidth, PasswordChar = '*' };
+            TextBox txtNewPass = new TextBox { Location = new Point(centerX + labelWidth + spacing, centerY + 50), Width = textBoxWidth, PasswordChar = '*' };
+            TextBox txtConfirmPass = new TextBox { Location = new Point(centerX + labelWidth + spacing, centerY + 100), Width = textBoxWidth, PasswordChar = '*' };
+
+            // CheckBox căn chỉnh ngay dưới textbox cuối cùng
+            CheckBox chkShowPass = new CheckBox { Text = "Hiển thị mật khẩu", AutoSize = true, Location = new Point(centerX + labelWidth, centerY + 135) };
+            chkShowPass.CheckedChanged += (s, ex) =>
+            {
+                bool isChecked = chkShowPass.Checked;
+                txtOldPass.PasswordChar = isChecked ? '\0' : '*';
+                txtNewPass.PasswordChar = isChecked ? '\0' : '*';
+                txtConfirmPass.PasswordChar = isChecked ? '\0' : '*';
+            };
+
+            // Button căn giữa theo textbox
+            Button btnChange = new Button { Text = "Đổi mật khẩu", Width = 120, Location = new Point(centerX + labelWidth + (textBoxWidth - 120) / 2, centerY + 180) };
+            Label lblMessage = new Label { ForeColor = Color.Red, Location = new Point(centerX + labelWidth, centerY + 220), AutoSize = true };
+
+            btnChange.Click += (s, ex) =>
+            {
+                if (txtOldPass.Text != tk.Pass_word)
+                {
+                    lblMessage.Text = "Mật khẩu không chính xác";
+                    return;
+                }
+
+                if (txtNewPass.Text != txtConfirmPass.Text)
+                {
+                    lblMessage.Text = "Mật khẩu mới không khớp!";
+                    return;
+                }
+                GiangVien_BUS GiangVienBUS = new GiangVien_BUS();
+                if (GiangVienBUS.DoiMatKhauBUS(gv.MSGV, txtNewPass.Text) == true)
+                {
+                    lblMessage.ForeColor = Color.Green;
+                    lblMessage.Text = "Đổi mật khẩu thành công!";
+                }
+            };
+
+
+            panelDoiMatKhau.Controls.AddRange(new Control[] { lblOld, txtOldPass, lblNew, txtNewPass, lblConfirm, txtConfirmPass, chkShowPass, btnChange, lblMessage });
+            panelContent.Controls.Add(panelDoiMatKhau);
+            HienThiPanel(panelDoiMatKhau);
+        }
+
+        private void LogOutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form form = new FormDangNhap();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnSuaThongTin_Click(object sender, EventArgs e)
+        {
+            if (txtDiemQT.Text == "")
+            {
+                txtDiemQT.Focus();
+                return;
+            }
+            if (txtDiemThi.Text == "")
+
+            {
+                txtDiemThi.Focus();
+                return;
+            }
+            txtDiemTongKet.Text = Math.Round((float.Parse(txtDiemQT.Text) * 0.4 + float.Parse(txtDiemThi.Text) * 0.6),3).ToString();
+
+            GiangVien_BUS gvBUS = new GiangVien_BUS();
+            if (gvBUS.SuaDiemSVBUS(txtMSSV.Text, mamonhoc, float.Parse(txtDiemQT.Text), float.Parse(txtDiemThi.Text), float.Parse(txtDiemTongKet.Text)) == true)
+            {
+                MessageBox.Show("Sửa thành công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
         }
     }
 }

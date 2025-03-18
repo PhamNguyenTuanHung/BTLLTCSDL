@@ -12,12 +12,14 @@ namespace PresentationLayer
     public partial class FormSV : Form
     {
         private SinhVien sv;
+        private TaiKhoan tk;
         private Panel panelContent;  // Panel chứa nội dung động
 
-        public FormSV(SinhVien SINHVIEN)
+        public FormSV(SinhVien sinhvien,TaiKhoan taikhoan)
         {
             InitializeComponent();
-            sv = SINHVIEN;
+            sv = sinhvien;
+            tk = taikhoan;
             panelContent = new Panel
             { Dock = DockStyle.Fill };
             this.Controls.Add(panelContent);
@@ -51,23 +53,23 @@ namespace PresentationLayer
             // Gắn sự kiện tìm kiếm
             btnSearch.Click += (s, e) =>
             {
-                
-            string keyword = txtSearch.Text.Trim().ToLower();
 
-            // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
-            if (string.IsNullOrWhiteSpace(keyword))
-            {
-                dt.DefaultView.RowFilter = string.Empty;
-            }
-            else
-            {
-                // Lọc theo cột "Ten_Mon_Hoc"
-                dt.DefaultView.RowFilter = $"CONVERT(Ten_Mon_Hoc, 'System.String') LIKE '%{keyword}%'";
-            }
+                string keyword = txtSearch.Text.Trim().ToLower();
 
-            // Cập nhật lại DataGridView với dữ liệu đã lọc
-            dgv.DataSource = dt.DefaultView;
-                
+                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    dt.DefaultView.RowFilter = string.Empty;
+                }
+                else
+                {
+                    // Lọc theo cột "Ten_Mon_Hoc"
+                    dt.DefaultView.RowFilter = $"CONVERT(Ten_Mon_Hoc, 'System.String') LIKE '%{keyword}%'";
+                }
+
+                // Cập nhật lại DataGridView với dữ liệu đã lọc
+                dgv.DataSource = dt.DefaultView;
+
 
             };
 
@@ -90,6 +92,7 @@ namespace PresentationLayer
                 lbKhoaHoc.Text = sv.KhoaHoc;
                 lbDRL.Text = sv.DRL.ToString();
                 lbKhoa.Text = sv.TenKhoa;
+                lbEmail.Text = sv.Email;
             }
         }
 
@@ -133,13 +136,9 @@ namespace PresentationLayer
             else panel1.Visible = true;
         }
 
-        private void thôngTinSVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HienThiPanel(panel1);
-            ThongTinSVPL(); // Cập nhật lại thông tin sinh viên
-        }
+        
 
-        private void xemĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        private void XemDiemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SinhVien_BUS sinhVienBL = new SinhVien_BUS();
             DataTable dt = sinhVienBL.DiemSVBUS(sv.MSSV);
@@ -158,7 +157,7 @@ namespace PresentationLayer
             HienThiPanel(panelBangDiem);
         }
 
-        private void thờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TKBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SinhVien_BUS sinhVienBL = new SinhVien_BUS();
             DataTable dt = sinhVienBL.TKBSinhVienBUS(sv.MSSV);
@@ -169,12 +168,92 @@ namespace PresentationLayer
             panelSearch.Dock = DockStyle.Top;
             dgv.Dock = DockStyle.Fill;
 
-            Panel panelTKB = new Panel { Dock = DockStyle.Fill };
+            Panel panelTKB = new Panel 
+            { 
+                Dock = DockStyle.Fill 
+            };
+
             panelTKB.Controls.Add(dgv);
-            panelTKB.Controls.Add(panelSearch); 
+            panelTKB.Controls.Add(panelSearch);
             panelContent.Dock = DockStyle.Fill;
             panelContent.Padding = new Padding(0, menuStrip1.Height, 0, 0); // Đẩy xuống dưới MenuStrip
             HienThiPanel(panelTKB);
         }
+
+        private void ThongTinSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ThongTinSVPL();
+            panel1.Visible = true;
+        }
+
+        private void DoiMKToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Panel panelChangePass = new Panel { Dock = DockStyle.Fill };
+
+            int panelWidth = panelContent.Width;
+            int panelHeight = panelContent.Height;
+            int textBoxWidth = 250;
+            int labelWidth = 180;
+            int spacing = 15;
+
+            int centerX = (panelWidth - textBoxWidth - labelWidth - spacing) / 2;
+            int centerY = (panelHeight - 200) / 2;
+
+            Label lblOld = new Label { Text = "Mật khẩu cũ:", Width = labelWidth, TextAlign = ContentAlignment.MiddleRight, Location = new Point(centerX, centerY) };
+            Label lblNew = new Label { Text = "Mật khẩu mới:", Width = labelWidth, TextAlign = ContentAlignment.MiddleRight, Location = new Point(centerX, centerY + 50) };
+            Label lblConfirm = new Label { Text = "Nhập lại mật khẩu:", Width = labelWidth, TextAlign = ContentAlignment.MiddleRight, Location = new Point(centerX, centerY + 100) };
+
+            TextBox txtOldPass = new TextBox { Location = new Point(centerX + labelWidth + spacing, centerY), Width = textBoxWidth, PasswordChar = '*' };
+            TextBox txtNewPass = new TextBox { Location = new Point(centerX + labelWidth + spacing, centerY + 50), Width = textBoxWidth, PasswordChar = '*' };
+            TextBox txtConfirmPass = new TextBox { Location = new Point(centerX + labelWidth + spacing, centerY + 100), Width = textBoxWidth, PasswordChar = '*' };
+
+            // CheckBox căn chỉnh ngay dưới textbox cuối cùng
+            CheckBox chkShowPass = new CheckBox { Text = "Hiển thị mật khẩu", AutoSize = true, Location = new Point(centerX + labelWidth, centerY + 135) };
+            chkShowPass.CheckedChanged += (s, ex) =>
+            {
+                bool isChecked = chkShowPass.Checked;
+                txtOldPass.PasswordChar = isChecked ? '\0' : '*';
+                txtNewPass.PasswordChar = isChecked ? '\0' : '*';
+                txtConfirmPass.PasswordChar = isChecked ? '\0' : '*';
+            };
+
+            // Button căn giữa theo textbox
+            Button btnChange = new Button { Text = "Đổi mật khẩu", Width = 120, Location = new Point(centerX + labelWidth + (textBoxWidth - 120) / 2, centerY + 180) };
+            Label lblMessage = new Label { ForeColor = Color.Red, Location = new Point(centerX + labelWidth, centerY + 220), AutoSize = true };
+
+            btnChange.Click += (s, ex) =>
+            {
+                if (txtOldPass.Text != tk.Pass_word)
+                {
+                    lblMessage.Text = "Mật khẩu không chính xác";
+                    return;
+                }
+
+                if (txtNewPass.Text != txtConfirmPass.Text)
+                {
+                    lblMessage.Text = "Mật khẩu mới không khớp!";
+                    return;
+                }
+                SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
+                if (sinhVienBUS.DoiMatKhauBUS(sv.MSSV, txtNewPass.Text) == true)
+                {
+                    lblMessage.ForeColor = Color.Green;
+                    lblMessage.Text = "Đổi mật khẩu thành công!";
+                }
+            };
+
+            panelChangePass.Controls.AddRange(new Control[] { lblOld, txtOldPass, lblNew, txtNewPass, lblConfirm, txtConfirmPass, chkShowPass, btnChange, lblMessage });
+
+            HienThiPanel(panelChangePass);
+        }
+
+        private void DangXuatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new FormDangNhap();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
     }
+    
 }

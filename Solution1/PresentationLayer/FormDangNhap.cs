@@ -50,7 +50,7 @@ namespace PresentationLayer
             { 
                 SinhVien_BUS svBUS = new SinhVien_BUS();
                 SinhVien sv = svBUS.ThongTinSVBUS(txt_TaiKhoan.Text); 
-                Form form = new FormSV(sv);
+                Form form = new FormSV(sv,taikhoan);
                 this.Hide();
                 form.ShowDialog();
                 this.Close();
@@ -60,7 +60,7 @@ namespace PresentationLayer
             {
                 GiangVien_BUS gvBUS = new GiangVien_BUS();
                 GiangVien gv = gvBUS.ThongTinGVBUS(txt_TaiKhoan.Text);
-                Form form = new FormGV(gv);
+                Form form = new FormGV(gv,taikhoan);
                 this.Hide();
                 form.ShowDialog();
                 this.Close();
@@ -72,9 +72,25 @@ namespace PresentationLayer
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Thoat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Kết nối");
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn thoát không?",
+                "Xác nhận thoát",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void CheckBoxHienThiMK_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_MatKhau.PasswordChar = CheckBoxHienThiMK.Checked ? '\0' : '*';
         }
     }
 }

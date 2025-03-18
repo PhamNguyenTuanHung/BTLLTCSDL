@@ -13,118 +13,185 @@ namespace DataLayer
     {
         public GiangVien ThongTinGVDAL(string msgv)
         {
-            GiangVien gv = null;
-            using (SqlConnection conn = DBConnect_DAL.Connect())
+            try
             {
-                string query = "SELECT * FROM GiaoVien WHERE MSGV = @msgv";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@msgv", msgv);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                GiangVien gv = null;
+                using (SqlConnection conn = DBConnect_DAL.Connect())
                 {
-                    gv = new GiangVien()
+                    string query = "SELECT * FROM GiaoVien WHERE MSGV = @msgv";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@msgv", msgv);
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
                     {
-                        MSGV = reader["MSGV"].ToString(),
-                        HoTenGV = reader["Ten_Day_Du"].ToString(),
-                        GioiTinh = reader["Gioi_Tinh"].ToString(),
-                        NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]), // Nếu có thể NULL, cần kiểm tra DBNull
-                        DiaChi = reader["Dia_Chi"].ToString(),
-                        SDT = reader["SDT"].ToString(),
-                        MaKhoa = reader["Ma_Khoa"].ToString()
-
-                    };
+                        gv = new GiangVien()
+                        {
+                            MSGV = reader["MSGV"].ToString(),
+                            HoTenGV = reader["Ten_Day_Du"].ToString(),
+                            GioiTinh = reader["Gioi_Tinh"].ToString(),
+                            NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]),
+                            DiaChi = reader["Dia_Chi"].ToString(),
+                            SDT = reader["SDT"].ToString(),
+                            MaKhoa = reader["Ma_Khoa"].ToString()
+                        };
+                    }
+                    reader.Close();
                 }
-                reader.Close();
+                return gv;
             }
-            return gv;
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi trong ThongTinGVDAL: " + ex.Message, ex);
+            }
         }
+
         public List<LopHoc> DanhSachLopHocDAL(string msgv)
         {
-            List<LopHoc> ds = new List<LopHoc>();
-            LopHoc lh = null;
-            using (SqlConnection conn = DBConnect_DAL.Connect())
+            try
             {
-                string query = "SELECT LopMonHoc.Ma_Mon_Hoc,Ten_Mon_Hoc,Ngay_Hoc,Gio_Bat_Dau,Gio_Ket_Thuc FROM DayMonHoc,LopMonHoc, MonHoc" +
-                    "\r\nWHERE @msgv = DayMonHoc.MSGV AND DayMonHoc.Ma_Mon_Hoc=LopMonHoc.Ma_Mon_Hoc" +
-                    "\r\nAND MonHoc.Ma_Mon_Hoc= LopMonHoc.Ma_Mon_Hoc";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@msgv", msgv);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                List<LopHoc> ds = new List<LopHoc>();
+                using (SqlConnection conn = DBConnect_DAL.Connect())
                 {
-                    lh = new LopHoc()
+                    string query = "SELECT LopHocPhan.Ma_Mon_Hoc, Ten_Mon_Hoc, Ngay_Hoc, Gio_Bat_Dau, Gio_Ket_Thuc " +
+                                   "FROM LopHocPhan, MonHoc WHERE LopHocPhan.MSGV=@msgv " +
+                                   "AND MonHoc.Ma_Mon_Hoc= LopHocPhan.Ma_Mon_Hoc";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@msgv", msgv);
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        MaMonHoc = reader["Ma_Mon_Hoc"].ToString(),
-                        TenMonHoc = reader["Ten_Mon_Hoc"].ToString(),
-                        NgayHoc = reader["Ngay_Hoc"].ToString(),
-                        GioBatDau = TimeSpan.Parse(reader["Gio_Bat_Dau"].ToString()) ,
-                        GioKetThuc = TimeSpan.Parse(reader["Gio_Ket_Thuc"].ToString())
-                    };
-                    ds.Add(lh);
+                        LopHoc lh = new LopHoc()
+                        {
+                            MaMonHoc = reader["Ma_Mon_Hoc"].ToString(),
+                            TenMonHoc = reader["Ten_Mon_Hoc"].ToString(),
+                            NgayHoc = reader["Ngay_Hoc"].ToString(),
+                            GioBatDau = TimeSpan.Parse(reader["Gio_Bat_Dau"].ToString()),
+                            GioKetThuc = TimeSpan.Parse(reader["Gio_Ket_Thuc"].ToString())
+                        };
+                        ds.Add(lh);
+                    }
+                    reader.Close();
                 }
-                reader.Close();
+                return ds;
             }
-             return ds;
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi trong DanhSachLopHocDAL: " + ex.Message, ex);
+            }
         }
+
         public DataTable TKBGiangVienDAL(string msgv)
         {
-            DataTable dt = new DataTable();
-            string query = "SELECT Ten_Mon_Hoc,Ngay_Hoc,Gio_Bat_Dau,Gio_Ket_Thuc FROM DayMonHoc,LopMonHoc, MonHoc "
-                            + "WHERE DayMonHoc.MSGV = @msgv AND DayMonHoc.Ma_Mon_Hoc = LopMonHoc.Ma_Mon_Hoc "
-                            + "AND MonHoc.Ma_Mon_Hoc = LopMonHoc.Ma_Mon_Hoc";
-            using (SqlConnection conn = DBConnect_DAL.Connect())
+            try
             {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@msgv", msgv);
-                conn.Open();
-                SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
-                sqlAdapter.Fill(dt);
+                DataTable dt = new DataTable();
+                string query = "SELECT Ten_Mon_Hoc, Ngay_Hoc, Gio_Bat_Dau, Gio_Ket_Thuc " +
+                               "FROM LopHocPhan, MonHoc WHERE LopHocPhan.MSGV = @msgv " +
+                               "AND MonHoc.Ma_Mon_Hoc = LopHocPhan.Ma_Mon_Hoc";
+                using (SqlConnection conn = DBConnect_DAL.Connect())
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@msgv", msgv);
+                    conn.Open();
+                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
+                    sqlAdapter.Fill(dt);
+                }
+                return dt;
             }
-            return dt;
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi trong TKBGiangVienDAL: " + ex.Message, ex);
+            }
         }
 
         public List<DiemSV> DanhSachDiemSVDAL(string msgv, string mamonhoc)
         {
-            List<DiemSV> ds = new List<DiemSV>();
-            DiemSV DiemSV = null;
-            using (SqlConnection conn = DBConnect_DAL.Connect())
+            try
             {
-                conn.Open();
-                string query = "SELECT SinhVien.Ten_Day_Du,Diem.* " +
-                    "\r\nFROM SinhVien, Diem, GiaoVien ,DangKy , DayMonHoc  " +
-                    "\r\nWHERE SinhVien.MSSV = DangKy.MSSV " +
-                    "\r\nAND  GiaoVien.MSGV = DayMonHoc.MSGV " +
-                    "\r\nAND DangKy.Ma_Mon_Hoc = DayMonHoc.Ma_Mon_Hoc " +
-                    "\r\nAND GiaoVien.MSGV=@msgv" +
-                    "\r\nAND DayMonHoc.Ma_Mon_Hoc = @mamonhoc" +
-                    "\r\nAND Diem.Ma_Mon_Hoc = @mamonhoc" +
-                    "\r\nAND Diem.MSSV = SinhVien.MSSV";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                List<DiemSV> ds = new List<DiemSV>();
+                using (SqlConnection conn = DBConnect_DAL.Connect())
                 {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@msgv", msgv);
-                    cmd.Parameters.AddWithValue("@mamonhoc", mamonhoc);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    conn.Open();
+                    string query = "SELECT SinhVien.Ten_Day_Du, Diem.* " +
+                                   "FROM SinhVien, Diem, GiaoVien, DangKy " +
+                                   "WHERE SinhVien.MSSV = DangKy.MSSV " +
+                                   "AND GiaoVien.MSGV=@msgv " +
+                                   "AND Diem.Ma_Mon_Hoc = @mamonhoc " +
+                                   "AND Diem.MSSV = SinhVien.MSSV " +
+                                   "AND DangKy.Ma_Mon_Hoc = Diem.Ma_Mon_Hoc";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@msgv", msgv);
+                        cmd.Parameters.AddWithValue("@mamonhoc", mamonhoc);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            DiemSV diemSV = new DiemSV()
+                            while (reader.Read())
                             {
-                                MSSV = reader["MSSV"].ToString(),
-                                DiemQuaTrinh = reader.IsDBNull(reader.GetOrdinal("Diem_Qua_Trinh")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Qua_Trinh")),
-                                DiemThi = reader.IsDBNull(reader.GetOrdinal("Diem_Thi")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Thi")),
-                                DiemTongKet = reader.IsDBNull(reader.GetOrdinal("Diem_Tong_Ket")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Tong_Ket")),
-                                LanThi = reader.GetInt32(reader.GetOrdinal("Lan_Thi")),
-                                TenDayDu = reader["Ten_Day_Du"].ToString()
-                            };
-                            ds.Add(diemSV);
+                                DiemSV diemSV = new DiemSV()
+                                {
+                                    MSSV = reader["MSSV"].ToString(),
+                                    DiemQuaTrinh = reader.IsDBNull(reader.GetOrdinal("Diem_Qua_Trinh")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Qua_Trinh")),
+                                    DiemThi = reader.IsDBNull(reader.GetOrdinal("Diem_Thi")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Thi")),
+                                    DiemTongKet = reader.IsDBNull(reader.GetOrdinal("Diem_Tong_Ket")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Tong_Ket")),
+                                    LanThi = reader.GetInt32(reader.GetOrdinal("Lan_Thi")),
+                                    TenDayDu = reader["Ten_Day_Du"].ToString()
+                                };
+                                ds.Add(diemSV);
+                            }
                         }
                     }
                 }
                 return ds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi trong DanhSachDiemSVDAL: " + ex.Message, ex);
+            }
+        }
+
+        public bool DoiMatKhauDAl(string msgv, string pass)
+        {
+            try
+            {
+                string query = "UPDATE TaiKhoan SET Mat_Khau=@pass WHERE Ten_Dang_Nhap=@msgv";
+                using (SqlConnection conn = DBConnect_DAL.Connect())
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@pass", pass);
+                    cmd.Parameters.AddWithValue("@msgv", msgv);
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi trong DoiMatKhauDAl: " + ex.Message, ex);
+            }
+        }
+
+        public bool SuaDiemSVDAL(string mssv, string mamonhoc, float diemQT, float diemThi, float diemTK)
+        {
+            try
+            {
+                string query = "UPDATE Diem SET Diem_Qua_Trinh=@diemQT, Diem_Thi=@diemThi, Diem_Tong_Ket=@diemTK " +
+                               "WHERE MSSV=@mssv AND Ma_Mon_Hoc=@mamonhoc";
+                using (SqlConnection conn = DBConnect_DAL.Connect())
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@mssv", mssv);
+                    cmd.Parameters.AddWithValue("@mamonhoc", mamonhoc);
+                    cmd.Parameters.AddWithValue("@diemQT", diemQT);
+                    cmd.Parameters.AddWithValue("@diemThi", diemThi);
+                    cmd.Parameters.AddWithValue("@diemTK", diemTK);
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi trong SuaDiemSVDAL: " + ex.Message, ex);
             }
         }
     }

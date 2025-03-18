@@ -12,28 +12,38 @@ namespace DataLayer
     {
         public TaiKhoan CheckLoginDAL(TaiKhoan taikhoan)
         {
-            using (SqlConnection conn = DBConnect_DAL.Connect())
+            try
             {
-                conn.Open();
-                string query = "SELECT * FROM TaiKhoan WHERE Ten_dang_nhap = @username AND Mat_khau = @password";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = DBConnect_DAL.Connect())
                 {
-                    cmd.Parameters.AddWithValue("@username", taikhoan.User_name);
-                    cmd.Parameters.AddWithValue("@password", taikhoan.Pass_word);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    conn.Open();
+                    string query = "SELECT * FROM TaiKhoan WHERE Ten_dang_nhap = @username AND Mat_khau = @password";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        if (reader.Read())
-                        {
-                            string username = reader["Ten_Dang_Nhap"].ToString();
-                            string password = reader["Mat_Khau"].ToString();
-                            int type = Convert.ToInt32(reader["Loai_Tai_Khoan"]);
+                        cmd.Parameters.AddWithValue("@username", taikhoan.User_name);
+                        cmd.Parameters.AddWithValue("@password", taikhoan.Pass_word);
 
-                            return new TaiKhoan(username, password, type);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string username = reader["Ten_Dang_Nhap"].ToString();
+                                string password = reader["Mat_Khau"].ToString();
+                                int type = Convert.ToInt32(reader["Loai_Tai_Khoan"]);
+
+                                return new TaiKhoan(username, password, type);
+                            }
                         }
                     }
                 }
-                return null;
             }
+            catch (Exception ex)
+            {
+                // Log lỗi hoặc xử lý theo cách phù hợp (ví dụ: ghi log, hiển thị thông báo)
+                throw new Exception("Lỗi khi kiểm tra đăng nhập: " + ex.Message);
+            }
+
+            return null;
         }
     }
 }
