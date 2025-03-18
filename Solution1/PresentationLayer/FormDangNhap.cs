@@ -49,7 +49,7 @@ namespace PresentationLayer
             if (CheckLogin.Type==1)
             { 
                 SinhVien_BUS svBUS = new SinhVien_BUS();
-                SinhVien sv = svBUS.ThongTinSVBUS(txt_TaiKhoan.Text); 
+                SinhVien sv = svBUS.ThongTinSinhVienBUS(txt_TaiKhoan.Text); 
                 Form form = new FormSV(sv,taikhoan);
                 this.Hide();
                 form.ShowDialog();

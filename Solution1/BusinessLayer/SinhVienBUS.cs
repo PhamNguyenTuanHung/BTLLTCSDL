@@ -13,7 +13,7 @@ namespace BusinessLayer
     {
         private SinhVien_DAL sinhvienDAL = new SinhVien_DAL();
 
-        public SinhVien ThongTinSVBUS(string MSSV)
+        public DataTable ThongTinSVBUS(string MSSV)
         {
             try
             {
@@ -25,6 +25,17 @@ namespace BusinessLayer
             }
         }
 
+        public SinhVien ThongTinSinhVienBUS(string MSSV)
+        {
+            try
+            {
+                return sinhvienDAL.ThongTinSinhVienDAL(MSSV);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thông tin sinh viên: " + ex.Message, ex);
+            }
+        }
         public DataTable DiemSVBUS(string query)
         {
             try
@@ -70,6 +81,31 @@ namespace BusinessLayer
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi đổi mật khẩu: " + ex.Message, ex);
+            }
+        }
+
+        
+        public DataTable LichThiBUS(string mssv)
+        {
+            try
+            {
+                return sinhvienDAL.LichThiDAL(mssv);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy lịch thi: " + ex.Message, ex);
+            }
+        }
+
+        public DataTable DanhSachMonDangKiBUS()
+        {
+            try
+            {
+                return sinhvienDAL.DanhSachMonHocDangKiDAL();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy lịch thi: " + ex.Message, ex);
             }
         }
     }

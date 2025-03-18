@@ -7,16 +7,56 @@ namespace DataLayer
 {
     public class SinhVien_DAL
     {
-        public SinhVien ThongTinSVDAL(string mssv)
+        public DataTable ThongTinSVDAL(string mssv)
+        {
+            try
+            {
+                using (SqlConnection conn = DBConnect_DAL.Connect())
+                {
+                    DataTable dt = new DataTable();
+                    string query = "SELECT SinhVien.*, Khoa.Ten_Khoa FROM SinhVien, Lop, Khoa " +
+                                   "WHERE SinhVien.MSSV = @mssv " +
+                                   "AND SinhVien.ma_lop = Lop.ma_lop " +
+                                   "AND Lop.Ma_Khoa = Khoa.Ma_Khoa";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@mssv", mssv);
+
+                    conn.Open();
+                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
+                    sqlAdapter.Fill(dt);
+
+                    if (dt.Rows.Count == 0)
+                    {
+                        throw new Exception("Không tìm thấy sinh viên trong DB!");
+                    }
+
+                    return dt;
+                }
+            }
+            catch (SqlException ex) // Lỗi SQL
+            {
+                Console.WriteLine("Lỗi SQL: " + ex.Message);
+                throw; // Ném lỗi lên BUS
+            }
+            catch (Exception ex) // Lỗi khác
+            {
+                Console.WriteLine("Lỗi hệ thống DAL: " + ex.Message);
+                throw; // Ném lỗi lên BUS
+            }
+        }
+
+
+
+        public SinhVien ThongTinSinhVienDAL(string mssv)
         {
             try
             {
                 SinhVien sv = null;
                 using (SqlConnection conn = DBConnect_DAL.Connect())
                 {
-                    string query = "SELECT SinhVien.*, Khoa.Ten_Khoa FROM SinhVien, Lop, Khoa " +
-                                   "WHERE SinhVien.MSSV = @mssv AND SinhVien.ma_lop = Lop.ma_lop " +
-                                   "AND Lop.Ma_Khoa = Khoa.Ma_Khoa";
+                    string query = "SELECT SinhVien.*,Lop.Ma_Lop FROM SinhVien, Lop, Khoa " +
+                                   "WHERE SinhVien.MSSV = @mssv AND SinhVien.ma_lop = Lop.ma_lop ";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@mssv", mssv);
                     conn.Open();
@@ -37,7 +77,6 @@ namespace DataLayer
                                 KhoaHoc = reader["Khoa_Hoc"].ToString(),
                                 DRL = Convert.ToDouble(reader["Diem_Ren_Luyen"]),
                                 MaLop = reader["Ma_Lop"].ToString(),
-                                TenKhoa = reader["Ten_Khoa"].ToString()
                             };
                         }
                     }
@@ -125,14 +164,40 @@ namespace DataLayer
             }
         }
 
-        public DataTable DanhSachMonHocDangKiDAL(string mssv)
+        public DataTable DanhSachMonHocDangKiDAL()
         {
             try
             {
                 DataTable dt = new DataTable();
-                string query = "SELECT MonDangKi.*, Ten_Mon_Hoc, So_Tin_Chi " +
-                               "FROM MonDangKi, MonHoc " +
-                               "WHERE MonHoc.Ma_Mon_Hoc = MonDangKi.Ma_Mon_Hoc";
+                string query = "SELECT MonDangKy.Ma_Mon_Hoc, Ten_Mon_Hoc,Ngay_BD,Ngay_KT, So_Tin_Chi " +
+                    "\r\nFROM MonDangKy, MonHoc" +
+                    "\r\nWHERE MonHoc.Ma_Mon_Hoc = MonDangKy.Ma_Mon_Hoc";
+
+                using (SqlConnection conn = DBConnect_DAL.Connect())
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    conn.Open();
+                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
+                    sqlAdapter.Fill(dt);
+                }
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách môn học đăng ký: " + ex.Message);
+            }
+        }
+
+        public DataTable LichThiDAL(string mssv)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string query = "SELECT MonThi.Ma_Mon_Hoc,Ten_Mon_Hoc,Ngay_Thi,Gio_BD,Gio_KT" +
+                    "\r\nFROM MonThi,MonHoc,DangKy" +
+                    "\r\nWHERE DangKy.MSSV=@mssv" +
+                    "\r\nAND MonHoc.Ma_Mon_Hoc=DangKy.Ma_Mon_Hoc" +
+                    "\r\nAND MonThi.Ma_Mon_Hoc=DangKy.Ma_Mon_Hoc";
 
                 using (SqlConnection conn = DBConnect_DAL.Connect())
                 {

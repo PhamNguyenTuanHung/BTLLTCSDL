@@ -56,10 +56,6 @@ namespace PresentationLayer
             }
         }
 
-        private void LoadDSSV(DataTable d)
-        {
-            
-        }
         
         private void Lop_Click(object sender, EventArgs e)
         {
@@ -168,6 +164,7 @@ namespace PresentationLayer
         {
             GiangVien_BUS giangVienBL = new GiangVien_BUS();
             DataTable dt = giangVienBL.TKBGiangVienBUS(gv.MSGV);
+           
             // Đổi tên cột trong DataGridView
             dgv.DataSource = dt;
             dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn Học";
@@ -268,6 +265,8 @@ namespace PresentationLayer
             txtDiemTongKet.Text = Math.Round((float.Parse(txtDiemQT.Text) * 0.4 + float.Parse(txtDiemThi.Text) * 0.6),3).ToString();
 
             GiangVien_BUS gvBUS = new GiangVien_BUS();
+            BindingContext[dgv.DataSource].EndCurrentEdit();
+            dgv.Refresh();
             if (gvBUS.SuaDiemSVBUS(txtMSSV.Text, mamonhoc, float.Parse(txtDiemQT.Text), float.Parse(txtDiemThi.Text), float.Parse(txtDiemTongKet.Text)) == true)
             {
                 MessageBox.Show("Sửa thành công");

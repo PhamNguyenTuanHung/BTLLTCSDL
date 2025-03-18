@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,8 +13,9 @@ namespace PresentationLayer
     public partial class FormSV : Form
     {
         private SinhVien sv;
+        private SinhVien_BUS svBus;
         private TaiKhoan tk;
-        private Panel panelContent;  // Panel chứa nội dung động
+        private Panel panelContent,panelDoiMK;  // Panel chứa nội dung động
 
         public FormSV(SinhVien sinhvien,TaiKhoan taikhoan)
         {
@@ -21,79 +23,49 @@ namespace PresentationLayer
             sv = sinhvien;
             tk = taikhoan;
             panelContent = new Panel
-            { Dock = DockStyle.Fill };
+            { 
+                Dock = DockStyle.Fill,
+                Padding = new Padding(0, menuStrip1.Height, 0, 0)
+            };
             this.Controls.Add(panelContent);
             ThongTinSVPL();
-            // Hiển thị thông tin sinh viên ban đầu
+            HienThiPanel(panel1);
         }
 
-        private Panel TaoPanelTimKiem(DataGridView dgv, DataTable dt)
+
+        private void HienThiPanel(Control control)
         {
-            // Tạo Panel chứa ô tìm kiếm
-            Panel panelSearch = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 40
-            };
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(control);
+            panel1.Visible = false;
+            flowLayoutPanel1.Visible = false;
+            control.Dock = DockStyle.Fill;
+            control.Visible = true;
 
-            // Tạo TextBox nhập từ khóa tìm kiếm
-            TextBox txtSearch = new TextBox
-            {
-                Width = 200,
-                Location = new Point(10, 10)
-            };
-
-            // Tạo Button tìm kiếm
-            Button btnSearch = new Button
-            {
-                Text = "Tìm kiếm",
-                Location = new Point(220, 8)
-            };
-
-            // Gắn sự kiện tìm kiếm
-            btnSearch.Click += (s, e) =>
-            {
-
-                string keyword = txtSearch.Text.Trim().ToLower();
-
-                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
-                if (string.IsNullOrWhiteSpace(keyword))
-                {
-                    dt.DefaultView.RowFilter = string.Empty;
-                }
-                else
-                {
-                    // Lọc theo cột "Ten_Mon_Hoc"
-                    dt.DefaultView.RowFilter = $"CONVERT(Ten_Mon_Hoc, 'System.String') LIKE '%{keyword}%'";
-                }
-
-                // Cập nhật lại DataGridView với dữ liệu đã lọc
-                dgv.DataSource = dt.DefaultView;
-
-
-            };
-
-            // Thêm TextBox và Button vào Panel
-            panelSearch.Controls.Add(txtSearch);
-            panelSearch.Controls.Add(btnSearch);
-
-            return panelSearch;
         }
 
 
         private void ThongTinSVPL()
         {
-            if (sv != null)
+            svBus = new SinhVien_BUS();
+            DataTable dt = svBus.ThongTinSVBUS(sv.MSSV);
+            if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
-                lbMSSV.Text = sv.MSSV;
-                lbHoTen.Text = sv.HoTenSV;
-                lbGioiTinh.Text = sv.GioiTinh;
-                lbNgaySinh.Text = sv.NgaySinh.ToString("dd/MM/yyyy");
-                lbKhoaHoc.Text = sv.KhoaHoc;
-                lbDRL.Text = sv.DRL.ToString();
-                lbKhoa.Text = sv.TenKhoa;
-                lbEmail.Text = sv.Email;
+                lbMSSV.Text = dt.Rows[0]["MSSV"].ToString();
+                lbHoTen.Text = dt.Rows[0]["Ten_Day_Du"].ToString();
+                lbEmail.Text = dt.Rows[0]["Email"].ToString();
+                lbNgaySinh.Text = Convert.ToDateTime(dt.Rows[0]["Ngay_Sinh"]).ToString("dd/MM/yyyy"); // Định dạng ngày
+                lbDRL.Text = dt.Rows[0]["Diem_Ren_Luyen"].ToString();
+                lbKhoaHoc.Text = dt.Rows[0]["Khoa_Hoc"].ToString();
+                lbLop.Text = dt.Rows[0]["Ma_Lop"].ToString();
+                lbKhoa.Text = dt.Rows[0]["Ten_Khoa"].ToString();
+                lbGioiTinh.Text = dt.Rows[0]["Gioi_Tinh"].ToString();
             }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu sinh viên!");
+            }
+
         }
 
         private DataGridView TaoDataGridView(DataTable dt)
@@ -106,89 +78,116 @@ namespace PresentationLayer
                 AllowUserToAddRows = false
             };
 
-            // Thiết lập HeaderText nếu có
             dgv.DataBindingComplete += (s, e) =>
             {
 
-                if (dt.Columns.Contains("Ten_Mon_Hoc")) dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn";
-                if (dt.Columns.Contains("Diem_Qua_Trinh")) dgv.Columns["Diem_Qua_Trinh"].HeaderText = "Điểm QT";
-                if (dt.Columns.Contains("Diem_Thi")) dgv.Columns["Diem_Thi"].HeaderText = "Điểm Thi";
-                if (dt.Columns.Contains("Diem_Tong_Ket")) dgv.Columns["Diem_Tong_Ket"].HeaderText = "Tổng Kết";
-                if (dt.Columns.Contains("Ma_Nhom_Hoc")) dgv.Columns["Ma_Nhom_Hoc"].HeaderText = "Mã nhóm học";
-                if (dt.Columns.Contains("Gio_Bat_Dau")) dgv.Columns["Gio_Bat_Dau"].HeaderText = "Giờ bắt đầu";
-                if (dt.Columns.Contains("Gio_Ket_Thuc")) dgv.Columns["Gio_Ket_Thuc"].HeaderText = "Giờ kết thúc";
-                if (dt.Columns.Contains("Ngay_Hoc")) dgv.Columns["Ngay_Hoc"].HeaderText = "Ngày học";
+                if (dt.Columns.Contains("Ten_Mon_Hoc")) 
+                    dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn";
+
+                if (dt.Columns.Contains("Diem_Qua_Trinh")) 
+                    dgv.Columns["Diem_Qua_Trinh"].HeaderText = "Điểm QT";
+
+                if (dt.Columns.Contains("Diem_Thi")) 
+                    dgv.Columns["Diem_Thi"].HeaderText = "Điểm Thi";
+
+                if (dt.Columns.Contains("Diem_Tong_Ket"))
+                    dgv.Columns["Diem_Tong_Ket"].HeaderText = "Tổng Kết";
+
+                if (dt.Columns.Contains("Ma_Nhom_Hoc")) 
+                    dgv.Columns["Ma_Nhom_Hoc"].HeaderText = "Mã nhóm học";
+
+                if (dt.Columns.Contains("Gio_Bat_Dau")) 
+                    dgv.Columns["Gio_Bat_Dau"].HeaderText = "Giờ bắt đầu";
+
+                if (dt.Columns.Contains("Gio_Ket_Thuc")) 
+                    dgv.Columns["Gio_Ket_Thuc"].HeaderText = "Giờ kết thúc";
+
+                if (dt.Columns.Contains("Ngay_Hoc")) 
+                    dgv.Columns["Ngay_Hoc"].HeaderText = "Ngày học";
+
+                if (dt.Columns.Contains("Ma_Mon_Hoc"))
+                    dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Mã Môn Học";
+
+                if (dt.Columns.Contains("Ngay_BD"))
+                    dgv.Columns["Ngay_BD"].HeaderText = "Ngày Bắt Đầu";
+
+                if (dt.Columns.Contains("Ngay_KT"))
+                    dgv.Columns["Ngay_KT"].HeaderText = "Ngày Kết Thúc";
+
+                if (dt.Columns.Contains("Ten_Mon_Hoc"))
+                    dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn Học";
+
+                if (dt.Columns.Contains("So_Tin_Chi"))
+                    dgv.Columns["So_Tin_Chi"].HeaderText = "Số Tín Chỉ";
+
+                if (dt.Columns.Contains("Ma_Mon_Hoc"))
+                    dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Số Tín Chỉ";
+
             };
 
             return dgv;
         }
 
-        private void HienThiPanel(Control control)
-        {
-            panelContent.Controls.Clear();
-            panelContent.Controls.Add(control);
-            control.Dock = DockStyle.Fill;
-            control.BringToFront();
-            if (control != panel1)
-            {
-                panel1.Visible = false;
-            }
-            else panel1.Visible = true;
-        }
-
-        
-
         private void XemDiemToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            btnLuu.Hide();
+            txtTimKiem.Clear();
             SinhVien_BUS sinhVienBL = new SinhVien_BUS();
             DataTable dt = sinhVienBL.DiemSVBUS(sv.MSSV);
-            DataGridView dgv = TaoDataGridView(dt);
-            Panel panelSearch = TaoPanelTimKiem(dgv, dt);
+            dgv.DataSource = dt;
+
+            if (dt.Columns.Contains("Ten_Mon_Hoc"))
+                dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn";
+
+            if (dt.Columns.Contains("Diem_Qua_Trinh"))
+                dgv.Columns["Diem_Qua_Trinh"].HeaderText = "Điểm QT";
+
+            if (dt.Columns.Contains("Diem_Thi"))
+                dgv.Columns["Diem_Thi"].HeaderText = "Điểm Thi";
+
+            if (dt.Columns.Contains("Diem_Tong_Ket"))
+                dgv.Columns["Diem_Tong_Ket"].HeaderText = "Tổng Kết";
 
             // Đảm bảo panelSearch hiển thị đúng vị trí
-            panelSearch.Dock = DockStyle.Top;
             dgv.Dock = DockStyle.Fill;
-
-            Panel panelBangDiem = new Panel { Dock = DockStyle.Fill };
-            panelBangDiem.Controls.Add(dgv);       // Thêm DataGridView trước
-            panelBangDiem.Controls.Add(panelSearch); // Sau đó thêm panel tìm kiếm
-            panelContent.Dock = DockStyle.Fill;
-            panelContent.Padding = new Padding(0, menuStrip1.Height, 0, 0); // Đẩy xuống dưới MenuStrip
-            HienThiPanel(panelBangDiem);
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AllowUserToAddRows = false;
+            panelTimKiem.Dock = DockStyle.Top;
+            HienThiPanel(flowLayoutPanel1);
         }
 
-        private void TKBToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SinhVien_BUS sinhVienBL = new SinhVien_BUS();
-            DataTable dt = sinhVienBL.TKBSinhVienBUS(sv.MSSV);
-            DataGridView dgv = TaoDataGridView(dt);
-            Panel panelSearch = TaoPanelTimKiem(dgv, dt);
 
-            // Đảm bảo vị trí chính xác
-            panelSearch.Dock = DockStyle.Top;
-            dgv.Dock = DockStyle.Fill;
-
-            Panel panelTKB = new Panel 
-            { 
-                Dock = DockStyle.Fill 
-            };
-
-            panelTKB.Controls.Add(dgv);
-            panelTKB.Controls.Add(panelSearch);
-            panelContent.Dock = DockStyle.Fill;
-            panelContent.Padding = new Padding(0, menuStrip1.Height, 0, 0); // Đẩy xuống dưới MenuStrip
-            HienThiPanel(panelTKB);
-        }
 
         private void ThongTinSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ThongTinSVPL();
-            panel1.Visible = true;
+            HienThiPanel(panel1);
         }
 
+        private void TKBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnLuu.Hide();
+            txtTimKiem.Clear();
+            SinhVien_BUS sinhVienBL = new SinhVien_BUS();
+            DataTable dt = sinhVienBL.TKBSinhVienBUS(sv.MSSV);
+            panelTimKiem.Dock = DockStyle.Top;
+            dgv.DataSource = dt;
+            dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn Học";
+            dgv.Columns["Ngay_Hoc"].HeaderText = "Ngày Học";
+            dgv.Columns["Gio_Bat_Dau"].HeaderText = "Giờ Bắt Đầu";
+            dgv.Columns["Gio_Ket_Thuc"].HeaderText = "Giờ Kết Thúc";
+            // Đảm bảo vị trí chính xác
+            dgv.Dock = DockStyle.Fill;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AllowUserToAddRows = false;
+            panelDSMonDK.Visible = false;
+            HienThiPanel(flowLayoutPanel1);
+        }
         private void DoiMKToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Panel panelChangePass = new Panel { Dock = DockStyle.Fill };
+            btnLuu.Hide();
+            txtTimKiem.Clear();
+            panelDoiMK = new Panel { Dock = DockStyle.Fill };
 
             int panelWidth = panelContent.Width;
             int panelHeight = panelContent.Height;
@@ -242,10 +241,108 @@ namespace PresentationLayer
                 }
             };
 
-            panelChangePass.Controls.AddRange(new Control[] { lblOld, txtOldPass, lblNew, txtNewPass, lblConfirm, txtConfirmPass, chkShowPass, btnChange, lblMessage });
+            panelDoiMK.Controls.AddRange(new Control[] { lblOld, txtOldPass, lblNew, txtNewPass, lblConfirm, txtConfirmPass, chkShowPass, btnChange, lblMessage });
 
-            HienThiPanel(panelChangePass);
+            HienThiPanel(panelDoiMK);
         }
+
+        private void LichThiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnLuu.Hide();
+            txtTimKiem.Clear();
+            SinhVien_BUS sinhVienBL = new SinhVien_BUS();
+            DataTable dt = sinhVienBL.LichThiBUS(sv.MSSV);
+            dgv.DataSource = dt;
+            dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Mã môn học";
+            dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên môn học";
+            dgv.Columns["Ngay_Thi"].HeaderText = "Ngày thi";
+            dgv.Columns["Gio_BD"].HeaderText = "Giờ bắt đầu";
+            dgv.Columns["Gio_KT"].HeaderText = "Giờ kết thúc";
+            // Đảm bảo vị trí chính xác
+            panelTimKiem.Dock = DockStyle.Top;
+            dgv.Dock = DockStyle.Fill;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AllowUserToAddRows = false;
+            panelDSMonDK.Visible = false;
+            HienThiPanel(flowLayoutPanel1);
+        }
+
+        private void DKMonHocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnLuu.Visible = true;
+            txtTimKiem.Clear();
+            SinhVien_BUS sinhVienBL = new SinhVien_BUS();
+            DataTable dt = sinhVienBL.DanhSachMonDangKiBUS();
+            dt.Columns.Add("Chọn", typeof(bool));
+            dgv.DataSource = dt;
+            if (dt.Columns.Contains("Ma_Mon_Hoc"))
+                dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Mã Môn Học";
+
+            if (dt.Columns.Contains("Ngay_BD"))
+                dgv.Columns["Ngay_BD"].HeaderText = "Ngày Bắt Đầu";
+
+            if (dt.Columns.Contains("Ngay_KT"))
+                dgv.Columns["Ngay_KT"].HeaderText = "Ngày Kết Thúc";
+
+            if (dt.Columns.Contains("Ten_Mon_Hoc"))
+                dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn Học";
+
+            if (dt.Columns.Contains("So_Tin_Chi"))
+                dgv.Columns["So_Tin_Chi"].HeaderText = "Số Tín Chỉ";
+            dgv.CellContentClick += dgv_CellContentClick;
+
+            // Đảm bảo vị trí chính xác
+            panelTimKiem.Dock = DockStyle.Top;
+            dgv.Dock = DockStyle.Fill;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AllowUserToAddRows = false;
+
+            Panel panelDangKy = new Panel
+            {
+                Dock = DockStyle.Fill
+            };
+
+            panelDSMonDK.Visible = true;
+
+            HienThiPanel(flowLayoutPanel1);
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (dgv.DataSource != null)
+            {
+                DataTable dt = (DataTable)dgv.DataSource;
+
+                string keyword = txtTimKiem.Text.Trim().ToLower();
+
+                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    dt.DefaultView.RowFilter = string.Empty;
+                }
+                else
+                {
+                    string filter = $"[Ten_Mon_Hoc] LIKE '%{keyword}%'"; /*OR [Ma_Mon_Hoc] LIKE '%{keyword}%'";*/
+                    dt.DefaultView.RowFilter = filter; ;
+                }
+                dgv.DataSource = dt;
+            }
+            else MessageBox.Show("Dữ liệu null");
+
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BindingList<MonHoc> dsMonHoc = (BindingList<MonHoc>)dgv.DataSource;
+            if (dsMonHoc != null)
+            {
+                dsMonHoc.Add(new MonHoc { Ma_Mon_Hoc = "MH003", Ten_Mon_Hoc = "Lập trình Java", So_Tin_Chi = 3 });
+            }
+
+        }
+
+
+
 
         private void DangXuatToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -254,6 +351,7 @@ namespace PresentationLayer
             form.ShowDialog();
             this.Close();
         }
+
     }
-    
+
 }

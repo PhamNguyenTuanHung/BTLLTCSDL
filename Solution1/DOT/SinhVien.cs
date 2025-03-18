@@ -10,7 +10,7 @@ namespace DOT
     {
         public SinhVien() { }
 
-        public SinhVien(string mssv, string hotensv, string gioitinh, DateTime ngaysinh, string email, string sdt, string diachi, string khoahoc, double drl, string malop, string tenkhoa)
+        public SinhVien(string mssv, string hotensv, string gioitinh, DateTime ngaysinh, string email, string sdt, string diachi, string khoahoc, double drl, string malop)
         {
             this.mssv = mssv;
             this.hotensv = hotensv;
@@ -22,7 +22,6 @@ namespace DOT
             this.khoahoc = khoahoc;
             this.drl = drl;
             this.malop = malop;
-            this.tenkhoa = tenkhoa;
         }
 
         private string mssv;
@@ -35,7 +34,6 @@ namespace DOT
         private string khoahoc;
         private double drl;
         private string malop;
-        private string tenkhoa;
 
 
         public string MSSV { get=>mssv; set=>mssv=value ; }
@@ -48,6 +46,5 @@ namespace DOT
         public string KhoaHoc { get => khoahoc; set => khoahoc = value; }
         public double DRL { get => drl; set => drl = value; }
         public string MaLop { get => malop; set => malop = value; }
-        public string TenKhoa { get => tenkhoa; set => tenkhoa = value; }
     }
 }

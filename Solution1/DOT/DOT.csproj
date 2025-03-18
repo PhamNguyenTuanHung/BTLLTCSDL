@@ -44,6 +44,7 @@
     <Compile Include="DiemSV.cs" />
     <Compile Include="GiangVien.cs" />
     <Compile Include="LopHoc.cs" />
+    <Compile Include="MonHoc.cs" />
     <Compile Include="SinhVien.cs" />
     <Compile Include="TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
