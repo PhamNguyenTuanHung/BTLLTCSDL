@@ -132,6 +132,7 @@ namespace PresentationLayer
         {
             btnLuu.Hide();
             txtTimKiem.Clear();
+            panelDSMonDK.Visible = false;
             SinhVien_BUS sinhVienBL = new SinhVien_BUS();
             DataTable dt = sinhVienBL.DiemSVBUS(sv.MSSV);
             dgv.DataSource = dt;
@@ -168,6 +169,7 @@ namespace PresentationLayer
         {
             btnLuu.Hide();
             txtTimKiem.Clear();
+            panelDSMonDK.Visible = false;
             SinhVien_BUS sinhVienBL = new SinhVien_BUS();
             DataTable dt = sinhVienBL.TKBSinhVienBUS(sv.MSSV);
             panelTimKiem.Dock = DockStyle.Top;
@@ -187,6 +189,7 @@ namespace PresentationLayer
         {
             btnLuu.Hide();
             txtTimKiem.Clear();
+            panelDSMonDK.Visible=false;
             panelDoiMK = new Panel { Dock = DockStyle.Fill };
 
             int panelWidth = panelContent.Width;
@@ -297,11 +300,6 @@ namespace PresentationLayer
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AllowUserToAddRows = false;
 
-            Panel panelDangKy = new Panel
-            {
-                Dock = DockStyle.Fill
-            };
-
             panelDSMonDK.Visible = true;
 
             HienThiPanel(flowLayoutPanel1);
@@ -336,7 +334,7 @@ namespace PresentationLayer
             BindingList<MonHoc> dsMonHoc = (BindingList<MonHoc>)dgv.DataSource;
             if (dsMonHoc != null)
             {
-                dsMonHoc.Add(new MonHoc { Ma_Mon_Hoc = "MH003", Ten_Mon_Hoc = "Lập trình Java", So_Tin_Chi = 3 });
+           //     dsMonHoc.Add(new MonHoc { Ma_Mon_Hoc = "MH003", Ten_Mon_Hoc = "Lập trình Java", So_Tin_Chi = 3 });
             }
 
         }

@@ -50,7 +50,7 @@ namespace PresentationLayer
             { 
                 SinhVien_BUS svBUS = new SinhVien_BUS();
                 SinhVien sv = svBUS.ThongTinSinhVienBUS(txt_TaiKhoan.Text); 
-                Form form = new FormSV(sv,taikhoan);
+                Form form = new FormSinhVien(sv,taikhoan);
                 this.Hide();
                 form.ShowDialog();
                 this.Close();
@@ -60,7 +60,7 @@ namespace PresentationLayer
             {
                 GiangVien_BUS gvBUS = new GiangVien_BUS();
                 GiangVien gv = gvBUS.ThongTinGVBUS(txt_TaiKhoan.Text);
-                Form form = new FormGV(gv,taikhoan);
+                Form form = new FormGiangVien(gv,taikhoan);
                 this.Hide();
                 form.ShowDialog();
                 this.Close();

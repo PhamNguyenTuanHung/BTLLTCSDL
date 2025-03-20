@@ -61,12 +61,12 @@
             this.lbMSSV = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTimKiem = new System.Windows.Forms.Panel();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.panelDGV = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.panelDSMonDK = new System.Windows.Forms.Panel();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.dgvMonDK = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -145,31 +145,32 @@
             // DoiMKToolStripMenuItem1
             // 
             this.DoiMKToolStripMenuItem1.Name = "DoiMKToolStripMenuItem1";
-            this.DoiMKToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.DoiMKToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.DoiMKToolStripMenuItem1.Text = "Đổi mật khẩu";
             this.DoiMKToolStripMenuItem1.Click += new System.EventHandler(this.DoiMKToolStripMenuItem1_Click);
             // 
             // DangXuatToolStripMenuItem
             // 
             this.DangXuatToolStripMenuItem.Name = "DangXuatToolStripMenuItem";
-            this.DangXuatToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.DangXuatToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.DangXuatToolStripMenuItem.Text = "Đăng xuất";
             this.DangXuatToolStripMenuItem.Click += new System.EventHandler(this.DangXuatToolStripMenuItem_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(574, 126);
+            this.panel1.Location = new System.Drawing.Point(12, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(591, 329);
+            this.panel1.Size = new System.Drawing.Size(788, 422);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(503, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(489, 75);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(184, 213);
             this.pictureBox1.TabIndex = 1;
@@ -393,11 +394,10 @@
             this.flowLayoutPanel1.Controls.Add(this.panelTimKiem);
             this.flowLayoutPanel1.Controls.Add(this.panelDGV);
             this.flowLayoutPanel1.Controls.Add(this.panelDSMonDK);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(161, 35);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 422);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(467, 353);
+            this.flowLayoutPanel1.TabIndex = 4;
             // 
             // panelTimKiem
             // 
@@ -406,52 +406,8 @@
             this.panelTimKiem.Controls.Add(this.txtTimKiem);
             this.panelTimKiem.Location = new System.Drawing.Point(3, 3);
             this.panelTimKiem.Name = "panelTimKiem";
-            this.panelTimKiem.Size = new System.Drawing.Size(797, 70);
+            this.panelTimKiem.Size = new System.Drawing.Size(393, 58);
             this.panelTimKiem.TabIndex = 0;
-            // 
-            // panelDGV
-            // 
-            this.panelDGV.Controls.Add(this.dgv);
-            this.panelDGV.Location = new System.Drawing.Point(3, 79);
-            this.panelDGV.Name = "panelDGV";
-            this.panelDGV.Size = new System.Drawing.Size(797, 222);
-            this.panelDGV.TabIndex = 1;
-            // 
-            // dgv
-            // 
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.Location = new System.Drawing.Point(0, 0);
-            this.dgv.Name = "dgv";
-            this.dgv.RowHeadersWidth = 51;
-            this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(797, 222);
-            this.dgv.TabIndex = 0;
-            // 
-            // panelDSMonDK
-            // 
-            this.panelDSMonDK.Controls.Add(this.dgvMonDK);
-            this.panelDSMonDK.Location = new System.Drawing.Point(3, 307);
-            this.panelDSMonDK.Name = "panelDSMonDK";
-            this.panelDSMonDK.Size = new System.Drawing.Size(798, 114);
-            this.panelDSMonDK.TabIndex = 2;
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Location = new System.Drawing.Point(66, 33);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(174, 22);
-            this.txtTimKiem.TabIndex = 0;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(376, 16);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(94, 39);
-            this.btnTimKiem.TabIndex = 1;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnLuu
             // 
@@ -462,15 +418,57 @@
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.AutoSize = true;
+            this.btnTimKiem.Location = new System.Drawing.Point(376, 16);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(94, 39);
+            this.btnTimKiem.TabIndex = 1;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Location = new System.Drawing.Point(74, 33);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(174, 22);
+            this.txtTimKiem.TabIndex = 0;
+            // 
+            // panelDGV
+            // 
+            this.panelDGV.Controls.Add(this.dgv);
+            this.panelDGV.Location = new System.Drawing.Point(3, 67);
+            this.panelDGV.Name = "panelDGV";
+            this.panelDGV.Size = new System.Drawing.Size(797, 222);
+            this.panelDGV.TabIndex = 1;
+            // 
+            // dgv
+            // 
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Location = new System.Drawing.Point(0, 3);
+            this.dgv.Name = "dgv";
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 24;
+            this.dgv.Size = new System.Drawing.Size(521, 219);
+            this.dgv.TabIndex = 0;
+            // 
+            // panelDSMonDK
+            // 
+            this.panelDSMonDK.Controls.Add(this.dgvMonDK);
+            this.panelDSMonDK.Location = new System.Drawing.Point(3, 295);
+            this.panelDSMonDK.Name = "panelDSMonDK";
+            this.panelDSMonDK.Size = new System.Drawing.Size(798, 114);
+            this.panelDSMonDK.TabIndex = 2;
+            // 
             // dgvMonDK
             // 
             this.dgvMonDK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonDK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMonDK.Location = new System.Drawing.Point(0, 0);
+            this.dgvMonDK.Location = new System.Drawing.Point(26, 0);
             this.dgvMonDK.Name = "dgvMonDK";
             this.dgvMonDK.RowHeadersWidth = 51;
             this.dgvMonDK.RowTemplate.Height = 24;
-            this.dgvMonDK.Size = new System.Drawing.Size(798, 114);
+            this.dgvMonDK.Size = new System.Drawing.Size(554, 98);
             this.dgvMonDK.TabIndex = 0;
             // 
             // FormSV
@@ -478,7 +476,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -538,12 +535,12 @@
         private System.Windows.Forms.Label lbMSSV;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panelTimKiem;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Panel panelDGV;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Panel panelDSMonDK;
-        private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.DataGridView dgvMonDK;
     }
 }

@@ -18,3 +18,6 @@ C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLa
 C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormSV.resources
 C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormGV.resources
 C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormAdmin.resources
+C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormSinhVien.resources
+C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormDoiMatKhau.resources
+C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormGiangVien.resources
