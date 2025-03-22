@@ -6,7 +6,7 @@ namespace DataLayer
 {
     public class DBConnect_DAL
     {
-        private static readonly string connectionString = @"Data Source=BLUE\BLUE;Initial Catalog=QLSV;Integrated Security=True;";
+        private static readonly string connectionString = @"Data Source=BLUE\BLUE;Initial Catalog=DB_QLSV;Integrated Security=True;";
 
         // Phương thức kết nối cơ bản
         public static SqlConnection Connect()

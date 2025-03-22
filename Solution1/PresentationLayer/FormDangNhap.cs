@@ -42,7 +42,7 @@ namespace PresentationLayer
             TaiKhoan CheckLogin = taikhoanBAL.CheckLoginBAl(taikhoan);
             if (CheckLogin == null)
             {
-                MessageBox.Show("Thông tin tài khoarn mật khẩu không chính xác");
+                MessageBox.Show("Thông tin tài khoản mật khẩu không chính xác");
                 return;
             }
 

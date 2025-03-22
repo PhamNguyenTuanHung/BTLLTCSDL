@@ -21,7 +21,7 @@ namespace BusinessLayer
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi lấy thông tin sinh viên: " + ex.Message, ex);
+                throw ex;
             }
         }
 
@@ -33,7 +33,7 @@ namespace BusinessLayer
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi lấy thông tin sinh viên: " + ex.Message, ex);
+                throw ex;
             }
         }
         public DataTable DiemSVBUS(string query)
@@ -56,7 +56,7 @@ namespace BusinessLayer
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi lấy thời khóa biểu sinh viên: " + ex.Message, ex);
+                throw new Exception(ex.Message,ex);
             }
         }
 

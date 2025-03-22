@@ -80,6 +80,8 @@ namespace PresentationLayer
             if (dt != null && dt.Columns.Count > 0)
             {
                 dgv.DataSource = dt;
+                if (dt.Columns.Contains("Ma_Nhom_Hoc"))
+                    dgv.Columns["Ma_Nhom_Hoc"].HeaderText = "Nhóm học";
                 if (dt.Columns.Contains("Ten_Mon_Hoc"))
                     dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên môn học";
 
@@ -95,6 +97,8 @@ namespace PresentationLayer
                 if (dt.Columns.Contains("Ma_Mon_Hoc"))
                     dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Mã Môn Học";
 
+                if (dt.Columns.Contains("Ma_Lop_Mon_Hoc"))
+                    dgv.Columns["Ma_Lop_Mon_Hoc"].HeaderText = "Mã Môn Học";
                 if (dt.Columns.Contains("Ngay_BD"))
                     dgv.Columns["Ngay_BD"].HeaderText = "Ngày Bắt Đầu";
 
@@ -173,7 +177,7 @@ namespace PresentationLayer
                 dgvDSMonDK.EndEdit(); // Cập nhật trạng thái ngay lập tức
 
                 bool isChecked = Convert.ToBoolean(dgvDSMonDK.Rows[e.RowIndex].Cells["Chon"].Value);
-                string maMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ma_Mon_Hoc"].Value?.ToString();
+                string maMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ma_Lop_Mon_Hoc"].Value?.ToString();
                 string tenMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ten_Mon_Hoc"].Value?.ToString();
                 int soTinChi = Convert.ToInt32(dgvDSMonDK.Rows[e.RowIndex].Cells["So_Tin_Chi"].Value);
 
@@ -185,13 +189,13 @@ namespace PresentationLayer
                     // Nếu là lần đầu, cần tạo cột
                     if (dt.Columns.Count == 0)
                     {
-                        dt.Columns.Add("Ma_Mon_Hoc", typeof(string));
+                        dt.Columns.Add("Ma_Lop_Mon_Hoc", typeof(string));
                         dt.Columns.Add("Ten_Mon_Hoc", typeof(string));
                         dt.Columns.Add("So_Tin_Chi", typeof(int));
                     }
 
                     // Kiểm tra trùng
-                    bool isExist = dt.AsEnumerable().Any(row => row["Ma_Mon_Hoc"].ToString() == maMonHoc);
+                    bool isExist = dt.AsEnumerable().Any(row => row["Ma_Lop_Mon_Hoc"].ToString() == maMonHoc);
                     if (!isExist)
                     {
                         dt.Rows.Add(maMonHoc, tenMonHoc, soTinChi);
@@ -204,7 +208,7 @@ namespace PresentationLayer
                     DataTable dt = (DataTable)dgvMonDK.DataSource;
                     if (dt != null)
                     {
-                        DataRow rowToDelete = dt.AsEnumerable().FirstOrDefault(row => row["Ma_Mon_Hoc"].ToString() == maMonHoc);
+                        DataRow rowToDelete = dt.AsEnumerable().FirstOrDefault(row => row["Ma_Lop_Mon_Hoc"].ToString() == maMonHoc);
                         if (rowToDelete != null)
                         {
                             dt.Rows.Remove(rowToDelete);
@@ -217,9 +221,9 @@ namespace PresentationLayer
         {
             foreach (DataGridViewRow row in dgvMonDK.Rows)
             {
-                if (row.Cells["Ma_Mon_Hoc"].Value != null)
+                if (row.Cells["Ma_Lop_Mon_Hoc"].Value != null)
                 {
-                    string mamonhoc = row.Cells["Ma_Mon_Hoc"].Value.ToString();
+                    string mamonhoc = row.Cells["Ma_Lop_Mon_Hoc"].Value.ToString();
                     string mssv = sv.MSSV;
                     DateTime date = DateTime.Now;
                     svBus.DangKyMonHocBUS(mssv, mamonhoc, date);
