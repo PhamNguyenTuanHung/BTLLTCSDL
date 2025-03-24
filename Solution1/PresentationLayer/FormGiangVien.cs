@@ -16,68 +16,129 @@ namespace PresentationLayer
     {
         private GiangVien gv;
         private TaiKhoan tk;
+        private GiangVien_BUS gvBUS;
         public FormGiangVien(GiangVien gv, TaiKhoan tk)
         {
             this.gv = gv;
             this.tk = tk;
-            ThongTinCacLopCuaGV();
             InitializeComponent();
+            ThongTinGV();
+            ThongTinCacLopCuaGV();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        public void LoadData(DataTable dt, DataGridView dgv)
         {
-            if (comboBox1.SelectedItem == null) return; // Tránh lỗi nếu chưa chọn
-
-            GiangVien_BUS giangVienBL = new GiangVien_BUS();
-            string mamonhoc = comboBox1.SelectedItem.ToString(); // Lấy đúng giá trị môn học
-
-            List<DiemSV> ds = giangVienBL.DanhSachDiemSVBUS(gv.MSGV, mamonhoc);
-
-            if (ds.Count > 0)
+            if (dt != null && dt.Columns.Count > 0)
             {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("MSSV");
-                dt.Columns.Add("Tên sinh viên");
-                dt.Columns.Add("Điểm quá trình");
-                dt.Columns.Add("Điểm thi");
-                dt.Columns.Add("Điểm tổng kết");
-                dt.Columns.Add("Lần thi");
+                dgv.DataSource = dt;
 
-                foreach (var sv in ds)
-                {
-                    dt.Rows.Add(sv.MSSV, sv.TenDayDu, sv.DiemQuaTrinh, sv.DiemThi, sv.DiemTongKet, sv.LanThi);
-                }
+                if (dt.Columns.Contains("Ten_Mon_Hoc"))
+                    dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên môn học";
 
-                dgvThongTinLop.DataSource = dt;
-                dgvThongTinLop.Dock = DockStyle.Fill;
-                dgvThongTinLop.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvThongTinLop.AllowUserToAddRows = false;
-                dgvThongTinLop.ReadOnly = true;
-                dgvThongTinLop.ClearSelection();
+                if (dt.Columns.Contains("Diem_Qua_Trinh"))
+                    dgv.Columns["Diem_Qua_Trinh"].HeaderText = "Điểm QT";
+
+                if (dt.Columns.Contains("Diem_Thi"))
+                    dgv.Columns["Diem_Thi"].HeaderText = "Điểm Thi";
+
+                if (dt.Columns.Contains("Diem_Tong_Ket"))
+                    dgv.Columns["Diem_Tong_Ket"].HeaderText = "Tổng Kết";
+
+                if (dt.Columns.Contains("Ma_Mon_Hoc"))
+                    dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Mã Môn Học";
+
+                if (dt.Columns.Contains("Ma_Lop_Mon_Hoc"))
+                    dgv.Columns["Ma_Lop_Mon_Hoc"].HeaderText = "Mã Nhóm Học";
+
+                if (dt.Columns.Contains("Ngay_BD"))
+                    dgv.Columns["Ngay_BD"].HeaderText = "Ngày Bắt Đầu";
+
+                if (dt.Columns.Contains("Ngay_KT"))
+                    dgv.Columns["Ngay_KT"].HeaderText = "Ngày Kết Thúc";
+
+                if (dt.Columns.Contains("So_Tin_Chi"))
+                    dgv.Columns["So_Tin_Chi"].HeaderText = "Số Tín Chỉ";
+
+                if (dt.Columns.Contains("Ngay_Hoc"))
+                    dgv.Columns["Ngay_Hoc"].HeaderText = "Ngày Học";
+
+                if (dt.Columns.Contains("Gio_Bat_Dau"))
+                    dgv.Columns["Gio_Bat_Dau"].HeaderText = "Giờ Bắt Đầu";
+
+                if (dt.Columns.Contains("Gio_Ket_Thuc"))
+                    dgv.Columns["Gio_Ket_Thuc"].HeaderText = "Giờ Kết Thúc";
+
+                if (dt.Columns.Contains("Ngay_Thi"))
+                    dgv.Columns["Ngay_Thi"].HeaderText = "Ngày thi";
+
+                if (dt.Columns.Contains("Gio_BD"))
+                    dgv.Columns["Gio_BD"].HeaderText = "Giờ bắt đầu";
+
+                if (dt.Columns.Contains("Gio_KT"))
+                    dgv.Columns["Gio_KT"].HeaderText = "Giờ kết thúc";
+                
+            }
+        }
+
+        public void ThongTinGV()
+        {
+            gvBUS = new GiangVien_BUS();
+            DataTable dt = gvBUS.ThongTinGiaoVienBUS(gv.MSGV);
+            if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
+            {
+                lbMSGV.Text = dt.Rows[0]["MSGV"].ToString();
+                lbHoTen.Text = dt.Rows[0]["Ten_Day_Du"].ToString();
+                lbEmail.Text = dt.Rows[0]["Email"].ToString();
+                lbNgaySinh.Text = Convert.ToDateTime(dt.Rows[0]["Ngay_Sinh"]).ToString("dd/MM/yyyy"); // Định dạng ngày
+                lbLop.Text = dt.Rows[0]["Ma_Lop"].ToString();
+                lbKhoa.Text = dt.Rows[0]["Ma_Khoa"].ToString();
+                lbGioiTinh.Text = dt.Rows[0]["Gioi_Tinh"].ToString();
             }
             else
             {
-                dgvThongTinLop.DataSource = null;
+                MessageBox.Show("Không có dữ liệu sinh viên!");
             }
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem == null) return; // Tránh lỗi nếu chưa chọn
+            GiangVien_BUS giangVienBL = new GiangVien_BUS();
+            string malopmonhoc = comboBox1.SelectedValue.ToString(); // Lấy đúng giá trị môn học
+            DataTable dt = new DataTable();
+            dt = giangVienBL.DanhSachDiemSVBUS(gv.MSGV, malopmonhoc);
+            LoadData(dt, dgvThongTinLop);
         }
 
         private void ThongTinCacLopCuaGV()
         {
             
-            GiangVien_BUS gvBL = new GiangVien_BUS();
-            List<LopHoc> ds = gvBL.DanhSachLopHocBUS(gv.MSGV);
-
-            foreach (var lop in ds)
-            {
-                comboBox1.Items.Add(lop.TenMonHoc); // Hiển thị đúng tên môn học
-            }
-
+            GiangVien_BUS gvBUS = new GiangVien_BUS();
+            DataTable dt = new DataTable();
+            dt = gvBUS.DanhSachLopHocBUS(gv.MSGV);
+            comboBox1.DataSource = dt;
+            comboBox1.DisplayMember= "Ten_Mon_Hoc";
+            comboBox1.ValueMember = "Ma_Lop_Mon_Hoc";
+            comboBox1.DataSource = dt ;
             if (comboBox1.Items.Count > 0)
             {
                 comboBox1.SelectedIndex = 0; // Chọn mặc định môn đầu tiên
             }
         }
+        public void SinhVienCacLop(string msgv,string malopmonhoc)
+        {
+            DataTable dt = new DataTable();
+            GiangVien_BUS gvBUS = new GiangVien_BUS();
+            dt =gvBUS.DanhSachDiemSVBUS(msgv, malopmonhoc);
+            dgvThongTinLop.DataSource = dt;
+        }
 
+        private void ThoiKhoaBieuPL()
+        {
+            GiangVien_BUS giangVienBL = new GiangVien_BUS();
+            DataTable dt = giangVienBL.TKBGiangVienBUS(gv.MSGV);
+            LoadData(dt, dgvTKB);
+        }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             int TabIndex = tabControl.SelectedIndex;
@@ -85,26 +146,13 @@ namespace PresentationLayer
             DataTable dt = new DataTable();
             switch (TabIndex)
             {
-
                 case 0:
-                    
+                    ThongTinGV();
                     break;
                 case 1:
                     ThongTinCacLopCuaGV();
                     break;
-                /*case 2:
-                    dt = sinhVienBUS.TKBSinhVienBUS(sv.MSSV);
-                    LoadData(dgvTKB, dt);
-                    break;
-                case 3:
-                    dt = sinhVienBUS.LichThiBUS(sv.MSSV);
-                    LoadData(dgvLichThi, dt);
-                    break;
-                case 4:
-                    dt = sinhVienBUS.DanhSachMonDangKiBUS();
-                    dt.Columns.Add("Chon", typeof(bool));
-                    LoadData(dgvDSMonDK, dt);
-                    break;*/
+                case 2:
                 default:
                     break;
             }

@@ -70,9 +70,7 @@
     <Compile Include="FormGiangVien.Designer.cs">
       <DependentUpon>FormGiangVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGV.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormGV.cs" />
     <Compile Include="FormGV.Designer.cs">
       <DependentUpon>FormGV.cs</DependentUpon>
     </Compile>

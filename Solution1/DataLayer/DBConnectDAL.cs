@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace DataLayer
 {
@@ -23,7 +24,7 @@ namespace DataLayer
         }
 
         // Phương thức thực thi truy vấn và trả về DataTable
-        public static DataTable GetData(string query)
+        public static DataTable GetData(string query, SqlParameter[] parameters = null)
         {
             try
             {
@@ -32,6 +33,10 @@ namespace DataLayer
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
+                        if (parameters != null && parameters.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parameters);
+                        }
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
                             DataTable dt = new DataTable();
@@ -43,12 +48,13 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi thực thi truy vấn: " + query + " - " + ex.Message, ex);
+                Console.WriteLine("Lỗi khi thực thi truy vấn: " + query + " - " + ex.Message);
+                return null; // Trả về null thay vì ném exception
             }
         }
 
         // Phương thức thực thi truy vấn không trả về dữ liệu (INSERT, UPDATE, DELETE)
-        public static int ExecuteQuery(string query)
+        public static int ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             try
             {
@@ -57,7 +63,11 @@ namespace DataLayer
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
-                        return cmd.ExecuteNonQuery();
+                        if (parameters != null && parameters.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parameters);
+                        }
+                        return cmd.ExecuteNonQuery(); // Thực thi truy vấn và trả về số hàng bị ảnh hưởng
                     }
                 }
             }

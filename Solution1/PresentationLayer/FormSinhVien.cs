@@ -20,6 +20,8 @@ namespace PresentationLayer
         private SinhVien_BUS svBus;
         private TaiKhoan tk;
 
+        List<string> ThemMonDK, XoaMonDk;
+
         public FormSinhVien(SinhVien sinhvien, TaiKhoan taikhoan)
         {
             InitializeComponent();
@@ -80,8 +82,7 @@ namespace PresentationLayer
             if (dt != null && dt.Columns.Count > 0)
             {
                 dgv.DataSource = dt;
-                if (dt.Columns.Contains("Ma_Nhom_Hoc"))
-                    dgv.Columns["Ma_Nhom_Hoc"].HeaderText = "Nhóm học";
+
                 if (dt.Columns.Contains("Ten_Mon_Hoc"))
                     dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên môn học";
 
@@ -98,12 +99,16 @@ namespace PresentationLayer
                     dgv.Columns["Ma_Mon_Hoc"].HeaderText = "Mã Môn Học";
 
                 if (dt.Columns.Contains("Ma_Lop_Mon_Hoc"))
-                    dgv.Columns["Ma_Lop_Mon_Hoc"].HeaderText = "Mã Môn Học";
+                    dgv.Columns["Ma_Lop_Mon_Hoc"].HeaderText = "Mã Nhóm Học";
+
                 if (dt.Columns.Contains("Ngay_BD"))
                     dgv.Columns["Ngay_BD"].HeaderText = "Ngày Bắt Đầu";
 
                 if (dt.Columns.Contains("Ngay_KT"))
                     dgv.Columns["Ngay_KT"].HeaderText = "Ngày Kết Thúc";
+
+                if (dt.Columns.Contains("Ngay_Dang_Ky"))
+                    dgv.Columns["Ngay_Dang_Ky"].HeaderText = "Ngày Đăng Ký";
 
                 if (dt.Columns.Contains("So_Tin_Chi"))
                     dgv.Columns["So_Tin_Chi"].HeaderText = "Số Tín Chỉ";
@@ -138,7 +143,6 @@ namespace PresentationLayer
         private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             int TabIndex = TabMain.SelectedIndex;
-            SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
             DataTable dt = new DataTable();
             switch (TabIndex)
             {
@@ -147,21 +151,38 @@ namespace PresentationLayer
                     ThongTinSVPL();
                     break;
                 case 1:
-                    dt = sinhVienBUS.DiemSVBUS(sv.MSSV);
+                    dt =svBus.DiemSVBUS(sv.MSSV);
                     LoadData(dgvDiem,dt);
                     break;
                 case 2:
-                    dt = sinhVienBUS.TKBSinhVienBUS(sv.MSSV);
+                    dt = svBus.TKBSinhVienBUS(sv.MSSV);
                     LoadData(dgvTKB,dt);
                     break;
                 case 3:
-                    dt = sinhVienBUS.LichThiBUS(sv.MSSV);
+                    dt = svBus.LichThiBUS(sv.MSSV);
                     LoadData(dgvLichThi, dt);
                     break;
                 case 4:
-                    dt = sinhVienBUS.DanhSachMonDangKiBUS();
+                    dt = svBus.DanhSachMonDangKiBUS();
                     dt.Columns.Add("Chon", typeof(bool));
+                    DataTable dt1= new DataTable();
+                    dt1=svBus.DSMonHocDaDKDBUS(sv.MSSV);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string MaLopMonHoc = row["Ma_Lop_Mon_Hoc"].ToString();
+
+                        // Kiểm tra xem môn học này có trong danh sách đã đăng ký không
+                        bool isRegistered = dt1.AsEnumerable().Any(r => r["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+
+                        // Nếu có, set giá trị của cột checkbox thành true
+                        if (isRegistered)
+                        {
+                            row["Chon"] = true;
+                        }
+                    }
                     LoadData(dgvDSMonDK, dt);
+                    LoadData(dgvMonDK, dt1);
                     break;
                 default:
                     break;
@@ -169,66 +190,99 @@ namespace PresentationLayer
 
         }
 
+        List<string> danhSachDangKy = new List<string>();
+        List<string> danhSachHuyDangKy = new List<string>();
+
         private void dgvDSMonDK_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem có phải checkbox không
-            if (dgvDSMonDK.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            if (e.RowIndex < 0 || !(dgvDSMonDK.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)) return;
+
+            dgvDSMonDK.EndEdit(); // Cập nhật trạng thái ngay lập tức
+
+            bool isChecked = Convert.ToBoolean(dgvDSMonDK.Rows[e.RowIndex].Cells["Chon"].Value);
+            string MaLopMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ma_Lop_Mon_Hoc"].Value?.ToString();
+            string TenMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ten_Mon_Hoc"].Value?.ToString();
+            int SoTinChi = Convert.ToInt32(dgvDSMonDK.Rows[e.RowIndex].Cells["So_Tin_Chi"].Value);
+
+            if (isChecked)
             {
-                dgvDSMonDK.EndEdit(); // Cập nhật trạng thái ngay lập tức
-
-                bool isChecked = Convert.ToBoolean(dgvDSMonDK.Rows[e.RowIndex].Cells["Chon"].Value);
-                string maMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ma_Lop_Mon_Hoc"].Value?.ToString();
-                string tenMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ten_Mon_Hoc"].Value?.ToString();
-                int soTinChi = Convert.ToInt32(dgvDSMonDK.Rows[e.RowIndex].Cells["So_Tin_Chi"].Value);
-
-                if (isChecked)
+                if (!danhSachDangKy.Contains(MaLopMonHoc))
                 {
-                    // Thêm vào dgvMonDangKy nếu chưa có
-                    DataTable dt = (DataTable)dgvMonDK.DataSource ?? new DataTable();
-
-                    // Nếu là lần đầu, cần tạo cột
-                    if (dt.Columns.Count == 0)
-                    {
-                        dt.Columns.Add("Ma_Lop_Mon_Hoc", typeof(string));
-                        dt.Columns.Add("Ten_Mon_Hoc", typeof(string));
-                        dt.Columns.Add("So_Tin_Chi", typeof(int));
-                    }
-
-                    // Kiểm tra trùng
-                    bool isExist = dt.AsEnumerable().Any(row => row["Ma_Lop_Mon_Hoc"].ToString() == maMonHoc);
-                    if (!isExist)
-                    {
-                        dt.Rows.Add(maMonHoc, tenMonHoc, soTinChi);
-                        dgvMonDK.DataSource = dt;
-                    }
+                    danhSachDangKy.Add(MaLopMonHoc);
+                    danhSachHuyDangKy.Remove(MaLopMonHoc);
                 }
-                else
+
+                DataTable dt = (DataTable)dgvMonDK.DataSource ?? new DataTable();
+                if (dt.Columns.Count == 0)
                 {
-                    // Bỏ check thì xóa khỏi dgvMonDangKy
-                    DataTable dt = (DataTable)dgvMonDK.DataSource;
-                    if (dt != null)
+                    dt.Columns.Add("Ma_Lop_Mon_Hoc", typeof(string));
+                    dt.Columns.Add("Ten_Mon_Hoc", typeof(string));
+                    dt.Columns.Add("Ngay_Dang_Ky", typeof(DateTime));
+                    dt.Columns.Add("So_Tin_Chi", typeof(int));
+                }
+
+                bool isExist = dt.AsEnumerable().Any(row => row["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+                if (!isExist)
+                {
+                    dt.Rows.Add(MaLopMonHoc, TenMonHoc, DateTime.Now.ToString("yyyy-MM-dd"), SoTinChi);
+                    dgvMonDK.DataSource = dt;
+                }
+            }
+            else
+            {
+                if (!danhSachHuyDangKy.Contains(MaLopMonHoc))
+                {
+                    danhSachHuyDangKy.Add(MaLopMonHoc);
+                    danhSachDangKy.Remove(MaLopMonHoc);
+                }
+
+                DataTable dt = (DataTable)dgvMonDK.DataSource;
+                if (dt != null)
+                {
+                    DataRow rowToDelete = dt.AsEnumerable().FirstOrDefault(row => row["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+                    if (rowToDelete != null)
                     {
-                        DataRow rowToDelete = dt.AsEnumerable().FirstOrDefault(row => row["Ma_Lop_Mon_Hoc"].ToString() == maMonHoc);
-                        if (rowToDelete != null)
-                        {
-                            dt.Rows.Remove(rowToDelete);
-                        }
+                        dt.Rows.Remove(rowToDelete);
                     }
                 }
             }
         }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgvMonDK.Rows)
+            foreach (string maLop in danhSachDangKy)
             {
-                if (row.Cells["Ma_Lop_Mon_Hoc"].Value != null)
+                svBus.DangKyMonHocBUS(sv.MSSV, maLop, DateTime.Now);
+            }
+
+            foreach (string maLop in danhSachHuyDangKy)
+            {
+                svBus.HuyKyMonHocBUS(sv.MSSV, maLop);
+            }
+
+            MessageBox.Show("Cập nhật đăng ký môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DataTable dt = svBus.DanhSachMonDangKiBUS();
+            dt.Columns.Add("Chon", typeof(bool));
+            DataTable dt1 = new DataTable();
+            dt1 = svBus.DSMonHocDaDKDBUS(sv.MSSV);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string MaLopMonHoc = row["Ma_Lop_Mon_Hoc"].ToString();
+
+                // Kiểm tra xem môn học này có trong danh sách đã đăng ký không
+                bool isRegistered = dt1.AsEnumerable().Any(r => r["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+
+                // Nếu có, set giá trị của cột checkbox thành true
+                if (isRegistered)
                 {
-                    string mamonhoc = row.Cells["Ma_Lop_Mon_Hoc"].Value.ToString();
-                    string mssv = sv.MSSV;
-                    DateTime date = DateTime.Now;
-                    svBus.DangKyMonHocBUS(mssv, mamonhoc, date);
+                    row["Chon"] = true;
                 }
             }
+            LoadData(dgvDSMonDK, dt);
+            LoadData(dgvMonDK, dt1);
+            danhSachDangKy.Clear();
+            danhSachHuyDangKy.Clear();
         }
 
         private void btnDoiMK_Click(object sender, EventArgs e)

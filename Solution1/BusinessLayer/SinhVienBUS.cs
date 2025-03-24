@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,29 +61,41 @@ namespace BusinessLayer
             }
         }
 
-        public bool DangKyMonHocBUS(string mssv, string mamonhoc, DateTime date)
+        public bool DangKyMonHocBUS(string mssv, string malopmonhoc, DateTime date)
         {
             try
             {
-                return sinhvienDAL.DangKyMonHocDAL(mssv, mamonhoc, date);
+                return sinhvienDAL.DangKyMonHocDAL(mssv, malopmonhoc, date);
             }
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message, ex);
             }
         }
-
-        public bool DoiMatKhauBUS(string mssv, string pass)
+        public bool HuyKyMonHocBUS(string mssv, string malopmonhoc)
         {
             try
             {
-                return sinhvienDAL.DoiMatKhauDAL(mssv, pass);
+                return sinhvienDAL.HuyDangKyMonHocDAL(mssv, malopmonhoc);
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi đổi mật khẩu: " + ex.Message, ex);
+                throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message, ex);
             }
         }
+        public DataTable DSMonHocDaDKDBUS(string mssv)
+        {
+            try
+            {
+                return sinhvienDAL.DSMonHocDaDKDAL(mssv);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message);
+            }
+        }
+
+
 
         
         public DataTable LichThiBUS(string mssv)
@@ -106,6 +119,17 @@ namespace BusinessLayer
             catch (Exception ex)
             {
                 throw new Exception("Lỗi lấy lịch thi: " + ex.Message, ex);
+            }
+        }
+        public bool DoiMatKhauBUS(string mssv, string pass)
+        {
+            try
+            {
+                return sinhvienDAL.DoiMatKhauDAL(mssv, pass);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi đổi mật khẩu: " + ex.Message);
             }
         }
     }

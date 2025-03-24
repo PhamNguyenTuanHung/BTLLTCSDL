@@ -12,12 +12,14 @@ namespace BusinessLayer
 
         public GiangVien ThongTinGVBUS(string msgv)
         {
-            if (string.IsNullOrEmpty(msgv))
-                throw new ArgumentException("MSGV không được để trống!");
 
-            return gvDAL.ThongTinGVDAL(msgv) ?? throw new Exception("Không tìm thấy thông tin giảng viên!");
+            return gvDAL.ThongTinGiaoVienDAL(msgv);
         }
 
+        public DataTable ThongTinGiaoVienBUS(string msgv)
+        {
+            return gvDAL.ThongTinGVDAL(msgv);
+        }
         public DataTable TKBGiangVienBUS(string msgv)
         {
             if (string.IsNullOrEmpty(msgv))
@@ -26,43 +28,52 @@ namespace BusinessLayer
             return gvDAL.TKBGiangVienDAL(msgv) ?? throw new Exception("Không lấy được thời khóa biểu!");
         }
 
-        public List<LopHoc> DanhSachLopHocBUS(string msgv)
+        public DataTable DanhSachLopHocBUS(string msgv)
         {
-            if (string.IsNullOrEmpty(msgv))
-                throw new ArgumentException("MSGV không được để trống!");
-
-            var result = gvDAL.DanhSachLopHocDAL(msgv);
-            if (result == null || result.Count == 0)
-                throw new Exception("Không có lớp học nào!");
-            return result;
+            try
+            {
+                return gvDAL.DanhSachLopHocDAL(msgv);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public List<DiemSV> DanhSachDiemSVBUS(string msgv, string mamonhoc)
+        public DataTable DanhSachDiemSVBUS(string msgv, string mamonhoc)
         {
-            if (string.IsNullOrEmpty(msgv) || string.IsNullOrEmpty(mamonhoc))
-                throw new ArgumentException("MSGV hoặc Mã môn học không được để trống!");
-
-            var result = gvDAL.DanhSachDiemSVDAL(msgv, mamonhoc);
-            if (result == null || result.Count == 0)
-                throw new Exception("Không có danh sách điểm nào!");
-            return result;
+            try
+            {
+                return gvDAL.DanhSachDiemSVDAL(msgv, mamonhoc);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool DoiMatKhauBUS(string msgv, string pass)
         {
-            if (string.IsNullOrEmpty(msgv) || string.IsNullOrEmpty(pass))
-                throw new ArgumentException("MSGV hoặc mật khẩu không được để trống!");
-
-            if (!gvDAL.DoiMatKhauDAl(msgv, pass))
-                throw new Exception("Đổi mật khẩu thất bại!");
-            return true;
+            try
+            {
+                return gvDAL.DoiMatKhauDAl(msgv, pass);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } 
         }
 
         public bool SuaDiemSVBUS(string mssv, string mamonhoc, float diemQT, float diemThi, float diemTK)
         {
-            if (!gvDAL.SuaDiemSVDAL(mssv, mamonhoc, diemQT, diemThi, diemTK))
-                throw new Exception("Cập nhật điểm sinh viên thất bại!");
-            return true;
+            try
+            {
+                return gvDAL.SuaDiemSVDAL(mssv, mamonhoc,diemQT,diemThi,diemTK);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -11,34 +11,50 @@ namespace DataLayer
 {
     public class GiangVien_DAL
     {
-        public GiangVien ThongTinGVDAL(string msgv)
+        public GiangVien ThongTinGiaoVienDAL(string msgv)
         {
-            try
             {
                 GiangVien gv = null;
                 using (SqlConnection conn = DBConnect_DAL.Connect())
                 {
-                    string query = "SELECT * FROM GiaoVien WHERE MSGV = @msgv";
+                    string query = "SELECT GiaoVien.*,Lop.Ma_Lop FROM GiaoVien,Lop" +
+                        " WHERE Lop.MSGVCN=@msgv";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@msgv", msgv);
                     conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        gv = new GiangVien()
+                        if (reader.Read())
                         {
-                            MSGV = reader["MSGV"].ToString(),
-                            HoTenGV = reader["Ten_Day_Du"].ToString(),
-                            GioiTinh = reader["Gioi_Tinh"].ToString(),
-                            NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]),
-                            DiaChi = reader["Dia_Chi"].ToString(),
-                            SDT = reader["SDT"].ToString(),
-                            MaKhoa = reader["Ma_Khoa"].ToString()
-                        };
+                            gv = new GiangVien()
+                            {
+                                MSGV = reader["MSGV"].ToString(),
+                                HoTenGV = reader["Ten_Day_Du"].ToString(),
+                                GioiTinh = reader["Gioi_Tinh"].ToString(),
+                                NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]),
+                                Email = reader["Email"].ToString(),
+                                DiaChi = reader["Dia_Chi"].ToString(),
+                                MaKhoa = reader["Ma_Khoa"].ToString(),
+                                MaLop = reader["Ma_Lop"].ToString()
+                            };
+                        }
                     }
-                    reader.Close();
                 }
                 return gv;
+            }
+        }
+        public DataTable ThongTinGVDAL(string msgv)
+        {
+            try
+            {
+                string query = "SELECT GiaoVien.*,Lop.Ma_Lop FROM GiaoVien,Lop"
+                    +" WHERE Lop.MSGVCN=@msgv";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@msgv",msgv)
+                };
+                return DBConnect_DAL.GetData(query, parameters);
             }
             catch (Exception ex)
             {
@@ -46,35 +62,18 @@ namespace DataLayer
             }
         }
 
-        public List<LopHoc> DanhSachLopHocDAL(string msgv)
+        public DataTable DanhSachLopHocDAL(string msgv)
         {
             try
             {
-                List<LopHoc> ds = new List<LopHoc>();
-                using (SqlConnection conn = DBConnect_DAL.Connect())
+                string query = "SELECT Ma_Lop_Mon_Hoc,Ten_Mon_Hoc FROM LopMonHoc,MonHoc" +
+                    "\r\nWHERE MSGV=@msgv AND LopMonHoc.Ma_Mon_Hoc= MonHoc.Ma_Mon_Hoc";
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    string query = "SELECT LopHocPhan.Ma_Mon_Hoc, Ten_Mon_Hoc, Ngay_Hoc, Gio_Bat_Dau, Gio_Ket_Thuc " +
-                                   "FROM LopHocPhan, MonHoc WHERE LopHocPhan.MSGV=@msgv " +
-                                   "AND MonHoc.Ma_Mon_Hoc= LopHocPhan.Ma_Mon_Hoc";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@msgv", msgv);
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        LopHoc lh = new LopHoc()
-                        {
-                            MaMonHoc = reader["Ma_Mon_Hoc"].ToString(),
-                            TenMonHoc = reader["Ten_Mon_Hoc"].ToString(),
-                            NgayHoc = reader["Ngay_Hoc"].ToString(),
-                            GioBatDau = TimeSpan.Parse(reader["Gio_Bat_Dau"].ToString()),
-                            GioKetThuc = TimeSpan.Parse(reader["Gio_Ket_Thuc"].ToString())
-                        };
-                        ds.Add(lh);
-                    }
-                    reader.Close();
-                }
-                return ds;
+                    new SqlParameter("@msgv",msgv)
+                };
+                return DBConnect_DAL.GetData(query, parameters);
+
             }
             catch (Exception ex)
             {
@@ -86,19 +85,17 @@ namespace DataLayer
         {
             try
             {
-                DataTable dt = new DataTable();
-                string query = "SELECT Ten_Mon_Hoc, Ngay_Hoc, Gio_Bat_Dau, Gio_Ket_Thuc " +
-                               "FROM LopHocPhan, MonHoc WHERE LopHocPhan.MSGV = @msgv " +
-                               "AND MonHoc.Ma_Mon_Hoc = LopHocPhan.Ma_Mon_Hoc";
-                using (SqlConnection conn = DBConnect_DAL.Connect())
-                {
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@msgv", msgv);
-                    conn.Open();
-                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
-                    sqlAdapter.Fill(dt);
-                }
-                return dt;
+                string query = "SELECT LopMonHoc.Ma_Lop_Mon_Hoc,Ten_Mon_Hoc,Ngay_Hoc,Gio_Bat_Dau " +
+                        "FROM GiaoVien,LopMonHoc,ThoiKhoaBieu,MonHoc" +
+                        "\r\nWHERE LopMonHoc.MSGV=GiaoVien.MSGV" +
+                        "\r\nAND LopMonHoc.MSGV=@msgv" +
+                        "\r\nAND LopMonHoc.Ma_Lop_Mon_Hoc=ThoiKhoaBieu.Ma_Lop_Mon_Hoc" +
+                        "\r\nAND LopMonHoc.Ma_Mon_Hoc=MonHoc.Ma_Mon_Hoc";
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter ("@msgv",msgv)
+                };
+                return DBConnect_DAL.GetData (query, parameters);
+
             }
             catch (Exception ex)
             {
@@ -106,44 +103,27 @@ namespace DataLayer
             }
         }
 
-        public List<DiemSV> DanhSachDiemSVDAL(string msgv, string mamonhoc)
+        public DataTable DanhSachDiemSVDAL(string msgv, string malopmonhoc)
         {
             try
             {
-                List<DiemSV> ds = new List<DiemSV>();
-                using (SqlConnection conn = DBConnect_DAL.Connect())
-                {
-                    conn.Open();
-                    string query = "SELECT SinhVien.Ten_Day_Du, Diem.* " +
-                                   "FROM SinhVien, Diem, GiaoVien, DangKy " +
-                                   "WHERE SinhVien.MSSV = DangKy.MSSV " +
-                                   "AND GiaoVien.MSGV=@msgv " +
-                                   "AND Diem.Ma_Mon_Hoc = @mamonhoc " +
-                                   "AND Diem.MSSV = SinhVien.MSSV " +
-                                   "AND DangKy.Ma_Mon_Hoc = Diem.Ma_Mon_Hoc";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                     string query = "SELECT SinhVien.Ten_Day_Du,Diem.*" +
+                    " FROM SinhVien,Diem,LopMonHoc,DangKy" +
+                    "\r\nWHERE SinhVien.MSSV=Diem.MSSV " +
+                    "\r\nAND DangKy.MSSV=SinhVien.MSSV" +
+                    "\r\nAND DangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc" +
+                    "\r\nAND Diem.MSSV=DangKy.MSSV" +
+                    "\r\nAND Diem.Ma_Mon_Hoc=LopMonHoc.Ma_Mon_Hoc" +
+                    "\r\nand LopMonHoc.MSGV=@msgv" +
+                    "\r\nand LopMonHoc.Ma_Lop_Mon_Hoc=@malopmonhoc"
+                    ;
+                SqlParameter[] parameters = new SqlParameter[]
                     {
-                        cmd.Parameters.AddWithValue("@msgv", msgv);
-                        cmd.Parameters.AddWithValue("@mamonhoc", mamonhoc);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                DiemSV diemSV = new DiemSV()
-                                {
-                                    MSSV = reader["MSSV"].ToString(),
-                                    DiemQuaTrinh = reader.IsDBNull(reader.GetOrdinal("Diem_Qua_Trinh")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Qua_Trinh")),
-                                    DiemThi = reader.IsDBNull(reader.GetOrdinal("Diem_Thi")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Thi")),
-                                    DiemTongKet = reader.IsDBNull(reader.GetOrdinal("Diem_Tong_Ket")) ? 0 : reader.GetDouble(reader.GetOrdinal("Diem_Tong_Ket")),
-                                    LanThi = reader.GetInt32(reader.GetOrdinal("Lan_Thi")),
-                                    TenDayDu = reader["Ten_Day_Du"].ToString()
-                                };
-                                ds.Add(diemSV);
-                            }
-                        }
-                    }
-                }
-                return ds;
+                    new SqlParameter("@msgv",msgv),
+                    new SqlParameter("@malopmonhoc",malopmonhoc)
+                    };
+
+                return DBConnect_DAL.GetData(query,parameters);
             }
             catch (Exception ex)
             {
@@ -156,14 +136,13 @@ namespace DataLayer
             try
             {
                 string query = "UPDATE TaiKhoan SET Mat_Khau=@pass WHERE Ten_Dang_Nhap=@msgv";
-                using (SqlConnection conn = DBConnect_DAL.Connect())
+                SqlParameter[] parameters = new SqlParameter[] 
                 {
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@pass", pass);
-                    cmd.Parameters.AddWithValue("@msgv", msgv);
-                    conn.Open();
-                    return cmd.ExecuteNonQuery() > 0;
-                }
+                    new SqlParameter("@pass",pass),
+                    new SqlParameter("@msgv",msgv)
+                };
+                return DBConnect_DAL.ExecuteQuery(query, parameters)>0;
+
             }
             catch (Exception ex)
             {
@@ -177,17 +156,16 @@ namespace DataLayer
             {
                 string query = "UPDATE Diem SET Diem_Qua_Trinh=@diemQT, Diem_Thi=@diemThi, Diem_Tong_Ket=@diemTK " +
                                "WHERE MSSV=@mssv AND Ma_Mon_Hoc=@mamonhoc";
-                using (SqlConnection conn = DBConnect_DAL.Connect())
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@mssv", mssv);
-                    cmd.Parameters.AddWithValue("@mamonhoc", mamonhoc);
-                    cmd.Parameters.AddWithValue("@diemQT", diemQT);
-                    cmd.Parameters.AddWithValue("@diemThi", diemThi);
-                    cmd.Parameters.AddWithValue("@diemTK", diemTK);
-                    conn.Open();
-                    return cmd.ExecuteNonQuery() > 0;
-                }
+                    new SqlParameter("@mssv", mssv),
+                    new SqlParameter ("@mamonhoc", mamonhoc),
+                    new SqlParameter("@diemQT", diemQT),
+                    new SqlParameter("@diemThi", diemThi),
+                    new SqlParameter("@diemTK", diemTK)
+                };
+
+                    return DBConnect_DAL.ExecuteQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {

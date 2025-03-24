@@ -48,6 +48,7 @@ namespace PresentationLayer
 
             if (CheckLogin.Type==1)
             { 
+                taikhoan.Type = 1;
                 SinhVien_BUS svBUS = new SinhVien_BUS();
                 SinhVien sv = svBUS.ThongTinSinhVienBUS(txt_TaiKhoan.Text); 
                 Form form = new FormSinhVien(sv,taikhoan);
@@ -58,6 +59,7 @@ namespace PresentationLayer
             
             if (CheckLogin.Type==2)
             {
+                taikhoan.Type = 2;
                 GiangVien_BUS gvBUS = new GiangVien_BUS();
                 GiangVien gv = gvBUS.ThongTinGVBUS(txt_TaiKhoan.Text);
                 Form form = new FormGiangVien(gv,taikhoan);

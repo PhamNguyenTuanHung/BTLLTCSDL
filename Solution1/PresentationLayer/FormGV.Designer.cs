@@ -1,4 +1,4 @@
-﻿namespace PresentationLayer
+﻿/*namespace PresentationLayer
 {
     partial class FormGV
     {
@@ -516,4 +516,4 @@
         private System.Windows.Forms.ToolStripMenuItem LogOutToolStripMenuItem1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
-}
+}*/

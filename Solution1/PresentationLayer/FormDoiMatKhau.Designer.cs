@@ -43,6 +43,7 @@
             // 
             this.txtOldPass.Location = new System.Drawing.Point(310, 119);
             this.txtOldPass.Name = "txtOldPass";
+            this.txtOldPass.PasswordChar = '*';
             this.txtOldPass.Size = new System.Drawing.Size(299, 22);
             this.txtOldPass.TabIndex = 0;
             // 
@@ -50,15 +51,17 @@
             // 
             this.txtNewPass.Location = new System.Drawing.Point(310, 165);
             this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(299, 22);
-            this.txtNewPass.TabIndex = 0;
+            this.txtNewPass.TabIndex = 1;
             // 
             // txtConfirmPass
             // 
             this.txtConfirmPass.Location = new System.Drawing.Point(310, 209);
             this.txtConfirmPass.Name = "txtConfirmPass";
+            this.txtConfirmPass.PasswordChar = '*';
             this.txtConfirmPass.Size = new System.Drawing.Size(299, 22);
-            this.txtConfirmPass.TabIndex = 0;
+            this.txtConfirmPass.TabIndex = 2;
             // 
             // label1
             // 
@@ -92,7 +95,7 @@
             this.btnDoiMK.Location = new System.Drawing.Point(310, 267);
             this.btnDoiMK.Name = "btnDoiMK";
             this.btnDoiMK.Size = new System.Drawing.Size(132, 23);
-            this.btnDoiMK.TabIndex = 2;
+            this.btnDoiMK.TabIndex = 4;
             this.btnDoiMK.Text = "Đổi mật khẩu";
             this.btnDoiMK.UseVisualStyleBackColor = true;
             this.btnDoiMK.Click += new System.EventHandler(this.btnDoiMK_Click);
@@ -102,7 +105,7 @@
             this.btnThoat.Location = new System.Drawing.Point(485, 267);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(124, 23);
-            this.btnThoat.TabIndex = 3;
+            this.btnThoat.TabIndex = 5;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -113,7 +116,7 @@
             this.checkShow.Location = new System.Drawing.Point(310, 241);
             this.checkShow.Name = "checkShow";
             this.checkShow.Size = new System.Drawing.Size(130, 20);
-            this.checkShow.TabIndex = 4;
+            this.checkShow.TabIndex = 3;
             this.checkShow.Text = "Hiển thị mật khẩu";
             this.checkShow.UseVisualStyleBackColor = true;
             this.checkShow.CheckedChanged += new System.EventHandler(this.check_CheckedChanged);

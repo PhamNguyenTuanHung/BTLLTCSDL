@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,6 +47,7 @@ namespace PresentationLayer
             }
             if (tk.Type == 1)
             {
+                MessageBox.Show("sv");
                 SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
                 if (sinhVienBUS.DoiMatKhauBUS(sv.MSSV, txtNewPass.Text) == true)
                 {
@@ -75,7 +77,11 @@ namespace PresentationLayer
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Thoát","Bạn có muốn thoát", MessageBoxButtons.YesNo);
+            DialogResult result=MessageBox.Show("Thoát","Bạn có muốn thoát", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
