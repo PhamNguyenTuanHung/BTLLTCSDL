@@ -22,10 +22,7 @@ namespace BusinessLayer
         }
         public DataTable TKBGiangVienBUS(string msgv)
         {
-            if (string.IsNullOrEmpty(msgv))
-                throw new ArgumentException("MSGV không được để trống!");
-
-            return gvDAL.TKBGiangVienDAL(msgv) ?? throw new Exception("Không lấy được thời khóa biểu!");
+            return gvDAL.TKBGiangVienDAL(msgv) ;
         }
 
         public DataTable DanhSachLopHocBUS(string msgv)
@@ -64,7 +61,7 @@ namespace BusinessLayer
             } 
         }
 
-        public bool SuaDiemSVBUS(string mssv, string mamonhoc, float diemQT, float diemThi, float diemTK)
+        public bool SuaDiemSVBUS(string mssv, string mamonhoc, double diemQT, double diemThi, double diemTK)
         {
             try
             {

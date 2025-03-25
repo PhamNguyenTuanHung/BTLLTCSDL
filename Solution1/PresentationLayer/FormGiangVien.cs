@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PresentationLayer
 {
@@ -77,7 +78,12 @@ namespace PresentationLayer
 
                 if (dt.Columns.Contains("Gio_KT"))
                     dgv.Columns["Gio_KT"].HeaderText = "Giờ kết thúc";
-                
+
+                if (dt.Columns.Contains("Ten_Day_Du"))
+                    dgv.Columns["Ten_Day_Du"].HeaderText = "Tên sinh viên";
+
+                if (dt.Columns.Contains("Ma_Hoc_Ky"))
+                    dgv.Columns["Ma_Hoc_Ki"].HeaderText = "Mã học kỳ";
             }
         }
 
@@ -133,7 +139,7 @@ namespace PresentationLayer
             dgvThongTinLop.DataSource = dt;
         }
 
-        private void ThoiKhoaBieuPL()
+        private void ThoiKhoaBieu()
         {
             GiangVien_BUS giangVienBL = new GiangVien_BUS();
             DataTable dt = giangVienBL.TKBGiangVienBUS(gv.MSGV);
@@ -153,8 +159,214 @@ namespace PresentationLayer
                     ThongTinCacLopCuaGV();
                     break;
                 case 2:
+                    ThoiKhoaBieu();
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void TimKiem(DataGridView dgv, TextBox txt)
+        {
+            if (dgv.DataSource != null)
+            {
+                DataTable dt = (DataTable)dgv.DataSource;
+
+                string keyword = txt.Text.Trim().ToLower();
+
+                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    dt.DefaultView.RowFilter = string.Empty;
+                }
+                else
+                {
+                    if (dgv == dgvThongTinLop)
+                    {
+                        string filter = $"[Ten_Day_Du] LIKE '%{keyword}%' ";              
+                        dt.DefaultView.RowFilter = filter; ;
+                    }
+                    if (dgv == dgvTKB)
+                    {
+                        string filter = $"[Ten_Mon_Hoc] LIKE '%{keyword}%' ";
+                        dt.DefaultView.RowFilter = filter; ;
+                    }
+                }
+                dgv.DataSource = dt;
+            }
+            else MessageBox.Show("Dữ liệu null");
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            TimKiem(dgvThongTinLop, txtTimKiemSinhVien);
+        }
+
+        private void btnTimKiemTKB_Click(object sender, EventArgs e)
+        {
+            TimKiem(dgvTKB, txtTimKiemTKB);
+        }
+
+        private void btnDoiMK_Click(object sender, EventArgs e)
+        {
+            FormDoiMatKhau formDoiMatKhau = new FormDoiMatKhau(gv,tk);
+            this.Enabled = false;
+            formDoiMatKhau.ShowDialog();
+            this.Enabled = true;
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            FormDangNhap form = new FormDangNhap();
+            this.Hide();
+            form.ShowDialog();
+            this.Close();
+        }
+
+
+        private void dgvThongTinLop_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvThongTinLop.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvThongTinLop.SelectedRows[0];
+                txtMSSV.Text = row.Cells["MSSV"].Value.ToString();
+                txtTenSV.Text = row.Cells["Ten_Day_Du"].Value.ToString();
+                txtDiemQT.Text = row.Cells["Diem_Qua_Trinh"].Value.ToString();
+                txtDiemThi.Text = row.Cells["Diem_Thi"].Value.ToString();
+                txtDiemTongKet.Text = row.Cells["Diem_Tong_Ket"].Value.ToString();
+                txtHeSoQT.Text = 0.ToString();
+            }
+        }
+
+
+        private void CapNhatDiemTongKet()
+        {
+            // Kiểm tra xem các giá trị có hợp lệ không
+            if (double.TryParse(txtDiemQT.Text, out double diemQT) &&
+                double.TryParse(txtDiemThi.Text, out double diemThi) &&
+                double.TryParse(txtHeSoQT.Text, out double heSo))
+            {
+                // Giới hạn hệ số trong khoảng hợp lệ (0 <= heSo <= 1)
+                if (heSo < 0 || heSo > 1)
+                {
+                    MessageBox.Show("Hệ số điểm quá trình phải từ 0 đến 1!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tính điểm tổng kết
+                double diemTongKet = (diemQT * heSo) + (diemThi * (1 - heSo));
+
+                // Hiển thị kết quả
+                txtDiemTongKet.Text = diemTongKet.ToString("0.00");
+            }
+            else
+            {
+                // Nếu nhập sai, xóa kết quả
+                txtDiemTongKet.Text = "";
+            }
+        }
+        private void txtDiemQT_TextChanged(object sender, EventArgs e)
+        {
+            CapNhatDiemTongKet();
+        }
+
+        private void txtDiemThi_TextChanged(object sender, EventArgs e)
+        {
+            CapNhatDiemTongKet();
+        }
+
+        private void txtHeSoQT_TextChanged(object sender, EventArgs e)
+        {
+            CapNhatDiemTongKet();
+        }
+
+        private void btnSuaDiem_Click(object sender, EventArgs e)
+        {
+            if (!double.TryParse(txtDiemQT.Text, out double diemQT))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số cho Điểm Quá Trình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDiemQT.Focus();
+                return ;
+            }
+
+            if (!double.TryParse(txtDiemThi.Text, out double diemThi))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số cho Điểm Thi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDiemThi.Focus();
+                return ;
+            }
+
+            if (!double.TryParse(txtDiemTongKet.Text, out double diemTK))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng số cho Điểm Tổng Kết!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDiemTongKet.Focus();
+                return ;
+            }
+
+            bool check = gvBUS.SuaDiemSVBUS(txtMSSV.Text, comboBox1.SelectedValue.ToString(),
+                 double.Parse(txtDiemQT.Text), double.Parse(txtDiemThi.Text),
+                 double.Parse(txtDiemTongKet.Text));
+            if (check) MessageBox.Show("Sủa điểm thành công");
+            else MessageBox.Show("Sửa không thành công");
+            ThongTinCacLopCuaGV();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            if (dgvThongTinLop.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Mở hộp thoại lưu file
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "Excel Files|*.xlsx",
+                Title = "Lưu file Excel",
+                FileName = "DiemSinhVien.xlsx"
+            };
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Khởi tạo ứng dụng Excel
+                    Excel.Application excelApp = new Excel.Application();
+                    Excel.Workbook workbook = excelApp.Workbooks.Add();
+                    Excel.Worksheet worksheet = (Excel.Worksheet)workbook.ActiveSheet;
+
+                    // Ghi tiêu đề cột
+                    for (int i = 0; i < dgvThongTinLop.Columns.Count; i++)
+                    {
+                        worksheet.Cells[1, i + 1] = dgvThongTinLop.Columns[i].HeaderText;
+                        ((Excel.Range)worksheet.Cells[1, i + 1]).Font.Bold = true;
+                        ((Excel.Range)worksheet.Cells[1, i + 1]).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                    }
+
+                    // Ghi dữ liệu từ DataGridView vào Excel
+                    for (int i = 0; i < dgvThongTinLop.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dgvThongTinLop.Columns.Count; j++)
+                        {
+                            worksheet.Cells[i + 2, j + 1] = dgvThongTinLop.Rows[i].Cells[j].Value?.ToString();
+                        }
+                    }
+
+                    // Tự động căn chỉnh độ rộng cột
+                    worksheet.Columns.AutoFit();
+
+                    // Lưu file
+                    workbook.SaveAs(sfd.FileName);
+                    workbook.Close();
+                    excelApp.Quit();
+
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
