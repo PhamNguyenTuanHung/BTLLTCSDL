@@ -9,3 +9,11 @@ C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\DOT.pdb
 C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\Business.EA331CBA.Up2Date
 C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\Bunifu.Licensing.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\Bunifu.UI.WinForms.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\Guna.UI2.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\System.CodeDom.dll
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\Bunifu.UI.WinForms.xml
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\BLUE\Desktop\QLSV1\Solution1\BusinessLayer\bin\Debug\System.CodeDom.xml

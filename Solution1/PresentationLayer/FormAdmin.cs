@@ -16,5 +16,45 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
+
+        private void dgvThongTinLop_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSuaDiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHeSoQT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiemThi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiemQT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

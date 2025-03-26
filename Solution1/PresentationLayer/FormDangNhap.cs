@@ -39,7 +39,7 @@ namespace PresentationLayer
             taikhoan.User_name = txt_TaiKhoan.Text;
             taikhoan.Pass_word = txt_MatKhau.Text;
 
-            TaiKhoan CheckLogin = taikhoanBAL.KiemTraDangNhapBUS(taikhoan);
+            TaiKhoan CheckLogin = taikhoanBAL.ValidateLoginBUS(taikhoan);
             if (CheckLogin == null)
             {
                 MessageBox.Show("Thông tin tài khoản mật khẩu không chính xác");
@@ -50,7 +50,7 @@ namespace PresentationLayer
             { 
                 taikhoan.Type = 1;
                 SinhVien_BUS svBUS = new SinhVien_BUS();
-                SinhVien sv = svBUS.ThongTinSinhVienBUS(txt_TaiKhoan.Text); 
+                SinhVien sv = svBUS.GetStudentDetailsBUS(txt_TaiKhoan.Text); 
                 Form form = new FormSinhVien(sv,taikhoan);
                 this.Hide();
                 form.ShowDialog();
@@ -61,7 +61,7 @@ namespace PresentationLayer
             {
                 taikhoan.Type = 2;
                 GiangVien_BUS gvBUS = new GiangVien_BUS();
-                GiangVien gv = gvBUS.ThongTinGVBUS(txt_TaiKhoan.Text);
+                GiangVien gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
                 Form form = new FormGiangVien(gv,taikhoan);
                 this.Hide();
                 form.ShowDialog();

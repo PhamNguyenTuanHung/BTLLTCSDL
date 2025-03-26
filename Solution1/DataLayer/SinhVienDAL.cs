@@ -8,7 +8,7 @@ namespace DataLayer
 {
     public class SinhVien_DAL : TaiKhoan_DAl
     {
-        public DataTable ThongTinSVDAL(string mssv)
+        public DataTable GetStudentInfoTableDAL(string mssv)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace DataLayer
                 throw ex; // Ném lỗi lên BUS
             }
         }
-        public SinhVien ThongTinSinhVienDAL(string mssv)
+        public SinhVien GetStudentDetailsDAL(string mssv)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable DiemSVDAL(string mssv)
+        public DataTable GetStudentGradesDAL(string mssv)
         {
             try
             {
@@ -86,14 +86,18 @@ namespace DataLayer
             }
         }
 
-        public DataTable TKBSinhVienDAL(string mssv)
+        public DataTable GetStudentScheduleDAL(string mssv)
         {
             try
             {
-                string query = "SELECT ThoiKhoaBieu.Ma_Lop_Mon_Hoc,Ngay_Hoc,Gio_Bat_Dau,Gio_Ket_Thuc,Phong_Hoc" +
-                    "\r\nFROM DangKy,LopMonHoc,ThoiKhoaBieu" +
-                    "\r\nWHERE @mssv= DangKy.MSSV and DangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc" +
-                    "\r\nAND ThoiKhoaBieu.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc";
+                string query = "SELECT ThoiKhoaBieu.Ma_Lop_Mon_Hoc,Ten_Mon_Hoc,Ten_Day_Du," +
+                    "\r\nNgay_Hoc,Gio_Bat_Dau,Gio_Ket_Thuc,Phong_Hoc" +
+                    "\r\nFROM DangKy,LopMonHoc,ThoiKhoaBieu,GiaoVien,MonHoc\r\n" +
+                    "WHERE 'SV003'= DangKy.MSSV AND " +
+                    "\r\nDangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc\r\n" +
+                    " AND ThoiKhoaBieu.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc\r\n" +
+                    "AND LopMonHoc.MSGV=GiaoVien.MSGV\r\n" +
+                    "AND LopMonHoc.Ma_Mon_Hoc=MonHoc.Ma_Mon_Hoc";
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@mssv",mssv)
@@ -106,7 +110,7 @@ namespace DataLayer
             }
         }
 
-        public bool DangKyMonHocDAL(string mssv, string malopmonhoc, DateTime date)
+        public bool RegisterCourseDAL(string mssv, string malopmonhoc, DateTime date)
         {
             try
             {
@@ -126,7 +130,7 @@ namespace DataLayer
         }
 
 
-        public bool HuyDangKyMonHocDAL(string mssv,string malopmonhoc)
+        public bool UnregisterCourseDAL(string mssv,string malopmonhoc)
         {
             try
             {
@@ -143,14 +147,14 @@ namespace DataLayer
                 throw ex;
             }
         }
-        public DataTable DSMonHocDaDKDAL(string mssv)
+        public DataTable GetRegisteredCoursesDAL(string mssv)
         {
             try
             {
                 string query = "SELECT DangKy.Ma_Lop_Mon_Hoc,Ten_Mon_Hoc,Ngay_Dang_Ky,So_Tin_Chi " +
                     "\r\nFROM DangKy,LopMo,LopMonHoc,MonHoc" +
                     "\r\nWHERE DangKy.Ma_Lop_Mon_Hoc=LopMo.Ma_Lop_Mon_Hoc " +
-                    "\r\nAND MSSV='SV001'AND DangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc" +
+                    "\r\nAND MSSV=@mssv AND DangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc" +
                     "\r\nAND LopMonHoc.Ma_Mon_Hoc=MonHoc.Ma_Mon_Hoc ";
                 SqlParameter[] parameters = new SqlParameter[]
                 {
@@ -164,7 +168,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable DanhSachMonHocDangKiDAL()
+        public DataTable GetAvailableCoursesDAL()
         {
             try
             {
@@ -187,7 +191,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable LichThiDAL(string mssv)
+        public DataTable GetExamScheduleDAL(string mssv)
         {
             try
             {
@@ -206,17 +210,5 @@ namespace DataLayer
                 throw new Exception("Lỗi khi lấy danh sách môn học đăng ký: " + ex.Message);
             }
         }
-
-/*        public bool DoiMatKhauSinhVienDAL(string mssv, string pass)
-        {
-            try
-            {
-                return DoiMatKhauDAL(mssv, pass);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi đổi mật khẩu: " + ex.Message);
-            }
-        }*/
     }
 }

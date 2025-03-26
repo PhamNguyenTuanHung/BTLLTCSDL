@@ -10,26 +10,26 @@ namespace BusinessLayer
     { 
         private readonly GiangVien_DAL gvDAL = new GiangVien_DAL();
 
-        public GiangVien ThongTinGVBUS(string msgv)
+        public GiangVien GetLecturerInfoBUS(string msgv)
         {
 
-            return gvDAL.ThongTinGiaoVienDAL(msgv);
+            return gvDAL.GetLecturerInfoDAL(msgv);
         }
 
-        public DataTable ThongTinGiaoVienBUS(string msgv)
+        public DataTable GetLecturerInfoTableBUS(string msgv)
         {
-            return gvDAL.ThongTinGVDAL(msgv);
+            return gvDAL.GetLecturerInfoTableDAL(msgv);
         }
-        public DataTable TKBGiangVienBUS(string msgv)
+        public DataTable GetLecturerScheduleBUS(string msgv)
         {
-            return gvDAL.TKBGiangVienDAL(msgv) ;
+            return gvDAL.GetLecturerScheduleDAL(msgv) ;
         }
 
-        public DataTable DanhSachLopHocBUS(string msgv)
+        public DataTable GetClassListBUS(string msgv)
         {
             try
             {
-                return gvDAL.DanhSachLopHocDAL(msgv);
+                return gvDAL.GetClassListDAl(msgv);
             }
             catch (Exception ex)
             {
@@ -37,11 +37,11 @@ namespace BusinessLayer
             }
         }
 
-        public DataTable DanhSachDiemSVBUS(string msgv, string mamonhoc)
+        public DataTable GetStudentGradesBUS(string msgv, string mamonhoc)
         {
             try
             {
-                return gvDAL.DanhSachDiemSVDAL(msgv, mamonhoc);
+                return gvDAL.GetStudentGradesDAL(msgv, mamonhoc);
             }
             catch(Exception ex)
             {
@@ -49,11 +49,11 @@ namespace BusinessLayer
             }
         }
 
-        public bool DoiMatKhauBUS(string msgv, string pass)
+        public bool ChangePasswordBUS(string msgv, string pass)
         {
             try
             {
-                return gvDAL.DoiMatKhauDAL(msgv, pass);
+                return gvDAL.ChangePasswordDAL(msgv, pass);
             }
             catch (Exception ex)
             {
@@ -61,11 +61,11 @@ namespace BusinessLayer
             } 
         }
 
-        public bool SuaDiemSVBUS(string mssv, string mamonhoc, double diemQT, double diemThi, double diemTK)
+        public bool UpdateStudentGradesBUS(string mssv, string mamonhoc, double diemQT, double diemThi, double diemTK)
         {
             try
             {
-                return gvDAL.SuaDiemSVDAL(mssv, mamonhoc,diemQT,diemThi,diemTK);
+                return gvDAL.UpdateStudentGradesDAL(mssv, mamonhoc,diemQT,diemThi,diemTK);
             }
             catch (Exception ex)
             {

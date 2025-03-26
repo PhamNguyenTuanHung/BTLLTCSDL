@@ -12,63 +12,56 @@ namespace DataLayer
 {
     public class TaiKhoan_DAl
     {
-        public bool KiemTraTonTaiTaiKhoanDAl(string tenTaiKhoan)
+        public bool CheckAccountExistsDAL(string username)
         {
-            string query = "SELECT * FROM TaiKhoan WHERE Ten_Dang_Nhap = @tenTaiKhoan";
+            string query = "SELECT * FROM TaiKhoan WHERE Ten_Dang_Nhap = @username";
 
             SqlParameter[] parameters =
                 {
-                    new SqlParameter("@tenTaiKhoan", tenTaiKhoan)
-                };
+            new SqlParameter("@username", username)
+        };
 
             DataTable dt = DBConnect_DAL.GetDataTable(query, parameters);
-            if (dt.Rows.Count > 0)
-                return true;
-            return false;
+            return dt.Rows.Count > 0;
         }
 
-
-        public string LayEmailCuaTaiKhoanDAL(string taiKhoan, int loaiTaiKhoan)
+        public string GetAccountEmailDAL(string username, int accountType)
         {
             string query = "";
 
-            if (loaiTaiKhoan == 1)
+            if (accountType == 1)
             {
                 query = @"
-                        SELECT Email 
-                        FROM  SinhVien 
-                        WHERE SinhVien.MSSV = @taikhoan";
+                SELECT Email 
+                FROM SinhVien 
+                WHERE SinhVien.MSSV = @username";
             }
             else
             {
                 query = @"
-                        SELECT Email 
-                        FROM  GiaoVien 
-                        WHERE GiaoVien.MSGV  = @taikhoan";
+                SELECT Email 
+                FROM GiaoVien 
+                WHERE GiaoVien.MSGV = @username";
             }
 
-
-            SqlParameter[] parameters = 
+            SqlParameter[] parameters =
                 {
-                    new SqlParameter("@taikhoan", taiKhoan)
-                };
+            new SqlParameter("@username", username)
+        };
             DataTable dt = DBConnect_DAL.GetDataTable(query, parameters);
-            if (dt.Rows.Count > 0) 
-                return dt.Rows[0]["Email"].ToString();
-            return "";
+            return dt.Rows.Count > 0 ? dt.Rows[0]["Email"].ToString() : "";
         }
-        public TaiKhoan KiemTraDangNhapDAL(TaiKhoan taikhoan)
+
+        public TaiKhoan ValidateLoginDAL(TaiKhoan account)
         {
             try
             {
-
                 string query = "SELECT * FROM TaiKhoan WHERE Ten_dang_nhap = @username AND Mat_khau = @password";
-
 
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter( "@username", taikhoan.User_name),
-                    new SqlParameter( "@password", taikhoan.Pass_word)
+                    new SqlParameter("@username", account.User_name),
+                    new SqlParameter("@password", account.Pass_word)
                 };
 
                 DataTable dt = DBConnect_DAL.GetDataTable(query, parameters);
@@ -77,30 +70,30 @@ namespace DataLayer
                 {
                     return new TaiKhoan
                     {
-                        User_name = dt.Rows[0]["TenTaiKhoan"].ToString(),
+                        User_name = dt.Rows[0]["Ten_Dang_Nhap"].ToString(),
                         Pass_word = dt.Rows[0]["Mat_Khau"].ToString(),
-                        Type = Convert.ToInt32(dt.Rows[0]["LoaiTaiKhoan"])
+                        Type = Convert.ToInt32(dt.Rows[0]["Loai_Tai_Khoan"])
                     };
                 }
             }
             catch (Exception ex)
             {
-                // Log lỗi hoặc xử lý theo cách phù hợp (ví dụ: ghi log, hiển thị thông báo)
-                throw new Exception("Lỗi khi kiểm tra đăng nhập: " + ex.Message);
+                throw new Exception("Error while validating login: " + ex.Message);
             }
 
             return null;
         }
 
-        public bool DoiMatKhauDAL(string taiKhoan,string matKhau)
+        public bool ChangePasswordDAL(string username, string password)
         {
-            string query = "UPDATE TaiKhoan SET Mat_Khau =@matKhau WHERE Ten_Dang_Nhap = @taiKhoan";
+            string query = "UPDATE TaiKhoan SET Mat_Khau = @password WHERE Ten_Dang_Nhap = @username";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@taiKhoan",taiKhoan),
-                new SqlParameter("@matKhau",matKhau)
+        new SqlParameter("@username", username),
+        new SqlParameter("@password", password)
             };
-            return DBConnect_DAL.ExecuteNonQuery(query,parameters)>0;
-        }    
+            return DBConnect_DAL.ExecuteNonQuery(query, parameters) > 0;
+        }
+
     }
 }

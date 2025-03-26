@@ -54,6 +54,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvThongTinLop = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.btnSuaDiem = new System.Windows.Forms.Button();
             this.btnTimKiemSinhVien = new System.Windows.Forms.Button();
             this.txtTimKiemSinhVien = new System.Windows.Forms.TextBox();
@@ -77,7 +78,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnTimKiemTKB = new System.Windows.Forms.Button();
             this.txtTimKiemTKB = new System.Windows.Forms.TextBox();
-            this.btnExcel = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.ThongTinGVTab.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -344,6 +344,7 @@
             this.LopTab.TabIndex = 1;
             this.LopTab.Text = "Quản lý lớp học";
             this.LopTab.UseVisualStyleBackColor = true;
+            this.LopTab.Click += new System.EventHandler(this.LopTab_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -385,8 +386,19 @@
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 62);
+            this.panel2.Size = new System.Drawing.Size(780, 44);
             this.panel2.TabIndex = 0;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.AutoSize = true;
+            this.btnExcel.Location = new System.Drawing.Point(655, 13);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(100, 31);
+            this.btnExcel.TabIndex = 7;
+            this.btnExcel.Text = "Xuất file Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnSuaDiem
             // 
@@ -610,17 +622,6 @@
             this.txtTimKiemTKB.Name = "txtTimKiemTKB";
             this.txtTimKiemTKB.Size = new System.Drawing.Size(173, 22);
             this.txtTimKiemTKB.TabIndex = 0;
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.AutoSize = true;
-            this.btnExcel.Location = new System.Drawing.Point(655, 13);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(100, 31);
-            this.btnExcel.TabIndex = 7;
-            this.btnExcel.Text = "Xuất file Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // FormGiangVien
             // 

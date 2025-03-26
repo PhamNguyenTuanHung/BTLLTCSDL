@@ -69,9 +69,9 @@ namespace PresentationLayer
                     return;
                 }
               
-                if (taiKhoan_BUS.KiemTraTonTaiTaiKhoanBUS(txtTaiKhoan.Text))
+                if (taiKhoan_BUS.CheckAccountExistsBUS(txtTaiKhoan.Text))
                 {
-                    string Email = taiKhoan_BUS.LayEmailCuaTaiKhoanBUS(txtTaiKhoan.Text, loaiTaiKhoan);
+                    string Email = taiKhoan_BUS.GetAccountEmailBUS(txtTaiKhoan.Text, loaiTaiKhoan);
                     GuiEamil(Email);
                     btnNhapMa.Visible = true;
                     txtCode.Visible = true;
@@ -148,7 +148,7 @@ namespace PresentationLayer
                 MessageBox.Show("Mật khẩu mới không khớp!");
                 return;
             }
-            if (taiKhoan_BUS.DoiMatKhauBUS(txtTaiKhoan.Text, txtNewPass.Text) == true)
+            if (taiKhoan_BUS.ChangePasswordBUS(txtTaiKhoan.Text, txtNewPass.Text) == true)
             {
                 MessageBox.Show("Đổi mật khẩu thành công!");
                 DialogResult = DialogResult.Yes;

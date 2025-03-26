@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -237,7 +237,7 @@ namespace PresentationLayer
                     return;
                 }
                 SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
-                if (sinhVienBUS.DoiMatKhauBUS(sv.MSSV, txtNewPass.Text) == true)
+                if (sinhVienBUS.ChangePasswordBUS(sv.MSSV, txtNewPass.Text) == true)
                 {
                     lblMessage.ForeColor = Color.Green;
                     lblMessage.Text = "Đổi mật khẩu thành công!";
@@ -275,7 +275,7 @@ namespace PresentationLayer
             btnLuu.Visible = true;
             txtTimKiem.Clear();
             SinhVien_BUS sinhVienBL = new SinhVien_BUS();
-            DataTable dt = sinhVienBL.DanhSachMonDangKiBUS();
+            DataTable dt = sinhVienBL.GetAvailableCoursesBUS();
             dt.Columns.Add("Chọn", typeof(bool));
             dgv.DataSource = dt;
             if (dt.Columns.Contains("Ma_Mon_Hoc"))
@@ -320,7 +320,7 @@ namespace PresentationLayer
                 }
                 else
                 {
-                    string filter = $"[Ten_Mon_Hoc] LIKE '%{keyword}%'"; /*OR [Ma_Mon_Hoc] LIKE '%{keyword}%'";*/
+                    string filter = $"[Ten_Mon_Hoc] LIKE '%{keyword}%'"; *//*OR [Ma_Mon_Hoc] LIKE '%{keyword}%'";*//*
                     dt.DefaultView.RowFilter = filter; ;
                 }
                 dgv.DataSource = dt;
@@ -353,3 +353,4 @@ namespace PresentationLayer
     }
 
 }
+*/

@@ -11,7 +11,7 @@ namespace DataLayer
 {
     public class GiangVien_DAL :TaiKhoan_DAl
     {
-        public GiangVien ThongTinGiaoVienDAL(string msgv)
+        public GiangVien GetLecturerInfoDAL(string msgv)
         {
             {
                 GiangVien gv = null;
@@ -44,7 +44,7 @@ namespace DataLayer
                 return gv;
             }
         }
-        public DataTable ThongTinGVDAL(string msgv)
+        public DataTable GetLecturerInfoTableDAL(string msgv)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable DanhSachLopHocDAL(string msgv)
+        public DataTable GetClassListDAl(string msgv)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable TKBGiangVienDAL(string msgv)
+        public DataTable GetLecturerScheduleDAL(string msgv)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable DanhSachDiemSVDAL(string msgv, string malopmonhoc)
+        public DataTable GetStudentGradesDAL(string msgv, string malopmonhoc)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace DataLayer
             }
         }*/
 
-        public bool SuaDiemSVDAL(string mssv, string malopmonhoc, double diemQT, double diemThi, double diemTK)
+        public bool UpdateStudentGradesDAL(string mssv, string malopmonhoc, double diemQT, double diemThi, double diemTK)
         {
             try
             {

@@ -12,11 +12,11 @@ namespace BusinessLayer
     {
         private TaiKhoan_DAl taiKhoanDAl = new TaiKhoan_DAl();
 
-        public TaiKhoan KiemTraDangNhapBUS(TaiKhoan TaiKhoan)
+        public TaiKhoan ValidateLoginBUS(TaiKhoan TaiKhoan)
         {
             try
             {
-                return taiKhoanDAl.KiemTraDangNhapDAL(TaiKhoan);
+                return taiKhoanDAl.ValidateLoginDAL(TaiKhoan);
             }
             catch (Exception ex)
             {
@@ -24,11 +24,11 @@ namespace BusinessLayer
             }
         }
 
-        public bool KiemTraTonTaiTaiKhoanBUS(string taiKhoan)
+        public bool CheckAccountExistsBUS(string taiKhoan)
         {
             try
             {
-                return taiKhoanDAl.KiemTraTonTaiTaiKhoanDAl(taiKhoan);
+                return taiKhoanDAl.CheckAccountExistsDAL(taiKhoan);
 
             }
             catch (Exception ex)
@@ -37,11 +37,11 @@ namespace BusinessLayer
             }
         }
 
-        public string LayEmailCuaTaiKhoanBUS(string taiKhoan,int loaiTaiKhoan)
+        public string GetAccountEmailBUS(string taiKhoan,int loaiTaiKhoan)
         {
             try
             {
-                return taiKhoanDAl.LayEmailCuaTaiKhoanDAL(taiKhoan, loaiTaiKhoan);
+                return taiKhoanDAl.GetAccountEmailDAL(taiKhoan, loaiTaiKhoan);
             }
             catch (Exception ex)
             {
@@ -49,11 +49,11 @@ namespace BusinessLayer
             }
         }
 
-        public bool DoiMatKhauBUS(string taiKhoan,string matKhau)
+        public bool ChangePasswordBUS(string taiKhoan,string matKhau)
         {
             try
             {
-                return taiKhoanDAl.DoiMatKhauDAL(taiKhoan, matKhau);
+                return taiKhoanDAl.ChangePasswordDAL(taiKhoan, matKhau);
             }
             catch (Exception ex)
             {

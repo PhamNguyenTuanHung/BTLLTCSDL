@@ -14,11 +14,11 @@ namespace BusinessLayer
     {
         private SinhVien_DAL sinhvienDAL = new SinhVien_DAL();
 
-        public DataTable ThongTinSVBUS(string MSSV)
+        public DataTable GetStudentInfoTableBUS(string studentId)
         {
             try
             {
-                return sinhvienDAL.ThongTinSVDAL(MSSV);
+                return sinhvienDAL.GetStudentInfoTableDAL(studentId);
             }
             catch (Exception ex)
             {
@@ -26,106 +26,107 @@ namespace BusinessLayer
             }
         }
 
-        public SinhVien ThongTinSinhVienBUS(string MSSV)
+        public SinhVien GetStudentDetailsBUS(string studentId)
         {
             try
             {
-                return sinhvienDAL.ThongTinSinhVienDAL(MSSV);
+                return sinhvienDAL.GetStudentDetailsDAL(studentId);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public DataTable DiemSVBUS(string query)
+
+        public DataTable GetStudentGradesBUS(string query)
         {
             try
             {
-                return sinhvienDAL.DiemSVDAL(query);
+                return sinhvienDAL.GetStudentGradesDAL(query);
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi lấy điểm sinh viên: " + ex.Message, ex);
+                throw new Exception("Error fetching student grades: " + ex.Message, ex);
             }
         }
 
-        public DataTable TKBSinhVienBUS(string query)
+        public DataTable GetStudentScheduleBUS(string query)
         {
             try
             {
-                return sinhvienDAL.TKBSinhVienDAL(query);
+                return sinhvienDAL.GetStudentScheduleDAL(query);
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message,ex);
+                throw new Exception(ex.Message, ex);
             }
         }
 
-        public bool DangKyMonHocBUS(string mssv, string malopmonhoc, DateTime date)
+        public bool RegisterCourseBUS(string studentId, string courseId, DateTime date)
         {
             try
             {
-                return sinhvienDAL.DangKyMonHocDAL(mssv, malopmonhoc, date);
+                return sinhvienDAL.RegisterCourseDAL(studentId, courseId, date);
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message, ex);
-            }
-        }
-        public bool HuyKyMonHocBUS(string mssv, string malopmonhoc)
-        {
-            try
-            {
-                return sinhvienDAL.HuyDangKyMonHocDAL(mssv, malopmonhoc);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message, ex);
-            }
-        }
-        public DataTable DSMonHocDaDKDBUS(string mssv)
-        {
-            try
-            {
-                return sinhvienDAL.DSMonHocDaDKDAL(mssv);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message);
+                throw new Exception("Error registering course: " + ex.Message, ex);
             }
         }
 
-
-
-        
-        public DataTable LichThiBUS(string mssv)
+        public bool UnregisterCourseBUS(string studentId, string courseId)
         {
             try
             {
-                return sinhvienDAL.LichThiDAL(mssv);
+                return sinhvienDAL.UnregisterCourseDAL(studentId, courseId);
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi lấy lịch thi: " + ex.Message, ex);
+                throw new Exception("Error unregistering course: " + ex.Message, ex);
             }
         }
 
-        public DataTable DanhSachMonDangKiBUS()
+        public DataTable GetRegisteredCoursesBUS(string studentId)
         {
             try
             {
-                return sinhvienDAL.DanhSachMonHocDangKiDAL();
+                return sinhvienDAL.GetRegisteredCoursesDAL(studentId);
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi lấy lịch thi: " + ex.Message, ex);
+                throw new Exception("Error fetching registered courses: " + ex.Message);
             }
         }
-        public bool DoiMatKhauBUS(string mssv, string pass)
+
+        public DataTable GetExamScheduleBUS(string studentId)
         {
             try
             {
-                return sinhvienDAL.DoiMatKhauDAL(mssv, pass);
+                return sinhvienDAL.GetExamScheduleDAL(studentId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetAvailableCoursesBUS()
+        {
+            try
+            {
+                return sinhvienDAL.GetAvailableCoursesDAL();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching available courses: " + ex.Message, ex);
+            }
+        }
+
+        public bool ChangePasswordBUS(string mssv, string pass)
+        {
+            try
+            {
+                return sinhvienDAL.ChangePasswordDAL(mssv, pass);
             }
             catch (Exception ex)
             {

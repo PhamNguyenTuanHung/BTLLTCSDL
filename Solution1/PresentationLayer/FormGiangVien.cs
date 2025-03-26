@@ -23,8 +23,8 @@ namespace PresentationLayer
             this.gv = gv;
             this.tk = tk;
             InitializeComponent();
-            ThongTinGV();
-            ThongTinCacLopCuaGV();
+            GetLecturerInfo();
+            GetLecturerClassInfo();
         }
 
 
@@ -87,10 +87,10 @@ namespace PresentationLayer
             }
         }
 
-        public void ThongTinGV()
+        public void GetLecturerInfo()
         {
             gvBUS = new GiangVien_BUS();
-            DataTable dt = gvBUS.ThongTinGiaoVienBUS(gv.MSGV);
+            DataTable dt = gvBUS.GetLecturerInfoTableBUS(gv.MSGV);
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
                 lbMSGV.Text = dt.Rows[0]["MSGV"].ToString();
@@ -112,16 +112,16 @@ namespace PresentationLayer
             GiangVien_BUS giangVienBL = new GiangVien_BUS();
             string malopmonhoc = comboBox1.SelectedValue.ToString(); // Lấy đúng giá trị môn học
             DataTable dt = new DataTable();
-            dt = giangVienBL.DanhSachDiemSVBUS(gv.MSGV, malopmonhoc);
+            dt = giangVienBL.GetStudentGradesBUS(gv.MSGV, malopmonhoc);
             LoadData(dt, dgvThongTinLop);
         }
 
-        private void ThongTinCacLopCuaGV()
+        private void GetLecturerClassInfo()
         {
             
             GiangVien_BUS gvBUS = new GiangVien_BUS();
             DataTable dt = new DataTable();
-            dt = gvBUS.DanhSachLopHocBUS(gv.MSGV);
+            dt = gvBUS.GetClassListBUS(gv.MSGV);
             comboBox1.DataSource = dt;
             comboBox1.DisplayMember= "Ten_Mon_Hoc";
             comboBox1.ValueMember = "Ma_Lop_Mon_Hoc";
@@ -131,18 +131,18 @@ namespace PresentationLayer
                 comboBox1.SelectedIndex = 0; // Chọn mặc định môn đầu tiên
             }
         }
-        public void SinhVienCacLop(string msgv,string malopmonhoc)
+        public void StudentGrades(string msgv,string malopmonhoc)
         {
             DataTable dt = new DataTable();
             GiangVien_BUS gvBUS = new GiangVien_BUS();
-            dt =gvBUS.DanhSachDiemSVBUS(msgv, malopmonhoc);
+            dt =gvBUS.GetStudentGradesBUS(msgv, malopmonhoc);
             dgvThongTinLop.DataSource = dt;
         }
 
-        private void ThoiKhoaBieu()
+        private void Schedule()
         {
             GiangVien_BUS giangVienBL = new GiangVien_BUS();
-            DataTable dt = giangVienBL.TKBGiangVienBUS(gv.MSGV);
+            DataTable dt = giangVienBL.GetLecturerScheduleBUS(gv.MSGV);
             LoadData(dt, dgvTKB);
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,20 +153,20 @@ namespace PresentationLayer
             switch (TabIndex)
             {
                 case 0:
-                    ThongTinGV();
+                    GetLecturerInfo();
                     break;
                 case 1:
-                    ThongTinCacLopCuaGV();
+                    GetLecturerClassInfo();
                     break;
                 case 2:
-                    ThoiKhoaBieu();
+                    Schedule();
                     break;
                 default:
                     break;
             }
         }
 
-        private void TimKiem(DataGridView dgv, TextBox txt)
+        private void Search(DataGridView dgv, TextBox txt)
         {
             if (dgv.DataSource != null)
             {
@@ -199,19 +199,22 @@ namespace PresentationLayer
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            TimKiem(dgvThongTinLop, txtTimKiemSinhVien);
+            Search(dgvThongTinLop, txtTimKiemSinhVien);
         }
 
         private void btnTimKiemTKB_Click(object sender, EventArgs e)
         {
-            TimKiem(dgvTKB, txtTimKiemTKB);
+            Search(dgvTKB, txtTimKiemTKB);
         }
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
             FormDoiMatKhau formDoiMatKhau = new FormDoiMatKhau(gv,tk);
             this.Enabled = false;
-            formDoiMatKhau.ShowDialog();
+            if (formDoiMatKhau.ShowDialog() == DialogResult.OK)
+            {
+                tk.Pass_word = formDoiMatKhau.newPass; // Cập nhật mật khẩu mới
+            }
             this.Enabled = true;
         }
 
@@ -239,7 +242,7 @@ namespace PresentationLayer
         }
 
 
-        private void CapNhatDiemTongKet()
+        private void UpdateGrade()
         {
             // Kiểm tra xem các giá trị có hợp lệ không
             if (double.TryParse(txtDiemQT.Text, out double diemQT) &&
@@ -267,17 +270,17 @@ namespace PresentationLayer
         }
         private void txtDiemQT_TextChanged(object sender, EventArgs e)
         {
-            CapNhatDiemTongKet();
+            UpdateGrade();
         }
 
         private void txtDiemThi_TextChanged(object sender, EventArgs e)
         {
-            CapNhatDiemTongKet();
+            UpdateGrade();
         }
 
         private void txtHeSoQT_TextChanged(object sender, EventArgs e)
         {
-            CapNhatDiemTongKet();
+            UpdateGrade();
         }
 
         private void btnSuaDiem_Click(object sender, EventArgs e)
@@ -303,12 +306,12 @@ namespace PresentationLayer
                 return ;
             }
 
-            bool check = gvBUS.SuaDiemSVBUS(txtMSSV.Text, comboBox1.SelectedValue.ToString(),
+            bool check = gvBUS.UpdateStudentGradesBUS(txtMSSV.Text, comboBox1.SelectedValue.ToString(),
                  double.Parse(txtDiemQT.Text), double.Parse(txtDiemThi.Text),
                  double.Parse(txtDiemTongKet.Text));
             if (check) MessageBox.Show("Sủa điểm thành công");
             else MessageBox.Show("Sửa không thành công");
-            ThongTinCacLopCuaGV();
+            GetLecturerClassInfo();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -368,6 +371,11 @@ namespace PresentationLayer
                     MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void LopTab_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

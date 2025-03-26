@@ -1,4 +1,4 @@
-﻿namespace PresentationLayer
+﻿/*namespace PresentationLayer
 {
     partial class FormSV
     {
@@ -543,4 +543,4 @@
         private System.Windows.Forms.Panel panelDSMonDK;
         private System.Windows.Forms.DataGridView dgvMonDK;
     }
-}
+}*/

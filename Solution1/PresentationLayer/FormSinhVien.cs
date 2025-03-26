@@ -32,7 +32,7 @@ namespace PresentationLayer
         private void ThongTinSVPL()
         {
             svBus = new SinhVien_BUS();
-            DataTable dt = svBus.ThongTinSVBUS(sv.MSSV);
+            DataTable dt = svBus.GetStudentInfoTableBUS(sv.MSSV);
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
                 lbMSSV.Text = dt.Rows[0]["MSSV"].ToString();
@@ -85,6 +85,9 @@ namespace PresentationLayer
 
                 if (dt.Columns.Contains("Ten_Mon_Hoc"))
                     dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên môn học";
+
+                if (dt.Columns.Contains("Ten_Day_Du"))
+                    dgv.Columns["Ten_Day_Du"].HeaderText = "Họ tên";
 
                 if (dt.Columns.Contains("Diem_Qua_Trinh"))
                     dgv.Columns["Diem_Qua_Trinh"].HeaderText = "Điểm QT";
@@ -151,22 +154,22 @@ namespace PresentationLayer
                     ThongTinSVPL();
                     break;
                 case 1:
-                    dt =svBus.DiemSVBUS(sv.MSSV);
+                    dt =svBus.GetStudentGradesBUS(sv.MSSV);
                     LoadData(dgvDiem,dt);
                     break;
                 case 2:
-                    dt = svBus.TKBSinhVienBUS(sv.MSSV);
+                    dt = svBus.GetStudentScheduleBUS(sv.MSSV);
                     LoadData(dgvTKB,dt);
                     break;
                 case 3:
-                    dt = svBus.LichThiBUS(sv.MSSV);
+                    dt = svBus.GetExamScheduleBUS(sv.MSSV);
                     LoadData(dgvLichThi, dt);
                     break;
                 case 4:
-                    dt = svBus.DanhSachMonDangKiBUS();
+                    dt = svBus.GetAvailableCoursesBUS();
                     dt.Columns.Add("Chon", typeof(bool));
                     DataTable dt1= new DataTable();
-                    dt1=svBus.DSMonHocDaDKDBUS(sv.MSSV);
+                    dt1=svBus.GetRegisteredCoursesBUS(sv.MSSV);
 
                     foreach (DataRow row in dt.Rows)
                     {
@@ -252,19 +255,19 @@ namespace PresentationLayer
         {
             foreach (string maLop in danhSachDangKy)
             {
-                svBus.DangKyMonHocBUS(sv.MSSV, maLop, DateTime.Now);
+                svBus.RegisterCourseBUS(sv.MSSV, maLop, DateTime.Now);
             }
 
             foreach (string maLop in danhSachHuyDangKy)
             {
-                svBus.HuyKyMonHocBUS(sv.MSSV, maLop);
+                svBus.UnregisterCourseBUS(sv.MSSV, maLop);
             }
 
             MessageBox.Show("Cập nhật đăng ký môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DataTable dt = svBus.DanhSachMonDangKiBUS();
+            DataTable dt = svBus.GetAvailableCoursesBUS();
             dt.Columns.Add("Chon", typeof(bool));
             DataTable dt1 = new DataTable();
-            dt1 = svBus.DSMonHocDaDKDBUS(sv.MSSV);
+            dt1 = svBus.GetRegisteredCoursesBUS(sv.MSSV);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -288,8 +291,11 @@ namespace PresentationLayer
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
             FormDoiMatKhau form = new FormDoiMatKhau(sv, tk);
-            form.ShowDialog();
-            
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                tk.Pass_word = form.newPass; // Cập nhật mật khẩu mới
+            }
+
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)

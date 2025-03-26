@@ -18,7 +18,7 @@ namespace PresentationLayer
         private SinhVien sv;
         private TaiKhoan tk;
         private GiangVien gv;
-
+        public string newPass;
         public FormDoiMatKhau(TaiKhoan tk)
         {
             this.tk = tk;
@@ -57,20 +57,25 @@ namespace PresentationLayer
             }
             if (tk.Type == 1)
             {
-                MessageBox.Show("sv");
                 SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
-                if (sinhVienBUS.DoiMatKhauBUS(sv.MSSV, txtNewPass.Text) == true)
+                if (sinhVienBUS.ChangePasswordBUS(sv.MSSV, txtNewPass.Text) == true)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!");
+                    newPass = txtNewPass.Text;
+                    this.DialogResult = DialogResult.OK; // Đóng form và báo về form chính
+                    this.Close();
                 }
             }
 
             if (tk.Type == 2)
             {
                 GiangVien_BUS giangVien_BUS = new GiangVien_BUS();
-                if (giangVien_BUS.DoiMatKhauBUS(gv.MSGV, txtNewPass.Text) == true)
+                if (giangVien_BUS.ChangePasswordBUS(gv.MSGV, txtNewPass.Text) == true)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!");
+                    newPass = txtNewPass.Text;
+                    this.DialogResult = DialogResult.OK; // Đóng form và báo về form chính
+                    this.Close();
                 }
             }
         }
