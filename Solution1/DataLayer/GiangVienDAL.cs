@@ -9,7 +9,7 @@ using DOT;
 
 namespace DataLayer
 {
-    public class GiangVien_DAL
+    public class GiangVien_DAL :TaiKhoan_DAl
     {
         public GiangVien ThongTinGiaoVienDAL(string msgv)
         {
@@ -54,7 +54,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnect_DAL.GetData(query, parameters);
+                return DBConnect_DAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnect_DAL.GetData(query, parameters);
+                return DBConnect_DAL.GetDataTable(query, parameters);
 
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace DataLayer
                 {
                     new SqlParameter ("@msgv",msgv)
                 };
-                return DBConnect_DAL.GetData (query, parameters);
+                return DBConnect_DAL.GetDataTable (query, parameters);
 
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace DataLayer
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
 
-                return DBConnect_DAL.GetData(query,parameters);
+                return DBConnect_DAL.GetDataTable(query,parameters);
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace DataLayer
             }
         }
 
-        public bool DoiMatKhauDAl(string msgv, string pass)
+/*        public bool DoiMatKhauDAl(string msgv, string pass)
         {
             try
             {
@@ -142,14 +142,14 @@ namespace DataLayer
                     new SqlParameter("@pass",pass),
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnect_DAL.ExecuteQuery(query, parameters)>0;
+                return DBConnect_DAL.ExecuteNonQuery(query, parameters)>0;
 
             }
             catch (Exception ex)
             {
                 throw new Exception("Lỗi trong DoiMatKhauDAl: " + ex.Message, ex);
             }
-        }
+        }*/
 
         public bool SuaDiemSVDAL(string mssv, string malopmonhoc, double diemQT, double diemThi, double diemTK)
         {
@@ -167,7 +167,7 @@ namespace DataLayer
                     new SqlParameter("@diemTK", diemTK)
                 };
 
-                    return DBConnect_DAL.ExecuteQuery(query,parameters) > 0;
+                    return DBConnect_DAL.ExecuteNonQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {

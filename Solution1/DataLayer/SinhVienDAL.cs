@@ -6,7 +6,7 @@ using DOT;
 
 namespace DataLayer
 {
-    public class SinhVien_DAL
+    public class SinhVien_DAL : TaiKhoan_DAl
     {
         public DataTable ThongTinSVDAL(string mssv)
         {
@@ -20,7 +20,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetData(query,parameters);
+                return DBConnect_DAL.GetDataTable(query,parameters);
             }
             catch (Exception ex) // Lỗi khác
             {
@@ -78,7 +78,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetData(query,parameters);
+                return DBConnect_DAL.GetDataTable(query,parameters);
             }
             catch (Exception ex)
             {
@@ -98,59 +98,13 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetData(query, parameters);
+                return DBConnect_DAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        /*public bool DangKyMonHocDAL(string mssv, string malopmonhoc)
-        {
-            try
-            {
-                using (SqlConnection conn = DBConnect_DAL.Connect())
-                {
-                    conn.Open();
-                    // Kiểm tra số lượng đăng ký tối đa
-                    string checkSoLuongQuery = "SELECT COUNT(*) AS So_Luong_Da_DK, " +
-                                              "(SELECT So_Luong_DK_Toi_Da FROM LopMonHoc WHERE Ma_Lop_Mon_Hoc = @malopmonhoc) AS So_Luong_Toi_Da " +
-                                              "FROM DangKy WHERE Ma_Lop_Mon_Hoc = @malopmonhoc";
-                    using (SqlCommand checkSoLuongCmd = new SqlCommand(checkSoLuongQuery, conn))
-                    {
-                        checkSoLuongCmd.Parameters.AddWithValue("@malopmonhoc", malopmonhoc);
-                        using (SqlDataReader reader = checkSoLuongCmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int soLuongDaDK = reader.GetInt32(0);
-                                int soLuongToiDa = reader.GetInt32(1);
-                                if (soLuongDaDK >= soLuongToiDa)
-                                {
-                                    throw new Exception("Lớp đã đầy, không thể đăng ký thêm!");
-                                }
-                            }
-                        }
-                    }
-
-                    // Thực hiện đăng ký
-                    string insertQuery = "INSERT INTO DangKy (MSSV, Ma_Lop_Mon_Hoc, Ngay_Dang_Ky) " +
-                                        "VALUES (@mssv, @malopmonhoc, @date)";
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@mssv", mssv);
-                        cmd.Parameters.AddWithValue("@malopmonhoc", malopmonhoc);
-                        cmd.Parameters.AddWithValue("@date", DateTime.Today);
-                        return cmd.ExecuteNonQuery() > 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi đăng ký môn học: " + ex.Message);
-            }
-        }*/
 
         public bool DangKyMonHocDAL(string mssv, string malopmonhoc, DateTime date)
         {
@@ -163,7 +117,7 @@ namespace DataLayer
                     new SqlParameter("@MaLop", malopmonhoc),
                     new SqlParameter("@NgayDK", date)
                     };
-                return DBConnect_DAL.ExecuteQuery(query,parameters) > 0;
+                return DBConnect_DAL.ExecuteNonQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -182,7 +136,7 @@ namespace DataLayer
                     new SqlParameter("@MSSV", mssv),
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
-                return DBConnect_DAL.ExecuteQuery(query, parameters) > 0;
+                return DBConnect_DAL.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -202,7 +156,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetData(query, parameters);
+                return DBConnect_DAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -225,7 +179,7 @@ namespace DataLayer
                     "\r\n    AND LopMo.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +
                     "\r\n    AND LopMonHoc.Ma_Mon_Hoc = MonHoc.Ma_Mon_Hoc " +
                     "\r\n    AND ThoiKhoaBieu.Ma_Lop_Mon_Hoc = LopMo.Ma_Lop_Mon_Hoc;";
-                 return DBConnect_DAL.GetData(query);
+                 return DBConnect_DAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
@@ -245,7 +199,7 @@ namespace DataLayer
                                 {
                     new SqlParameter("@mssv",mssv)
                                 };
-                return DBConnect_DAL.GetData(query, parameters);
+                return DBConnect_DAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -253,25 +207,16 @@ namespace DataLayer
             }
         }
 
-        public bool DoiMatKhauDAL(string mssv, string pass)
+/*        public bool DoiMatKhauSinhVienDAL(string mssv, string pass)
         {
             try
             {
-                string query = "UPDATE TaiKhoan " +
-                               "SET Mat_Khau = @pass " +
-                               "WHERE Ten_Dang_Nhap = @mssv";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@pass",pass),
-                    new SqlParameter("@mssv",mssv)
-                };
-                return DBConnect_DAL.ExecuteQuery(query, parameters) > 0;
-
+                return DoiMatKhauDAL(mssv, pass);
             }
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi đổi mật khẩu: " + ex.Message);
             }
-        }
+        }*/
     }
 }

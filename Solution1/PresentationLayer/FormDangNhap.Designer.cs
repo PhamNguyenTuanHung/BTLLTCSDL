@@ -37,6 +37,7 @@ namespace PresentationLayer
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.CheckBoxHienThiMK = new System.Windows.Forms.CheckBox();
+            this.btnQuenMK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_DangNhap
@@ -103,11 +104,23 @@ namespace PresentationLayer
             this.CheckBoxHienThiMK.UseVisualStyleBackColor = true;
             this.CheckBoxHienThiMK.CheckedChanged += new System.EventHandler(this.CheckBoxHienThiMK_CheckedChanged);
             // 
+            // btnQuenMK
+            // 
+            this.btnQuenMK.AutoSize = true;
+            this.btnQuenMK.Location = new System.Drawing.Point(369, 316);
+            this.btnQuenMK.Name = "btnQuenMK";
+            this.btnQuenMK.Size = new System.Drawing.Size(232, 26);
+            this.btnQuenMK.TabIndex = 7;
+            this.btnQuenMK.Text = "Quên mật khẩu";
+            this.btnQuenMK.UseVisualStyleBackColor = true;
+            this.btnQuenMK.Click += new System.EventHandler(this.btnQuenMK_Click);
+            // 
             // FormDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnQuenMK);
             this.Controls.Add(this.CheckBoxHienThiMK);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -131,6 +144,7 @@ namespace PresentationLayer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox CheckBoxHienThiMK;
+        private System.Windows.Forms.Button btnQuenMK;
     }
 }
 

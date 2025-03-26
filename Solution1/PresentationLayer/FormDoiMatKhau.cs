@@ -18,6 +18,16 @@ namespace PresentationLayer
         private SinhVien sv;
         private TaiKhoan tk;
         private GiangVien gv;
+
+        public FormDoiMatKhau(TaiKhoan tk)
+        {
+            this.tk = tk;
+            InitializeComponent();
+            label1.Visible = false;
+
+            txtOldPass.Visible = false;
+            txtOldPass.Text=tk.Pass_word;
+        }
         public FormDoiMatKhau(SinhVien sv, TaiKhoan tk)
         {
             this.sv = sv;
@@ -63,7 +73,6 @@ namespace PresentationLayer
                     MessageBox.Show("Đổi mật khẩu thành công!");
                 }
             }
-            
         }
 
         private void check_CheckedChanged(object sender, EventArgs e)

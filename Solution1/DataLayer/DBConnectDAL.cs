@@ -24,7 +24,7 @@ namespace DataLayer
         }
 
         // Phương thức thực thi truy vấn và trả về DataTable
-        public static DataTable GetData(string query, SqlParameter[] parameters = null)
+        public static DataTable GetDataTable(string query, SqlParameter[] parameters = null)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace DataLayer
         }
 
         // Phương thức thực thi truy vấn không trả về dữ liệu (INSERT, UPDATE, DELETE)
-        public static int ExecuteQuery(string query, SqlParameter[] parameters = null)
+        public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
             try
             {
@@ -76,5 +76,28 @@ namespace DataLayer
                 throw new Exception("Lỗi khi thực thi truy vấn: " + query + " - " + ex.Message, ex);
             }
         }
+        public static object ExecuteScalar(string query, SqlParameter[] parameters = null)
+        {
+            try
+            {
+                using (SqlConnection connect = Connect())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connect))
+                    {
+                        if (parameters != null && parameters.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parameters);
+                        }
+                        return cmd.ExecuteScalar(); // Trả về giá trị duy nhất từ truy vấn
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thực thi truy vấn: " + query + " - " + ex.Message, ex);
+            }
+        }
+
     }
 }

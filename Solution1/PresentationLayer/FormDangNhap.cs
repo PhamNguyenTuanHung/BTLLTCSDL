@@ -39,7 +39,7 @@ namespace PresentationLayer
             taikhoan.User_name = txt_TaiKhoan.Text;
             taikhoan.Pass_word = txt_MatKhau.Text;
 
-            TaiKhoan CheckLogin = taikhoanBAL.CheckLoginBAl(taikhoan);
+            TaiKhoan CheckLogin = taikhoanBAL.KiemTraDangNhapBUS(taikhoan);
             if (CheckLogin == null)
             {
                 MessageBox.Show("Thông tin tài khoản mật khẩu không chính xác");
@@ -93,6 +93,28 @@ namespace PresentationLayer
         private void CheckBoxHienThiMK_CheckedChanged(object sender, EventArgs e)
         {
             txt_MatKhau.PasswordChar = CheckBoxHienThiMK.Checked ? '\0' : '*';
+        }
+
+        private void btnQuenMK_Click(object sender, EventArgs e)
+        {
+            // Ẩn form hiện tại (Form Đăng Nhập)
+            this.Hide();
+
+            // Tạo và hiển thị Form Quên Mật Khẩu
+            using (FormQuenMatKhau frm = new FormQuenMatKhau())
+            {
+                DialogResult result = frm.ShowDialog();
+
+                if (result == DialogResult.Yes)  // Nếu thành công
+                {
+                    this.Show(); // Hiện lại form đăng nhập
+                }
+                else
+                {
+                    this.Close(); // Đóng ứng dụng
+                }
+            }
+
         }
     }
 }

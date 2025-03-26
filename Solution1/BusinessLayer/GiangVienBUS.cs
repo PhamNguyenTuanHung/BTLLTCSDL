@@ -7,7 +7,7 @@ using DOT;
 namespace BusinessLayer
 {
     public class GiangVien_BUS
-    {
+    { 
         private readonly GiangVien_DAL gvDAL = new GiangVien_DAL();
 
         public GiangVien ThongTinGVBUS(string msgv)
@@ -53,7 +53,7 @@ namespace BusinessLayer
         {
             try
             {
-                return gvDAL.DoiMatKhauDAl(msgv, pass);
+                return gvDAL.DoiMatKhauDAL(msgv, pass);
             }
             catch (Exception ex)
             {
