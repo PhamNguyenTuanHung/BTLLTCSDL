@@ -10,9 +10,9 @@ using DOT;
 
 namespace BusinessLayer
 {
-    public class SinhVien_BUS
+    public class SinhVienBUS
     {
-        private SinhVien_DAL sinhvienDAL = new SinhVien_DAL();
+        private SinhVienDAL sinhvienDAL = new SinhVienDAL();
 
         public DataTable GetStudentInfoTableBUS(string studentId)
         {
@@ -50,6 +50,7 @@ namespace BusinessLayer
             }
         }
 
+        //Lấy thời khóa biểu sinh viên
         public DataTable GetStudentScheduleBUS(string query)
         {
             try
@@ -62,6 +63,7 @@ namespace BusinessLayer
             }
         }
 
+        // đăng kí môn
         public bool RegisterCourseBUS(string studentId, string courseId, DateTime date)
         {
             try
@@ -74,6 +76,7 @@ namespace BusinessLayer
             }
         }
 
+        //Hủy đăng kí môn
         public bool UnregisterCourseBUS(string studentId, string courseId)
         {
             try
@@ -86,6 +89,7 @@ namespace BusinessLayer
             }
         }
 
+        //Danh sách môn đăng kí  của sinh viên
         public DataTable GetRegisteredCoursesBUS(string studentId)
         {
             try
@@ -98,6 +102,7 @@ namespace BusinessLayer
             }
         }
 
+        //Lấy lịch thi
         public DataTable GetExamScheduleBUS(string studentId)
         {
             try
@@ -110,6 +115,7 @@ namespace BusinessLayer
             }
         }
 
+        //Lấy danh sách môn học đăng kí
         public DataTable GetAvailableCoursesBUS()
         {
             try
@@ -122,6 +128,8 @@ namespace BusinessLayer
             }
         }
 
+
+        //Đổi mật khẩu
         public bool ChangePasswordBUS(string mssv, string pass)
         {
             try

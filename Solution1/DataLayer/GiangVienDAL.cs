@@ -9,13 +9,13 @@ using DOT;
 
 namespace DataLayer
 {
-    public class GiangVien_DAL :TaiKhoan_DAl
+    public class GiangVienDAL :TaiKhoanDAl
     {
         public GiangVien GetLecturerInfoDAL(string msgv)
         {
             {
                 GiangVien gv = null;
-                using (SqlConnection conn = DBConnect_DAL.Connect())
+                using (SqlConnection conn = DBConnectDAL.Connect())
                 {
                     string query = "SELECT GiaoVien.*,Lop.Ma_Lop FROM GiaoVien,Lop" +
                         " WHERE Lop.MSGVCN=@msgv";
@@ -54,7 +54,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnect_DAL.GetDataTable(query, parameters);
+                return DBConnectDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnect_DAL.GetDataTable(query, parameters);
+                return DBConnectDAL.GetDataTable(query, parameters);
 
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace DataLayer
                 {
                     new SqlParameter ("@msgv",msgv)
                 };
-                return DBConnect_DAL.GetDataTable (query, parameters);
+                return DBConnectDAL.GetDataTable (query, parameters);
 
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace DataLayer
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
 
-                return DBConnect_DAL.GetDataTable(query,parameters);
+                return DBConnectDAL.GetDataTable(query,parameters);
             }
             catch (Exception ex)
             {
@@ -167,7 +167,7 @@ namespace DataLayer
                     new SqlParameter("@diemTK", diemTK)
                 };
 
-                    return DBConnect_DAL.ExecuteNonQuery(query,parameters) > 0;
+                    return DBConnectDAL.ExecuteNonQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {

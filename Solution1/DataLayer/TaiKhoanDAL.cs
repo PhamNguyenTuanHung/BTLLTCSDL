@@ -10,8 +10,9 @@ using DOT;
 
 namespace DataLayer
 {
-    public class TaiKhoan_DAl
+    public class TaiKhoanDAl
     {
+        //KIểm tra tồn tại tài khoản
         public bool CheckAccountExistsDAL(string username)
         {
             string query = "SELECT * FROM TaiKhoan WHERE Ten_Dang_Nhap = @username";
@@ -21,10 +22,11 @@ namespace DataLayer
             new SqlParameter("@username", username)
         };
 
-            DataTable dt = DBConnect_DAL.GetDataTable(query, parameters);
+            DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
             return dt.Rows.Count > 0;
         }
 
+        //Lấy email của tài khoản
         public string GetAccountEmailDAL(string username, int accountType)
         {
             string query = "";
@@ -48,9 +50,12 @@ namespace DataLayer
                 {
             new SqlParameter("@username", username)
         };
-            DataTable dt = DBConnect_DAL.GetDataTable(query, parameters);
+            DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
             return dt.Rows.Count > 0 ? dt.Rows[0]["Email"].ToString() : "";
         }
+
+        // Kiêm tra đăng nhập
+
 
         public TaiKhoan ValidateLoginDAL(TaiKhoan account)
         {
@@ -64,7 +69,7 @@ namespace DataLayer
                     new SqlParameter("@password", account.Pass_word)
                 };
 
-                DataTable dt = DBConnect_DAL.GetDataTable(query, parameters);
+                DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -84,6 +89,7 @@ namespace DataLayer
             return null;
         }
 
+        //Đổi mât khẩu
         public bool ChangePasswordDAL(string username, string password)
         {
             string query = "UPDATE TaiKhoan SET Mat_Khau = @password WHERE Ten_Dang_Nhap = @username";
@@ -92,7 +98,7 @@ namespace DataLayer
         new SqlParameter("@username", username),
         new SqlParameter("@password", password)
             };
-            return DBConnect_DAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
     }

@@ -8,9 +8,9 @@ using DOT;
 
 namespace BusinessLayer
 {
-    public class TaiKhoan_BUS
+    public class TaiKhoanBUS
     {
-        private TaiKhoan_DAl taiKhoanDAl = new TaiKhoan_DAl();
+        private TaiKhoanDAl taiKhoanDAl = new TaiKhoanDAl();
 
         public TaiKhoan ValidateLoginBUS(TaiKhoan TaiKhoan)
         {

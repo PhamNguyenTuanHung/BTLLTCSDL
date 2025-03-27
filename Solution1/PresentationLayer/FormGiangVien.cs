@@ -17,7 +17,7 @@ namespace PresentationLayer
     {
         private GiangVien gv;
         private TaiKhoan tk;
-        private GiangVien_BUS gvBUS;
+        private GiangVienBUS gvBUS;
         public FormGiangVien(GiangVien gv, TaiKhoan tk)
         {
             this.gv = gv;
@@ -89,7 +89,7 @@ namespace PresentationLayer
 
         public void GetLecturerInfo()
         {
-            gvBUS = new GiangVien_BUS();
+            gvBUS = new GiangVienBUS();
             DataTable dt = gvBUS.GetLecturerInfoTableBUS(gv.MSGV);
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
@@ -109,7 +109,7 @@ namespace PresentationLayer
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null) return; // Tránh lỗi nếu chưa chọn
-            GiangVien_BUS giangVienBL = new GiangVien_BUS();
+            GiangVienBUS giangVienBL = new GiangVienBUS();
             string malopmonhoc = comboBox1.SelectedValue.ToString(); // Lấy đúng giá trị môn học
             DataTable dt = new DataTable();
             dt = giangVienBL.GetStudentGradesBUS(gv.MSGV, malopmonhoc);
@@ -119,7 +119,7 @@ namespace PresentationLayer
         private void GetLecturerClassInfo()
         {
             
-            GiangVien_BUS gvBUS = new GiangVien_BUS();
+            GiangVienBUS gvBUS = new GiangVienBUS();
             DataTable dt = new DataTable();
             dt = gvBUS.GetClassListBUS(gv.MSGV);
             comboBox1.DataSource = dt;
@@ -134,21 +134,21 @@ namespace PresentationLayer
         public void StudentGrades(string msgv,string malopmonhoc)
         {
             DataTable dt = new DataTable();
-            GiangVien_BUS gvBUS = new GiangVien_BUS();
+            GiangVienBUS gvBUS = new GiangVienBUS();
             dt =gvBUS.GetStudentGradesBUS(msgv, malopmonhoc);
             dgvThongTinLop.DataSource = dt;
         }
 
         private void Schedule()
         {
-            GiangVien_BUS giangVienBL = new GiangVien_BUS();
+            GiangVienBUS giangVienBL = new GiangVienBUS();
             DataTable dt = giangVienBL.GetLecturerScheduleBUS(gv.MSGV);
             LoadData(dt, dgvTKB);
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             int TabIndex = tabControl.SelectedIndex;
-            SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
+            SinhVienBUS sinhVienBUS = new SinhVienBUS();
             DataTable dt = new DataTable();
             switch (TabIndex)
             {

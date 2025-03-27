@@ -15,7 +15,7 @@ namespace PresentationLayer
     public partial class FormDangNhap : Form
     {
         TaiKhoan taikhoan = new TaiKhoan();
-        TaiKhoan_BUS taikhoanBAL = new TaiKhoan_BUS();
+        TaiKhoanBUS taikhoanBAL = new TaiKhoanBUS();
         public FormDangNhap()
         {
             InitializeComponent();
@@ -43,13 +43,14 @@ namespace PresentationLayer
             if (CheckLogin == null)
             {
                 MessageBox.Show("Thông tin tài khoản mật khẩu không chính xác");
+                txt_MatKhau.Focus();
                 return;
             }
 
             if (CheckLogin.Type==1)
             { 
                 taikhoan.Type = 1;
-                SinhVien_BUS svBUS = new SinhVien_BUS();
+                SinhVienBUS svBUS = new SinhVienBUS();
                 SinhVien sv = svBUS.GetStudentDetailsBUS(txt_TaiKhoan.Text); 
                 Form form = new FormSinhVien(sv,taikhoan);
                 this.Hide();
@@ -60,7 +61,7 @@ namespace PresentationLayer
             if (CheckLogin.Type==2)
             {
                 taikhoan.Type = 2;
-                GiangVien_BUS gvBUS = new GiangVien_BUS();
+                GiangVienBUS gvBUS = new GiangVienBUS();
                 GiangVien gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
                 Form form = new FormGiangVien(gv,taikhoan);
                 this.Hide();
@@ -97,10 +98,9 @@ namespace PresentationLayer
 
         private void btnQuenMK_Click(object sender, EventArgs e)
         {
-            // Ẩn form hiện tại (Form Đăng Nhập)
+            
             this.Hide();
 
-            // Tạo và hiển thị Form Quên Mật Khẩu
             using (FormQuenMatKhau frm = new FormQuenMatKhau())
             {
                 DialogResult result = frm.ShowDialog();

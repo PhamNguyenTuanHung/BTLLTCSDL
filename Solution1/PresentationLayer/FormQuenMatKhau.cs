@@ -18,7 +18,7 @@ namespace PresentationLayer
     public partial class FormQuenMatKhau : Form
     {
         int loaiTaiKhoan;
-        TaiKhoan_BUS taiKhoan_BUS;
+        TaiKhoanBUS taiKhoanBUS;
         TaiKhoan taiKhoan;
         public FormQuenMatKhau()
         {
@@ -69,9 +69,9 @@ namespace PresentationLayer
                     return;
                 }
               
-                if (taiKhoan_BUS.CheckAccountExistsBUS(txtTaiKhoan.Text))
+                if (taiKhoanBUS.CheckAccountExistsBUS(txtTaiKhoan.Text))
                 {
-                    string Email = taiKhoan_BUS.GetAccountEmailBUS(txtTaiKhoan.Text, loaiTaiKhoan);
+                    string Email = taiKhoanBUS.GetAccountEmailBUS(txtTaiKhoan.Text, loaiTaiKhoan);
                     GuiEamil(Email);
                     btnNhapMa.Visible = true;
                     txtCode.Visible = true;
@@ -100,7 +100,7 @@ namespace PresentationLayer
         private void FormQuenMatKhau_Load(object sender, EventArgs e)
         {
             cbLoaiTK.SelectedIndexChanged -= cbLoaiTK_SelectedIndexChanged;
-            taiKhoan_BUS = new TaiKhoan_BUS();
+            taiKhoanBUS = new TaiKhoanBUS();
             var DanhSachLoaiTaiKhoan  = new List<dynamic>
             {
                 new { LoaiTaiKhoan = 1, TenTK = "Sinh viên" },
@@ -124,7 +124,7 @@ namespace PresentationLayer
             label5.Visible = false;
             label4.Visible = false;
             label2.Visible = false;
-            taiKhoan_BUS = new TaiKhoan_BUS();
+            taiKhoanBUS = new TaiKhoanBUS();
         }
 
         private void btnNhapMa_Click(object sender, EventArgs e)
@@ -148,7 +148,7 @@ namespace PresentationLayer
                 MessageBox.Show("Mật khẩu mới không khớp!");
                 return;
             }
-            if (taiKhoan_BUS.ChangePasswordBUS(txtTaiKhoan.Text, txtNewPass.Text) == true)
+            if (taiKhoanBUS.ChangePasswordBUS(txtTaiKhoan.Text, txtNewPass.Text) == true)
             {
                 MessageBox.Show("Đổi mật khẩu thành công!");
                 DialogResult = DialogResult.Yes;

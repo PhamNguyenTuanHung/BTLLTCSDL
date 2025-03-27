@@ -6,8 +6,9 @@ using DOT;
 
 namespace DataLayer
 {
-    public class SinhVien_DAL : TaiKhoan_DAl
+    public class SinhVienDAL : TaiKhoanDAl
     {
+        //Lấy thoog tin sinh viên
         public DataTable GetStudentInfoTableDAL(string mssv)
         {
             try
@@ -20,7 +21,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetDataTable(query,parameters);
+                return  DBConnectDAL.GetDataTable(query,parameters);
             }
             catch (Exception ex) // Lỗi khác
             {
@@ -32,7 +33,7 @@ namespace DataLayer
             try
             {
                 SinhVien sv = null;
-                using (SqlConnection conn = DBConnect_DAL.Connect())
+                using (SqlConnection conn =DBConnectDAL.Connect())
                 {
                     string query = "SELECT SinhVien.*,Lop.Ma_Lop FROM SinhVien, Lop, Khoa " +
                                    "WHERE SinhVien.MSSV = @mssv AND SinhVien.ma_lop = Lop.ma_lop ";
@@ -67,6 +68,7 @@ namespace DataLayer
             }
         }
 
+        //Lấy điểm của sinh viên
         public DataTable GetStudentGradesDAL(string mssv)
         {
             try
@@ -78,7 +80,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetDataTable(query,parameters);
+                return DBConnectDAL.GetDataTable(query,parameters);
             }
             catch (Exception ex)
             {
@@ -86,6 +88,7 @@ namespace DataLayer
             }
         }
 
+        //Lấy thời khóa biểu
         public DataTable GetStudentScheduleDAL(string mssv)
         {
             try
@@ -102,7 +105,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetDataTable(query, parameters);
+                return DBConnectDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -110,6 +113,7 @@ namespace DataLayer
             }
         }
 
+        //Đăng kí môn
         public bool RegisterCourseDAL(string mssv, string malopmonhoc, DateTime date)
         {
             try
@@ -121,7 +125,7 @@ namespace DataLayer
                     new SqlParameter("@MaLop", malopmonhoc),
                     new SqlParameter("@NgayDK", date)
                     };
-                return DBConnect_DAL.ExecuteNonQuery(query,parameters) > 0;
+                return DBConnectDAL.ExecuteNonQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -129,7 +133,7 @@ namespace DataLayer
             }
         }
 
-
+        //Hủy đăng kí môn
         public bool UnregisterCourseDAL(string mssv,string malopmonhoc)
         {
             try
@@ -140,13 +144,15 @@ namespace DataLayer
                     new SqlParameter("@MSSV", mssv),
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
-                return DBConnect_DAL.ExecuteNonQuery(query, parameters) > 0;
+                return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        //Danh sách mônn đã đăng kí của sinh viên
         public DataTable GetRegisteredCoursesDAL(string mssv)
         {
             try
@@ -160,7 +166,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnect_DAL.GetDataTable(query, parameters);
+                return DBConnectDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -168,6 +174,7 @@ namespace DataLayer
             }
         }
 
+        //Danh sách môn học có thể đăng kí
         public DataTable GetAvailableCoursesDAL()
         {
             try
@@ -183,7 +190,7 @@ namespace DataLayer
                     "\r\n    AND LopMo.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +
                     "\r\n    AND LopMonHoc.Ma_Mon_Hoc = MonHoc.Ma_Mon_Hoc " +
                     "\r\n    AND ThoiKhoaBieu.Ma_Lop_Mon_Hoc = LopMo.Ma_Lop_Mon_Hoc;";
-                 return DBConnect_DAL.GetDataTable(query);
+                 return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
@@ -191,6 +198,7 @@ namespace DataLayer
             }
         }
 
+        //ịch thi
         public DataTable GetExamScheduleDAL(string mssv)
         {
             try
@@ -203,7 +211,7 @@ namespace DataLayer
                                 {
                     new SqlParameter("@mssv",mssv)
                                 };
-                return DBConnect_DAL.GetDataTable(query, parameters);
+                return DBConnectDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {

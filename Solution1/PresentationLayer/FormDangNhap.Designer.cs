@@ -42,7 +42,7 @@ namespace PresentationLayer
             // 
             // btn_DangNhap
             // 
-            this.btn_DangNhap.Location = new System.Drawing.Point(368, 274);
+            this.btn_DangNhap.Location = new System.Drawing.Point(298, 264);
             this.btn_DangNhap.Name = "btn_DangNhap";
             this.btn_DangNhap.Size = new System.Drawing.Size(99, 35);
             this.btn_DangNhap.TabIndex = 0;
@@ -52,7 +52,7 @@ namespace PresentationLayer
             // 
             // btn_Thoat
             // 
-            this.btn_Thoat.Location = new System.Drawing.Point(508, 274);
+            this.btn_Thoat.Location = new System.Drawing.Point(440, 264);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(90, 35);
             this.btn_Thoat.TabIndex = 1;
@@ -62,14 +62,14 @@ namespace PresentationLayer
             // 
             // txt_TaiKhoan
             // 
-            this.txt_TaiKhoan.Location = new System.Drawing.Point(368, 150);
+            this.txt_TaiKhoan.Location = new System.Drawing.Point(298, 140);
             this.txt_TaiKhoan.Name = "txt_TaiKhoan";
             this.txt_TaiKhoan.Size = new System.Drawing.Size(233, 22);
             this.txt_TaiKhoan.TabIndex = 2;
             // 
             // txt_MatKhau
             // 
-            this.txt_MatKhau.Location = new System.Drawing.Point(368, 207);
+            this.txt_MatKhau.Location = new System.Drawing.Point(298, 197);
             this.txt_MatKhau.Name = "txt_MatKhau";
             this.txt_MatKhau.PasswordChar = '*';
             this.txt_MatKhau.Size = new System.Drawing.Size(233, 22);
@@ -78,7 +78,7 @@ namespace PresentationLayer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(269, 155);
+            this.label1.Location = new System.Drawing.Point(199, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 4;
@@ -87,7 +87,7 @@ namespace PresentationLayer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(272, 207);
+            this.label2.Location = new System.Drawing.Point(202, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 5;
@@ -96,7 +96,7 @@ namespace PresentationLayer
             // CheckBoxHienThiMK
             // 
             this.CheckBoxHienThiMK.AutoSize = true;
-            this.CheckBoxHienThiMK.Location = new System.Drawing.Point(369, 243);
+            this.CheckBoxHienThiMK.Location = new System.Drawing.Point(299, 233);
             this.CheckBoxHienThiMK.Name = "CheckBoxHienThiMK";
             this.CheckBoxHienThiMK.Size = new System.Drawing.Size(130, 20);
             this.CheckBoxHienThiMK.TabIndex = 6;
@@ -107,7 +107,7 @@ namespace PresentationLayer
             // btnQuenMK
             // 
             this.btnQuenMK.AutoSize = true;
-            this.btnQuenMK.Location = new System.Drawing.Point(369, 316);
+            this.btnQuenMK.Location = new System.Drawing.Point(299, 306);
             this.btnQuenMK.Name = "btnQuenMK";
             this.btnQuenMK.Size = new System.Drawing.Size(232, 26);
             this.btnQuenMK.TabIndex = 7;

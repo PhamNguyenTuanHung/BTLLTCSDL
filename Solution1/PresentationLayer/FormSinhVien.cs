@@ -16,23 +16,23 @@ namespace PresentationLayer
 {
     public partial class FormSinhVien : Form
     {
-        private SinhVien sv;
-        private SinhVien_BUS svBus;
-        private TaiKhoan tk;
+        private SinhVien sinhVien;
+        private SinhVienBUS sVBus;
+        private TaiKhoan taiKhoan;
 
         List<string> ThemMonDK, XoaMonDk;
 
         public FormSinhVien(SinhVien sinhvien, TaiKhoan taikhoan)
         {
             InitializeComponent();
-            sv = sinhvien;
-            tk = taikhoan;
+            sinhVien = sinhvien;
+            taiKhoan = taikhoan;
             ThongTinSVPL();
         }
         private void ThongTinSVPL()
         {
-            svBus = new SinhVien_BUS();
-            DataTable dt = svBus.GetStudentInfoTableBUS(sv.MSSV);
+            sVBus = new SinhVienBUS();
+            DataTable dt = sVBus.GetStudentInfoTableBUS(sinhVien.MSSV);
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
                 lbMSSV.Text = dt.Rows[0]["MSSV"].ToString();
@@ -154,22 +154,22 @@ namespace PresentationLayer
                     ThongTinSVPL();
                     break;
                 case 1:
-                    dt =svBus.GetStudentGradesBUS(sv.MSSV);
+                    dt =sVBus.GetStudentGradesBUS(sinhVien.MSSV);
                     LoadData(dgvDiem,dt);
                     break;
                 case 2:
-                    dt = svBus.GetStudentScheduleBUS(sv.MSSV);
+                    dt = sVBus.GetStudentScheduleBUS(sinhVien.MSSV);
                     LoadData(dgvTKB,dt);
                     break;
                 case 3:
-                    dt = svBus.GetExamScheduleBUS(sv.MSSV);
+                    dt = sVBus.GetExamScheduleBUS(sinhVien.MSSV);
                     LoadData(dgvLichThi, dt);
                     break;
                 case 4:
-                    dt = svBus.GetAvailableCoursesBUS();
+                    dt = sVBus.GetAvailableCoursesBUS();
                     dt.Columns.Add("Chon", typeof(bool));
                     DataTable dt1= new DataTable();
-                    dt1=svBus.GetRegisteredCoursesBUS(sv.MSSV);
+                    dt1=sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
 
                     foreach (DataRow row in dt.Rows)
                     {
@@ -255,19 +255,19 @@ namespace PresentationLayer
         {
             foreach (string maLop in danhSachDangKy)
             {
-                svBus.RegisterCourseBUS(sv.MSSV, maLop, DateTime.Now);
+                sVBus.RegisterCourseBUS(sinhVien.MSSV, maLop, DateTime.Now);
             }
 
             foreach (string maLop in danhSachHuyDangKy)
             {
-                svBus.UnregisterCourseBUS(sv.MSSV, maLop);
+                sVBus.UnregisterCourseBUS(sinhVien.MSSV, maLop);
             }
 
             MessageBox.Show("Cập nhật đăng ký môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DataTable dt = svBus.GetAvailableCoursesBUS();
+            DataTable dt = sVBus.GetAvailableCoursesBUS();
             dt.Columns.Add("Chon", typeof(bool));
             DataTable dt1 = new DataTable();
-            dt1 = svBus.GetRegisteredCoursesBUS(sv.MSSV);
+            dt1 = sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -290,10 +290,10 @@ namespace PresentationLayer
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            FormDoiMatKhau form = new FormDoiMatKhau(sv, tk);
+            FormDoiMatKhau form = new FormDoiMatKhau(sinhVien, taiKhoan);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tk.Pass_word = form.newPass; // Cập nhật mật khẩu mới
+                taiKhoan.Pass_word = form.newPass; // Cập nhật mật khẩu mới
             }
 
         }

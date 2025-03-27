@@ -6,9 +6,9 @@ using DOT;
 
 namespace BusinessLayer
 {
-    public class GiangVien_BUS
+    public class GiangVienBUS
     { 
-        private readonly GiangVien_DAL gvDAL = new GiangVien_DAL();
+        private readonly GiangVienDAL gvDAL = new GiangVienDAL();
 
         public GiangVien GetLecturerInfoBUS(string msgv)
         {

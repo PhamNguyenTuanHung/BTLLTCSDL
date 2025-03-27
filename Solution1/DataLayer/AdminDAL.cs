@@ -10,112 +10,114 @@ namespace DataLayer
 {
     public class AdminDAL
     {
-        /*public DataTable DanhSachGiangVienDAl()
+        public DataTable GetLecturersListDAL()
         {
-			try
-			{
+            try
+            {
                 string query = "SELECT * FROM GiaoVien ";
-                return DBConnect_DAL.GetDataTable(query);
-
+                return DBConnectDAL.GetDataTable(query);
             }
-			catch ( Exception ex)
-			{
-
-				throw ex;
-			}
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-        public DataTable DanhSachSinhVienDAl()
+
+        public DataTable GetStudentsListDAL()
         {
             try
             {
                 string query = "SELECT * FROM SinhVien ";
-                return DBConnect_DAL.GetDataTable(query);
-
+                return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
-        public DataTable DanhSachMonHocDAl()
+
+        public DataTable GetSubjectsListDAL()
         {
             try
             {
                 string query = "SELECT * FROM MonHoc ";
-                return DBConnect_DAL.GetDataTable(query);
-
+                return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public DataTable DanhSachLopMonHocDAl()
+        public DataTable GetClassListDAL()
         {
             try
             {
                 string query = "SELECT * FROM LopMonHoc ";
-                return DBConnect_DAL.GetDataTable(query);
-
+                return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public DataTable DanhSachLichThiDAl()
+        public DataTable GetExamScheduleDAL()
         {
             try
             {
                 string query = "SELECT * FROM LichThi ";
-                return DBConnect_DAL.GetDataTable(query);
-
+                return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public DataTable DanhSachDiemSVDAl()
+        public DataTable GetStudentGradesDAL()
         {
             try
             {
                 string query = "SELECT * FROM Diem ";
-                return DBConnect_DAL.GetDataTable(query);
-
+                return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public bool ThemGiangVienDAL()
+        public DataTable GetScheduleDAL()
         {
             try
             {
-
+                string query = "SELECT * FROM ThoiKhoaBieu";
+                return DBConnectDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
+        public bool AddLecturerDAL()
+        {
+            try
+            {
+                // Code to add lecturer
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
             return false;
-        }*/
+        }
 
-        public DataTable GetDataTableDAL(string tenBang)
+        public DataTable GetDataTableDAL(string tableName)
         {
-            string query = $"SELECT * FROM {tenBang} ";
-            return DBConnect_DAL.GetDataTable(query) ;
+            string query = $"SELECT * FROM {tableName} ";
+            return DBConnectDAL.GetDataTable(query);
         }
 
     }

@@ -18,20 +18,108 @@ namespace BusinessLayer
             return adminDAL.GetDataTableDAL(tenBang);
         }
 
-        public bool Insert<T>( T ob) where T : class, new()
+        public DataTable GetLecturersListBUS()
         {
-            return Repository<T>.InsertInformation(ob);
+            try
+            {
+                
+                return adminDAL.GetLecturersListDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public bool Update<T>(T ob,string condition) where T :class , new()
+        public DataTable GetStudentsListBUS()
         {
-            return Repository<T>.UpdateInformation( ob,condition);
+            try
+            {
+
+                return adminDAL.GetStudentsListDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public bool Delete<T>(T entity) where T : class, new()
+        public DataTable GetSubjectsListBUS()
         {
-            return Repository<T>.DeleteInformation (entity);
+            try
+            {
+                return adminDAL.GetSubjectsListDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+        public DataTable GetClassListBUS()
+        {
+            try
+            {
+                return adminDAL.GetClassListDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetScheduleBUS()
+        {
+            try
+            {
+                return adminDAL.GetScheduleDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetExamScheduleBUS()
+        {
+            try
+            {
+
+                return adminDAL.GetExamScheduleDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetStudentGradesBUS()
+        {
+            try
+            {
+                return adminDAL.GetStudentGradesDAL();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /*
+                public bool Insert<T>( T ob) where T : class, new()
+                {
+                    return Repository<T>.InsertInformation(ob);
+                }
+
+                public bool Update<T>(T ob,string condition) where T :class , new()
+                {
+                    return Repository<T>.UpdateInformation( ob,condition);
+                }
+
+                public bool Delete<T>(T entity) where T : class, new()
+                {
+                    return Repository<T>.DeleteInformation (entity);
+                }*/
 
 
     }

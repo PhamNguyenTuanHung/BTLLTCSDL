@@ -57,24 +57,24 @@ namespace PresentationLayer
             }
             if (tk.Type == 1)
             {
-                SinhVien_BUS sinhVienBUS = new SinhVien_BUS();
+                SinhVienBUS sinhVienBUS = new SinhVienBUS();
                 if (sinhVienBUS.ChangePasswordBUS(sv.MSSV, txtNewPass.Text) == true)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!");
                     newPass = txtNewPass.Text;
-                    this.DialogResult = DialogResult.OK; // Đóng form và báo về form chính
+                    this.DialogResult = DialogResult.OK; 
                     this.Close();
                 }
             }
 
             if (tk.Type == 2)
             {
-                GiangVien_BUS giangVien_BUS = new GiangVien_BUS();
-                if (giangVien_BUS.ChangePasswordBUS(gv.MSGV, txtNewPass.Text) == true)
+                GiangVienBUS giangVienBUS = new GiangVienBUS();
+                if (giangVienBUS.ChangePasswordBUS(gv.MSGV, txtNewPass.Text) == true)
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!");
                     newPass = txtNewPass.Text;
-                    this.DialogResult = DialogResult.OK; // Đóng form và báo về form chính
+                    this.DialogResult = DialogResult.OK; 
                     this.Close();
                 }
             }
