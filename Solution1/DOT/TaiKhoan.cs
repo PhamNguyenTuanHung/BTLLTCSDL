@@ -6,21 +6,38 @@ using System.Threading.Tasks;
 
 namespace DOT
 {
-    public class TaiKhoan
+    public class TaiKhoan :IThucThe
     {
-        private string user_name;
-        private string pass_word;
-        private int type;
+        private string tenDangNhap;
+        private string matKhau;
+        private int loaiTaiKhoan;
+        private int trangThai;
         public TaiKhoan() { }
-        public TaiKhoan(string user_name, string pass_word, int type)
+        public TaiKhoan(string taiKhoan, string matKhau, int loaiTaiKhoan, int trangThai)
         {
-            this.User_name = user_name;
-            this.Pass_word = pass_word;
-            this.type = type;
+            this.tenDangNhap = taiKhoan;
+            this.matKhau = matKhau;
+            this.loaiTaiKhoan = loaiTaiKhoan;
+            this.trangThai = trangThai;
         }
 
-        public string User_name { get=> this.user_name; set=> user_name =value; }
-        public string Pass_word { get=>pass_word; set=>pass_word=value; }
-        public int Type { get=>type; set=>type=value; }   
+        public string TenDangNhap { get=> this.tenDangNhap; set=> tenDangNhap =value; }
+        public string MatKhau { get=>matKhau; set => matKhau =value; }
+        public int LoaiTaiKhoan { get => loaiTaiKhoan; set =>loaiTaiKhoan=value; }
+
+        public int TrangThai { get=>trangThai; set=>trangThai=value; }
+
+
+        public string LayTenThucThe() => "Tài khoản";
+        public Dictionary<string, object> LayDuLieuThucThe()
+        {
+            return new Dictionary<string, object>
+        {
+            { "Tên đăng nhập ", tenDangNhap  },
+            { "Mật khẩu", matKhau },
+            {"Loại tài khoản",loaiTaiKhoan },
+                {"Trạng thái",trangThai }
+        };
+        }
     }
 }

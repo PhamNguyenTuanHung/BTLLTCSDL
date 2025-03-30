@@ -26,7 +26,7 @@ namespace PresentationLayer
             label1.Visible = false;
 
             txtOldPass.Visible = false;
-            txtOldPass.Text=tk.Pass_word;
+            txtOldPass.Text=tk.MatKhau;
         }
         public FormDoiMatKhau(SinhVien sv, TaiKhoan tk)
         {
@@ -44,7 +44,7 @@ namespace PresentationLayer
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            if (txtOldPass.Text != tk.Pass_word)
+            if (txtOldPass.Text != tk.MatKhau)
             {
                 MessageBox.Show("Mật khẩu không chính xác");
                 return;
@@ -55,7 +55,7 @@ namespace PresentationLayer
                 MessageBox.Show("Mật khẩu mới không khớp!");
                 return;
             }
-            if (tk.Type == 1)
+            if (tk.LoaiTaiKhoan == 1)
             {
                 SinhVienBUS sinhVienBUS = new SinhVienBUS();
                 if (sinhVienBUS.ChangePasswordBUS(sv.MSSV, txtNewPass.Text) == true)
@@ -67,7 +67,7 @@ namespace PresentationLayer
                 }
             }
 
-            if (tk.Type == 2)
+            if (tk.LoaiTaiKhoan == 2)
             {
                 GiangVienBUS giangVienBUS = new GiangVienBUS();
                 if (giangVienBUS.ChangePasswordBUS(gv.MSGV, txtNewPass.Text) == true)

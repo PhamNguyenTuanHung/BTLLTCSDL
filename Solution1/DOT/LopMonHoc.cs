@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DOT
 {
-    public class LopHoc
+    public class LopMonHoc : IThucThe
     {
         string malopmonhoc;
         string mamonhoc;
@@ -15,8 +15,8 @@ namespace DOT
         string makhoa;
         int sldangkytoida;
 
-        public LopHoc() { }
-        public LopHoc(string malopmonhoc, string mamonhoc, string msgv, string mahocki, string makhoa, int sldangkytoida)
+        public LopMonHoc() { }
+        public LopMonHoc(string malopmonhoc, string mamonhoc, string msgv, string mahocki, string makhoa, int sldangkytoida)
         {
             this.malopmonhoc = malopmonhoc;
             this.mamonhoc = mamonhoc;
@@ -31,8 +31,23 @@ namespace DOT
         public string MSGV { get => msgv; set => msgv = value; }
         public string MaHocKi { get => mahocki; set => mahocki = value; }
         public string MaKhoa { get => makhoa; set => makhoa = value; }
-
         public int SLDK { get => sldangkytoida;set => sldangkytoida = value;}
+
+        //Implement Interface
+        public string LayTenThucThe() => "Lớp Môn Học";
+
+        public Dictionary<string, object> LayDuLieuThucThe()
+        {
+            return new Dictionary<string, object>
+        {
+            { "Mã Lớp Môn Học", malopmonhoc },
+            { "Mã Môn Học", mamonhoc },
+            { "Mã Giảng Viên", msgv },
+            { "Mã Học Kỳ", mahocki },
+            { "Mã Khoa", makhoa },
+            { "Số Lượng ĐK Tối Đa", sldangkytoida }
+        };
+        }
 
 
     }

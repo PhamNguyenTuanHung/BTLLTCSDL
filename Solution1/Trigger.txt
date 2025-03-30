@@ -1,0 +1,75 @@
+
+//Thêm sinh viên tự thêm tài khoản
+CREATE TRIGGER trg_InsertStudentAccount
+ON SinhVien
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO TaiKhoan (Ten_Dang_Nhap, Mat_Khau, Loai_Tai_Khoan,Trang_Thai)
+    SELECT 
+        i.MSSV,               -- Tên đăng nhập là MSSV
+        'pass123',             -- Mật khẩu mặc định (có thể hash trước)
+        1,            -- Loại tài khoản mặc định
+		1
+    FROM inserted i;
+END;
+
+
+//Thêm giáo viên tự thêm tài khoản
+CREATE TRIGGER trg_InsertLecturerAccount
+ON GiangVien
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO TaiKhoan (Ten_Dang_Nhap, Mat_Khau, Loai_Tai_Khoan,Trang_Thai)
+    SELECT 
+        i.MSGV,               -- Tên đăng nhập là MSGV
+        i.MSGV,               -- Tên đăng nhập là MSGV
+        'pass123',             -- Mật khẩu mặc định (có thể hash trước)
+        2,            -- Loại tài khoản mặc định
+		1-- Trạng thái mặc định
+    FROM inserted i;
+END;
+
+//Khi đăng kí môn tự thêm vào bảng điểm vs giá trị null
+CREATE trigger trg_AutoInsertDiem  
+ON DangKy  AFTER INSERT  
+AS  
+BEGIN      
+SET NOCOUNT ON;        
+INSERT INTO Diem (MSSV,Ma_Mon_Hoc, Ma_Hoc_Ky,Lan_Thi,Diem_Qua_Trinh, Diem_Thi, Diem_Tong_Ket)      
+SELECT I.MSSV,LopMonHoc.Ma_Mon_Hoc,Ma_Hoc_Ky,1,NULL,NULL,NULL      
+FROM inserted i,LopMonHoc   
+WHERE i.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc   ;  
+END;
+
+//Xóa sinh viên thì xóa tài khoản 
+CREATE TRIGGER trg_DeleteStudentAccount
+ON SinhVien
+AFTER DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM TaiKhoan
+    WHERE Ten_Dang_Nhap IN (SELECT MSSV FROM deleted);
+END;
+
+
+//Xóa giảng viên thì xóa tài khoản
+CREATE TRIGGER trg_DeleteLecturerAccount
+ON GiangVien
+AFTER DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM TaiKhoan
+    WHERE Ten_Dang_Nhap IN (SELECT MSGV FROM deleted);
+END;
+
+
+
+

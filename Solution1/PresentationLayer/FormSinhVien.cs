@@ -293,7 +293,7 @@ namespace PresentationLayer
             FormDoiMatKhau form = new FormDoiMatKhau(sinhVien, taiKhoan);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                taiKhoan.Pass_word = form.newPass; // Cập nhật mật khẩu mới
+                taiKhoan.MatKhau = form.newPass; // Cập nhật mật khẩu mới
             }
 
         }

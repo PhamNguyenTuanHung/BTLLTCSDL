@@ -65,8 +65,8 @@ namespace DataLayer
 
                 SqlParameter[] parameters =
                 {
-                    new SqlParameter("@username", account.User_name),
-                    new SqlParameter("@password", account.Pass_word)
+                    new SqlParameter("@username", account.TenDangNhap),
+                    new SqlParameter("@password", account.MatKhau)
                 };
 
                 DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
@@ -75,9 +75,9 @@ namespace DataLayer
                 {
                     return new TaiKhoan
                     {
-                        User_name = dt.Rows[0]["Ten_Dang_Nhap"].ToString(),
-                        Pass_word = dt.Rows[0]["Mat_Khau"].ToString(),
-                        Type = Convert.ToInt32(dt.Rows[0]["Loai_Tai_Khoan"])
+                        TenDangNhap = dt.Rows[0]["Ten_Dang_Nhap"].ToString(),
+                        MatKhau = dt.Rows[0]["Mat_Khau"].ToString(),
+                        LoaiTaiKhoan = Convert.ToInt32(dt.Rows[0]["Loai_Tai_Khoan"])
                     };
                 }
             }

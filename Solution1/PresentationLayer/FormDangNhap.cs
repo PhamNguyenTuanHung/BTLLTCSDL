@@ -36,8 +36,8 @@ namespace PresentationLayer
                 return;
             }
 
-            taikhoan.User_name = txt_TaiKhoan.Text;
-            taikhoan.Pass_word = txt_MatKhau.Text;
+            taikhoan.TenDangNhap = txt_TaiKhoan.Text;
+            taikhoan.MatKhau = txt_MatKhau.Text;
 
             TaiKhoan CheckLogin = taikhoanBAL.ValidateLoginBUS(taikhoan);
             if (CheckLogin == null)
@@ -47,9 +47,9 @@ namespace PresentationLayer
                 return;
             }
 
-            if (CheckLogin.Type==1)
+            if (CheckLogin.LoaiTaiKhoan ==1)
             { 
-                taikhoan.Type = 1;
+                taikhoan.LoaiTaiKhoan = 1;
                 SinhVienBUS svBUS = new SinhVienBUS();
                 SinhVien sv = svBUS.GetStudentDetailsBUS(txt_TaiKhoan.Text); 
                 Form form = new FormSinhVien(sv,taikhoan);
@@ -58,9 +58,9 @@ namespace PresentationLayer
                 this.Close();
             }   
             
-            if (CheckLogin.Type==2)
+            if (CheckLogin.LoaiTaiKhoan ==2)
             {
-                taikhoan.Type = 2;
+                taikhoan.LoaiTaiKhoan = 2;
                 GiangVienBUS gvBUS = new GiangVienBUS();
                 GiangVien gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
                 Form form = new FormGiangVien(gv,taikhoan);
@@ -68,8 +68,13 @@ namespace PresentationLayer
                 form.ShowDialog();
                 this.Close();
             }    
-            if (CheckLogin.Type==3)
+            if (CheckLogin.LoaiTaiKhoan ==3)
             {
+                taikhoan.LoaiTaiKhoan = 3;
+                FormAdmin formAdmin = new FormAdmin();
+                this.Hide();
+                formAdmin.ShowDialog();
+                this.Close();
                 return;
             }    
             

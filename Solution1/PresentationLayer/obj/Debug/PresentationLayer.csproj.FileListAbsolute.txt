@@ -120,3 +120,4 @@ C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\bin\Debug\ru\Microsoft.D
 C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.ucChucNangChung.resources
+C:\Users\BLUE\Desktop\QLSV1\Solution1\PresentationLayer\obj\Debug\PresentationLayer.FormThemChung.resources

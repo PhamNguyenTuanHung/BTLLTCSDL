@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DOT
 {
-    public class MonHoc
+    public class MonHoc : IThucThe
     {
-        private string mamonhoc;
+        string mamonhoc;
         string tenmonhoc;
         int sotinchi;
 
@@ -16,13 +16,26 @@ namespace DOT
 
         public MonHoc(string mamonhoc, string tenmonhoc, int sotinchi)
         {
-            this.Mamonhoc = mamonhoc;
-            this.Tenmonhoc = tenmonhoc;
-            this.Sotinchi = sotinchi;
+            this.mamonhoc = mamonhoc;
+            this.tenmonhoc = tenmonhoc;
+            this.sotinchi = sotinchi;
         }
 
-        public string Mamonhoc { get => mamonhoc; set => mamonhoc = value; }
-        public string Tenmonhoc { get => tenmonhoc; set => tenmonhoc = value; }
-        public int Sotinchi { get => sotinchi; set => sotinchi = value; }
+        public string MaMonHoc { get => mamonhoc; set => mamonhoc = value; }
+        public string TenMonHoc { get => tenmonhoc; set => tenmonhoc = value; }
+        public int SoTinChi { get => sotinchi; set => sotinchi = value; }
+
+
+        public string LayTenThucThe() => "Môn Học";
+
+        public Dictionary<string, object> LayDuLieuThucThe()
+        {
+            return new Dictionary<string, object>
+        {
+            { "Mã Môn Học", mamonhoc },
+            { "Tên Môn Học", tenmonhoc },
+            { "Số Tín Chỉ", sotinchi }
+        };
+        }
     }
 }

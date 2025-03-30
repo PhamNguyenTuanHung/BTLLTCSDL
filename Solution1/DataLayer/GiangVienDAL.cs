@@ -17,7 +17,7 @@ namespace DataLayer
                 GiangVien gv = null;
                 using (SqlConnection conn = DBConnectDAL.Connect())
                 {
-                    string query = "SELECT GiaoVien.*,Lop.Ma_Lop FROM GiaoVien,Lop" +
+                    string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiaoVien,Lop" +
                         " WHERE Lop.MSGVCN=@msgv";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@msgv", msgv);
@@ -30,13 +30,12 @@ namespace DataLayer
                             gv = new GiangVien()
                             {
                                 MSGV = reader["MSGV"].ToString(),
-                                HoTenGV = reader["Ten_Day_Du"].ToString(),
+                                HoTen = reader["Ten_Day_Du"].ToString(),
                                 GioiTinh = reader["Gioi_Tinh"].ToString(),
                                 NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]),
                                 Email = reader["Email"].ToString(),
                                 DiaChi = reader["Dia_Chi"].ToString(),
                                 MaKhoa = reader["Ma_Khoa"].ToString(),
-                                MaLop = reader["Ma_Lop"].ToString()
                             };
                         }
                     }
@@ -48,7 +47,7 @@ namespace DataLayer
         {
             try
             {
-                string query = "SELECT GiaoVien.*,Lop.Ma_Lop FROM GiaoVien,Lop"
+                string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiaoVien,Lop"
                     +" WHERE Lop.MSGVCN=@msgv";
                 SqlParameter[] parameters = new SqlParameter[]
                 {

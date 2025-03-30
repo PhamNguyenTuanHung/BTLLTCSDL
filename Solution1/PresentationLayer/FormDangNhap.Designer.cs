@@ -45,7 +45,7 @@ namespace PresentationLayer
             this.btn_DangNhap.Location = new System.Drawing.Point(298, 264);
             this.btn_DangNhap.Name = "btn_DangNhap";
             this.btn_DangNhap.Size = new System.Drawing.Size(99, 35);
-            this.btn_DangNhap.TabIndex = 0;
+            this.btn_DangNhap.TabIndex = 3;
             this.btn_DangNhap.Text = "Đăng nhập";
             this.btn_DangNhap.UseVisualStyleBackColor = true;
             this.btn_DangNhap.Click += new System.EventHandler(this.btn_DangNhap_Click);
@@ -55,7 +55,7 @@ namespace PresentationLayer
             this.btn_Thoat.Location = new System.Drawing.Point(440, 264);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(90, 35);
-            this.btn_Thoat.TabIndex = 1;
+            this.btn_Thoat.TabIndex = 4;
             this.btn_Thoat.Text = "Thoát";
             this.btn_Thoat.UseVisualStyleBackColor = true;
             this.btn_Thoat.Click += new System.EventHandler(this.btn_Thoat_Click);
@@ -65,7 +65,7 @@ namespace PresentationLayer
             this.txt_TaiKhoan.Location = new System.Drawing.Point(298, 140);
             this.txt_TaiKhoan.Name = "txt_TaiKhoan";
             this.txt_TaiKhoan.Size = new System.Drawing.Size(233, 22);
-            this.txt_TaiKhoan.TabIndex = 2;
+            this.txt_TaiKhoan.TabIndex = 0;
             // 
             // txt_MatKhau
             // 
@@ -73,7 +73,7 @@ namespace PresentationLayer
             this.txt_MatKhau.Name = "txt_MatKhau";
             this.txt_MatKhau.PasswordChar = '*';
             this.txt_MatKhau.Size = new System.Drawing.Size(233, 22);
-            this.txt_MatKhau.TabIndex = 3;
+            this.txt_MatKhau.TabIndex = 1;
             // 
             // label1
             // 
@@ -99,7 +99,7 @@ namespace PresentationLayer
             this.CheckBoxHienThiMK.Location = new System.Drawing.Point(299, 233);
             this.CheckBoxHienThiMK.Name = "CheckBoxHienThiMK";
             this.CheckBoxHienThiMK.Size = new System.Drawing.Size(130, 20);
-            this.CheckBoxHienThiMK.TabIndex = 6;
+            this.CheckBoxHienThiMK.TabIndex = 2;
             this.CheckBoxHienThiMK.Text = "Hiển thị mật khẩu";
             this.CheckBoxHienThiMK.UseVisualStyleBackColor = true;
             this.CheckBoxHienThiMK.CheckedChanged += new System.EventHandler(this.CheckBoxHienThiMK_CheckedChanged);
@@ -110,7 +110,7 @@ namespace PresentationLayer
             this.btnQuenMK.Location = new System.Drawing.Point(299, 306);
             this.btnQuenMK.Name = "btnQuenMK";
             this.btnQuenMK.Size = new System.Drawing.Size(232, 26);
-            this.btnQuenMK.TabIndex = 7;
+            this.btnQuenMK.TabIndex = 5;
             this.btnQuenMK.Text = "Quên mật khẩu";
             this.btnQuenMK.UseVisualStyleBackColor = true;
             this.btnQuenMK.Click += new System.EventHandler(this.btnQuenMK_Click);

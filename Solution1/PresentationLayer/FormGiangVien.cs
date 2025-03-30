@@ -213,7 +213,7 @@ namespace PresentationLayer
             this.Enabled = false;
             if (formDoiMatKhau.ShowDialog() == DialogResult.OK)
             {
-                tk.Pass_word = formDoiMatKhau.newPass; // Cập nhật mật khẩu mới
+                tk.MatKhau = formDoiMatKhau.newPass; // Cập nhật mật khẩu mới
             }
             this.Enabled = true;
         }
