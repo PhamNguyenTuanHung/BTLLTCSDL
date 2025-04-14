@@ -49,13 +49,13 @@ namespace DataLayer
                             sv = new SinhVien()
                             {
                                 MSSV = reader["MSSV"].ToString(),
-                                HoTenSV = reader["Ho_Ten"].ToString(),
+                                HoTen = reader["Ho_Ten"].ToString(),
                                 GioiTinh = reader["Gioi_Tinh"].ToString(),
                                 NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]),
                                 Email = reader["Email"].ToString(),
                                 DiaChi = reader["Dia_Chi"].ToString(),
                                 KhoaHoc = reader["Khoa_Hoc"].ToString(),
-                                DRL = Convert.ToDouble(reader["Diem_Ren_Luyen"]),
+                                DiemRenLuyen = Convert.ToDouble(reader["Diem_Ren_Luyen"]),
                                 MaLop = reader["Ma_Lop"].ToString(),
                             };
                         }

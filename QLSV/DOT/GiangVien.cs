@@ -19,7 +19,7 @@ namespace DOT
         string diachi;
         string makhoa;
         byte[] anh;
-        public GiangVien(string msgv, string hotengv, string gioitinh, DateTime ngaysinh, string email, string diachi, string makhoa, byte[] anh, string mSGV, string hoTen, string gioiTinh, DateTime ngaySinh, string diaChi, string maKhoa)
+        public GiangVien(string msgv, string hotengv, string gioitinh, DateTime ngaysinh, string email, string diachi, string makhoa, byte[]anh)
         {
             this.msgv = msgv;
             this.hoten = hotengv;

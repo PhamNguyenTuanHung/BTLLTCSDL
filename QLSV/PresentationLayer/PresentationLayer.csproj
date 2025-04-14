@@ -266,6 +266,12 @@
     <Compile Include="FormThemDuLieu.Designer.cs">
       <DependentUpon>FormThemDuLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormThemGiangVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThemGiangVien.Designer.cs">
+      <DependentUpon>FormThemGiangVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormThemSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormThemDuLieu.resx">
       <DependentUpon>FormThemDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThemGiangVien.resx">
+      <DependentUpon>FormThemGiangVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormThemSinhVien.resx">
       <DependentUpon>FormThemSinhVien.cs</DependentUpon>

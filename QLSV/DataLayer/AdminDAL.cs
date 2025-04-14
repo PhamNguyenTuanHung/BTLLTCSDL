@@ -197,20 +197,21 @@ namespace DataLayer
         //Các hàm thêm dữ liệu
         public bool InsertStudentDAL(SinhVien sv)
         {
-
-            string query = "INSERT INTO SinhVien (MSSV, Ten_Day_Du, Gioi_Tinh, Ngay_Sinh, Email, Dia_Chi, Khoa_Hoc, Diem_Ren_Luyen, Ma_Lop) " +
-                           "VALUES (@MSSV, @HoTenSV, @GioiTinh, @NgaySinh, @Email, @DiaChi, @KhoaHoc, @DRL, @MaLop)";
+            
+            string query = "INSERT INTO SinhVien " +
+                           "VALUES (@MSSV, @HoTenSV, @GioiTinh, @NgaySinh, @Email, @DiaChi, @KhoaHoc, @DRL, @MaLop,@Anh)";
 
             SqlParameter[] parameters = {
             new SqlParameter("@MSSV", sv.MSSV),
-            new SqlParameter("@HoTenSV", sv.HoTenSV),
+            new SqlParameter("@HoTenSV", sv.HoTen),
             new SqlParameter("@GioiTinh", sv.GioiTinh),
             new SqlParameter("@NgaySinh", sv.NgaySinh),
             new SqlParameter("@Email", sv.Email),
             new SqlParameter("@DiaChi", sv.DiaChi),
             new SqlParameter("@KhoaHoc", sv.KhoaHoc),
-            new SqlParameter("@DRL", sv.DRL),
-            new SqlParameter("@MaLop", sv.MaLop)
+            new SqlParameter("@DRL", sv.DiemRenLuyen),
+            new SqlParameter("@MaLop", sv.MaLop),
+            new SqlParameter("@Anh", SqlDbType.VarBinary) { Value = sv.Anh ?? (object)DBNull.Value } // Chuyển ảnh thành DBNull nếu null
         };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -427,21 +428,22 @@ namespace DataLayer
         public bool UpdateStudentDAL(SinhVien sv)
         {
             string query = "UPDATE SinhVien " +
-                           "SET Ten_Day_Du = @HoTenSV, Gioi_Tinh = @GioiTinh, Ngay_Sinh = @NgaySinh, " +
+                           "SET Ho_Ten = @HoTenSV, Gioi_Tinh = @GioiTinh, Ngay_Sinh = @NgaySinh, " +
                            "Email = @Email, Dia_Chi = @DiaChi, Khoa_Hoc = @KhoaHoc, " +
-                           "Diem_Ren_Luyen = @DRL, Ma_Lop = @MaLop " +
+                           "Diem_Ren_Luyen = @DRL, Ma_Lop = @MaLop , Anh=@Anh " +
                            "WHERE MSSV = @MSSV"; // Điều kiện cập nhật theo MSSV (khóa chính)
 
             SqlParameter[] parameters = {
         new SqlParameter("@MSSV", sv.MSSV),
-        new SqlParameter("@HoTenSV", sv.HoTenSV),
+        new SqlParameter("@HoTenSV", sv.HoTen),
         new SqlParameter("@GioiTinh", sv.GioiTinh),
         new SqlParameter("@NgaySinh", sv.NgaySinh),
         new SqlParameter("@Email", sv.Email),
         new SqlParameter("@DiaChi", sv.DiaChi),
         new SqlParameter("@KhoaHoc", sv.KhoaHoc),
-        new SqlParameter("@DRL", sv.DRL),
-        new SqlParameter("@MaLop", sv.MaLop)
+        new SqlParameter("@DRL", sv.DiemRenLuyen),
+        new SqlParameter("@MaLop", sv.MaLop),
+        new SqlParameter("@Anh", SqlDbType.VarBinary) { Value = sv.Anh ?? (object)DBNull.Value } // Chuyển ảnh thành DBNull nếu null
     };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;

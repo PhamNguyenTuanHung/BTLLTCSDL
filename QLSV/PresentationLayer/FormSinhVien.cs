@@ -423,26 +423,28 @@ namespace PresentationLayer
 
         private void pbAnhSV_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                string filePath = openFileDialog.FileName;
-                byte[] imageBytes = File.ReadAllBytes(filePath); // Chuyển ảnh thành mảng byte
-                try
-                {
-                    if (sVBus.ChangeImageBUS(imageBytes, sinhVien.MSSV))
-                        MessageBox.Show("Thành công");
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
-                    {
-                        pbAnhSV.Image = Image.FromStream(ms);
-                    }
-                }
-                catch (Exception ex)
-                {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;";
 
-                    MessageBox.Show(ex.Message);
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    byte[] imageBytes = File.ReadAllBytes(filePath); // Chuyển ảnh thành mảng byte
+                    try
+                    {
+                        if (sVBus.ChangeImageBUS(imageBytes, sinhVien.MSSV))
+                            MessageBox.Show("Thành công");
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            pbAnhSV.Image = Image.FromStream(ms);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -204,6 +205,29 @@ namespace PresentationLayer
 
         }
 
+
+        public static T ConvertDataGridViewRowToObject<T>(DataGridViewRow row) where T : new()
+        {
+            T obj = new T();
+            foreach (DataGridViewCell cell in row.Cells)
+            {
+                // Tìm thuộc tính trong lớp T dựa trên tên cột
+                PropertyInfo prop = typeof(T).GetProperty(cell.OwningColumn.Name.Replace("_", ""), BindingFlags.Public | BindingFlags.Instance);
+                if (prop != null && cell.Value != null && cell.Value != DBNull.Value)
+                {
+                    object value = cell.Value;
+
+                    // Nếu là kiểu Nullable, lấy kiểu gốc
+                    Type targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+
+                    // Chuyển đổi kiểu dữ liệu chính xác
+                    object safeValue = Convert.ChangeType(value, targetType);
+                    prop.SetValue(obj, safeValue);
+                }
+            }
+            return obj;
+        }
+
         public static T ConvertDGVRowToObject<T>(DataGridViewRow dgvrow) where T : new()
         {
             T obj = new T();
@@ -287,10 +311,12 @@ namespace PresentationLayer
             switch (tenTabPage)
             {
                 case "tpGV":
-                    new FormThemChung(new GiangVien()).ShowDialog();
+                    FormThemGiangVien formThemGiangVien = new FormThemGiangVien(null, 1);
+                    formThemGiangVien.ShowDialog();
                     break;
                 case "tpSV":
-                    new FormThemChung(new SinhVien()).ShowDialog();
+                    FormThemSinhVien formThemSinhVien = new FormThemSinhVien(null, 1);
+                     formThemSinhVien.ShowDialog();
                     break;
                 case "tpMH":
                     new FormThemChung(new MonHoc()).ShowDialog();
@@ -315,10 +341,25 @@ namespace PresentationLayer
             }
             LoadData();
         }
+
+        public static void ShowStudentDetails(SinhVien sinhVien)
+        {
+            Console.WriteLine("MSSV: " + sinhVien.MSSV);
+            Console.WriteLine("Họ tên: " + sinhVien.HoTen);
+            Console.WriteLine("Giới tính: " + sinhVien.GioiTinh);
+            Console.WriteLine("Ngày sinh: " + sinhVien.NgaySinh.ToShortDateString());
+            Console.WriteLine("Email: " + sinhVien.Email);
+            Console.WriteLine("Địa chỉ: " + sinhVien.DiaChi);
+            Console.WriteLine("Khóa học: " + sinhVien.KhoaHoc);
+            Console.WriteLine("Điểm rèn luyện: " + sinhVien.DiemRenLuyen);
+            Console.WriteLine("Mã lớp: " + sinhVien.MaLop);
+            Console.WriteLine("Ảnh: " + (sinhVien.Anh != null ? "Có ảnh" : "Không có ảnh"));
+            Console.WriteLine("-----------------------------------");
+        }
         private void btnSua_Click(object sender, EventArgs e)
         {
 
-            DisplayControl();
+            /*DisplayControl();
             
             // Khóa cột khóa chính (MSGV)
             foreach (DataGridViewColumn col in dgv.Columns)
@@ -327,7 +368,48 @@ namespace PresentationLayer
                 {
                     col.ReadOnly = true;
                 }
+            }*/
+
+            if (dgv.SelectedRows.Count > 0)
+            {
+                // Lấy thông tin dòng đã chọn
+                var row = dgv.SelectedRows[0];
+
+                switch (tenTabPage)
+                {
+                    case "tpGV":
+                        GiangVien giangVien = ConvertDataGridViewRowToObject<GiangVien>(row);
+                        new FormThemGiangVien(giangVien, 0).ShowDialog();
+                        break;
+                    case "tpSV":
+                        SinhVien sinhVien = ConvertDataGridViewRowToObject<SinhVien>(row);
+                        new FormThemSinhVien(sinhVien, 0).ShowDialog();
+                        break;
+                    case "tpMH":
+                        new FormThemChung(new MonHoc()).ShowDialog();
+                        break;
+                    case "tpLopMonHoc":
+                        new FormThemChung(new LopMonHoc()).ShowDialog();
+                        break;
+                    case "tpTKB":
+                        new FormThemChung(new ThoiKhoaBieu()).ShowDialog();
+                        break;
+                    case "tpDiem":
+                        new FormThemChung(new DiemSV()).ShowDialog();
+                        break;
+                    case "tpLichThi":
+                        new FormThemChung(new LichThi()).ShowDialog();
+                        break;
+                    case "tpTK":
+                        new FormThemChung(new TaiKhoan()).ShowDialog();
+                        break;
+                    default:
+                        break;
+                }
+            LoadData();
             }
+
+
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {

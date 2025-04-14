@@ -12,37 +12,37 @@ namespace DOT
         public SinhVien(string mssv, string hotensv, string gioitinh, DateTime ngaysinh, string email, string diachi, string khoahoc, double drl, string malop, byte[] anh)
         {
             this.mssv = mssv;
-            this.hotensv = hotensv;
+            this.hoten = hotensv;
             this.gioitinh = gioitinh;
             this.ngaysinh = ngaysinh;
             this.Email = email;
             this.diachi = diachi;
             this.khoahoc = khoahoc;
-            this.drl = drl;
+            this.diemrenluyen = drl;
             this.malop = malop;
             this.anh= anh;
         }
 
         private string mssv;
-        private string hotensv;
+        private string hoten;
         private string gioitinh;
         private DateTime ngaysinh ;
         private string email;
         private string diachi;
         private string khoahoc;
-        private double drl;
+        private double diemrenluyen;
         private string malop;
         private byte[] anh;
 
 
         public string MSSV { get=>mssv; set=>mssv=value ; }
-        public string HoTenSV { get=>hotensv; set=>hotensv=value; }
+        public string HoTen { get=>hoten; set=>hoten=value; }
         public string GioiTinh { get => gioitinh; set => gioitinh = value; }
         public DateTime NgaySinh { get => ngaysinh; set => ngaysinh = value; }
         public string Email { get => email; set => email = value; }
         public string DiaChi { get => diachi; set => diachi = value; }
         public string KhoaHoc { get => khoahoc; set => khoahoc = value; }
-        public double DRL { get => drl; set => drl = value; }
+        public double DiemRenLuyen { get => diemrenluyen; set => diemrenluyen = value; }
         public string MaLop { get => malop; set => malop = value; }
         public byte[] Anh { get=>anh; set=>anh= value; }
 
@@ -55,13 +55,13 @@ namespace DOT
             return new Dictionary<string, object>
         {
             { "Mã SV", MSSV },
-            { "Họ tên", HoTenSV },
+            { "Họ tên", HoTen },
             { "Giới tính", GioiTinh },
             { "Ngày sinh", NgaySinh.ToShortDateString() }, // Chuyển DateTime về string ngắn gọn
             { "Email", Email },
             { "Địa chỉ", DiaChi },
             { "Khóa học", KhoaHoc },
-            { "Điểm rèn luyện", DRL },
+            { "Điểm rèn luyện", DiemRenLuyen },
             { "Mã lớp", MaLop },
             {"Ảnh",anh }
         };

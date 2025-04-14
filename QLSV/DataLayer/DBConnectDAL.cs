@@ -77,8 +77,8 @@ namespace DataLayer
                     case 2627: // Vi phạm PRIMARY KEY hoặc UNIQUE
                         throw new Exception("Lỗi: Trùng khóa chính. Dữ liệu đã tồn tại!");
 
-                    case 547: // Vi phạm ràng buộc FOREIGN KEY hoặc CHECK constraint
-                        throw new Exception("Lỗi: Không thể thực hiện do dữ liệu bị ràng buộc!");
+                   // case 547: // Vi phạm ràng buộc FOREIGN KEY hoặc CHECK constraint
+                     //   throw new Exception("Lỗi: Không thể thực hiện do dữ liệu bị ràng buộc!");
 
                     case 208: // Bảng hoặc cột không tồn tại
                         throw new Exception("Lỗi: Bảng hoặc cột không tồn tại!");

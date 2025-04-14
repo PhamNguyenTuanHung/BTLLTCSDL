@@ -245,3 +245,4 @@ C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.cs
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\Presenta.9C561136.Up2Date
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.exe
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.pdb
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemGiangVien.resources
