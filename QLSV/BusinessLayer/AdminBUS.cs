@@ -32,7 +32,7 @@ namespace BusinessLayer
             return adminDAL.GetForiegnKeysDAL(tableName);
         }
 
-        public List<string> GetForeignKeyValuesBUS(List<string> foreignnKeys,string tableName)
+        public Dictionary<string, List<string>> GetForeignKeyValuesBUS(List<string> foreignnKeys,string tableName)
         {
             return adminDAL.GetForeignKeyValuesDAL(foreignnKeys,tableName);
         }

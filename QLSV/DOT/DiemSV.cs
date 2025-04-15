@@ -11,13 +11,13 @@ namespace DOT
         string mssv;
         string mamonhoc;
         string mahocky;
-        double diemquatrinh;
-        double diemthi;
+        decimal diemquatrinh;
+        decimal diemthi;
         int lanthi;
-        double diemtongket;
+        decimal diemtongket;
 
         public DiemSV() { }
-        public DiemSV(string mssv, string mamonhoc, string mahocky, double diemquatrinh, double diemthi, int lanthi, double diemtongket)
+        public DiemSV(string mssv, string mamonhoc, string mahocky, decimal diemquatrinh, decimal diemthi,  decimal diemtongket,int lanthi)
         {
             this.mssv = mssv;
             this.mamonhoc = mamonhoc;
@@ -28,12 +28,22 @@ namespace DOT
             this.diemtongket = diemtongket;
         }
 
+        public DiemSV(string mssv, string mamonhoc, string mahocky, decimal diemquatrinh, decimal diemthi, int lanthi)
+        {
+            this.mssv = mssv;
+            this.mamonhoc = mamonhoc;
+            this.mahocky = mahocky;
+            this.diemquatrinh = diemquatrinh;
+            this.diemthi = diemthi;
+            this.lanthi = lanthi;
+        }
+
 
         public string MSSV { get => mssv; set => mssv = value; }
         public string MaHocKy { get => mahocky; set => mahocky = value; }
-        public double DiemQuaTrinh { get => diemquatrinh; set => diemquatrinh = value; }
-        public double DiemThi { get => diemthi; set => diemthi = value; }
-        public double DiemTongKet { get => diemtongket; set => diemtongket = value; }
+        public decimal DiemQuaTrinh { get => diemquatrinh; set => diemquatrinh = value; }
+        public decimal DiemThi { get => diemthi; set => diemthi = value; }
+        public decimal DiemTongKet { get => diemtongket; set => diemtongket = value; }
         public int LanThi { get => lanthi; set => lanthi = value; }
         public string MaMonHoc { get => mamonhoc; set => mamonhoc = value; }
 

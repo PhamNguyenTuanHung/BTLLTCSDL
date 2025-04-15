@@ -17,7 +17,7 @@ namespace DataLayer
                 GiangVien gv = null;
                 using (SqlConnection conn = DBConnectDAL.Connect())
                 {
-                    string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiaoVien,Lop" +
+                    string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiangVien,Lop" +
                         " WHERE Lop.MSGVCN=@msgv";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@msgv", msgv);
@@ -30,7 +30,7 @@ namespace DataLayer
                             gv = new GiangVien()
                             {
                                 MSGV = reader["MSGV"].ToString(),
-                                HoTen = reader["Ten_Day_Du"].ToString(),
+                                HoTen = reader["Ho_Ten"].ToString(),
                                 GioiTinh = reader["Gioi_Tinh"].ToString(),
                                 NgaySinh = Convert.ToDateTime(reader["Ngay_Sinh"]),
                                 Email = reader["Email"].ToString(),
@@ -47,7 +47,7 @@ namespace DataLayer
         {
             try
             {
-                string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiaoVien,Lop"
+                string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiangVien,Lop"
                     +" WHERE Lop.MSGVCN=@msgv";
                 SqlParameter[] parameters = new SqlParameter[]
                 {
@@ -106,17 +106,14 @@ namespace DataLayer
         {
             try
             {
-                     string query = "SELECT Diem.MSSV,SinhVien.Ten_Day_Du,Diem_Qua_Trinh,Diem_Thi,Diem_Tong_Ket" +
-                    "\r\nFROM SinhVien,Diem,LopMonHoc,DangKy,MonHoc" +
-                    "\r\nWHERE SinhVien.MSSV=Diem.MSSV" +
-                    "\r\nAND DangKy.MSSV=SinhVien.MSSV" +
-                    "\r\nAND DangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc" +
-                    "\r\nAND Diem.MSSV=DangKy.MSSV" +
-                    "\r\nAND Diem.Ma_Mon_Hoc=LopMonHoc.Ma_Mon_Hoc" +
-                    "\r\nand LopMonHoc.MSGV=@msgv" +
-                    "\r\nand LopMonHoc.Ma_Lop_Mon_Hoc=@malopmonhoc" +
-                    "\r\nAnd MonHoc.Ma_Mon_Hoc=LopMonHoc.Ma_Mon_Hoc"
-                    ;
+                string query = "SELECT Diem.MSSV, SinhVien.Ho_Ten, Diem_Qua_Trinh, Diem_Thi, Diem_Tong_Ket, Lan_Thi, Diem.Ma_Hoc_Ky, Diem.Ma_Mon_Hoc" +
+                    "\r\nFROM SinhVien, Diem, LopMonHoc, DangKy, MonHoc" +
+                    "\r\nWHERE SinhVien.MSSV = Diem.MSSV" +
+                    "\r\nAND DangKy.MSSV = SinhVien.MSSV" +
+                    "\r\nAND DangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +
+                    "\r\nAND Diem.MSSV = DangKy.MSSV\r\nAND Diem.Ma_Mon_Hoc = LopMonHoc.Ma_Mon_Hoc" +
+                    "\r\nAND LopMonHoc.MSGV = @msgv\r\nAND LopMonHoc.Ma_Lop_Mon_Hoc =@malopmonhoc " +
+                    "\r\nAND MonHoc.Ma_Mon_Hoc = LopMonHoc.Ma_Mon_Hoc;";
                 SqlParameter[] parameters = new SqlParameter[]
                     {
                     new SqlParameter("@msgv",msgv),
@@ -156,7 +153,7 @@ namespace DataLayer
             {
                 string query = "UPDATE Diem SET Diem_Qua_Trinh=@diemQT, Diem_Thi=@diemThi, Diem_Tong_Ket=@diemTK " +
                                "WHERE MSSV=@mssv " +
-                               "AND Ma_Mon_Hoc= (SELECT Ma_Mon_Hoc FROM LopMonHoc WHERE Ma_Lop_Mon_Hoc = @malopmonhoc)";
+                               "AND Ma_Mon_Hoc = (SELECT Ma_Mon_Hoc FROM LopMonHoc WHERE Ma_Lop_Mon_Hoc = @malopmonhoc)";
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@mssv", mssv),

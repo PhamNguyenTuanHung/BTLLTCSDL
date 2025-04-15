@@ -70,9 +70,9 @@ namespace DataLayer
                     }
                 }
             }
-            catch (SqlException ex)
+           /* catch (SqlException ex)
             {
-                switch (ex.Number)
+                *//*switch (ex.Number)
                 {
                     case 2627: // Vi phạm PRIMARY KEY hoặc UNIQUE
                         throw new Exception("Lỗi: Trùng khóa chính. Dữ liệu đã tồn tại!");
@@ -107,38 +107,17 @@ namespace DataLayer
                     case 2628: // Dữ liệu bị cắt ngắn khi INSERT hoặc UPDATE
                         throw new Exception("Lỗi: Dữ liệu nhập vào quá lớn!");
 
-                    default:
+                    default:*//*
                         throw new Exception("Lỗi SQL: " + ex.Message);
                 }
-            }
+            
+            }*/
 
             catch (Exception ex) // Bắt lỗi khác
             {
-                throw new Exception($"Lỗi hệ thống: {ex.Message}", ex);
+                throw new Exception($"Lỗi: {ex.Message}", ex);
             }
         }
-       /* public static object ExecuteScalar(string query, SqlParameter[] parameters = null)
-        {
-            try
-            {
-                using (SqlConnection connect = Connect())
-                {
-                    connect.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, connect))
-                    {
-                        if (parameters != null && parameters.Length > 0)
-                        {
-                            cmd.Parameters.AddRange(parameters);
-                        }
-                        return cmd.ExecuteScalar(); // Trả về giá trị duy nhất từ truy vấn
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi thực thi truy vấn: " + query + " - " + ex.Message, ex);
-            }
-        }
-*/
+
     }
 }

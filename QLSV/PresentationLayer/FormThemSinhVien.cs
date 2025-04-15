@@ -20,7 +20,8 @@ namespace PresentationLayer
         AdminBUS adminBUS ;
         SinhVien sinhVien;
         byte[] imageBytes;
-        List<string> primaryKeys, foriegnKeys, foriegnKeyValues;
+        List<string> primaryKeys, foriegnKeys;
+        Dictionary<string,List<string>> foriegnKeyValues;
 
         public FormThemSinhVien()
         {
@@ -51,7 +52,6 @@ namespace PresentationLayer
 
         private void LoadKeys(string tableName)
         {
-            this.primaryKeys = adminBUS.GetPrimaryKeysBUS(tableName);
             this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
             this.foriegnKeyValues = adminBUS.GetForeignKeyValuesBUS(foriegnKeys, tableName);
         }
@@ -59,7 +59,7 @@ namespace PresentationLayer
 
         private void LoadComboBox()
         {
-            cbLop.DataSource = adminBUS.GetForeignKeyValuesBUS(foriegnKeys, "SinhVien");
+            cbLop.DataSource = foriegnKeyValues["Ma_Lop"];
             List<string> gioiTinhList = new List<string> {"Nam", "Nữ" };
             cbGioiTinh.DataSource = gioiTinhList;
             cbLop.SelectedIndex = 0;
@@ -103,7 +103,6 @@ namespace PresentationLayer
                 btnThemAnh.Text = "Thêm ảnh";
             }
         }
-
 
         public bool ValidateStudentForm()
         {

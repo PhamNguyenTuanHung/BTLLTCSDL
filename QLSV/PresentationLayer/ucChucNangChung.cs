@@ -21,7 +21,8 @@ namespace PresentationLayer
         private DataTable dt; // Dữ liệu của DataGridView
         public string tenTabPage { get; set; }//Nhận tên tab của form Admin
 
-        List<string> primaryKeys,foriegnKeys, foriegnKeyValues;
+        List<string> primaryKeys, foreignKeys;
+        Dictionary<string,List<string>> foreignKeyValues;
 
         string tableName;
 
@@ -40,11 +41,11 @@ namespace PresentationLayer
             InitializeComponent();
             this.tableName =TableName;
             primaryKeys = new List<string>();
-            foriegnKeys = new List<string>();
+            foreignKeys = new List<string>();
             adminBUS = new AdminBUS();
             this.primaryKeys = adminBUS.GetPrimaryKeysBUS(tableName);
-            this.foriegnKeys= adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues= adminBUS.GetForeignKeyValuesBUS(foriegnKeys,tableName);
+            this.foreignKeys= adminBUS.GetForiegnKeysBUS(tableName);
+            this.foreignKeyValues = adminBUS.GetForeignKeyValuesBUS(foreignKeys,tableName);
             LoadComboBox();
 
         }
@@ -52,7 +53,18 @@ namespace PresentationLayer
 
         private void LoadComboBox()
         {
-            cb.DataSource = foriegnKeyValues;
+            List<string> allValues = new List<string>();
+
+            foreach (var key in foreignKeyValues.Keys)
+            {
+                allValues.AddRange(foreignKeyValues[key]);
+            }
+
+            // Nếu muốn loại bỏ trùng lặp
+            allValues = allValues.Distinct().ToList();
+
+            // Gán vào ComboBox
+            cb.DataSource = allValues;
         }
         //Tải dữ liệu vào dgv
         public void LoadData()
@@ -63,6 +75,9 @@ namespace PresentationLayer
             dgv.DataSource = dt;
             if (dt.Columns.Contains("Gioi_Tinh"))
                 dgv.Columns["Gioi_Tinh"].HeaderText = "Giới tính";
+
+            if (dt.Columns.Contains("He_So_QT"))
+                dgv.Columns["He_So_QT"].HeaderText = "Hệ số quá trình";
 
             if (dt.Columns.Contains("Ngay_Sinh"))
                 dgv.Columns["Ngay_Sinh"].HeaderText = "Ngày Sinh";
@@ -94,8 +109,8 @@ namespace PresentationLayer
             if (dt.Columns.Contains("Diem_Ren_Luyen"))
                 dgv.Columns["Diem_Ren_Luyen"].HeaderText = "Điểm rèn luyện";
 
-            if (dt.Columns.Contains("So_Luong_DK_Toi_Da"))
-                dgv.Columns["So_Luong_DK_Toi_Da"].HeaderText = "SL tối đa";
+            if (dt.Columns.Contains("So_Luong_Dang_Ky_Toi_Da"))
+                dgv.Columns["So_Luong_Dang_Ky_Toi_Da"].HeaderText = "Số lượng đăng kí tối đa";
 
             if (dt.Columns.Contains("Khoa_Hoc"))
                 dgv.Columns["Khoa_Hoc"].HeaderText = "Khóa học";
@@ -122,7 +137,7 @@ namespace PresentationLayer
                 dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên Môn Học";
 
             if (dt.Columns.Contains("Ma_Lop_Mon_Hoc"))
-                dgv.Columns["Ma_Lop_Mon_Hoc"].HeaderText = "Mã Nhóm Học";
+                dgv.Columns["Ma_Lop_Mon_Hoc"].HeaderText = "Mã Lớp Môn Học";
 
             if (dt.Columns.Contains("Ngay_BD"))
                 dgv.Columns["Ngay_BD"].HeaderText = "Ngày Bắt Đầu";
@@ -311,24 +326,22 @@ namespace PresentationLayer
             switch (tenTabPage)
             {
                 case "tpGV":
-                    FormThemGiangVien formThemGiangVien = new FormThemGiangVien(null, 1);
-                    formThemGiangVien.ShowDialog();
+                    new FormThemGiangVien(null, 1).ShowDialog(); ;
                     break;
                 case "tpSV":
-                    FormThemSinhVien formThemSinhVien = new FormThemSinhVien(null, 1);
-                     formThemSinhVien.ShowDialog();
+                    new FormThemSinhVien(null, 1).ShowDialog();
                     break;
                 case "tpMH":
-                    new FormThemChung(new MonHoc()).ShowDialog();
+                    new FormThemMonHoc(null, 1).ShowDialog(); 
                     break;
                 case "tpLopMonHoc":
-                    new FormThemChung(new LopMonHoc()).ShowDialog();
+                    new FormThemLopMonHoc(null,1).ShowDialog();
                     break;
                 case "tpTKB":
-                    new FormThemChung(new ThoiKhoaBieu()).ShowDialog();
+                    new FormThemThoiKhoaBieu(null,1).ShowDialog();
                     break;
                 case "tpDiem":
-                    new FormThemChung(new DiemSV()).ShowDialog();
+                    new FormThemDiem(null,1).ShowDialog();
                     break;
                 case "tpLichThi":
                     new FormThemChung(new LichThi()).ShowDialog();
@@ -340,21 +353,6 @@ namespace PresentationLayer
                     break;
             }
             LoadData();
-        }
-
-        public static void ShowStudentDetails(SinhVien sinhVien)
-        {
-            Console.WriteLine("MSSV: " + sinhVien.MSSV);
-            Console.WriteLine("Họ tên: " + sinhVien.HoTen);
-            Console.WriteLine("Giới tính: " + sinhVien.GioiTinh);
-            Console.WriteLine("Ngày sinh: " + sinhVien.NgaySinh.ToShortDateString());
-            Console.WriteLine("Email: " + sinhVien.Email);
-            Console.WriteLine("Địa chỉ: " + sinhVien.DiaChi);
-            Console.WriteLine("Khóa học: " + sinhVien.KhoaHoc);
-            Console.WriteLine("Điểm rèn luyện: " + sinhVien.DiemRenLuyen);
-            Console.WriteLine("Mã lớp: " + sinhVien.MaLop);
-            Console.WriteLine("Ảnh: " + (sinhVien.Anh != null ? "Có ảnh" : "Không có ảnh"));
-            Console.WriteLine("-----------------------------------");
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -386,16 +384,20 @@ namespace PresentationLayer
                         new FormThemSinhVien(sinhVien, 0).ShowDialog();
                         break;
                     case "tpMH":
-                        new FormThemChung(new MonHoc()).ShowDialog();
+                        MonHoc monHoc = ConvertDataGridViewRowToObject<MonHoc>(row);
+                        new FormThemMonHoc(monHoc, 0).ShowDialog();
                         break;
                     case "tpLopMonHoc":
-                        new FormThemChung(new LopMonHoc()).ShowDialog();
+                        LopMonHoc lopMonHoc = ConvertDataGridViewRowToObject<LopMonHoc>(row);
+                        new FormThemLopMonHoc(lopMonHoc, 0).ShowDialog();
                         break;
                     case "tpTKB":
-                        new FormThemChung(new ThoiKhoaBieu()).ShowDialog();
+                        ThoiKhoaBieu thoiKhoaBieu = ConvertDataGridViewRowToObject<ThoiKhoaBieu>(row);
+                        new FormThemThoiKhoaBieu(thoiKhoaBieu, 0).ShowDialog();
                         break;
                     case "tpDiem":
-                        new FormThemChung(new DiemSV()).ShowDialog();
+                        DiemSV diemSV = ConvertDataGridViewRowToObject<DiemSV>(row);
+                        new FormThemDiem(diemSV, 0).ShowDialog();
                         break;
                     case "tpLichThi":
                         new FormThemChung(new LichThi()).ShowDialog();
@@ -444,7 +446,7 @@ namespace PresentationLayer
                         case "tpTKB":
                             ThoiKhoaBieu tkb = new ThoiKhoaBieu();
                             tkb = ConvertDGVRowToObject<ThoiKhoaBieu>(dgv.CurrentRow);
-                            check = adminBUS.DeleteSchedule(tkb.MaTKB);
+                            check = adminBUS.DeleteSchedule(tkb.MaTKB.ToString());
                             break;
                         case "tpDiem":
                             DiemSV diemSV = new DiemSV();
@@ -650,7 +652,7 @@ namespace PresentationLayer
         private void cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             keyword = cb.SelectedValue.ToString();
-            FilterDataGridView(keyword, dgv, foriegnKeys);
+            FilterDataGridView(keyword, dgv, foreignKeys);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

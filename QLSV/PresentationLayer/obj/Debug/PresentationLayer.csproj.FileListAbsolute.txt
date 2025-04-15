@@ -246,3 +246,7 @@ C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\Presenta.9C561136.Up
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.exe
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.pdb
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemGiangVien.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemMonHoc.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemLopMonHoc.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemThoiKhoaBieu.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemDiem.resources

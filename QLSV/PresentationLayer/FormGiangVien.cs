@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PresentationLayer
@@ -19,6 +20,7 @@ namespace PresentationLayer
         private GiangVien gv;
         private TaiKhoan tk;
         private GiangVienBUS gvBUS;
+        private DiemSV diemSV;
         public FormGiangVien(GiangVien gv, TaiKhoan tk)
         {
             this.gv = gv;
@@ -80,11 +82,11 @@ namespace PresentationLayer
                 if (dt.Columns.Contains("Gio_KT"))
                     dgv.Columns["Gio_KT"].HeaderText = "Giờ kết thúc";
 
-                if (dt.Columns.Contains("Ten_Day_Du"))
-                    dgv.Columns["Ten_Day_Du"].HeaderText = "Tên sinh viên";
+                if (dt.Columns.Contains("Ho_Ten"))
+                    dgv.Columns["Ho_Ten"].HeaderText = "Tên sinh viên";
 
                 if (dt.Columns.Contains("Ma_Hoc_Ky"))
-                    dgv.Columns["Ma_Hoc_Ki"].HeaderText = "Mã học kỳ";
+                    dgv.Columns["Ma_Hoc_Ky"].HeaderText = "Mã học kỳ";
             }
         }
 
@@ -95,7 +97,7 @@ namespace PresentationLayer
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
                 lbMSGV.Text = dt.Rows[0]["MSGV"].ToString();
-                lbHoTen.Text = dt.Rows[0]["Ten_Day_Du"].ToString();
+                lbHoTen.Text = dt.Rows[0]["Ho_Ten"].ToString();
                 lbEmail.Text = dt.Rows[0]["Email"].ToString();
                 lbNgaySinh.Text = Convert.ToDateTime(dt.Rows[0]["Ngay_Sinh"]).ToString("dd/MM/yyyy"); // Định dạng ngày
                 lbLop.Text = dt.Rows[0]["Ma_Lop"].ToString();
@@ -233,85 +235,24 @@ namespace PresentationLayer
             if (dgvThongTinLop.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvThongTinLop.SelectedRows[0];
-                txtMSSV.Text = row.Cells["MSSV"].Value.ToString();
-                txtTenSV.Text = row.Cells["Ten_Day_Du"].Value.ToString();
-                txtDiemQT.Text = row.Cells["Diem_Qua_Trinh"].Value.ToString();
-                txtDiemThi.Text = row.Cells["Diem_Thi"].Value.ToString();
-                txtDiemTongKet.Text = row.Cells["Diem_Tong_Ket"].Value.ToString();
-                txtHeSoQT.Text = 0.ToString();
+                diemSV = new DiemSV
+                (
+                    row.Cells["MSSV"].Value.ToString(),   // Giả sử cột MSSV có tên là "MSSV"
+                    row.Cells["Ma_Mon_Hoc"].Value.ToString(), // Giả sử cột Ho_Ten có tên là "Ho_Ten"
+                    row.Cells["Ma_Hoc_Ky"].Value.ToString(),
+                    Math.Round(decimal.Parse(row.Cells["Diem_Qua_Trinh"].Value.ToString()),1),  // Cột Diem_Qua_Trinh
+                    Math.Round(decimal.Parse(row.Cells["Diem_Thi"].Value.ToString()), 1),
+                    Math.Round(decimal.Parse(row.Cells["Diem_Tong_Ket"].Value.ToString()), 1),  // Cột Diem_Thi   
+                    int.Parse(row.Cells["Lan_Thi"].Value.ToString()) // Cột Diem_Tong_Ket
+                );
             }
         }
 
 
-        private void UpdateGrade()
-        {
-            // Kiểm tra xem các giá trị có hợp lệ không
-            if (double.TryParse(txtDiemQT.Text, out double diemQT) &&
-                double.TryParse(txtDiemThi.Text, out double diemThi) &&
-                double.TryParse(txtHeSoQT.Text, out double heSo))
-            {
-                // Giới hạn hệ số trong khoảng hợp lệ (0 <= heSo <= 1)
-                if (heSo < 0 || heSo > 1)
-                {
-                    MessageBox.Show("Hệ số điểm quá trình phải từ 0 đến 1!", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Tính điểm tổng kết
-                double diemTongKet = (diemQT * heSo) + (diemThi * (1 - heSo));
-
-                // Hiển thị kết quả
-                txtDiemTongKet.Text = diemTongKet.ToString("0.00");
-            }
-            else
-            {
-                // Nếu nhập sai, xóa kết quả
-                txtDiemTongKet.Text = "";
-            }
-        }
-        private void txtDiemQT_TextChanged(object sender, EventArgs e)
-        {
-            UpdateGrade();
-        }
-
-        private void txtDiemThi_TextChanged(object sender, EventArgs e)
-        {
-            UpdateGrade();
-        }
-
-        private void txtHeSoQT_TextChanged(object sender, EventArgs e)
-        {
-            UpdateGrade();
-        }
 
         private void btnSuaDiem_Click(object sender, EventArgs e)
         {
-            if (!double.TryParse(txtDiemQT.Text, out double diemQT))
-            {
-                MessageBox.Show("Vui lòng nhập đúng định dạng số cho Điểm Quá Trình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDiemQT.Focus();
-                return ;
-            }
-
-            if (!double.TryParse(txtDiemThi.Text, out double diemThi))
-            {
-                MessageBox.Show("Vui lòng nhập đúng định dạng số cho Điểm Thi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDiemThi.Focus();
-                return ;
-            }
-
-            if (!double.TryParse(txtDiemTongKet.Text, out double diemTK))
-            {
-                MessageBox.Show("Vui lòng nhập đúng định dạng số cho Điểm Tổng Kết!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDiemTongKet.Focus();
-                return ;
-            }
-
-            bool check = gvBUS.UpdateStudentGradesBUS(txtMSSV.Text, cbLopSV.SelectedValue.ToString(),
-                 double.Parse(txtDiemQT.Text), double.Parse(txtDiemThi.Text),
-                 double.Parse(txtDiemTongKet.Text));
-            if (check) MessageBox.Show("Sủa điểm thành công");
-            else MessageBox.Show("Sửa không thành công");
+            new FormThemDiem(diemSV, 0).ShowDialog();
             GetLecturerClassInfo();
         }
 

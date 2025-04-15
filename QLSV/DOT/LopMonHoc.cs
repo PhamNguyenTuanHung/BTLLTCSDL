@@ -13,7 +13,7 @@ namespace DOT
         string msgv;
         string mahocki;
         string makhoa;
-        int sldangkytoida;
+        int soluongdangkytoida;
 
         public LopMonHoc() { }
         public LopMonHoc(string malopmonhoc, string mamonhoc, string msgv, string mahocki, string makhoa, int sldangkytoida)
@@ -23,7 +23,7 @@ namespace DOT
             this.msgv = msgv;
             this.mahocki = mahocki;
             this.makhoa = makhoa;
-            this.sldangkytoida = sldangkytoida;
+            this.soluongdangkytoida = sldangkytoida;
         }
 
         public string MaMonHoc { get => mamonhoc; set => mamonhoc = value; }
@@ -31,7 +31,7 @@ namespace DOT
         public string MSGV { get => msgv; set => msgv = value; }
         public string MaHocKi { get => mahocki; set => mahocki = value; }
         public string MaKhoa { get => makhoa; set => makhoa = value; }
-        public int SLDK { get => sldangkytoida;set => sldangkytoida = value;}
+        public int SoLuongDangKyToiDa { get => soluongdangkytoida;set => soluongdangkytoida = value;}
 
         //Implement Interface
         public string LayTenThucThe() => "Lớp Môn Học";
@@ -45,7 +45,7 @@ namespace DOT
             { "Mã Giảng Viên", msgv },
             { "Mã Học Kỳ", mahocki },
             { "Mã Khoa", makhoa },
-            { "Số Lượng ĐK Tối Đa", sldangkytoida }
+            { "Số Lượng Đăng Kí Tối Đa", soluongdangkytoida }
         };
         }
 

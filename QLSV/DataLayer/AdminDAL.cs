@@ -104,14 +104,16 @@ namespace DataLayer
             return foreignKeys;
         }
 
-        public List<string> GetForeignKeyValuesDAL(List<string> foreignKeys,string tableName)
+        public Dictionary<string,List<string>> GetForeignKeyValuesDAL(List<string> foreignKeys,string tableName)
         {
-            List<string> foreignKeysData = new List<string>();
+            Dictionary<string,List<String>> foreignKeysData = new Dictionary<string, List<string>>();
             using (SqlConnection conn = DBConnectDAL.Connect())
             {
                 conn.Open();
                 foreach (string col in foreignKeys)
                 {
+                    foreignKeysData[col] = new List<string>();
+
                     string colQuery = $"SELECT DISTINCT [{col}] FROM {tableName} WHERE [{col}] IS NOT NULL";
                     using (SqlCommand colCmd = new SqlCommand(colQuery, conn))
                     {
@@ -121,7 +123,7 @@ namespace DataLayer
                             {
                                 // Làm gì đó với giá trị của cột khóa ngoại
                                 string value = colReader[0].ToString();
-                                foreignKeysData.Add(value);
+                                foreignKeysData[col].Add(value);
                             }
                         }
                     }
@@ -238,13 +240,14 @@ namespace DataLayer
         public bool InsertCourseDAL(MonHoc mh)
         {
 
-            string query = "INSERT INTO MonHoc (Ma_Mon_Hoc, Ten_Mon_Hoc, So_Tin_Chi) " +
-                           "VALUES (@MaMonHoc, @TenMonHoc, @SoTinChi)";
+            string query = "INSERT INTO MonHoc (Ma_Mon_Hoc, Ten_Mon_Hoc, So_Tin_Chi,He_So_QT) " +
+                           "VALUES (@MaMonHoc, @TenMonHoc, @SoTinChi,@HeSoQT)";
 
             SqlParameter[] parameters = {
             new SqlParameter("@MaMonHoc", mh.MaMonHoc),
             new SqlParameter("@TenMonHoc", mh.TenMonHoc),
-            new SqlParameter("@SoTinChi", mh.SoTinChi)
+            new SqlParameter("@SoTinChi", mh.SoTinChi),
+            new SqlParameter("@HeSoQT",mh.HeSoQT)
         };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -255,7 +258,7 @@ namespace DataLayer
         public bool InsertCourseClassDAL(LopMonHoc lopMonHoc)
         {
 
-            string query = "INSERT INTO LopMonHoc (Ma_Lop_Mon_Hoc, Ma_Mon_Hoc, MSGV, Ma_Hoc_Ky, Ma_Khoa, SL_Dang_Ky_Toi_Da) " +
+            string query = "INSERT INTO LopMonHoc (Ma_Lop_Mon_Hoc, Ma_Mon_Hoc, MSGV, Ma_Hoc_Ky, Ma_Khoa, So_Luong_DK_Toi_Da) " +
                            "VALUES (@MaLopMonHoc, @MaMonHoc, @MSGV, @MaHocKi, @MaKhoa, @SLDangKyToiDa)";
 
             SqlParameter[] parameters = {
@@ -264,7 +267,7 @@ namespace DataLayer
             new SqlParameter("@MSGV", lopMonHoc.MSGV),
             new SqlParameter("@MaHocKi", lopMonHoc.MaHocKi),
             new SqlParameter("@MaKhoa", lopMonHoc.MaKhoa),
-            new SqlParameter("@SLDangKyToiDa", lopMonHoc.SLDK)
+            new SqlParameter("@SLDangKyToiDa", lopMonHoc.SoLuongDangKyToiDa)
         };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -276,8 +279,8 @@ namespace DataLayer
         public bool InsertGradeDAL(DiemSV diem)
         {
 
-            string query = "INSERT INTO Diem (MSSV, MaMonHoc, MaHocKy, DiemQuaTrinh, DiemThi, LanThi, DiemTongKet) " +
-                           "VALUES (@MSSV, @MaMonHoc, @MaHocKy, @DiemQuaTrinh, @DiemThi, @LanThi, @DiemTongKet)";
+            string query = "INSERT INTO Diem (MSSV, Ma_Mon_Hoc, Ma_Hoc_Ky, Diem_Qua_Trinh, Diem_Thi, Lan_Thi) " +
+                           "VALUES (@MSSV, @MaMonHoc, @MaHocKy, @DiemQuaTrinh, @DiemThi, @LanThi)";
 
             SqlParameter[] parameters = {
             new SqlParameter("@MSSV", diem.MSSV),
@@ -285,8 +288,7 @@ namespace DataLayer
             new SqlParameter("@MaHocKy", diem.MaHocKy),
             new SqlParameter("@DiemQuaTrinh", diem.DiemQuaTrinh),
             new SqlParameter("@DiemThi", diem.DiemThi),
-            new SqlParameter("@LanThi", diem.LanThi),
-            new SqlParameter("@DiemTongKet", diem.DiemTongKet)
+            new SqlParameter("@LanThi", diem.LanThi)
         };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -296,11 +298,10 @@ namespace DataLayer
         public bool InsertScheduleDAL(ThoiKhoaBieu tkb)
         {
 
-            string query = "INSERT INTO ThoiKhoaBieu (Ma_TKB, Ma_Lop_Mon_Hoc, Ngay_Hoc, Gio_Bat_Dau, Gio_Ket_Thuc, Phong_Hoc, Ngay_BD, Ngay_KT) " +
-                           "VALUES (@MaTKB, @MaLopMonHoc, @NgayHoc, @GioBatDau, @GioKetThuc, @PhongHoc, @NgayBD, @NgayKT)";
+            string query = "INSERT INTO ThoiKhoaBieu ( Ma_Lop_Mon_Hoc, Ngay_Hoc, Gio_Bat_Dau, Gio_Ket_Thuc, Phong_Hoc, Ngay_BD, Ngay_KT) " +
+                           "VALUES ( @MaLopMonHoc, @NgayHoc, @GioBatDau, @GioKetThuc, @PhongHoc, @NgayBD, @NgayKT)";
 
             SqlParameter[] parameters = {
-            new SqlParameter("@MaTKB", tkb.MaTKB),
             new SqlParameter("@MaLopMonHoc", tkb.MaLopMonHoc),
             new SqlParameter("@NgayHoc", tkb.NgayHoc),
             new SqlParameter("@GioBatDau", tkb.GioBatDau),
@@ -382,7 +383,7 @@ namespace DataLayer
 
         public bool DeleteCourseClassDAL(string maLopMonHoc)
         {
-            string query = "DELETE FROM LopMonHoc WHERE MaLopMonHoc = @MaLopMonHoc";
+            string query = "DELETE FROM LopMonHoc WHERE Ma_Lop_Mon_Hoc = @MaLopMonHoc";
             SqlParameter[] parameters = { new SqlParameter("@MaLopMonHoc", maLopMonHoc) };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -472,13 +473,14 @@ namespace DataLayer
         public bool UpdateCourseDAL(MonHoc mh)
         {
             string query = "UPDATE MonHoc " +
-                           "SET Ten_Mon_Hoc = @TenMonHoc, So_Tin_Chi = @SoTinChi " +
+                           "SET Ten_Mon_Hoc = @TenMonHoc, So_Tin_Chi = @SoTinChi , He_So_QT=@HeSoQT " +
                            "WHERE Ma_Mon_Hoc = @MaMonHoc"; // Điều kiện cập nhật theo Ma_Mon_Hoc (khóa chính)
 
             SqlParameter[] parameters = {
         new SqlParameter("@MaMonHoc", mh.MaMonHoc),
         new SqlParameter("@TenMonHoc", mh.TenMonHoc),
-        new SqlParameter("@SoTinChi", mh.SoTinChi)
+        new SqlParameter("@SoTinChi", mh.SoTinChi),
+        new SqlParameter("HeSoQT",mh.HeSoQT)
     };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -488,7 +490,7 @@ namespace DataLayer
         {
             string query = "UPDATE LopMonHoc " +
                            "SET Ma_Mon_Hoc = @MaMonHoc, MSGV = @MSGV, Ma_Hoc_Ky = @MaHocKi, " +
-                           "Ma_Khoa = @MaKhoa, SL_Dang_Ky_Toi_Da = @SLDangKyToiDa " +
+                           "Ma_Khoa = @MaKhoa, So_Luong_Dang_Ky_Toi_Da = @SLDangKyToiDa " +
                            "WHERE Ma_Lop_Mon_Hoc = @MaLopMonHoc"; // Điều kiện cập nhật theo Ma_Lop_Mon_Hoc (khóa chính)
 
             SqlParameter[] parameters = {
@@ -497,7 +499,7 @@ namespace DataLayer
         new SqlParameter("@MSGV", lopMonHoc.MSGV),
         new SqlParameter("@MaHocKi", lopMonHoc.MaHocKi),
         new SqlParameter("@MaKhoa", lopMonHoc.MaKhoa),
-        new SqlParameter("@SLDangKyToiDa", lopMonHoc.SLDK)
+        new SqlParameter("@SLDangKyToiDa", lopMonHoc.SoLuongDangKyToiDa)
     };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
@@ -505,10 +507,9 @@ namespace DataLayer
 
         public bool UpdateGradeDAL(DiemSV diem)
         {
-            string query = "UPDATE Diem " +
-                           "SET Diem_Qua_Trinh = @DiemQuaTrinh, DiemThi = @DiemThi, " +
-                           "Lan_Thi = @LanThi, Diem_Tong_Ket = @DiemTongKet " +
-                           "WHERE MSSV = @MSSV AND Ma_Mon_Hoc = @MaMonHoc AND Ma_Hoc_Ky = @MaHocKy";
+            string query = "UPDATE DIEM" +
+                "\r\n SET Diem_Qua_Trinh=@DiemQuaTrinh,Diem_Thi=@DiemThi " +
+                "\r\n WHERE  Lan_Thi=@LanThi AND MSSV=@MSSV  AND  Ma_Mon_Hoc=@MaMonHoc AND Ma_Hoc_Ky=@MaHocKy";
 
             SqlParameter[] parameters = {
         new SqlParameter("@MSSV", diem.MSSV),
@@ -517,7 +518,6 @@ namespace DataLayer
         new SqlParameter("@DiemQuaTrinh", diem.DiemQuaTrinh),
         new SqlParameter("@DiemThi", diem.DiemThi),
         new SqlParameter("@LanThi", diem.LanThi),
-        new SqlParameter("@DiemTongKet", diem.DiemTongKet)
     };
 
             return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;

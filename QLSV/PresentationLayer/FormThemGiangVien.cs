@@ -23,7 +23,8 @@ namespace PresentationLayer
         AdminBUS adminBUS;
         GiangVien giangVien;
         byte[] imageBytes;
-        List<string> primaryKeys, foriegnKeys, foriegnKeyValues;
+        List<string> primaryKeys, foreignKeys;
+        Dictionary<string,List<String>> foreignKeyValues;
 
 
         public FormThemGiangVien(GiangVien giangVien, int Type)
@@ -49,8 +50,8 @@ namespace PresentationLayer
 
         private void LoadKeys(string tableName)
         {
-            this.primaryKeys = adminBUS.GetPrimaryKeysBUS(tableName);
-            this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            this.foreignKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            this.foreignKeyValues = adminBUS.GetForeignKeyValuesBUS(foreignKeys, "GiangVien");
         }
 
 
@@ -59,8 +60,8 @@ namespace PresentationLayer
             List<string> gioiTinhList = new List<string> {"Nam", "Nữ" };
             cbGioiTinhGV.DataSource = gioiTinhList;
             cbGioiTinhGV.SelectedIndex = 0;
-            
-            cbKhoa.DataSource = adminBUS.GetForeignKeyValuesBUS(foriegnKeys, "GiangVien");
+
+            cbKhoa.DataSource = foreignKeyValues["Ma_Khoa"];
             cbKhoa.SelectedIndex = 0;
         }
         private void ShowLecturerDetails(GiangVien giangVien)
