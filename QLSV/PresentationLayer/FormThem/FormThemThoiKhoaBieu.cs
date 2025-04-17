@@ -133,11 +133,6 @@ namespace PresentationLayer
             }
 
             return true;
-
-
-
-
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -205,7 +200,7 @@ namespace PresentationLayer
         private void LoadKeys(string tableName)
         {
             this.foreignKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesBUS(foreignKeys, tableName);
+            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( tableName);
         }
 
         private void LoadComboBox()

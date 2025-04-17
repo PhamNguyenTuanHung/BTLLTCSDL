@@ -32,9 +32,9 @@ namespace BusinessLayer
             return adminDAL.GetForiegnKeysDAL(tableName);
         }
 
-        public Dictionary<string, List<string>> GetForeignKeyValuesBUS(List<string> foreignnKeys,string tableName)
+        public Dictionary<string, List<string>> GetForeignKeyValuesWithReferencedTablesBUS(string tableName)
         {
-            return adminDAL.GetForeignKeyValuesDAL(foreignnKeys,tableName);
+            return adminDAL.GetForeignKeyValuesWithReferencedTablesDAL(tableName);
         }
         //Lấy dữ liệu
         public DataTable GetLecturersListBUS()
@@ -46,11 +46,14 @@ namespace BusinessLayer
 
         public DataTable GetStudentsListBUS()
         {
-
-
             return adminDAL.GetStudentsListDAL();
-
         }
+
+        public DataTable GetAllRegisteredCoursesBUS()
+        {
+           return adminDAL.GetAllRegisteredCoursesDAL();
+        }
+
 
         public DataTable GetSubjectsListBUS()
         {
@@ -96,6 +99,11 @@ namespace BusinessLayer
 
         //Hàm thêm
 
+        public bool InsertCourseForRegistrationBUS(MonMoDangKy monMoDangKy)
+        {
+            return adminDAL.InsertCourseForRegistrationDAL(monMoDangKy);
+        }
+
         public bool InsertStudentBUS(SinhVien sv)
         {
             return adminDAL.InsertStudentDAL(sv);
@@ -139,38 +147,39 @@ namespace BusinessLayer
         }
 
 
+
         //Hàm xóa
-        public bool DeleteStudent(string mssv)
+        public bool DeleteStudentBUS(string mssv)
         {
             return adminDAL.DeleteStudentDAL(mssv);
         }
 
-        public bool DeleteLecturer(string msgv)
+        public bool DeleteLecturerBUS(string msgv)
         {
             return adminDAL.DeleteLecturerDAL(msgv);
         }
 
-        public bool DeleteCourse(string maMonHoc)
+        public bool DeleteCourseBUS(string maMonHoc)
         {
             return adminDAL.DeleteCourseDAL(maMonHoc);
         }
 
-        public bool DeleteCourseClass(string maLopMonHoc)
+        public bool DeleteCourseClassBUS(string maLopMonHoc)
         {
             return adminDAL.DeleteCourseClassDAL(maLopMonHoc);
         }
 
-        public bool DeleteGrade(string mssv, string maMonHoc, string maHocKy)
+        public bool DeleteGradeBUS(string mssv, string maMonHoc, string maHocKy)
         {
             return adminDAL.DeleteGradeDAL(mssv, maMonHoc, maHocKy);
         }
 
-        public bool DeleteSchedule(string maTKB)
+        public bool DeleteScheduleBUS(string maTKB)
         {
             return adminDAL.DeleteScheduleDAL(maTKB);
         }
 
-        public bool DeleteExamSchedule(string maLichThi)
+        public bool DeleteExamScheduleBUS(string maLichThi)
         {
             return adminDAL.DeleteExamScheduleDAL(maLichThi);
         }
@@ -178,10 +187,18 @@ namespace BusinessLayer
         public bool DeleteAccountBUS(string tenDangNhap)
         {
             
-
             return adminDAL.DeleteAccountDAL(tenDangNhap);
         }
+        public bool DeleteCourseFromRegistrationDAL(string maMonMoDangKy)
+        {
+            return adminDAL.DeleteCourseFromRegistrationDAL(maMonMoDangKy);
+        }
         // Hàm cập nhật dữ liệu
+
+        public bool UpdateCourseFromRegistrationBUS(MonMoDangKy monMoDangKy)
+        {
+            return adminDAL.UpdateCourseFromRegistrationDAL(monMoDangKy);
+        }
 
         public bool UpdateStudentBUS(SinhVien sv)
         {

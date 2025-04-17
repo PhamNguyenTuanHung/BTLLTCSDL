@@ -107,6 +107,7 @@
             // 
             // cbMSGV
             // 
+            this.cbMSGV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMSGV.FormattingEnabled = true;
             this.cbMSGV.Location = new System.Drawing.Point(201, 47);
             this.cbMSGV.Name = "cbMSGV";
@@ -115,6 +116,7 @@
             // 
             // cbMaMH
             // 
+            this.cbMaMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaMH.FormattingEnabled = true;
             this.cbMaMH.Location = new System.Drawing.Point(201, 90);
             this.cbMaMH.Name = "cbMaMH";
@@ -123,6 +125,7 @@
             // 
             // cbMaHK
             // 
+            this.cbMaHK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaHK.FormattingEnabled = true;
             this.cbMaHK.Location = new System.Drawing.Point(201, 133);
             this.cbMaHK.Name = "cbMaHK";
@@ -190,6 +193,7 @@
             // 
             // cbMaKhoa
             // 
+            this.cbMaKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaKhoa.FormattingEnabled = true;
             this.cbMaKhoa.Location = new System.Drawing.Point(201, 176);
             this.cbMaKhoa.Name = "cbMaKhoa";

@@ -94,7 +94,7 @@
             this.pbAnh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbAnh.Location = new System.Drawing.Point(3, 3);
             this.pbAnh.Name = "pbAnh";
-            this.pbAnh.Size = new System.Drawing.Size(458, 92);
+            this.pbAnh.Size = new System.Drawing.Size(458, 93);
             this.pbAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbAnh.TabIndex = 15;
             this.pbAnh.TabStop = false;
@@ -105,7 +105,7 @@
             this.btnThemAnh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnThemAnh.Location = new System.Drawing.Point(467, 3);
             this.btnThemAnh.Name = "btnThemAnh";
-            this.btnThemAnh.Size = new System.Drawing.Size(120, 92);
+            this.btnThemAnh.Size = new System.Drawing.Size(120, 93);
             this.btnThemAnh.TabIndex = 14;
             this.btnThemAnh.Text = "Thêm ảnh";
             this.btnThemAnh.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(203, 169);
+            this.txtEmail.Location = new System.Drawing.Point(203, 168);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(423, 22);
             this.txtEmail.TabIndex = 5;
@@ -237,7 +237,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 232);
+            this.label12.Location = new System.Drawing.Point(4, 231);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(30, 16);
             this.label12.TabIndex = 2;
@@ -246,7 +246,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 166);
+            this.label13.Location = new System.Drawing.Point(4, 165);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 16);
             this.label13.TabIndex = 8;
@@ -255,7 +255,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 199);
+            this.label14.Location = new System.Drawing.Point(4, 198);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 16);
             this.label14.TabIndex = 8;
@@ -285,16 +285,17 @@
             this.tableLayoutPanel1.Controls.Add(this.pbAnh, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnThemAnh, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(203, 235);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(203, 234);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 98);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 99);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // cbGioiTinhGV
             // 
+            this.cbGioiTinhGV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGioiTinhGV.FormattingEnabled = true;
             this.cbGioiTinhGV.Location = new System.Drawing.Point(203, 70);
             this.cbGioiTinhGV.Name = "cbGioiTinhGV";
@@ -303,8 +304,9 @@
             // 
             // cbKhoa
             // 
+            this.cbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKhoa.FormattingEnabled = true;
-            this.cbKhoa.Location = new System.Drawing.Point(203, 202);
+            this.cbKhoa.Location = new System.Drawing.Point(203, 201);
             this.cbKhoa.Name = "cbKhoa";
             this.cbKhoa.Size = new System.Drawing.Size(423, 24);
             this.cbKhoa.TabIndex = 14;

@@ -51,7 +51,7 @@ namespace PresentationLayer
         private void LoadKeys(string tableName)
         {
             this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesBUS(foriegnKeys, tableName);
+            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( tableName);
         }
 
         private void LoadComboBox()

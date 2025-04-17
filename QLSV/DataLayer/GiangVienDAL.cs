@@ -15,7 +15,7 @@ namespace DataLayer
         {
             {
                 GiangVien gv = null;
-                using (SqlConnection conn = DBConnectDAL.Connect())
+                using (SqlConnection conn = DBProviderDAL.Connect())
                 {
                     string query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiangVien,Lop" +
                         " WHERE Lop.MSGVCN=@msgv";
@@ -53,7 +53,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnectDAL.GetDataTable(query, parameters);
+                return DBProviderDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@msgv",msgv)
                 };
-                return DBConnectDAL.GetDataTable(query, parameters);
+                return DBProviderDAL.GetDataTable(query, parameters);
 
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace DataLayer
                 {
                     new SqlParameter ("@msgv",msgv)
                 };
-                return DBConnectDAL.GetDataTable (query, parameters);
+                return DBProviderDAL.GetDataTable (query, parameters);
 
             }
             catch (Exception ex)
@@ -120,7 +120,7 @@ namespace DataLayer
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
 
-                return DBConnectDAL.GetDataTable(query,parameters);
+                return DBProviderDAL.GetDataTable(query,parameters);
             }
             catch (Exception ex)
             {
@@ -163,7 +163,7 @@ namespace DataLayer
                     new SqlParameter("@diemTK", diemTK)
                 };
 
-                    return DBConnectDAL.ExecuteNonQuery(query,parameters) > 0;
+                    return DBProviderDAL.ExecuteNonQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -179,7 +179,7 @@ namespace DataLayer
                 new SqlParameter("@MSGV", msgv),
                 new SqlParameter("@Anh",anh)
             };
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
     }
 }

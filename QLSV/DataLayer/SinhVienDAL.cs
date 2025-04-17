@@ -22,7 +22,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return  DBConnectDAL.GetDataTable(query,parameters);
+                return  DBProviderDAL.GetDataTable(query,parameters);
             }
             catch (Exception ex) // Lỗi khác
             {
@@ -34,7 +34,7 @@ namespace DataLayer
             try
             {
                 SinhVien sv = null;
-                using (SqlConnection conn =DBConnectDAL.Connect())
+                using (SqlConnection conn =DBProviderDAL.Connect())
                 {
                     string query = "SELECT SinhVien.*,Lop.Ma_Lop FROM SinhVien, Lop, Khoa " +
                                    "WHERE SinhVien.MSSV = @mssv AND SinhVien.ma_lop = Lop.ma_lop ";
@@ -81,7 +81,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnectDAL.GetDataTable(query,parameters);
+                return DBProviderDAL.GetDataTable(query,parameters);
             }
             catch (Exception ex)
             {
@@ -105,7 +105,7 @@ namespace DataLayer
             {
                 new SqlParameter("@mssv",mssv)
             };
-            return DBConnectDAL.GetDataTable(query, parameters);
+            return DBProviderDAL.GetDataTable(query, parameters);
             
         }
 
@@ -120,7 +120,7 @@ namespace DataLayer
                     new SqlParameter("@MaLop", malopmonhoc),
                     new SqlParameter("@NgayDK", date)
                     };
-                return DBConnectDAL.ExecuteNonQuery(query,parameters) > 0;
+                return DBProviderDAL.ExecuteNonQuery(query,parameters) > 0;
 
         }
 
@@ -135,7 +135,7 @@ namespace DataLayer
                     new SqlParameter("@MSSV", mssv),
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
-                return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+                return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -157,7 +157,7 @@ namespace DataLayer
                 {
                     new SqlParameter("@mssv",mssv)
                 };
-                return DBConnectDAL.GetDataTable(query, parameters);
+                return DBProviderDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -181,7 +181,7 @@ namespace DataLayer
                     "\r\n    AND LopMo.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +
                     "\r\n    AND LopMonHoc.Ma_Mon_Hoc = MonHoc.Ma_Mon_Hoc " +
                     "\r\n    AND ThoiKhoaBieu.Ma_Lop_Mon_Hoc = LopMo.Ma_Lop_Mon_Hoc;";
-                 return DBConnectDAL.GetDataTable(query);
+                 return DBProviderDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
@@ -202,7 +202,7 @@ namespace DataLayer
                                 {
                     new SqlParameter("@mssv",mssv)
                                 };
-                return DBConnectDAL.GetDataTable(query, parameters);
+                return DBProviderDAL.GetDataTable(query, parameters);
             }
             catch (Exception ex)
             {
@@ -217,7 +217,7 @@ namespace DataLayer
             try
             {
                 string query = "select Ma_Hoc_Ky,Ten_Hoc_Ky from HocKy";
-                return DBConnectDAL.GetDataTable(query);
+                return DBProviderDAL.GetDataTable(query);
             }
             catch (Exception ex)
             {
@@ -236,7 +236,7 @@ namespace DataLayer
                 new SqlParameter("@MSSV", mssv),
                 new SqlParameter("@Anh",anh)
             };
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
     }
 }

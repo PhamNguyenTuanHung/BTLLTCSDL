@@ -250,3 +250,7 @@ C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.Fo
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemLopMonHoc.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemThoiKhoaBieu.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThemDiem.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemLichThi.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemTaiKhoan.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmAdmin.resources
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemMonMoDangKy.resources

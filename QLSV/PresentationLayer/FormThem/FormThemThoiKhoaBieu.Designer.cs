@@ -137,6 +137,7 @@
             // 
             // cbMaLopMonHoc
             // 
+            this.cbMaLopMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaLopMonHoc.FormattingEnabled = true;
             this.cbMaLopMonHoc.Location = new System.Drawing.Point(201, 4);
             this.cbMaLopMonHoc.Name = "cbMaLopMonHoc";
@@ -154,6 +155,7 @@
             // 
             // cbNgayHoc
             // 
+            this.cbNgayHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNgayHoc.FormattingEnabled = true;
             this.cbNgayHoc.Location = new System.Drawing.Point(201, 41);
             this.cbNgayHoc.Name = "cbNgayHoc";

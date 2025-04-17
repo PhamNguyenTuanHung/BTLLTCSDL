@@ -75,7 +75,6 @@ namespace PresentationLayer
             LoadUserControls();
             AdminBUS = new AdminBUS();
             string tabName = tCAdmin.SelectedTab.Name; // Lấy tên tab
-            userControls[tabName].tenTabPage = tabName;
             userControls[tabName].LoadData();   
         }
 
@@ -84,7 +83,6 @@ namespace PresentationLayer
         private void tCAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
             string tabName = tCAdmin.SelectedTab.Name; // Lấy tên tab
-            userControls[tabName].tenTabPage = tabName;
             userControls[tabName].LoadData();
             
         }

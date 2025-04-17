@@ -23,7 +23,7 @@ namespace DataLayer
                 "\r\nFROM INFORMATION_SCHEMA.TABLES " +
                 "\r\nWHERE TABLE_TYPE = 'BASE TABLE';";
 
-            using (SqlConnection conn = DBConnectDAL.Connect())
+            using (SqlConnection conn = DBProviderDAL.Connect())
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -52,7 +52,7 @@ namespace DataLayer
                 "\r\nWHERE tc.TABLE_NAME = @tableName" +
                 "\r\nAND tc.CONSTRAINT_TYPE = 'PRIMARY KEY';";
 
-            using (SqlConnection conn = DBConnectDAL.Connect())
+            using (SqlConnection conn = DBProviderDAL.Connect())
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -70,6 +70,7 @@ namespace DataLayer
             return primaryKeys;
         }
 
+        //Lấy khóa ngoại
         public List<string> GetForiegnKeysDAL(string tableName)
         {
             List<string> foreignKeys = new List<string>();
@@ -80,7 +81,7 @@ namespace DataLayer
                 "\r\nWHERE tc.TABLE_NAME = @tableName AND tc.CONSTRAINT_TYPE = 'FOREIGN KEY'";
 
 
-            using (SqlConnection conn = DBConnectDAL.Connect())
+            using (SqlConnection conn = DBProviderDAL.Connect())
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -104,99 +105,189 @@ namespace DataLayer
             return foreignKeys;
         }
 
-        public Dictionary<string,List<string>> GetForeignKeyValuesDAL(List<string> foreignKeys,string tableName)
+        // Trả về cột khóa ngoại và bảng chưa nó
+        // Lấy thông tin các khóa ngoại từ bảng nguồn
+        public Dictionary<string, string> GetAllForeignKeysAndTables(string sourceTable)
         {
-            Dictionary<string,List<String>> foreignKeysData = new Dictionary<string, List<string>>();
-            using (SqlConnection conn = DBConnectDAL.Connect())
+            string query = @"
+            SELECT 
+                c1.name AS ForeignKeyColumn,
+                OBJECT_NAME(fk.referenced_object_id) AS ReferencedTable,
+                c2.name AS ReferencedColumn
+            FROM 
+                sys.foreign_keys fk
+            INNER JOIN 
+                sys.foreign_key_columns fkc ON fk.object_id = fkc.constraint_object_id
+            INNER JOIN 
+                sys.columns c1 ON fkc.parent_object_id = c1.object_id AND fkc.parent_column_id = c1.column_id
+            INNER JOIN 
+                sys.columns c2 ON fkc.referenced_object_id = c2.object_id AND fkc.referenced_column_id = c2.column_id
+            WHERE 
+                OBJECT_NAME(fk.parent_object_id) = @SourceTable
+            ";
+
+            SqlParameter[] parameters = {
+                new SqlParameter("@SourceTable", sourceTable)
+            };
+
+            DataTable dt = DBProviderDAL.GetDataTable(query, parameters);
+            var result = new Dictionary<string, string>();
+
+            foreach (DataRow row in dt.Rows)
             {
-                conn.Open();
-                foreach (string col in foreignKeys)
-                {
-                    foreignKeysData[col] = new List<string>();
-
-                    string colQuery = $"SELECT DISTINCT [{col}] FROM {tableName} WHERE [{col}] IS NOT NULL";
-                    using (SqlCommand colCmd = new SqlCommand(colQuery, conn))
-                    {
-                        using (SqlDataReader colReader = colCmd.ExecuteReader())
-                        {
-                            while (colReader.Read())
-                            {
-                                // Làm gì đó với giá trị của cột khóa ngoại
-                                string value = colReader[0].ToString();
-                                foreignKeysData[col].Add(value);
-                            }
-                        }
-                    }
-                }
-
+                string fkCol = row["ForeignKeyColumn"].ToString();
+                string refTable = row["ReferencedTable"].ToString();
+                result[fkCol] = refTable;
             }
-            
-            return foreignKeysData;
+
+            return result;
         }
+
+
+        //trả về các giá trị của khóa ngoại trong bảng của nó (vd Ma_Khoa của bảng Khoa là khóa ngoại của bảng GV =>
+        //lấy các giá trị Ma_Khoa của bảng Khoa)
+         // Lấy các giá trị của khóa ngoại từ bảng
+        public List<string> GetForeignKeyValues(string fkColumn, string sourceTable)
+        {
+            List<string> foreignKeyValues = new List<string>();
+            string query = $"SELECT DISTINCT [{fkColumn}] FROM [{sourceTable}] WHERE [{fkColumn}] IS NOT NULL";
+        
+
+            DataTable dt = DBProviderDAL.GetDataTable(query);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string value = row[fkColumn].ToString();
+                foreignKeyValues.Add(value);
+            }
+
+            return foreignKeyValues;
+        }
+
+
+
+        // Hàm kết hợp kết quả từ GetAllForeignKeysAndTables và GetForeignKeyValuesDAL
+        public Dictionary<string, List<string>> GetForeignKeyValuesWithReferencedTablesDAL(string sourceTable)
+        {
+            // 1. Lấy thông tin tất cả khóa ngoại và bảng tham chiếu
+            Dictionary<string,string> foreignKeysAndTables = GetAllForeignKeysAndTables(sourceTable);
+            if (foreignKeysAndTables.Count == 0) return null;
+
+            // 2. Tạo dictionary kết quả để lưu thông tin khóa ngoại và các giá trị tương ứng.
+            Dictionary<string,List<string>> result = new Dictionary<string, List<string>>();
+
+            // 3. Lặp qua từng khóa ngoại và lấy các giá trị tương ứng
+            foreach (var fk in foreignKeysAndTables)
+            {
+                string fkColumn = fk.Key;  // Cột khóa ngoại
+                string referencedTable = fk.Value;  // Bảng tham chiếu
+                // 4. Lấy giá trị của cột khóa ngoại từ bảng nguồn
+                List<string> foreignKeyValues = GetForeignKeyValues(fkColumn, referencedTable);
+                foreach (string str in foreignKeyValues)
+                {
+                    Console.Write(str + " ");
+                }
+                    Console.WriteLine();
+                // 5. Thêm vào kết quả nếu có giá trị.
+                result[fkColumn] = foreignKeyValues;
+            }
+
+            // 6. Trả về kết quả
+            return result;
+        }
+
+
+
+        public DataTable GetAllRegisteredCoursesDAL()
+        {
+            string query = "SELECT * FROM MonMoDangKy";
+            return DBProviderDAL.GetDataTable(query);
+        }
+
+
+        //Lấy danh sách Giảng viên
         public DataTable GetLecturersListDAL()
         {
 
             string query = "SELECT * FROM GiangVien ";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
         }
 
+        //Lấy danh sách sinh viên
         public DataTable GetStudentsListDAL()
         {
 
             string query = "SELECT * FROM SinhVien ";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
         }
 
+        //Lấy danh sách môn học
         public DataTable GetSubjectsListDAL()
         {
 
             string query = "SELECT * FROM MonHoc ";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
         }
-
+        //Lấy danh sách lớp môn học
         public DataTable GetClassListDAL()
         {
 
             string query = "SELECT * FROM LopMonHoc ";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
         }
-
+        //Lấy danh sách lịch thi
         public DataTable GetExamScheduleDAL()
         {
 
             string query = "SELECT * FROM LichThi ";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
         }
-
+        //Lấy danh sách điểm của các sinh viên
         public DataTable GetStudentGradesDAL()
         {
 
             string query = "SELECT * FROM Diem ";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
 
         }
-
+        //Lấy tời khóa biểu
         public DataTable GetScheduleDAL()
         {
 
             string query = "SELECT * FROM ThoiKhoaBieu";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
 
         }
-
+        //Danh sách tài khoản
         public DataTable GetAccountListsDAL()
         {
             string query = "SELECT * FROM TaiKhoan";
-            return DBConnectDAL.GetDataTable(query);
+            return DBProviderDAL.GetDataTable(query);
         }
 
         //Các hàm thêm dữ liệu
+
+        public bool InsertCourseForRegistrationDAL(MonMoDangKy monMoDangKy)
+        {
+            string query = "INSERT INTO MonMoDangKy (Ma_Lop_Mon_Hoc,Ma_Hoc_Ky,So_Luong_Toi_Da) " +
+                           "VALUES @MaLopMonHoc,@MaHocKi,@soluongtoida";
+
+            SqlParameter[] parameters = {
+             new SqlParameter("@MaLopMonHoc", monMoDangKy.MaLopMonHoc),
+            new SqlParameter("@MaHocKi", monMoDangKy.MaHocKy),
+            new SqlParameter("@SLDangKyToiDa", monMoDangKy.SoLuongToiDa)
+        };
+
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+        }
+
+
         public bool InsertStudentDAL(SinhVien sv)
         {
             
@@ -216,7 +307,7 @@ namespace DataLayer
             new SqlParameter("@Anh", SqlDbType.VarBinary) { Value = sv.Anh ?? (object)DBNull.Value } // Chuyển ảnh thành DBNull nếu null
         };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool InsertLecturerDAL(GiangVien gv)
@@ -234,7 +325,7 @@ namespace DataLayer
             new SqlParameter("@MaKhoa", gv.MaKhoa)
         };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool InsertCourseDAL(MonHoc mh)
@@ -250,7 +341,7 @@ namespace DataLayer
             new SqlParameter("@HeSoQT",mh.HeSoQT)
         };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
 
 
         }
@@ -270,7 +361,7 @@ namespace DataLayer
             new SqlParameter("@SLDangKyToiDa", lopMonHoc.SoLuongDangKyToiDa)
         };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
 
 
 
@@ -291,7 +382,7 @@ namespace DataLayer
             new SqlParameter("@LanThi", diem.LanThi)
         };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
 
@@ -311,19 +402,18 @@ namespace DataLayer
             new SqlParameter("@NgayKT", tkb.NgayKT)
         };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
 
         }
 
         public bool InsertExamScheduleDAL(LichThi lichThi)
         {
 
-            string query = "INSERT INTO LichThi (Ma_Lich_Thi, Ma_Lop_Mon_Hoc, Ngay_Thi, Ma_Hoc_Ky, Gio_Bat_Dau, Gio_Ket_Thuc, Phong_Thi) " +
-                           "VALUES (@MaLichThi, @MaLopMonHoc, @NgayThi, @MaHocKy, @GioBatDau, @GioKetThuc, @PhongThi)";
+            string query = "INSERT INTO LichThi ( Ma_Lop_Mon_Hoc, Ngay_Thi, Ma_Hoc_Ky, Gio_Bat_Dau, Gio_Ket_Thuc, Phong_Thi) " +
+                           "VALUES ( @MaLopMonHoc, @NgayThi, @MaHocKy, @GioBatDau, @GioKetThuc, @PhongThi)";
 
             SqlParameter[] parameters =
             {
-                    new SqlParameter("@MaLichThi", lichThi.MaLichThi),
                     new SqlParameter("@MaLopMonHoc", lichThi.MaLopMonHoc),
                     new SqlParameter("@NgayThi", lichThi.NgayThi),
                     new SqlParameter("@PhongThi", lichThi.PhongThi),
@@ -332,7 +422,7 @@ namespace DataLayer
                     new SqlParameter("@GioKetThuc", lichThi.GioKetThuc)
                 };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
 
         }
 
@@ -351,18 +441,31 @@ namespace DataLayer
         new SqlParameter("@trangThai",taiKhoan.TrangThai)
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
 
 
         //Các hàm xóa
+
+        public bool DeleteCourseFromRegistrationDAL(string maMonMoDangKy)
+        {
+            string query = "DELETE FROM MonMoDangKy" +
+                " WHERE Ma_Lop_Mo = @MaLopMo";
+
+            SqlParameter[] parameters =
+                {
+                    new SqlParameter("@MaLopMonHoc", maMonMoDangKy)
+                };
+
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+        }
         public bool DeleteStudentDAL(string mssv)
         {
             string query = "DELETE FROM SinhVien WHERE MSSV = @MSSV";
             SqlParameter[] parameters = { new SqlParameter("@MSSV", mssv) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteLecturerDAL(string msgv)
@@ -370,7 +473,7 @@ namespace DataLayer
             string query = "DELETE FROM GiangVien WHERE MSGV = @MSGV";
             SqlParameter[] parameters = { new SqlParameter("@MSGV", msgv) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteCourseDAL(string maMonHoc)
@@ -378,7 +481,7 @@ namespace DataLayer
             string query = "DELETE FROM MonHoc WHERE Ma_Mon_Hoc = @MaMonHoc";
             SqlParameter[] parameters = { new SqlParameter("@MaMonHoc", maMonHoc) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteCourseClassDAL(string maLopMonHoc)
@@ -386,7 +489,7 @@ namespace DataLayer
             string query = "DELETE FROM LopMonHoc WHERE Ma_Lop_Mon_Hoc = @MaLopMonHoc";
             SqlParameter[] parameters = { new SqlParameter("@MaLopMonHoc", maLopMonHoc) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteGradeDAL(string mssv, string maMonHoc, string maHocKy)
@@ -398,7 +501,7 @@ namespace DataLayer
         new SqlParameter("@MaHocKy", maHocKy)
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteScheduleDAL(string maTKB)
@@ -406,7 +509,7 @@ namespace DataLayer
             string query = "DELETE FROM ThoiKhoaBieu WHERE Ma_TKB = @MaTKB";
             SqlParameter[] parameters = { new SqlParameter("@MaTKB", maTKB) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteExamScheduleDAL(string maLichThi)
@@ -414,7 +517,7 @@ namespace DataLayer
             string query = "DELETE FROM LichThi WHERE Ma_Lich_Thi = @MaLichThi";
             SqlParameter[] parameters = { new SqlParameter("@MaLichThi", maLichThi) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteAccountDAL(string tenDangNhap)
@@ -422,10 +525,26 @@ namespace DataLayer
             string query = "DELETE FROM TaiKhoan WHERE ten_Dang_Nhap = @tenDangNhap";
             SqlParameter[] parameters = { new SqlParameter("@tenDangNhap", tenDangNhap) };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         //Hàm cập nhật dữ liệu
+
+        public bool UpdateCourseFromRegistrationDAL(MonMoDangKy monMoDangKy)
+        {
+            string query = "Update  MonMoDangKy " +
+                           "SET  Ma_Lop_Mon_Hoc = @MaLopMonHoc, Ma_Hoc_Ky = @MaHocKi,So_Luong_Toi_Da =@soluongtoida" +
+                           "WHERE Ma_Lop_Mo=@MaLopMo";
+            
+            SqlParameter[] parameters = {
+            new SqlParameter("@MaLopMo", monMoDangKy.MaLopMo),
+            new SqlParameter("@MaLopMonHoc", monMoDangKy.MaLopMonHoc),
+            new SqlParameter("@MaHocKi", monMoDangKy.MaHocKy),
+            new SqlParameter("@SLDangKyToiDa", monMoDangKy.SoLuongToiDa)
+        };
+
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+        }
         public bool UpdateStudentDAL(SinhVien sv)
         {
             string query = "UPDATE SinhVien " +
@@ -447,7 +566,7 @@ namespace DataLayer
         new SqlParameter("@Anh", SqlDbType.VarBinary) { Value = sv.Anh ?? (object)DBNull.Value } // Chuyển ảnh thành DBNull nếu null
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateLecturerDAL(GiangVien gv)
@@ -467,7 +586,7 @@ namespace DataLayer
             new SqlParameter("@MaKhoa", gv.MaKhoa)
             };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateCourseDAL(MonHoc mh)
@@ -483,7 +602,7 @@ namespace DataLayer
         new SqlParameter("HeSoQT",mh.HeSoQT)
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateCourseClassDAL(LopMonHoc lopMonHoc)
@@ -502,7 +621,7 @@ namespace DataLayer
         new SqlParameter("@SLDangKyToiDa", lopMonHoc.SoLuongDangKyToiDa)
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateGradeDAL(DiemSV diem)
@@ -520,7 +639,7 @@ namespace DataLayer
         new SqlParameter("@LanThi", diem.LanThi),
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateScheduleDAL(ThoiKhoaBieu tkb)
@@ -542,7 +661,7 @@ namespace DataLayer
         new SqlParameter("@NgayKT", tkb.NgayKT)
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateExamScheduleDAL(LichThi lichThi)
@@ -564,7 +683,7 @@ namespace DataLayer
         new SqlParameter("@PhongThi", lichThi.PhongThi)
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
 
@@ -580,7 +699,7 @@ namespace DataLayer
         new SqlParameter("@loaiTaiKhoan", taiKhoan.LoaiTaiKhoan),
     };
 
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
     }
 }

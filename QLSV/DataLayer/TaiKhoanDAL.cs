@@ -22,7 +22,7 @@ namespace DataLayer
             new SqlParameter("@username", username)
         };
 
-            DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
+            DataTable dt = DBProviderDAL.GetDataTable(query, parameters);
             return dt.Rows.Count > 0;
         }
 
@@ -50,7 +50,7 @@ namespace DataLayer
                 {
             new SqlParameter("@username", username)
         };
-            DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
+            DataTable dt = DBProviderDAL.GetDataTable(query, parameters);
             return dt.Rows.Count > 0 ? dt.Rows[0]["Email"].ToString() : "";
         }
 
@@ -69,7 +69,7 @@ namespace DataLayer
                     new SqlParameter("@password", account.MatKhau)
                 };
 
-                DataTable dt = DBConnectDAL.GetDataTable(query, parameters);
+                DataTable dt = DBProviderDAL.GetDataTable(query, parameters);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -98,7 +98,7 @@ namespace DataLayer
         new SqlParameter("@username", username),
         new SqlParameter("@password", password)
             };
-            return DBConnectDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
         }
 
     }

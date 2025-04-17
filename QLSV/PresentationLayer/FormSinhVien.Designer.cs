@@ -137,7 +137,7 @@
             // dgvDSMonDK
             // 
             this.dgvDSMonDK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDSMonDK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDSMonDK.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvDSMonDK.Location = new System.Drawing.Point(3, 87);
             this.dgvDSMonDK.Name = "dgvDSMonDK";
             this.dgvDSMonDK.RowHeadersWidth = 51;
@@ -188,7 +188,7 @@
             // 
             this.dgvMonDK.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMonDK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonDK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMonDK.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvMonDK.Location = new System.Drawing.Point(3, 255);
             this.dgvMonDK.Name = "dgvMonDK";
             this.dgvMonDK.RowHeadersWidth = 51;

@@ -260,10 +260,10 @@
     <Compile Include="FormSinhVien.Designer.cs">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemDiem.cs">
+    <Compile Include="FormThem\FormThemDiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemDiem.Designer.cs">
+    <Compile Include="FormThem\FormThemDiem.Designer.cs">
       <DependentUpon>FormThemDiem.cs</DependentUpon>
     </Compile>
     <Compile Include="FormThemDuLieu.cs">
@@ -272,35 +272,59 @@
     <Compile Include="FormThemDuLieu.Designer.cs">
       <DependentUpon>FormThemDuLieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemGiangVien.cs">
+    <Compile Include="FormThem\FormThemGiangVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemGiangVien.Designer.cs">
+    <Compile Include="FormThem\FormThemGiangVien.Designer.cs">
       <DependentUpon>FormThemGiangVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemLopMonHoc.cs">
+    <Compile Include="FormThem\FormThemLichThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemLopMonHoc.Designer.cs">
+    <Compile Include="FormThem\FormThemLichThi.Designer.cs">
+      <DependentUpon>FormThemLichThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormThem\FormThemLopMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThem\FormThemLopMonHoc.Designer.cs">
       <DependentUpon>FormThemLopMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemMonHoc.cs">
+    <Compile Include="FormThem\FormThemMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemMonHoc.Designer.cs">
+    <Compile Include="FormThem\FormThemMonHoc.Designer.cs">
       <DependentUpon>FormThemMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemSinhVien.cs">
+    <Compile Include="FormThem\FormThemMonMoDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemSinhVien.Designer.cs">
+    <Compile Include="FormThem\FormThemMonMoDangKy.Designer.cs">
+      <DependentUpon>FormThemMonMoDangKy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormThem\FormThemSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThem\FormThemSinhVien.Designer.cs">
       <DependentUpon>FormThemSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemThoiKhoaBieu.cs">
+    <Compile Include="FormThem\FormThemTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemThoiKhoaBieu.Designer.cs">
+    <Compile Include="FormThem\FormThemTaiKhoan.Designer.cs">
+      <DependentUpon>FormThemTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormThem\FormThemThoiKhoaBieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThem\FormThemThoiKhoaBieu.Designer.cs">
       <DependentUpon>FormThemThoiKhoaBieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdmin.Designer.cs">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -331,26 +355,38 @@
     <EmbeddedResource Include="FormSinhVien.resx">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemDiem.resx">
+    <EmbeddedResource Include="FormThem\FormThemDiem.resx">
       <DependentUpon>FormThemDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormThemDuLieu.resx">
       <DependentUpon>FormThemDuLieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemGiangVien.resx">
+    <EmbeddedResource Include="FormThem\FormThemGiangVien.resx">
       <DependentUpon>FormThemGiangVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemLopMonHoc.resx">
+    <EmbeddedResource Include="FormThem\FormThemLichThi.resx">
+      <DependentUpon>FormThemLichThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThem\FormThemLopMonHoc.resx">
       <DependentUpon>FormThemLopMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemMonHoc.resx">
+    <EmbeddedResource Include="FormThem\FormThemMonHoc.resx">
       <DependentUpon>FormThemMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemSinhVien.resx">
+    <EmbeddedResource Include="FormThem\FormThemMonMoDangKy.resx">
+      <DependentUpon>FormThemMonMoDangKy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThem\FormThemSinhVien.resx">
       <DependentUpon>FormThemSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemThoiKhoaBieu.resx">
+    <EmbeddedResource Include="FormThem\FormThemTaiKhoan.resx">
+      <DependentUpon>FormThemTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThem\FormThemThoiKhoaBieu.resx">
       <DependentUpon>FormThemThoiKhoaBieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -360,6 +396,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="FormQuenMatKhau.resx">
       <DependentUpon>FormQuenMatKhau.cs</DependentUpon>
@@ -390,6 +427,12 @@
       <Project>{316107e5-d041-4ffa-9e02-d27e6228de29}</Project>
       <Name>DOT</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

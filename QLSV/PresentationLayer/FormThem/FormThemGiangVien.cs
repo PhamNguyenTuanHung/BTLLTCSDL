@@ -10,87 +10,83 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PresentationLayer
 {
-    public partial class FormThemSinhVien : Form
+    public partial class FormThemGiangVien : Form
     {
-
-        AdminBUS adminBUS ;
-        SinhVien sinhVien;
-        byte[] imageBytes;
-        List<string> primaryKeys, foriegnKeys;
-        Dictionary<string,List<string>> foriegnKeyValues;
-
-        public FormThemSinhVien()
+        public FormThemGiangVien()
         {
             InitializeComponent();
         }
 
+        AdminBUS adminBUS;
+        GiangVien giangVien;
+        byte[] imageBytes;
+        Dictionary<string,List<String>> foreignKeyValues;
 
-        public FormThemSinhVien(SinhVien sinhVien,int Type)
+
+        public FormThemGiangVien(GiangVien giangVien, int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 
-            this.sinhVien = sinhVien ?? new SinhVien(); // Nếu sinhVien null, tạo một đối tượng mới
+            this.giangVien = giangVien ?? new GiangVien(); // Nếu giangVien null, tạo một đối tượng mới
 
             adminBUS = new AdminBUS(); // Khởi tạo lớp quản lý
 
-            // Kiểm tra xem là Thêm mới (Type = 0) hay Sửa (Type = 1)
+            // Kiểm tra xem là Thêm mới (Type = 1) hay Sửa (Type = 0)
             CheckAddOrUpdate(Type);
-            LoadKeys("SinhVien");
-            LoadComboBox();
+            LoadKeys("GiangVien");
 
-            if (Type == 0 && sinhVien != null)
+            LoadComboBox();
+            if (Type == 0 && giangVien != null)
             {
                 // Nếu là sửa, hiển thị thông tin sinh viên lên form
-                ShowStudentDetails(sinhVien);
+                ShowLecturerDetails(giangVien);
             }
         }
 
 
         private void LoadKeys(string tableName)
         {
-            this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesBUS(foriegnKeys, tableName);
+            this.foreignKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( "GiangVien");
         }
 
 
         private void LoadComboBox()
         {
-            cbLop.DataSource = foriegnKeyValues["Ma_Lop"];
             List<string> gioiTinhList = new List<string> {"Nam", "Nữ" };
-            cbGioiTinh.DataSource = gioiTinhList;
-            cbLop.SelectedIndex = 0;
-            cbGioiTinh.SelectedIndex = 0;
+            cbGioiTinhGV.DataSource = gioiTinhList;
+            cbGioiTinhGV.SelectedIndex = 0;
+
+            cbKhoa.DataSource = foreignKeyValues["Ma_Khoa"];
+            cbKhoa.SelectedIndex = 0;
         }
-        private void ShowStudentDetails(SinhVien sv)
+        private void ShowLecturerDetails(GiangVien giangVien)
         {
-            txtMSSV.Text = sv.MSSV;
-            txtHoTen.Text = sv.HoTen;
-            if (sv.GioiTinh == "Nam")
+            txtMSGV.Text = giangVien.MSGV;
+            txtHoTen.Text = giangVien.HoTen;
+            if (giangVien.GioiTinh == "Nam")
             {
-                cbGioiTinh.SelectedIndex = 0;  // Chọn "Nam"
+                cbGioiTinhGV.SelectedIndex = 0;  // Chọn "Nam"
             }
-            else    cbGioiTinh.SelectedIndex = 1;  // Chọn "Nữ"
-          
-            dtNgaySinh.Value = sv.NgaySinh;
-            txtEmail.Text = sv.Email;
-            txtDiaChi.Text = sv.DiaChi;
-            txtKhoaHoc.Text = sv.KhoaHoc;
-            txtDRL.Text = sv.DiemRenLuyen.ToString();
-            int index = cbLop.Items
+            else cbGioiTinhGV.SelectedIndex = 1;  // Chọn "Nữ"
+
+            dtNgaySinh.Value = giangVien.NgaySinh;
+            txtEmail.Text = giangVien.Email;
+            txtDiaChi.Text = giangVien.DiaChi;
+            int index = cbKhoa.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == sv.MaLop);
+                 .FindIndex(item => item == giangVien.MaKhoa);
 
             if (index >= 0)
-                cbLop.SelectedIndex = index;
+                cbKhoa.SelectedIndex = index;
 
-            if (sv.Anh != null && sv.Anh.Length > 0)
+
+            if (giangVien.Anh != null && giangVien.Anh.Length > 0)
             {
-                using (MemoryStream ms = new MemoryStream(sv.Anh))
+                using (MemoryStream ms = new MemoryStream(giangVien.Anh))
                 {
                     pbAnh.Image = Image.FromStream(ms);
                     pbAnh.SizeMode = PictureBoxSizeMode.Zoom;
@@ -104,12 +100,13 @@ namespace PresentationLayer
             }
         }
 
-        public bool ValidateStudentForm()
+
+        public bool ValidateLecturerForm()
         {
-            if (string.IsNullOrWhiteSpace(txtMSSV.Text))
+            if (string.IsNullOrWhiteSpace(txtMSGV.Text))
             {
                 MessageBox.Show("Vui lòng nhập MSSV.");
-                txtMSSV.Focus();
+                txtMSGV.Focus();
                 return false;
             }
 
@@ -120,10 +117,10 @@ namespace PresentationLayer
                 return false;
             }
 
-            if (cbGioiTinh.SelectedIndex == -1)
+            if (cbGioiTinhGV.SelectedIndex == -1)
             {
                 MessageBox.Show("Vui lòng chọn Giới tính.");
-                cbGioiTinh.Focus();
+                cbGioiTinhGV.Focus();
                 return false;
             }
 
@@ -134,14 +131,6 @@ namespace PresentationLayer
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtDRL.Text) ||
-                !float.TryParse(txtDRL.Text, out float diem) || diem < 0 || diem > 100)
-            {
-                MessageBox.Show("Điểm rèn luyện phải là số từ 0 đến 100.");
-                txtDRL.Focus();
-                return false;
-            }
-
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || !txtEmail.Text.Contains("@"))
             {
                 MessageBox.Show("Email không hợp lệ.");
@@ -149,17 +138,11 @@ namespace PresentationLayer
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtMSSV.Text))
-            {
-                MessageBox.Show("Vui lòng chọn Khóa học.");
-                txtKhoaHoc.Focus();
-                return false;
-            }
 
-            if (cbLop.SelectedIndex == -1)
+            if (cbKhoa.SelectedIndex == -1)
             {
                 MessageBox.Show("Vui lòng chọn Lớp.");
-                cbLop.Focus();
+                cbKhoa.Focus();
                 return false;
             }
             return true;
@@ -171,38 +154,36 @@ namespace PresentationLayer
             if (type == 1)
             {
                 btnThem.Enabled = true;
-                btnThem.Visible= true;
+                btnThem.Visible = true;
                 btnSua.Enabled = false;
-                btnSua.Visible=false;
+                btnSua.Visible = false;
             }
             else
             {
-                txtMSSV.ReadOnly = true;
+                txtMSGV.ReadOnly = true;
                 btnThem.Enabled = false;
                 btnThem.Visible = false;
                 btnSua.Enabled = true;
                 btnSua.Visible = true;
-            }    
+            }
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
-                if (ValidateStudentForm() != true) return;
-                sinhVien = new SinhVien(
-                    txtMSSV.Text,
+                if (ValidateLecturerForm() != true) return;
+                giangVien = new GiangVien(
+                    txtMSGV.Text,
                     txtHoTen.Text,
-                    cbGioiTinh.SelectedValue?.ToString().Trim() ?? "",
+                    cbGioiTinhGV.SelectedValue?.ToString().Trim() ?? "",
                     dtNgaySinh.Value,
-                    txtEmail.Text,
                     txtDiaChi.Text,
-                    txtKhoaHoc.Text,
-                    double.TryParse(txtDRL.Text, out double drl) ? drl : 0,
-                    cbLop.SelectedValue?.ToString() ?? "",
+                    txtEmail.Text,
+                    cbKhoa.SelectedValue?.ToString() ?? "",
                     imageBytes ?? null
             ); ;
 
-                if (adminBUS.InsertStudentBUS(sinhVien))
+                if (adminBUS.InsertLecturerBUS(giangVien))
                 {
                     MessageBox.Show("Thêm thành công");
                     this.Close();
@@ -210,7 +191,7 @@ namespace PresentationLayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message) ;
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -219,21 +200,19 @@ namespace PresentationLayer
         {
             try
             {
-                if (ValidateStudentForm() != true) return;
-                sinhVien = new SinhVien(
-                    txtMSSV.Text,
+                if (ValidateLecturerForm() != true) return;
+                giangVien = new GiangVien(
+                    txtMSGV.Text,
                     txtHoTen.Text,
-                    cbGioiTinh.SelectedValue?.ToString().Trim() ?? "",
+                    cbGioiTinhGV.SelectedValue?.ToString().Trim() ?? "",
                     dtNgaySinh.Value,
                     txtEmail.Text,
                     txtDiaChi.Text,
-                    txtKhoaHoc.Text,
-                    double.TryParse(txtDRL.Text, out double drl) ? drl : 0,
-                    cbLop.SelectedValue?.ToString() ?? "",
+                    cbKhoa.SelectedValue?.ToString() ?? "",
                     imageBytes ?? null
             ); ;
 
-                if (adminBUS.UpdateStudentBUS(sinhVien))
+                if (adminBUS.UpdateLecturerBUS(giangVien))
                 {
                     MessageBox.Show("Sửa thành công");
                     this.Close();

@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using BusinessLayer;
 using DOT;
+using PresentationLayer.FormThem;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -19,16 +21,15 @@ namespace PresentationLayer
     public partial class ucChucNangChung : UserControl
     {
         private DataTable dt; // Dữ liệu của DataGridView
-        public string tenTabPage { get; set; }//Nhận tên tab của form Admin
 
         List<string> primaryKeys, foreignKeys;
         Dictionary<string,List<string>> foreignKeyValues;
 
         string tableName;
 
-        private AdminBUS adminBUS;
+        AdminBUS adminBUS;
 
-        private object obj;
+        object obj;
         string keyword;
 
         public ucChucNangChung()
@@ -39,13 +40,13 @@ namespace PresentationLayer
         public ucChucNangChung(string TableName)
         {
             InitializeComponent();
-            this.tableName =TableName;
             primaryKeys = new List<string>();
             foreignKeys = new List<string>();
             adminBUS = new AdminBUS();
+            this.tableName = TableName;
             this.primaryKeys = adminBUS.GetPrimaryKeysBUS(tableName);
-            this.foreignKeys= adminBUS.GetForiegnKeysBUS(tableName);
-            this.foreignKeyValues = adminBUS.GetForeignKeyValuesBUS(foreignKeys,tableName);
+            this.foreignKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            this.foreignKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( tableName);
             LoadComboBox();
 
         }
@@ -55,6 +56,7 @@ namespace PresentationLayer
         {
             List<string> allValues = new List<string>();
 
+            if (foreignKeyValues == null) return;
             foreach (var key in foreignKeyValues.Keys)
             {
                 allValues.AddRange(foreignKeyValues[key]);
@@ -70,7 +72,7 @@ namespace PresentationLayer
         public void LoadData()
         {
             dt = new DataTable();
-            CreateTableData(tenTabPage);
+            CreateTableData(tableName);
             dgv.ClearSelection();
             dgv.DataSource = dt;
             if (dt.Columns.Contains("Gioi_Tinh"))
@@ -172,53 +174,9 @@ namespace PresentationLayer
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.AllowUserToAddRows = false;
             dgv.ReadOnly = true;
-            btnLuu.Visible = false;
-            btnThoat.Visible = false;
 
         }
 
-        //Hiển thị các control theo nút Sửa
-        private void DisplayControl()
-        {
-            foreach (Control control in panel2.Controls)
-            {
-                control.Visible = !control.Visible;
-            }
-            dgv.ReadOnly = !dgv.ReadOnly;
-
-            dgv.SelectionMode = dgv.SelectionMode == DataGridViewSelectionMode.CellSelect
-                    ? DataGridViewSelectionMode.FullRowSelect
-                    : DataGridViewSelectionMode.CellSelect;
-
-        }
-
-
-        public static List<T> ConvertDataTableToList<T>(DataTable dataTable) where T : new()
-        {
-            List<T> list = new List<T>();
-            foreach (DataRow row in dataTable.Rows)
-            {
-                T obj = new T();
-                foreach (DataColumn column in dataTable.Columns)
-                {
-                    PropertyInfo prop = typeof(T).GetProperty(column.ColumnName.Replace("_", ""), BindingFlags.Public | BindingFlags.Instance);
-                    if (prop != null && row[column] != DBNull.Value)
-                    {
-                        object value = row[column];
-
-                        // Nếu là kiểu Nullable, ta phải lấy kiểu gốc
-                        Type targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-
-                        // Chuyển đổi kiểu dữ liệu chính xác
-                        object safeValue = Convert.ChangeType(value, targetType);
-                        prop.SetValue(obj, safeValue);
-                    }
-                }
-                list.Add(obj);
-            }
-            return list;
-
-        }
 
 
         public static T ConvertDataGridViewRowToObject<T>(DataGridViewRow row) where T : new()
@@ -271,29 +229,32 @@ namespace PresentationLayer
             adminBUS = new AdminBUS();
             switch (tenBang)
             {
-                case "tpSV":
+                case "SinhVien":
                     dt = adminBUS.GetStudentsListBUS();
                     break;
-                case "tpGV":
+                case "GiangVien":
                     dt = adminBUS.GetLecturersListBUS();
                     break;
-                case "tpMH":
+                case "MonHoc":
                     dt = adminBUS.GetSubjectsListBUS();
                     break;
-                case "tpLopMonHoc":
+                case "LopMonHoc":
                     dt = adminBUS.GetClassListBUS();
                     break;
-                case "tpTKB":
+                case "ThoiKhoaBieu":
                     dt = adminBUS.GetScheduleBUS();
                     break;
-                case "tpLichThi":
+                case "LichThi":
                     dt = adminBUS.GetExamScheduleBUS();
                     break;
-                case "tpDiem":
+                case "Diem":
                     dt = adminBUS.GetStudentGradesBUS();
                     break;
-                case "tpTK":
+                case "TaiKhoan":
                     dt = adminBUS.GetAccountListBUS();
+                    break;
+                case "MonMoDangKy":
+                    dt = adminBUS.GetAllRegisteredCoursesBUS();
                     break;
                 default:
                     break;
@@ -323,32 +284,36 @@ namespace PresentationLayer
         private void btnThem_Click(object sender, EventArgs e)
         {
             
-            switch (tenTabPage)
+            switch (tableName)
             {
-                case "tpGV":
+                case "GiangVien":
                     new FormThemGiangVien(null, 1).ShowDialog(); ;
                     break;
-                case "tpSV":
+                case "SinhVien":
                     new FormThemSinhVien(null, 1).ShowDialog();
                     break;
-                case "tpMH":
+                case "MonHoc":
                     new FormThemMonHoc(null, 1).ShowDialog(); 
                     break;
-                case "tpLopMonHoc":
+                case "LopMonHoc":
                     new FormThemLopMonHoc(null,1).ShowDialog();
                     break;
-                case "tpTKB":
+                case "ThoiKhoaBieu":
                     new FormThemThoiKhoaBieu(null,1).ShowDialog();
                     break;
-                case "tpDiem":
+                case "Diem":
                     new FormThemDiem(null,1).ShowDialog();
                     break;
-                case "tpLichThi":
-                    new FormThemChung(new LichThi()).ShowDialog();
+                case "LichThi":
+                    new FormThemLichThi(null,1).ShowDialog();
                     break;
-                case "tpTK":
-                    new FormThemChung(new TaiKhoan()).ShowDialog();
+                case "TaiKhoan":
+                    new FormThemTaiKhoan(null,1).ShowDialog();
                     break;
+                case "MonMoDangKy": 
+                    new FormThemMonMoDangKy(null,1).ShowDialog();
+                    break;
+
                 default:
                     break;
             }
@@ -356,60 +321,55 @@ namespace PresentationLayer
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-
-            /*DisplayControl();
-            
-            // Khóa cột khóa chính (MSGV)
-            foreach (DataGridViewColumn col in dgv.Columns)
-            {
-                if (primaryKeys.Contains(col.Name))
-                {
-                    col.ReadOnly = true;
-                }
-            }*/
-
             if (dgv.SelectedRows.Count > 0)
             {
                 // Lấy thông tin dòng đã chọn
                 var row = dgv.SelectedRows[0];
 
-                switch (tenTabPage)
+                switch (tableName)
                 {
-                    case "tpGV":
+                    case "GiangVien":
                         GiangVien giangVien = ConvertDataGridViewRowToObject<GiangVien>(row);
                         new FormThemGiangVien(giangVien, 0).ShowDialog();
                         break;
-                    case "tpSV":
+                    case "SinhVien":
                         SinhVien sinhVien = ConvertDataGridViewRowToObject<SinhVien>(row);
                         new FormThemSinhVien(sinhVien, 0).ShowDialog();
                         break;
-                    case "tpMH":
+                    case "MonHoc":
                         MonHoc monHoc = ConvertDataGridViewRowToObject<MonHoc>(row);
                         new FormThemMonHoc(monHoc, 0).ShowDialog();
                         break;
-                    case "tpLopMonHoc":
+                    case "LopMonHoc":
                         LopMonHoc lopMonHoc = ConvertDataGridViewRowToObject<LopMonHoc>(row);
                         new FormThemLopMonHoc(lopMonHoc, 0).ShowDialog();
                         break;
-                    case "tpTKB":
+                    case "ThoiKhoaBieu":
                         ThoiKhoaBieu thoiKhoaBieu = ConvertDataGridViewRowToObject<ThoiKhoaBieu>(row);
                         new FormThemThoiKhoaBieu(thoiKhoaBieu, 0).ShowDialog();
                         break;
-                    case "tpDiem":
+                    case "Diem":
                         DiemSV diemSV = ConvertDataGridViewRowToObject<DiemSV>(row);
                         new FormThemDiem(diemSV, 0).ShowDialog();
                         break;
-                    case "tpLichThi":
-                        new FormThemChung(new LichThi()).ShowDialog();
+                    case "LichThi":
+                        LichThi lichThi = ConvertDataGridViewRowToObject<LichThi>(row);
+                        new FormThemLichThi(lichThi, 0).ShowDialog();
                         break;
-                    case "tpTK":
-                        new FormThemChung(new TaiKhoan()).ShowDialog();
+                    case "TaiKhoan":
+                        TaiKhoan taiKhoan = ConvertDataGridViewRowToObject<TaiKhoan>(row);
+                        new FormThemTaiKhoan(taiKhoan, 0).ShowDialog();
+                        break;
+                    case "MonMoDangKy":
+                        MonMoDangKy monMoDangKy = new MonMoDangKy();
+                        monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(row);
+                        new FormThemMonMoDangKy(monMoDangKy, 0).ShowDialog();
                         break;
                     default:
                         break;
                 }
-            LoadData();
-            }
+                LoadData();
+            }  
 
 
         }
@@ -421,48 +381,53 @@ namespace PresentationLayer
                 if (MessageBox.Show("Bạn muốn xóa", "Xóa", MessageBoxButtons.YesNo) == DialogResult.Yes)
 
                 {
-                    switch (tenTabPage)
+                    switch (tableName)
                     {
-                        case "tpGV":
+                        case "GiangVien":
                             GiangVien gv = new GiangVien();
                             gv = ConvertDGVRowToObject<GiangVien>(dgv.CurrentRow);
-                            check = adminBUS.DeleteLecturer(gv.MSGV);
+                            check = adminBUS.DeleteLecturerBUS(gv.MSGV);
                             break;
-                        case "tpSV":
+                        case "SinhVien":
                             SinhVien sv = new SinhVien();
                             sv = ConvertDGVRowToObject<SinhVien>(dgv.CurrentRow);
-                            check = adminBUS.DeleteStudent(sv.MSSV);
+                            check = adminBUS.DeleteStudentBUS(sv.MSSV);
                             break;
-                        case "tpMH":
+                        case "MonHoc":
                             MonHoc mh = new MonHoc();
                             mh = ConvertDGVRowToObject<MonHoc>(dgv.CurrentRow);
-                            check = adminBUS.DeleteCourse(mh.MaMonHoc);
+                            check = adminBUS.DeleteCourseBUS(mh.MaMonHoc);
                             break;
-                        case "tpLopMonHoc":
+                        case "LopMonHoc":
                             LopMonHoc lopMonHoc = new LopMonHoc();
                             lopMonHoc = ConvertDGVRowToObject<LopMonHoc>(dgv.CurrentRow);
-                            check = adminBUS.DeleteCourseClass(lopMonHoc.MaLopMonHoc);
+                            check = adminBUS.DeleteCourseClassBUS(lopMonHoc.MaLopMonHoc);
                             break;
-                        case "tpTKB":
+                        case "ThoiKhoaBieu":
                             ThoiKhoaBieu tkb = new ThoiKhoaBieu();
                             tkb = ConvertDGVRowToObject<ThoiKhoaBieu>(dgv.CurrentRow);
-                            check = adminBUS.DeleteSchedule(tkb.MaTKB.ToString());
+                            check = adminBUS.DeleteScheduleBUS(tkb.MaTKB.ToString());
                             break;
-                        case "tpDiem":
+                        case "Diem":
                             DiemSV diemSV = new DiemSV();
                             diemSV = ConvertDGVRowToObject<DiemSV>(dgv.CurrentRow);
-                            check = adminBUS.DeleteGrade(diemSV.MSSV, diemSV.MaHocKy, diemSV.MaMonHoc);
+                            check = adminBUS.DeleteGradeBUS(diemSV.MSSV, diemSV.MaHocKy, diemSV.MaMonHoc);
                             break;
-                        case "tpLichThi":
+                        case "LichThi":
                             LichThi lichThi = new LichThi();
                             lichThi = ConvertDGVRowToObject<LichThi>(dgv.CurrentRow);
-                            check = adminBUS.DeleteExamSchedule(lichThi.MaLichThi);
+                            check = adminBUS.DeleteExamScheduleBUS(lichThi.MaLichThi);
 
                             break;
-                        case "tpTK":
+                        case "TaiKhoan":
                             TaiKhoan taiKhoan = new TaiKhoan();
                             taiKhoan = ConvertDGVRowToObject<TaiKhoan>(dgv.CurrentRow);
                             check = adminBUS.DeleteAccountBUS(taiKhoan.TenDangNhap);
+                            break;
+                        case "MoMoDangKy":
+                            MonMoDangKy monMoDangKy = new MonMoDangKy();
+                            monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(dgv.CurrentRow);
+                            check = adminBUS.DeleteAccountBUS(monMoDangKy.MaLopMo);
                             break;
                     }
                     LoadData();
@@ -538,94 +503,19 @@ namespace PresentationLayer
             }
 
         }
-
         private void dgv_SelectionChanged(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count > 0)
             {
-                btnXoa.Enabled= true;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
             }
-            else btnXoa.Enabled = false;
-        }
-
-        private bool UpdateValuesData(string tenBang)       
-        {
-            adminBUS = new AdminBUS();
-            switch (tenTabPage)
+            else
             {
-                case "tpGV":
-                    List<GiangVien> gvs = ConvertDataTableToList<GiangVien>(dt);
-                    foreach (GiangVien gv in gvs)
-                        adminBUS.UpdateLecturerBUS(gv);
-                    break;
-
-                case "tpSV":
-                    List<SinhVien> svs = ConvertDataTableToList<SinhVien>(dt);
-                    foreach (SinhVien sv in svs)
-                        adminBUS.UpdateStudentBUS(sv);
-                    break;
-
-                case "tpMH":
-                    List<MonHoc> mhs = ConvertDataTableToList<MonHoc>(dt);
-                    foreach (MonHoc mh in mhs)
-                        adminBUS.UpdateCourseBUS(mh);
-                    break;
-
-                case "tpLopMonHoc":
-                    List<LopMonHoc> lmhs = ConvertDataTableToList<LopMonHoc>(dt);
-                    foreach (LopMonHoc lmh in lmhs)
-                        adminBUS.UpdateCourseClassBUS(lmh);
-                    break;
-
-                case "tpTKB":
-                    List<ThoiKhoaBieu> tkbs = ConvertDataTableToList<ThoiKhoaBieu>(dt);
-                    foreach (ThoiKhoaBieu tkb in tkbs)
-                        adminBUS.UpdateScheduleBUS(tkb);
-                    break;
-
-                case "tpDiem":
-                    List<DiemSV> diems = ConvertDataTableToList<DiemSV>(dt);
-                    foreach (DiemSV diem in diems)
-                        adminBUS.UpdateGradeBUS(diem);
-                    break;
-
-                case "tpLichThi":
-                    List<LichThi> lts = ConvertDataTableToList<LichThi>(dt);
-                    foreach (LichThi lt in lts)
-                        adminBUS.UpdateExamScheduleBUS(lt);
-                    break;
+                btnSua.Enabled=false;
+                btnXoa.Enabled = false;
             }
-            MessageBox.Show("Sửa thành công");
-            return true;
         }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (UpdateValuesData(tenTabPage))
-                {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn lưu những thay đổi", "Lưu", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        DisplayControl();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Sửa không thành công");
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-
         private void FilterDataGridView(string keyword, DataGridView dgv, List<string> columnNames)
         {
             if (dgv.DataSource != null)
@@ -653,11 +543,6 @@ namespace PresentationLayer
         {
             keyword = cb.SelectedValue.ToString();
             FilterDataGridView(keyword, dgv, foreignKeys);
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            DisplayControl();
         }
     }
 }

@@ -71,7 +71,7 @@ namespace PresentationLayer
             if (CheckLogin.LoaiTaiKhoan ==3)
             {
                 taikhoan.LoaiTaiKhoan = 3;
-                FormAdmin formAdmin = new FormAdmin();
+                FrmAdmin formAdmin = new FrmAdmin();
                 this.Hide();
                 formAdmin.ShowDialog();
                 this.Close();
@@ -121,5 +121,6 @@ namespace PresentationLayer
             }
 
         }
+
     }
 }

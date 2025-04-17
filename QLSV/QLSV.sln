@@ -16,6 +16,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TriggerSql", "TriggerSql", 
 		Trigger.txt = Trigger.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{B267CA38-CFFF-4D27-BE4A-C57D22A2C458}"
+	ProjectSection(SolutionItems) = preProject
+		Images\Add_S.png = Images\Add_S.png
+		Images\Delete_S.png = Images\Delete_S.png
+		Images\Edit_S.png = Images\Edit_S.png
+		Images\Exit_S.png = Images\Exit_S.png
+		..\..\..\Downloads\login.png = ..\..\..\Downloads\login.png
+		Images\user.png = Images\user.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

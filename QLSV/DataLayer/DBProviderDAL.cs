@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace DataLayer
 {
-    public class DBConnectDAL
+    public class DBProviderDAL
     {
         private static readonly string connectionString = @"Data Source=BLUE\BLUE;Initial Catalog=DB_QLSV;Integrated Security=True;";
 

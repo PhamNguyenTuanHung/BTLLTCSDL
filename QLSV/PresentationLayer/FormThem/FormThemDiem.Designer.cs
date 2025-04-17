@@ -32,7 +32,6 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDQT = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -41,10 +40,11 @@
             this.cbMaHK = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtLanThi = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDiemTK = new System.Windows.Forms.TextBox();
+            this.txtDQT = new System.Windows.Forms.TextBox();
             this.txtDT = new System.Windows.Forms.TextBox();
             this.cbMSSV = new System.Windows.Forms.ComboBox();
-            this.txtDiemTK = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,13 +110,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "MSSV";
             // 
-            // txtDQT
-            // 
-            this.txtDQT.Location = new System.Drawing.Point(201, 156);
-            this.txtDQT.Name = "txtDQT";
-            this.txtDQT.Size = new System.Drawing.Size(387, 22);
-            this.txtDQT.TabIndex = 1;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -146,6 +139,7 @@
             // 
             // cbMaMonHoc
             // 
+            this.cbMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaMonHoc.FormattingEnabled = true;
             this.cbMaMonHoc.Location = new System.Drawing.Point(201, 42);
             this.cbMaMonHoc.Name = "cbMaMonHoc";
@@ -163,6 +157,7 @@
             // 
             // cbMaHK
             // 
+            this.cbMaHK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaHK.FormattingEnabled = true;
             this.cbMaHK.Location = new System.Drawing.Point(201, 80);
             this.cbMaHK.Name = "cbMaHK";
@@ -185,6 +180,29 @@
             this.txtLanThi.Size = new System.Drawing.Size(387, 22);
             this.txtLanThi.TabIndex = 6;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 229);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(88, 16);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Điểm tổng kết";
+            // 
+            // txtDiemTK
+            // 
+            this.txtDiemTK.Location = new System.Drawing.Point(201, 232);
+            this.txtDiemTK.Name = "txtDiemTK";
+            this.txtDiemTK.Size = new System.Drawing.Size(387, 22);
+            this.txtDiemTK.TabIndex = 7;
+            // 
+            // txtDQT
+            // 
+            this.txtDQT.Location = new System.Drawing.Point(201, 156);
+            this.txtDQT.Name = "txtDQT";
+            this.txtDQT.Size = new System.Drawing.Size(387, 22);
+            this.txtDQT.TabIndex = 1;
+            // 
             // txtDT
             // 
             this.txtDT.Location = new System.Drawing.Point(201, 194);
@@ -194,27 +212,12 @@
             // 
             // cbMSSV
             // 
+            this.cbMSSV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMSSV.FormattingEnabled = true;
             this.cbMSSV.Location = new System.Drawing.Point(201, 4);
             this.cbMSSV.Name = "cbMSSV";
             this.cbMSSV.Size = new System.Drawing.Size(387, 24);
             this.cbMSSV.TabIndex = 2;
-            // 
-            // txtDiemTK
-            // 
-            this.txtDiemTK.Location = new System.Drawing.Point(201, 232);
-            this.txtDiemTK.Name = "txtDiemTK";
-            this.txtDiemTK.Size = new System.Drawing.Size(387, 22);
-            this.txtDiemTK.TabIndex = 7;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 229);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 16);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Điểm tổng kết";
             // 
             // FormThemDiem
             // 

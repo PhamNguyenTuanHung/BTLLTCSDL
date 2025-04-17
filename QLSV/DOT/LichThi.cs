@@ -20,7 +20,17 @@ namespace DOT
 
         public LichThi(string maLichThi, string maLopMonHoc, string maHocKy, DateTime ngayThi, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongThi)
         {
+            this.maLopMonHoc = maLopMonHoc;
+            this.maHocKy = maHocKy;
+            this.ngayThi = ngayThi;
+            this.gioBatDau = gioBatDau;
+            this.gioKetThuc = gioKetThuc;
+            this.phongThi = phongThi;
             this.maLichThi = maLichThi;
+        }
+
+        public LichThi(string maLopMonHoc, string maHocKy, DateTime ngayThi, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongThi)
+        {
             this.maLopMonHoc = maLopMonHoc;
             this.maHocKy = maHocKy;
             this.ngayThi = ngayThi;
@@ -44,7 +54,6 @@ namespace DOT
         {
             return new Dictionary<string, object>
         {
-            { "Mã lịch thi", MaLichThi },
             { "Mã lớp môn học", MaLopMonHoc },
             { "Mã học kỳ", MaHocKy },
             { "Ngày thi", NgayThi },

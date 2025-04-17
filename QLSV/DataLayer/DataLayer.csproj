@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDAL.cs" />
-    <Compile Include="DBConnectDAL.cs" />
+    <Compile Include="DBProviderDAL.cs" />
     <Compile Include="GiangVienDAL.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SinhVienDAL.cs" />
