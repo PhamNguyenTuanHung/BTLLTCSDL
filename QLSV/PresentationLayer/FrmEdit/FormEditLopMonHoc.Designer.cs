@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class FormThemLopMonHoc
+    partial class FormEditLopMonHoc
     {
         /// <summary>
         /// Required designer variable.

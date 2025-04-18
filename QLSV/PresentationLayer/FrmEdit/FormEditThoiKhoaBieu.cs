@@ -12,19 +12,19 @@ using DOT;
 
 namespace PresentationLayer
 {
-    public partial class FormThemThoiKhoaBieu : Form
+    public partial class FormEditThoiKhoaBieu : Form
     {
 
         AdminBUS adminBUS;
         ThoiKhoaBieu thoiKhoaBieu;
         List<string> primaryKeys, foreignKeys;
         Dictionary<string, List<string>> foriegnKeyValues;
-        public FormThemThoiKhoaBieu()
+        public FormEditThoiKhoaBieu()
         {
             InitializeComponent();
         }
 
-        public FormThemThoiKhoaBieu(ThoiKhoaBieu thoiKhoaBieu, int type)
+        public FormEditThoiKhoaBieu(ThoiKhoaBieu thoiKhoaBieu, int type)
         {
             InitializeComponent();
             this.thoiKhoaBieu = thoiKhoaBieu ?? new ThoiKhoaBieu(); // Nếu sinhVien null, tạo một đối tượng mới

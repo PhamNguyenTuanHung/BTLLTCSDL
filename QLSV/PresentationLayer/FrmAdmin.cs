@@ -98,5 +98,15 @@ namespace PresentationLayer
                 formLogin.FormClosed += (s, args) => this.Close();
             }
         }
+
+        private void btnLop_Click(object sender, EventArgs e)
+        {
+            LoadData("Lop");
+        }
+
+        private void btnKhoa_Click(object sender, EventArgs e)
+        {
+            LoadData("Khoa");
+        }
     }
 }

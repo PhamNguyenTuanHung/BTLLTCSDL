@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class FormThemThoiKhoaBieu
+    partial class FormEditThoiKhoaBieu
     {
         /// <summary>
         /// Required designer variable.

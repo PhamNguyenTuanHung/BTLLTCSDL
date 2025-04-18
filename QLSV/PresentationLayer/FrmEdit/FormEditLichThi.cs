@@ -12,9 +12,9 @@ using DOT;
 
 namespace PresentationLayer.FormThem
 {
-    public partial class FormThemLichThi : Form
+    public partial class FormEditLichThi : Form
     {
-        public FormThemLichThi()
+        public FormEditLichThi()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace PresentationLayer.FormThem
         LichThi lichThi;
         List<string> foreignKeys;
         Dictionary<string, List<string>> foriegnKeyValues;
-        public FormThemLichThi(LichThi lichThi,int type)
+        public FormEditLichThi(LichThi lichThi,int type)
         {
             InitializeComponent(); 
             adminBUS = new AdminBUS();

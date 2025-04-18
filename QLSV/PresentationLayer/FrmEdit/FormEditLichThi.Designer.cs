@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer.FormThem
 {
-    partial class FormThemLichThi
+    partial class FormEditLichThi
     {
         /// <summary>
         /// Required designer variable.

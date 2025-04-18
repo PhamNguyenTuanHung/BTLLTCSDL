@@ -55,15 +55,15 @@ namespace PresentationLayer
             this.panel1.Controls.Add(this.btnQuenMK);
             this.panel1.Controls.Add(this.txt_MatKhau);
             this.panel1.Controls.Add(this.CheckBoxHienThiMK);
-            this.panel1.Location = new System.Drawing.Point(212, 83);
+            this.panel1.Location = new System.Drawing.Point(119, 51);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(384, 314);
+            this.panel1.Size = new System.Drawing.Size(560, 346);
             this.panel1.TabIndex = 0;
             // 
             // txt_TaiKhoan
             // 
             this.txt_TaiKhoan.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txt_TaiKhoan.Location = new System.Drawing.Point(105, 65);
+            this.txt_TaiKhoan.Location = new System.Drawing.Point(175, 67);
             this.txt_TaiKhoan.Multiline = true;
             this.txt_TaiKhoan.Name = "txt_TaiKhoan";
             this.txt_TaiKhoan.Size = new System.Drawing.Size(230, 30);
@@ -74,7 +74,7 @@ namespace PresentationLayer
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox2.Image = global::PresentationLayer.Properties.Resources.login;
-            this.pictureBox2.Location = new System.Drawing.Point(38, 126);
+            this.pictureBox2.Location = new System.Drawing.Point(108, 128);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,7 +84,7 @@ namespace PresentationLayer
             // btn_DangNhap
             // 
             this.btn_DangNhap.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_DangNhap.Location = new System.Drawing.Point(104, 223);
+            this.btn_DangNhap.Location = new System.Drawing.Point(174, 225);
             this.btn_DangNhap.Name = "btn_DangNhap";
             this.btn_DangNhap.Size = new System.Drawing.Size(90, 30);
             this.btn_DangNhap.TabIndex = 18;
@@ -97,7 +97,7 @@ namespace PresentationLayer
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::PresentationLayer.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(38, 65);
+            this.pictureBox1.Location = new System.Drawing.Point(108, 67);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -107,7 +107,7 @@ namespace PresentationLayer
             // btn_Thoat
             // 
             this.btn_Thoat.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Thoat.Location = new System.Drawing.Point(245, 223);
+            this.btn_Thoat.Location = new System.Drawing.Point(315, 225);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(90, 30);
             this.btn_Thoat.TabIndex = 19;
@@ -119,7 +119,7 @@ namespace PresentationLayer
             // 
             this.btnQuenMK.AutoSize = true;
             this.btnQuenMK.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnQuenMK.Location = new System.Drawing.Point(105, 265);
+            this.btnQuenMK.Location = new System.Drawing.Point(175, 267);
             this.btnQuenMK.Name = "btnQuenMK";
             this.btnQuenMK.Size = new System.Drawing.Size(230, 30);
             this.btnQuenMK.TabIndex = 20;
@@ -130,7 +130,7 @@ namespace PresentationLayer
             // txt_MatKhau
             // 
             this.txt_MatKhau.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txt_MatKhau.Location = new System.Drawing.Point(105, 126);
+            this.txt_MatKhau.Location = new System.Drawing.Point(175, 128);
             this.txt_MatKhau.Multiline = true;
             this.txt_MatKhau.Name = "txt_MatKhau";
             this.txt_MatKhau.PasswordChar = '*';
@@ -141,7 +141,7 @@ namespace PresentationLayer
             // 
             this.CheckBoxHienThiMK.AutoSize = true;
             this.CheckBoxHienThiMK.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CheckBoxHienThiMK.Location = new System.Drawing.Point(104, 172);
+            this.CheckBoxHienThiMK.Location = new System.Drawing.Point(174, 174);
             this.CheckBoxHienThiMK.Name = "CheckBoxHienThiMK";
             this.CheckBoxHienThiMK.Size = new System.Drawing.Size(130, 20);
             this.CheckBoxHienThiMK.TabIndex = 17;
@@ -151,6 +151,7 @@ namespace PresentationLayer
             // 
             // FormDangNhap
             // 
+            this.AcceptButton = this.btn_DangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;

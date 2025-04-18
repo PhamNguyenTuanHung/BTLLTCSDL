@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PresentationLayer
 {
-    public partial class FormThemSinhVien : Form
+    public partial class FormEditSinhVien : Form
     {
 
         AdminBUS adminBUS ;
@@ -23,13 +23,13 @@ namespace PresentationLayer
         List<string> primaryKeys, foriegnKeys;
         Dictionary<string,List<string>> foriegnKeyValues;
 
-        public FormThemSinhVien()
+        public FormEditSinhVien()
         {
             InitializeComponent();
         }
 
 
-        public FormThemSinhVien(SinhVien sinhVien,int Type)
+        public FormEditSinhVien(SinhVien sinhVien,int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 

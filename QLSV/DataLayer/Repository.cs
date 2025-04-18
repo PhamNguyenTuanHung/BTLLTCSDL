@@ -23,7 +23,7 @@ namespace DataLayer
             List<SqlParameter> parameters = properties.Select(p =>
                 new SqlParameter("@" + p.Name, p.GetValue(entity) ?? DBNull.Value)).ToList();
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters.ToArray()) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters.ToArray()) > 0;
         }
 
 
@@ -40,7 +40,7 @@ namespace DataLayer
             List<SqlParameter> parameters = properties.Select(p =>
                 new SqlParameter("@" + p.Name, p.GetValue(entity) ?? DBNull.Value)).ToList();
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters.ToArray()) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters.ToArray()) > 0;
         }
 
 
@@ -72,7 +72,7 @@ namespace DataLayer
         new SqlParameter($"@{primaryKey.Name}", primaryValue)
             };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
 

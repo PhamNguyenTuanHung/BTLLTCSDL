@@ -135,9 +135,9 @@ namespace DataLayer
 
             foreach (DataRow row in dt.Rows)
             {
-                string fkCol = row["ForeignKeyColumn"].ToString();
+                string refCol = row["ReferencedColumn"].ToString();
                 string refTable = row["ReferencedTable"].ToString();
-                result[fkCol] = refTable;
+                result[refCol] = refTable;
             }
 
             return result;
@@ -256,7 +256,7 @@ namespace DataLayer
 
 
         }
-        //Lấy tời khóa biểu
+        //Lấy thời khóa biểu
         public DataTable GetScheduleDAL()
         {
 
@@ -271,7 +271,46 @@ namespace DataLayer
             return DBProviderDAL.GetDataTable(query);
         }
 
+        public DataTable GetClassDAL()
+        {
+            string query = "SELECT * FROM Lop";
+
+            return DBProviderDAL.GetDataTable(query);
+        }
+
+        public DataTable GetDepartmentsDAL()
+        {
+            string query = "SELECT * FROM Khoa";
+
+            return DBProviderDAL.GetDataTable(query);
+        }
         //Các hàm thêm dữ liệu
+
+        public bool InsertClassDAL(Lop lop)
+        { 
+            string query = "INSERT INTO Lop " +
+                            "VALUES (@MaLop,@MSGVCN,@MaKhoa )";
+            SqlParameter[] parameters = {
+             new SqlParameter("@MaLop", lop.MaLop),
+            new SqlParameter("@MSGVCN", lop.MSGVCN),
+            new SqlParameter("@MaKhoa", lop.MaKhoa)
+        };
+
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
+        }
+
+        public bool InsertDepartmentDAL(Khoa khoa)
+        {
+            string query = "INSERT INTO Khoa " +
+                            "VALUES (@MaKhoa,@TenKhoa )";
+            SqlParameter[] parameters = {
+            new SqlParameter("@MaKhoa", khoa.MaKhoa),
+            new SqlParameter("@TenKhoa",khoa.TenKhoa)
+        };
+
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
+        }
+
 
         public bool InsertCourseForRegistrationDAL(MonMoDangKy monMoDangKy)
         {
@@ -284,7 +323,7 @@ namespace DataLayer
             new SqlParameter("@SLDangKyToiDa", monMoDangKy.SoLuongToiDa)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
 
@@ -307,7 +346,7 @@ namespace DataLayer
             new SqlParameter("@Anh", SqlDbType.VarBinary) { Value = sv.Anh ?? (object)DBNull.Value } // Chuyển ảnh thành DBNull nếu null
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool InsertLecturerDAL(GiangVien gv)
@@ -325,9 +364,8 @@ namespace DataLayer
             new SqlParameter("@MaKhoa", gv.MaKhoa)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
-
         public bool InsertCourseDAL(MonHoc mh)
         {
 
@@ -341,11 +379,10 @@ namespace DataLayer
             new SqlParameter("@HeSoQT",mh.HeSoQT)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
 
 
         }
-
         public bool InsertCourseClassDAL(LopMonHoc lopMonHoc)
         {
 
@@ -361,12 +398,11 @@ namespace DataLayer
             new SqlParameter("@SLDangKyToiDa", lopMonHoc.SoLuongDangKyToiDa)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
 
 
 
         }
-
         public bool InsertGradeDAL(DiemSV diem)
         {
 
@@ -382,10 +418,8 @@ namespace DataLayer
             new SqlParameter("@LanThi", diem.LanThi)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
-
-
         public bool InsertScheduleDAL(ThoiKhoaBieu tkb)
         {
 
@@ -402,10 +436,9 @@ namespace DataLayer
             new SqlParameter("@NgayKT", tkb.NgayKT)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
 
         }
-
         public bool InsertExamScheduleDAL(LichThi lichThi)
         {
 
@@ -422,10 +455,9 @@ namespace DataLayer
                     new SqlParameter("@GioKetThuc", lichThi.GioKetThuc)
                 };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
 
         }
-
         public bool InsertAccountDAL(TaiKhoan taiKhoan)
         {
             if (taiKhoan == null) return false; // Kiểm tra null tránh lỗi
@@ -441,31 +473,53 @@ namespace DataLayer
         new SqlParameter("@trangThai",taiKhoan.TrangThai)
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
 
 
         //Các hàm xóa
 
+        public bool DeleteDepartmentDAL(string maKhoa)
+        {
+            string query = "DELETE FROM Khoa " +
+                           "WHERE  @MaKhoa=Ma_Khoa";
+            SqlParameter[] parameters = {
+            new SqlParameter("@MaKhoa", maKhoa)
+        };
+
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
+        }
+
+        public bool DeleteClassDAL(string maLop)
+        {
+            string query = "DELETE FROM Lop " +
+                            "WHERE @MaLop = Ma_Lop";
+            SqlParameter[] parameters = {
+             new SqlParameter("@MaLop", maLop)
+        };
+
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
+        }
+
         public bool DeleteCourseFromRegistrationDAL(string maMonMoDangKy)
         {
             string query = "DELETE FROM MonMoDangKy" +
-                " WHERE Ma_Lop_Mo = @MaLopMo";
+                           " WHERE Ma_Lop_Mo = @MaLopMo";
 
             SqlParameter[] parameters =
                 {
                     new SqlParameter("@MaLopMonHoc", maMonMoDangKy)
                 };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
         public bool DeleteStudentDAL(string mssv)
         {
             string query = "DELETE FROM SinhVien WHERE MSSV = @MSSV";
             SqlParameter[] parameters = { new SqlParameter("@MSSV", mssv) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteLecturerDAL(string msgv)
@@ -473,7 +527,7 @@ namespace DataLayer
             string query = "DELETE FROM GiangVien WHERE MSGV = @MSGV";
             SqlParameter[] parameters = { new SqlParameter("@MSGV", msgv) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteCourseDAL(string maMonHoc)
@@ -481,7 +535,7 @@ namespace DataLayer
             string query = "DELETE FROM MonHoc WHERE Ma_Mon_Hoc = @MaMonHoc";
             SqlParameter[] parameters = { new SqlParameter("@MaMonHoc", maMonHoc) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteCourseClassDAL(string maLopMonHoc)
@@ -489,7 +543,7 @@ namespace DataLayer
             string query = "DELETE FROM LopMonHoc WHERE Ma_Lop_Mon_Hoc = @MaLopMonHoc";
             SqlParameter[] parameters = { new SqlParameter("@MaLopMonHoc", maLopMonHoc) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteGradeDAL(string mssv, string maMonHoc, string maHocKy)
@@ -501,7 +555,7 @@ namespace DataLayer
         new SqlParameter("@MaHocKy", maHocKy)
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteScheduleDAL(string maTKB)
@@ -509,7 +563,7 @@ namespace DataLayer
             string query = "DELETE FROM ThoiKhoaBieu WHERE Ma_TKB = @MaTKB";
             SqlParameter[] parameters = { new SqlParameter("@MaTKB", maTKB) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteExamScheduleDAL(string maLichThi)
@@ -517,7 +571,7 @@ namespace DataLayer
             string query = "DELETE FROM LichThi WHERE Ma_Lich_Thi = @MaLichThi";
             SqlParameter[] parameters = { new SqlParameter("@MaLichThi", maLichThi) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool DeleteAccountDAL(string tenDangNhap)
@@ -525,10 +579,37 @@ namespace DataLayer
             string query = "DELETE FROM TaiKhoan WHERE ten_Dang_Nhap = @tenDangNhap";
             SqlParameter[] parameters = { new SqlParameter("@tenDangNhap", tenDangNhap) };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         //Hàm cập nhật dữ liệu
+
+        public bool UpdateDepartmentDAL(Khoa khoa)
+        {
+            string query = "UPDATE Khoa " +
+                            "SET Ten_Khoa = @TenKhoa " +
+                            "WHERE Ma_Khoa = @MaKhoa";
+            SqlParameter[] parameters = {
+            new SqlParameter("@MaKhoa", khoa.MaKhoa),
+            new SqlParameter("@TenKhoa",khoa.TenKhoa)
+        };
+
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool UpdateClassDAL(Lop lop)
+        {
+            string query = "UPDATE  Lop " +
+                            "SET  MSGVCN=@MSGVCN,Ma_Khoa = @MaKhoa " +
+                            "WHERE @MaLop= Ma_Lop"
+                            ;
+            SqlParameter[] parameters = {
+             new SqlParameter("@MaLop", lop.MaLop),
+            new SqlParameter("@MSGVCN", lop.MSGVCN),
+            new SqlParameter("@MaKhoa", lop.MaKhoa)
+        };
+
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
+        }
 
         public bool UpdateCourseFromRegistrationDAL(MonMoDangKy monMoDangKy)
         {
@@ -543,7 +624,7 @@ namespace DataLayer
             new SqlParameter("@SLDangKyToiDa", monMoDangKy.SoLuongToiDa)
         };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
         public bool UpdateStudentDAL(SinhVien sv)
         {
@@ -566,14 +647,14 @@ namespace DataLayer
         new SqlParameter("@Anh", SqlDbType.VarBinary) { Value = sv.Anh ?? (object)DBNull.Value } // Chuyển ảnh thành DBNull nếu null
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateLecturerDAL(GiangVien gv)
         {
             string query = "UPDATE GiangVien " +
                            "SET Ho_Ten = @HoTen, Gioi_Tinh = @GioiTinh, Ngay_Sinh = @NgaySinh, " +
-                           "Dia_Chi = @DiaChi, Email = @Email, Ma_Khoa = @MaKhoa " +
+                           "Dia_Chi = @DiaChi, Email = @Email, Ma_Khoa = @MaKhoa , ANh= @Anh " +
                            "WHERE MSGV = @MSGV"; // Điều kiện cập nhật theo MSGV (khóa chính)
 
             SqlParameter[] parameters = {
@@ -583,10 +664,11 @@ namespace DataLayer
             new SqlParameter("@NgaySinh", gv.NgaySinh),
             new SqlParameter("@DiaChi", gv.DiaChi),
             new SqlParameter("@Email", gv.Email),
-            new SqlParameter("@MaKhoa", gv.MaKhoa)
+            new SqlParameter("@MaKhoa", gv.MaKhoa),
+            new SqlParameter("@Anh", gv.Anh)
             };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateCourseDAL(MonHoc mh)
@@ -602,7 +684,7 @@ namespace DataLayer
         new SqlParameter("HeSoQT",mh.HeSoQT)
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateCourseClassDAL(LopMonHoc lopMonHoc)
@@ -621,7 +703,7 @@ namespace DataLayer
         new SqlParameter("@SLDangKyToiDa", lopMonHoc.SoLuongDangKyToiDa)
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateGradeDAL(DiemSV diem)
@@ -639,7 +721,7 @@ namespace DataLayer
         new SqlParameter("@LanThi", diem.LanThi),
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateScheduleDAL(ThoiKhoaBieu tkb)
@@ -661,7 +743,7 @@ namespace DataLayer
         new SqlParameter("@NgayKT", tkb.NgayKT)
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
         public bool UpdateExamScheduleDAL(LichThi lichThi)
@@ -683,7 +765,7 @@ namespace DataLayer
         new SqlParameter("@PhongThi", lichThi.PhongThi)
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
 
@@ -699,7 +781,7 @@ namespace DataLayer
         new SqlParameter("@loaiTaiKhoan", taiKhoan.LoaiTaiKhoan),
     };
 
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
     }
 }

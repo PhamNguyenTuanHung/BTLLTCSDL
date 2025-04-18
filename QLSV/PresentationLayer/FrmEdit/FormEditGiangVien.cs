@@ -13,9 +13,9 @@ using DOT;
 
 namespace PresentationLayer
 {
-    public partial class FormThemGiangVien : Form
+    public partial class FormEditGiangVien : Form
     {
-        public FormThemGiangVien()
+        public FormEditGiangVien()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace PresentationLayer
         Dictionary<string,List<String>> foreignKeyValues;
 
 
-        public FormThemGiangVien(GiangVien giangVien, int Type)
+        public FormEditGiangVien(GiangVien giangVien, int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 
@@ -187,6 +187,10 @@ namespace PresentationLayer
                 {
                     MessageBox.Show("Thêm thành công");
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Không thành công");
                 }
             }
             catch (Exception ex)

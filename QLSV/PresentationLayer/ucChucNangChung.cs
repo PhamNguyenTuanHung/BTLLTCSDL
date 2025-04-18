@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
@@ -12,6 +13,7 @@ using System.Xml.Linq;
 using BusinessLayer;
 using DOT;
 using PresentationLayer.FormThem;
+using PresentationLayer.FrmEdit;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -256,6 +258,12 @@ namespace PresentationLayer
                 case "MonMoDangKy":
                     dt = adminBUS.GetAllRegisteredCoursesBUS();
                     break;
+                case "Lop":
+                    dt = adminBUS.GetClassBUS();
+                    break;
+                case "Khoa":
+                    dt = adminBUS.GetDepartmentsBUS();
+                    break;
                 default:
                     break;
             }
@@ -287,33 +295,38 @@ namespace PresentationLayer
             switch (tableName)
             {
                 case "GiangVien":
-                    new FormThemGiangVien(null, 1).ShowDialog(); ;
+                    new FormEditGiangVien(null, 1).ShowDialog(); ;
                     break;
                 case "SinhVien":
-                    new FormThemSinhVien(null, 1).ShowDialog();
+                    new FormEditSinhVien(null, 1).ShowDialog();
                     break;
                 case "MonHoc":
-                    new FormThemMonHoc(null, 1).ShowDialog(); 
+                    new FormEditMonHoc(null, 1).ShowDialog(); 
                     break;
                 case "LopMonHoc":
-                    new FormThemLopMonHoc(null,1).ShowDialog();
+                    new FormEditLopMonHoc(null,1).ShowDialog();
                     break;
                 case "ThoiKhoaBieu":
-                    new FormThemThoiKhoaBieu(null,1).ShowDialog();
+                    new FormEditThoiKhoaBieu(null,1).ShowDialog();
                     break;
                 case "Diem":
-                    new FormThemDiem(null,1).ShowDialog();
+                    new FormEditDiem(null,1).ShowDialog();
                     break;
                 case "LichThi":
-                    new FormThemLichThi(null,1).ShowDialog();
+                    new FormEditLichThi(null,1).ShowDialog();
                     break;
                 case "TaiKhoan":
                     new FormThemTaiKhoan(null,1).ShowDialog();
                     break;
                 case "MonMoDangKy": 
-                    new FormThemMonMoDangKy(null,1).ShowDialog();
+                    new FormEditMonMoDangKy(null,1).ShowDialog();
                     break;
-
+                case "Lop":
+                    new FormEditLop(null, 1).ShowDialog();
+                    break;
+                case "Khoa":
+                    new FormEditKhoa(null, 1).ShowDialog();
+                    break;
                 default:
                     break;
             }
@@ -330,31 +343,31 @@ namespace PresentationLayer
                 {
                     case "GiangVien":
                         GiangVien giangVien = ConvertDataGridViewRowToObject<GiangVien>(row);
-                        new FormThemGiangVien(giangVien, 0).ShowDialog();
+                        new FormEditGiangVien(giangVien, 0).ShowDialog();
                         break;
                     case "SinhVien":
                         SinhVien sinhVien = ConvertDataGridViewRowToObject<SinhVien>(row);
-                        new FormThemSinhVien(sinhVien, 0).ShowDialog();
+                        new FormEditSinhVien(sinhVien, 0).ShowDialog();
                         break;
                     case "MonHoc":
                         MonHoc monHoc = ConvertDataGridViewRowToObject<MonHoc>(row);
-                        new FormThemMonHoc(monHoc, 0).ShowDialog();
+                        new FormEditMonHoc(monHoc, 0).ShowDialog();
                         break;
                     case "LopMonHoc":
                         LopMonHoc lopMonHoc = ConvertDataGridViewRowToObject<LopMonHoc>(row);
-                        new FormThemLopMonHoc(lopMonHoc, 0).ShowDialog();
+                        new FormEditLopMonHoc(lopMonHoc, 0).ShowDialog();
                         break;
                     case "ThoiKhoaBieu":
                         ThoiKhoaBieu thoiKhoaBieu = ConvertDataGridViewRowToObject<ThoiKhoaBieu>(row);
-                        new FormThemThoiKhoaBieu(thoiKhoaBieu, 0).ShowDialog();
+                        new FormEditThoiKhoaBieu(thoiKhoaBieu, 0).ShowDialog();
                         break;
                     case "Diem":
                         DiemSV diemSV = ConvertDataGridViewRowToObject<DiemSV>(row);
-                        new FormThemDiem(diemSV, 0).ShowDialog();
+                        new FormEditDiem(diemSV, 0).ShowDialog();
                         break;
                     case "LichThi":
                         LichThi lichThi = ConvertDataGridViewRowToObject<LichThi>(row);
-                        new FormThemLichThi(lichThi, 0).ShowDialog();
+                        new FormEditLichThi(lichThi, 0).ShowDialog();
                         break;
                     case "TaiKhoan":
                         TaiKhoan taiKhoan = ConvertDataGridViewRowToObject<TaiKhoan>(row);
@@ -363,7 +376,17 @@ namespace PresentationLayer
                     case "MonMoDangKy":
                         MonMoDangKy monMoDangKy = new MonMoDangKy();
                         monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(row);
-                        new FormThemMonMoDangKy(monMoDangKy, 0).ShowDialog();
+                        new FormEditMonMoDangKy(monMoDangKy, 0).ShowDialog();
+                        break;
+                    case "Lop":
+                        Lop lop = new Lop();
+                        lop = ConvertDGVRowToObject<Lop>(row);
+                        new FormEditLop(lop, 0).ShowDialog();
+                        break;
+                    case "Khoa":
+                        Khoa khoa = new Khoa();
+                        khoa = ConvertDGVRowToObject<Khoa>(row);
+                        new FormEditKhoa(khoa, 0).ShowDialog();
                         break;
                     default:
                         break;
@@ -379,62 +402,75 @@ namespace PresentationLayer
             {
                 bool check = false;
                 if (MessageBox.Show("Bạn muốn xóa", "Xóa", MessageBoxButtons.YesNo) == DialogResult.Yes)
-
-                {
-                    switch (tableName)
+                    if (dgv.SelectedRows.Count > 0)
                     {
-                        case "GiangVien":
-                            GiangVien gv = new GiangVien();
-                            gv = ConvertDGVRowToObject<GiangVien>(dgv.CurrentRow);
-                            check = adminBUS.DeleteLecturerBUS(gv.MSGV);
-                            break;
-                        case "SinhVien":
-                            SinhVien sv = new SinhVien();
-                            sv = ConvertDGVRowToObject<SinhVien>(dgv.CurrentRow);
-                            check = adminBUS.DeleteStudentBUS(sv.MSSV);
-                            break;
-                        case "MonHoc":
-                            MonHoc mh = new MonHoc();
-                            mh = ConvertDGVRowToObject<MonHoc>(dgv.CurrentRow);
-                            check = adminBUS.DeleteCourseBUS(mh.MaMonHoc);
-                            break;
-                        case "LopMonHoc":
-                            LopMonHoc lopMonHoc = new LopMonHoc();
-                            lopMonHoc = ConvertDGVRowToObject<LopMonHoc>(dgv.CurrentRow);
-                            check = adminBUS.DeleteCourseClassBUS(lopMonHoc.MaLopMonHoc);
-                            break;
-                        case "ThoiKhoaBieu":
-                            ThoiKhoaBieu tkb = new ThoiKhoaBieu();
-                            tkb = ConvertDGVRowToObject<ThoiKhoaBieu>(dgv.CurrentRow);
-                            check = adminBUS.DeleteScheduleBUS(tkb.MaTKB.ToString());
-                            break;
-                        case "Diem":
-                            DiemSV diemSV = new DiemSV();
-                            diemSV = ConvertDGVRowToObject<DiemSV>(dgv.CurrentRow);
-                            check = adminBUS.DeleteGradeBUS(diemSV.MSSV, diemSV.MaHocKy, diemSV.MaMonHoc);
-                            break;
-                        case "LichThi":
-                            LichThi lichThi = new LichThi();
-                            lichThi = ConvertDGVRowToObject<LichThi>(dgv.CurrentRow);
-                            check = adminBUS.DeleteExamScheduleBUS(lichThi.MaLichThi);
+                        var row = dgv.SelectedRows[0];
+                        {
+                            switch (tableName)
+                            {
+                                case "GiangVien":
+                                    GiangVien gv = new GiangVien();
+                                    gv = ConvertDGVRowToObject<GiangVien>(row);
+                                    check = adminBUS.DeleteLecturerBUS(gv.MSGV);
+                                    break;
+                                case "SinhVien":
+                                    SinhVien sv = new SinhVien();
+                                    sv = ConvertDGVRowToObject<SinhVien>(row);
+                                    check = adminBUS.DeleteStudentBUS(sv.MSSV);
+                                    break;
+                                case "MonHoc":
+                                    MonHoc mh = new MonHoc();
+                                    mh = ConvertDGVRowToObject<MonHoc>(row);
+                                    check = adminBUS.DeleteCourseBUS(mh.MaMonHoc);
+                                    break;
+                                case "LopMonHoc":
+                                    LopMonHoc lopMonHoc = new LopMonHoc();
+                                    lopMonHoc = ConvertDGVRowToObject<LopMonHoc>(row);
+                                    check = adminBUS.DeleteCourseClassBUS(lopMonHoc.MaLopMonHoc);
+                                    break;
+                                case "ThoiKhoaBieu":
+                                    ThoiKhoaBieu tkb = new ThoiKhoaBieu();
+                                    tkb = ConvertDGVRowToObject<ThoiKhoaBieu>(row);
+                                    check = adminBUS.DeleteScheduleBUS(tkb.MaTKB.ToString());
+                                    break;
+                                case "Diem":
+                                    DiemSV diemSV = new DiemSV();
+                                    diemSV = ConvertDGVRowToObject<DiemSV>(row);
+                                    check = adminBUS.DeleteGradeBUS(diemSV.MSSV, diemSV.MaHocKy, diemSV.MaMonHoc);
+                                    break;
+                                case "LichThi":
+                                    LichThi lichThi = new LichThi();
+                                    lichThi = ConvertDGVRowToObject<LichThi>(row);
+                                    check = adminBUS.DeleteExamScheduleBUS(lichThi.MaLichThi);
 
-                            break;
-                        case "TaiKhoan":
-                            TaiKhoan taiKhoan = new TaiKhoan();
-                            taiKhoan = ConvertDGVRowToObject<TaiKhoan>(dgv.CurrentRow);
-                            check = adminBUS.DeleteAccountBUS(taiKhoan.TenDangNhap);
-                            break;
-                        case "MoMoDangKy":
-                            MonMoDangKy monMoDangKy = new MonMoDangKy();
-                            monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(dgv.CurrentRow);
-                            check = adminBUS.DeleteAccountBUS(monMoDangKy.MaLopMo);
-                            break;
+                                    break;
+                                case "TaiKhoan":
+                                    TaiKhoan taiKhoan = new TaiKhoan();
+                                    taiKhoan = ConvertDGVRowToObject<TaiKhoan>(row);
+                                    check = adminBUS.DeleteAccountBUS(taiKhoan.TenDangNhap);
+                                    break;
+                                case "MoMoDangKy":
+                                    MonMoDangKy monMoDangKy = new MonMoDangKy();
+                                    monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(row);
+                                    check = adminBUS.DeleteAccountBUS(monMoDangKy.MaLopMo);
+                                    break;
+                                case "Lop":
+                                    Lop lop = new Lop();
+                                    lop = ConvertDGVRowToObject<Lop>(row);
+                                    check = adminBUS.DeleteClassBUS(lop.MaLop);
+                                    break;
+                                case "Khoa":
+                                    Khoa khoa = new Khoa();
+                                    khoa = ConvertDGVRowToObject<Khoa>(row);
+                                    check = adminBUS.DeleteDepartmentBUS(khoa.MaKhoa);
+                                    break;
+                            }
+                            LoadData();
+                            if (check) MessageBox.Show("Xóa thành công");
+                            else MessageBox.Show("Xóa thất bại");
+                        }
                     }
-                    LoadData();
-                    if (check) MessageBox.Show("Xóa thành công");
-                    else MessageBox.Show("Xóa thất bại");
-                }
-                else return;
+                    else return;
             }
             catch (Exception ex)
             {

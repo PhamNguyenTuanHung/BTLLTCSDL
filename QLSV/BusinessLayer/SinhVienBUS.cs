@@ -113,16 +113,10 @@ namespace BusinessLayer
         }
 
         //Lấy danh sách môn học đăng kí
-        public DataTable GetAvailableCoursesBUS()
+        public DataTable GetAvailableCoursesBUS(string maHocKy)
         {
-            try
-            {
-                return sinhvienDAL.GetAvailableCoursesDAL();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error fetching available courses: " + ex.Message, ex);
-            }
+                return sinhvienDAL.GetAvailableCoursesDAL(maHocKy);
+           
         }
 
         //Lấy danh sách học kì

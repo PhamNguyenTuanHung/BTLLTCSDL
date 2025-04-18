@@ -260,65 +260,71 @@
     <Compile Include="FormSinhVien.Designer.cs">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemDiem.cs">
+    <Compile Include="FrmEdit\FormEditDiem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemDiem.Designer.cs">
-      <DependentUpon>FormThemDiem.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditDiem.Designer.cs">
+      <DependentUpon>FormEditDiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThemDuLieu.cs">
+    <Compile Include="FrmEdit\FormEditGiangVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThemDuLieu.Designer.cs">
-      <DependentUpon>FormThemDuLieu.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditGiangVien.Designer.cs">
+      <DependentUpon>FormEditGiangVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemGiangVien.cs">
+    <Compile Include="FrmEdit\FormEditKhoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemGiangVien.Designer.cs">
-      <DependentUpon>FormThemGiangVien.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditKhoa.Designer.cs">
+      <DependentUpon>FormEditKhoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemLichThi.cs">
+    <Compile Include="FrmEdit\FormEditLichThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemLichThi.Designer.cs">
-      <DependentUpon>FormThemLichThi.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditLichThi.Designer.cs">
+      <DependentUpon>FormEditLichThi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemLopMonHoc.cs">
+    <Compile Include="FrmEdit\FormEditLop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemLopMonHoc.Designer.cs">
-      <DependentUpon>FormThemLopMonHoc.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditLop.Designer.cs">
+      <DependentUpon>FormEditLop.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemMonHoc.cs">
+    <Compile Include="FrmEdit\FormEditLopMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemMonHoc.Designer.cs">
-      <DependentUpon>FormThemMonHoc.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditLopMonHoc.Designer.cs">
+      <DependentUpon>FormEditLopMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemMonMoDangKy.cs">
+    <Compile Include="FrmEdit\FormEditMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemMonMoDangKy.Designer.cs">
-      <DependentUpon>FormThemMonMoDangKy.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditMonHoc.Designer.cs">
+      <DependentUpon>FormEditMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemSinhVien.cs">
+    <Compile Include="FrmEdit\FormEditMonMoDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemSinhVien.Designer.cs">
-      <DependentUpon>FormThemSinhVien.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditMonMoDangKy.Designer.cs">
+      <DependentUpon>FormEditMonMoDangKy.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemTaiKhoan.cs">
+    <Compile Include="FrmEdit\FormEditSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemTaiKhoan.Designer.cs">
-      <DependentUpon>FormThemTaiKhoan.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditSinhVien.Designer.cs">
+      <DependentUpon>FormEditSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormThem\FormThemThoiKhoaBieu.cs">
+    <Compile Include="FrmEdit\FormEditTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormThem\FormThemThoiKhoaBieu.Designer.cs">
-      <DependentUpon>FormThemThoiKhoaBieu.cs</DependentUpon>
+    <Compile Include="FrmEdit\FormEditTaiKhoan.Designer.cs">
+      <DependentUpon>FormEditTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdit\FormEditThoiKhoaBieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdit\FormEditThoiKhoaBieu.Designer.cs">
+      <DependentUpon>FormEditThoiKhoaBieu.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAdmin.cs">
       <SubType>Form</SubType>
@@ -355,35 +361,38 @@
     <EmbeddedResource Include="FormSinhVien.resx">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemDiem.resx">
-      <DependentUpon>FormThemDiem.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditDiem.resx">
+      <DependentUpon>FormEditDiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThemDuLieu.resx">
-      <DependentUpon>FormThemDuLieu.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditGiangVien.resx">
+      <DependentUpon>FormEditGiangVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemGiangVien.resx">
-      <DependentUpon>FormThemGiangVien.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditKhoa.resx">
+      <DependentUpon>FormEditKhoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemLichThi.resx">
-      <DependentUpon>FormThemLichThi.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditLichThi.resx">
+      <DependentUpon>FormEditLichThi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemLopMonHoc.resx">
-      <DependentUpon>FormThemLopMonHoc.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditLop.resx">
+      <DependentUpon>FormEditLop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemMonHoc.resx">
-      <DependentUpon>FormThemMonHoc.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditLopMonHoc.resx">
+      <DependentUpon>FormEditLopMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemMonMoDangKy.resx">
-      <DependentUpon>FormThemMonMoDangKy.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditMonHoc.resx">
+      <DependentUpon>FormEditMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemSinhVien.resx">
-      <DependentUpon>FormThemSinhVien.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditMonMoDangKy.resx">
+      <DependentUpon>FormEditMonMoDangKy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemTaiKhoan.resx">
-      <DependentUpon>FormThemTaiKhoan.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditSinhVien.resx">
+      <DependentUpon>FormEditSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormThem\FormThemThoiKhoaBieu.resx">
-      <DependentUpon>FormThemThoiKhoaBieu.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEdit\FormEditTaiKhoan.resx">
+      <DependentUpon>FormEditTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdit\FormEditThoiKhoaBieu.resx">
+      <DependentUpon>FormEditThoiKhoaBieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAdmin.resx">
       <DependentUpon>FrmAdmin.cs</DependentUpon>

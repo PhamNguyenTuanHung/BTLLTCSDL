@@ -21,7 +21,8 @@ namespace PresentationLayer
         private SinhVienBUS sVBus;
         private TaiKhoan taiKhoan;
         List<string> ThemMonDK, XoaMonDk;
-        private string maHocKyTKB,maHocKyDiem;
+        string maHocKyTKB,maHocKyDiem,maHK;
+        byte[] imageBytes;
 
         public FormSinhVien(SinhVien sinhvien, TaiKhoan taikhoan)
         {
@@ -29,7 +30,8 @@ namespace PresentationLayer
             sinhVien = sinhvien;
             taiKhoan = taikhoan;
             ThongTinSVPL();
-            LoadComboBoxSemester(); 
+            LoadComboBoxSemester();
+            maHK = "HK3_24_25";
         }
 
         //Thêm thông tin cho các combox Học kì
@@ -85,14 +87,16 @@ namespace PresentationLayer
                 lbGioiTinh.Text = dt.Rows[0]["Gioi_Tinh"].ToString();
                 if (dt.Rows[0]["Anh"] != DBNull.Value)
                 {
-                    byte[] imageBytes = (byte[])dt.Rows[0]["Anh"];
+                    imageBytes = (byte[])dt.Rows[0]["Anh"];
                     using (MemoryStream ms = new MemoryStream(imageBytes))
                     {
                         pbAnhSV.Image = Image.FromStream(ms);
                     }
                 }
                 else pbAnhSV.Image = null;
+                if (imageBytes != null) btnAnh.Text = "Đổi ảnh";
             }
+           
             else
             {
                 MessageBox.Show("Không có dữ liệu sinh viên!");
@@ -217,7 +221,7 @@ namespace PresentationLayer
                     LoadData(dgvLichThi, dt);
                     break;
                 case 4:
-                    dt = sVBus.GetAvailableCoursesBUS();
+                    dt = sVBus.GetAvailableCoursesBUS(maHK);
                     dt.Columns.Add("Chon", typeof(bool));
                     DataTable dt1= new DataTable();
                     dt1=sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
@@ -326,7 +330,7 @@ namespace PresentationLayer
                 }
 
                 MessageBox.Show("Cập nhật đăng ký môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataTable dt = sVBus.GetAvailableCoursesBUS();
+                DataTable dt = sVBus.GetAvailableCoursesBUS(maHK);
                 dt.Columns.Add("Chon", typeof(bool));
                 DataTable dt1 = new DataTable();
                 dt1 = sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
@@ -421,7 +425,7 @@ namespace PresentationLayer
             FilterDataGridView(maHocKyDiem, dgvDiem, "Ma_Hoc_Ky");
         }
 
-        private void pbAnhSV_Click(object sender, EventArgs e)
+        private void btnAnh_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -447,6 +451,12 @@ namespace PresentationLayer
                     }
                 }
             }
+        }
+
+        private void pbAnhSV_Click(object sender, EventArgs e)
+        {
+            
+            
         }
 
         private void cbHocKyTKB_SelectedIndexChanged(object sender, EventArgs e)

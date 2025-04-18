@@ -51,20 +51,21 @@
             this.lbKhoa = new System.Windows.Forms.Label();
             this.lbLop = new System.Windows.Forms.Label();
             this.LopTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvThongTinLop = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnSuaDiem = new System.Windows.Forms.Button();
+            this.btnTimKiemSinhVien = new System.Windows.Forms.Button();
+            this.txtTimKiemSinhVien = new System.Windows.Forms.TextBox();
+            this.cbLopSV = new System.Windows.Forms.ComboBox();
             this.TKBTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvTKB = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnTimKiemTKB = new System.Windows.Forms.Button();
             this.txtTimKiemTKB = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cbLopSV = new System.Windows.Forms.ComboBox();
-            this.txtTimKiemSinhVien = new System.Windows.Forms.TextBox();
-            this.btnTimKiemSinhVien = new System.Windows.Forms.Button();
-            this.btnSuaDiem = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.dgvThongTinLop = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAnh = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.ThongTinGVTab.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -72,13 +73,13 @@
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.LopTab.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinLop)).BeginInit();
+            this.panel2.SuspendLayout();
             this.TKBTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKB)).BeginInit();
             this.panel8.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinLop)).BeginInit();
-            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -108,6 +109,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.btnAnh);
             this.panel1.Controls.Add(this.btnDangXuat);
             this.panel1.Controls.Add(this.btnDoiMK);
             this.panel1.Controls.Add(this.pbAnhGV);
@@ -121,7 +123,7 @@
             // btnDangXuat
             // 
             this.btnDangXuat.AutoSize = true;
-            this.btnDangXuat.Location = new System.Drawing.Point(602, 346);
+            this.btnDangXuat.Location = new System.Drawing.Point(576, 346);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(76, 26);
             this.btnDangXuat.TabIndex = 3;
@@ -132,7 +134,7 @@
             // btnDoiMK
             // 
             this.btnDoiMK.AutoSize = true;
-            this.btnDoiMK.Location = new System.Drawing.Point(424, 346);
+            this.btnDoiMK.Location = new System.Drawing.Point(466, 346);
             this.btnDoiMK.Name = "btnDoiMK";
             this.btnDoiMK.Size = new System.Drawing.Size(94, 26);
             this.btnDoiMK.TabIndex = 2;
@@ -143,9 +145,11 @@
             // pbAnhGV
             // 
             this.pbAnhGV.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pbAnhGV.Location = new System.Drawing.Point(461, 40);
+            this.pbAnhGV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbAnhGV.Location = new System.Drawing.Point(466, 40);
             this.pbAnhGV.Name = "pbAnhGV";
             this.pbAnhGV.Size = new System.Drawing.Size(186, 246);
+            this.pbAnhGV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAnhGV.TabIndex = 1;
             this.pbAnhGV.TabStop = false;
             this.pbAnhGV.Click += new System.EventHandler(this.pbAnhGV_Click);
@@ -332,6 +336,97 @@
             this.LopTab.Text = "Quản lý lớp học";
             this.LopTab.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.dgvThongTinLop, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.42857F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.57143F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(786, 415);
+            this.tableLayoutPanel5.TabIndex = 8;
+            // 
+            // dgvThongTinLop
+            // 
+            this.dgvThongTinLop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvThongTinLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThongTinLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvThongTinLop.Location = new System.Drawing.Point(3, 91);
+            this.dgvThongTinLop.Name = "dgvThongTinLop";
+            this.dgvThongTinLop.RowHeadersWidth = 51;
+            this.dgvThongTinLop.RowTemplate.Height = 24;
+            this.dgvThongTinLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvThongTinLop.Size = new System.Drawing.Size(780, 321);
+            this.dgvThongTinLop.TabIndex = 4;
+            this.dgvThongTinLop.SelectionChanged += new System.EventHandler(this.dgvThongTinLop_SelectionChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnExcel);
+            this.panel2.Controls.Add(this.btnSuaDiem);
+            this.panel2.Controls.Add(this.btnTimKiemSinhVien);
+            this.panel2.Controls.Add(this.txtTimKiemSinhVien);
+            this.panel2.Controls.Add(this.cbLopSV);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(780, 44);
+            this.panel2.TabIndex = 0;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.AutoSize = true;
+            this.btnExcel.Location = new System.Drawing.Point(655, 6);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(100, 31);
+            this.btnExcel.TabIndex = 7;
+            this.btnExcel.Text = "Xuất file Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnSuaDiem
+            // 
+            this.btnSuaDiem.AutoSize = true;
+            this.btnSuaDiem.Location = new System.Drawing.Point(506, 6);
+            this.btnSuaDiem.Name = "btnSuaDiem";
+            this.btnSuaDiem.Size = new System.Drawing.Size(91, 29);
+            this.btnSuaDiem.TabIndex = 6;
+            this.btnSuaDiem.Text = "Sửa";
+            this.btnSuaDiem.UseVisualStyleBackColor = true;
+            this.btnSuaDiem.Click += new System.EventHandler(this.btnSuaDiem_Click);
+            // 
+            // btnTimKiemSinhVien
+            // 
+            this.btnTimKiemSinhVien.AutoSize = true;
+            this.btnTimKiemSinhVien.Location = new System.Drawing.Point(316, 7);
+            this.btnTimKiemSinhVien.Name = "btnTimKiemSinhVien";
+            this.btnTimKiemSinhVien.Size = new System.Drawing.Size(94, 30);
+            this.btnTimKiemSinhVien.TabIndex = 1;
+            this.btnTimKiemSinhVien.Text = "Tìm kiếm";
+            this.btnTimKiemSinhVien.UseVisualStyleBackColor = true;
+            this.btnTimKiemSinhVien.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // txtTimKiemSinhVien
+            // 
+            this.txtTimKiemSinhVien.Location = new System.Drawing.Point(178, 11);
+            this.txtTimKiemSinhVien.Name = "txtTimKiemSinhVien";
+            this.txtTimKiemSinhVien.Size = new System.Drawing.Size(116, 22);
+            this.txtTimKiemSinhVien.TabIndex = 0;
+            // 
+            // cbLopSV
+            // 
+            this.cbLopSV.FormattingEnabled = true;
+            this.cbLopSV.Location = new System.Drawing.Point(3, 11);
+            this.cbLopSV.Name = "cbLopSV";
+            this.cbLopSV.Size = new System.Drawing.Size(108, 24);
+            this.cbLopSV.TabIndex = 5;
+            this.cbLopSV.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // TKBTab
             // 
             this.TKBTab.Controls.Add(this.tableLayoutPanel2);
@@ -395,96 +490,16 @@
             this.txtTimKiemTKB.Size = new System.Drawing.Size(173, 22);
             this.txtTimKiemTKB.TabIndex = 0;
             // 
-            // panel2
+            // btnAnh
             // 
-            this.panel2.Controls.Add(this.btnExcel);
-            this.panel2.Controls.Add(this.btnSuaDiem);
-            this.panel2.Controls.Add(this.btnTimKiemSinhVien);
-            this.panel2.Controls.Add(this.txtTimKiemSinhVien);
-            this.panel2.Controls.Add(this.cbLopSV);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 44);
-            this.panel2.TabIndex = 0;
-            // 
-            // cbLopSV
-            // 
-            this.cbLopSV.FormattingEnabled = true;
-            this.cbLopSV.Location = new System.Drawing.Point(3, 11);
-            this.cbLopSV.Name = "cbLopSV";
-            this.cbLopSV.Size = new System.Drawing.Size(108, 24);
-            this.cbLopSV.TabIndex = 5;
-            this.cbLopSV.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // txtTimKiemSinhVien
-            // 
-            this.txtTimKiemSinhVien.Location = new System.Drawing.Point(178, 11);
-            this.txtTimKiemSinhVien.Name = "txtTimKiemSinhVien";
-            this.txtTimKiemSinhVien.Size = new System.Drawing.Size(116, 22);
-            this.txtTimKiemSinhVien.TabIndex = 0;
-            // 
-            // btnTimKiemSinhVien
-            // 
-            this.btnTimKiemSinhVien.AutoSize = true;
-            this.btnTimKiemSinhVien.Location = new System.Drawing.Point(316, 7);
-            this.btnTimKiemSinhVien.Name = "btnTimKiemSinhVien";
-            this.btnTimKiemSinhVien.Size = new System.Drawing.Size(94, 30);
-            this.btnTimKiemSinhVien.TabIndex = 1;
-            this.btnTimKiemSinhVien.Text = "Tìm kiếm";
-            this.btnTimKiemSinhVien.UseVisualStyleBackColor = true;
-            this.btnTimKiemSinhVien.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // btnSuaDiem
-            // 
-            this.btnSuaDiem.AutoSize = true;
-            this.btnSuaDiem.Location = new System.Drawing.Point(506, 6);
-            this.btnSuaDiem.Name = "btnSuaDiem";
-            this.btnSuaDiem.Size = new System.Drawing.Size(91, 29);
-            this.btnSuaDiem.TabIndex = 6;
-            this.btnSuaDiem.Text = "Sửa";
-            this.btnSuaDiem.UseVisualStyleBackColor = true;
-            this.btnSuaDiem.Click += new System.EventHandler(this.btnSuaDiem_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.AutoSize = true;
-            this.btnExcel.Location = new System.Drawing.Point(655, 6);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(100, 31);
-            this.btnExcel.TabIndex = 7;
-            this.btnExcel.Text = "Xuất file Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // dgvThongTinLop
-            // 
-            this.dgvThongTinLop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvThongTinLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvThongTinLop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvThongTinLop.Location = new System.Drawing.Point(3, 91);
-            this.dgvThongTinLop.Name = "dgvThongTinLop";
-            this.dgvThongTinLop.RowHeadersWidth = 51;
-            this.dgvThongTinLop.RowTemplate.Height = 24;
-            this.dgvThongTinLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThongTinLop.Size = new System.Drawing.Size(780, 321);
-            this.dgvThongTinLop.TabIndex = 4;
-            this.dgvThongTinLop.SelectionChanged += new System.EventHandler(this.dgvThongTinLop_SelectionChanged);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.dgvThongTinLop, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.42857F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.57143F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(786, 415);
-            this.tableLayoutPanel5.TabIndex = 8;
+            this.btnAnh.AutoSize = true;
+            this.btnAnh.Location = new System.Drawing.Point(658, 263);
+            this.btnAnh.Name = "btnAnh";
+            this.btnAnh.Size = new System.Drawing.Size(77, 26);
+            this.btnAnh.TabIndex = 4;
+            this.btnAnh.Text = "Thêm ảnh";
+            this.btnAnh.UseVisualStyleBackColor = true;
+            this.btnAnh.Click += new System.EventHandler(this.btnAnh_Click);
             // 
             // FormGiangVien
             // 
@@ -503,15 +518,15 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.LopTab.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinLop)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.TKBTab.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKB)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinLop)).EndInit();
-            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -555,5 +570,6 @@
         private System.Windows.Forms.Button btnTimKiemSinhVien;
         private System.Windows.Forms.TextBox txtTimKiemSinhVien;
         private System.Windows.Forms.ComboBox cbLopSV;
+        private System.Windows.Forms.Button btnAnh;
     }
 }

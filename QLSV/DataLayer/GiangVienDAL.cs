@@ -163,7 +163,7 @@ namespace DataLayer
                     new SqlParameter("@diemTK", diemTK)
                 };
 
-                    return DBProviderDAL.ExecuteNonQuery(query,parameters) > 0;
+                    return DBProviderDAL.MyExecuteNonQuery(query,parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -179,7 +179,7 @@ namespace DataLayer
                 new SqlParameter("@MSGV", msgv),
                 new SqlParameter("@Anh",anh)
             };
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
     }
 }

@@ -42,6 +42,8 @@
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.pHienThiForm = new System.Windows.Forms.Panel();
+            this.btnLop = new System.Windows.Forms.Button();
+            this.btnKhoa = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -92,19 +94,23 @@
             this.tableLayoutPanel3.Controls.Add(this.btnMonDangKy, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.btnDiem, 0, 7);
             this.tableLayoutPanel3.Controls.Add(this.btnTaiKhoan, 0, 8);
+            this.tableLayoutPanel3.Controls.Add(this.btnLop, 0, 9);
+            this.tableLayoutPanel3.Controls.Add(this.btnKhoa, 0, 10);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 72);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 9;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel3.RowCount = 11;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(156, 316);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
@@ -116,7 +122,7 @@
             this.btnGiangVien.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnGiangVien.Location = new System.Drawing.Point(3, 3);
             this.btnGiangVien.Name = "btnGiangVien";
-            this.btnGiangVien.Size = new System.Drawing.Size(150, 29);
+            this.btnGiangVien.Size = new System.Drawing.Size(150, 22);
             this.btnGiangVien.TabIndex = 0;
             this.btnGiangVien.Text = "Giảng viên";
             this.btnGiangVien.UseVisualStyleBackColor = false;
@@ -128,9 +134,9 @@
             this.btnSinhVien.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSinhVien.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnSinhVien.Location = new System.Drawing.Point(3, 38);
+            this.btnSinhVien.Location = new System.Drawing.Point(3, 31);
             this.btnSinhVien.Name = "btnSinhVien";
-            this.btnSinhVien.Size = new System.Drawing.Size(150, 29);
+            this.btnSinhVien.Size = new System.Drawing.Size(150, 22);
             this.btnSinhVien.TabIndex = 1;
             this.btnSinhVien.Text = "Sinh viên";
             this.btnSinhVien.UseVisualStyleBackColor = false;
@@ -142,9 +148,9 @@
             this.btnLopMonHoc.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLopMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLopMonHoc.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnLopMonHoc.Location = new System.Drawing.Point(3, 73);
+            this.btnLopMonHoc.Location = new System.Drawing.Point(3, 59);
             this.btnLopMonHoc.Name = "btnLopMonHoc";
-            this.btnLopMonHoc.Size = new System.Drawing.Size(150, 29);
+            this.btnLopMonHoc.Size = new System.Drawing.Size(150, 22);
             this.btnLopMonHoc.TabIndex = 2;
             this.btnLopMonHoc.Text = "Lớp môn học";
             this.btnLopMonHoc.UseVisualStyleBackColor = false;
@@ -156,9 +162,9 @@
             this.btnMonHoc.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMonHoc.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnMonHoc.Location = new System.Drawing.Point(3, 108);
+            this.btnMonHoc.Location = new System.Drawing.Point(3, 87);
             this.btnMonHoc.Name = "btnMonHoc";
-            this.btnMonHoc.Size = new System.Drawing.Size(150, 29);
+            this.btnMonHoc.Size = new System.Drawing.Size(150, 22);
             this.btnMonHoc.TabIndex = 3;
             this.btnMonHoc.Text = "Môn học";
             this.btnMonHoc.UseVisualStyleBackColor = false;
@@ -170,9 +176,9 @@
             this.btnTKB.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnTKB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTKB.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnTKB.Location = new System.Drawing.Point(3, 143);
+            this.btnTKB.Location = new System.Drawing.Point(3, 115);
             this.btnTKB.Name = "btnTKB";
-            this.btnTKB.Size = new System.Drawing.Size(150, 29);
+            this.btnTKB.Size = new System.Drawing.Size(150, 22);
             this.btnTKB.TabIndex = 4;
             this.btnTKB.Text = "Thời khóa biểu";
             this.btnTKB.UseVisualStyleBackColor = false;
@@ -184,9 +190,9 @@
             this.btnLichThi.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLichThi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLichThi.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnLichThi.Location = new System.Drawing.Point(3, 178);
+            this.btnLichThi.Location = new System.Drawing.Point(3, 143);
             this.btnLichThi.Name = "btnLichThi";
-            this.btnLichThi.Size = new System.Drawing.Size(150, 29);
+            this.btnLichThi.Size = new System.Drawing.Size(150, 22);
             this.btnLichThi.TabIndex = 5;
             this.btnLichThi.Text = "Lịch thi";
             this.btnLichThi.UseVisualStyleBackColor = false;
@@ -198,9 +204,9 @@
             this.btnMonDangKy.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnMonDangKy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMonDangKy.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnMonDangKy.Location = new System.Drawing.Point(3, 213);
+            this.btnMonDangKy.Location = new System.Drawing.Point(3, 171);
             this.btnMonDangKy.Name = "btnMonDangKy";
-            this.btnMonDangKy.Size = new System.Drawing.Size(150, 29);
+            this.btnMonDangKy.Size = new System.Drawing.Size(150, 22);
             this.btnMonDangKy.TabIndex = 6;
             this.btnMonDangKy.Text = "Môn mở đăng ký";
             this.btnMonDangKy.UseVisualStyleBackColor = false;
@@ -212,9 +218,9 @@
             this.btnDiem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDiem.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDiem.Location = new System.Drawing.Point(3, 248);
+            this.btnDiem.Location = new System.Drawing.Point(3, 199);
             this.btnDiem.Name = "btnDiem";
-            this.btnDiem.Size = new System.Drawing.Size(150, 29);
+            this.btnDiem.Size = new System.Drawing.Size(150, 22);
             this.btnDiem.TabIndex = 7;
             this.btnDiem.Text = "Điểm";
             this.btnDiem.UseVisualStyleBackColor = false;
@@ -226,9 +232,9 @@
             this.btnTaiKhoan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTaiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnTaiKhoan.Location = new System.Drawing.Point(3, 283);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(3, 227);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(150, 30);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(150, 22);
             this.btnTaiKhoan.TabIndex = 8;
             this.btnTaiKhoan.Text = "Tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = false;
@@ -252,6 +258,28 @@
             this.pHienThiForm.Name = "pHienThiForm";
             this.pHienThiForm.Size = new System.Drawing.Size(623, 442);
             this.pHienThiForm.TabIndex = 1;
+            // 
+            // btnLop
+            // 
+            this.btnLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLop.Location = new System.Drawing.Point(3, 255);
+            this.btnLop.Name = "btnLop";
+            this.btnLop.Size = new System.Drawing.Size(150, 22);
+            this.btnLop.TabIndex = 9;
+            this.btnLop.Text = "Lớp";
+            this.btnLop.UseVisualStyleBackColor = true;
+            this.btnLop.Click += new System.EventHandler(this.btnLop_Click);
+            // 
+            // btnKhoa
+            // 
+            this.btnKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKhoa.Location = new System.Drawing.Point(3, 283);
+            this.btnKhoa.Name = "btnKhoa";
+            this.btnKhoa.Size = new System.Drawing.Size(150, 30);
+            this.btnKhoa.TabIndex = 10;
+            this.btnKhoa.Text = "Khoa";
+            this.btnKhoa.UseVisualStyleBackColor = true;
+            this.btnKhoa.Click += new System.EventHandler(this.btnKhoa_Click);
             // 
             // FrmAdmin
             // 
@@ -287,5 +315,7 @@
         private System.Windows.Forms.Button btnTaiKhoan;
         private System.Windows.Forms.Panel pHienThiForm;
         private System.Windows.Forms.Button btnDangXuat;
+        private System.Windows.Forms.Button btnLop;
+        private System.Windows.Forms.Button btnKhoa;
     }
 }

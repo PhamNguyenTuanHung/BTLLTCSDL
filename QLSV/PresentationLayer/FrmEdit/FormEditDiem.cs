@@ -13,9 +13,9 @@ using DOT;
 
 namespace PresentationLayer
 {
-    public partial class FormThemDiem : Form
+    public partial class FormEditDiem : Form
     {
-        public FormThemDiem()
+        public FormEditDiem()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace PresentationLayer
 
         List<string> foriegnKeys;
         Dictionary<string, List<string>> foriegnKeyValues;
-        public FormThemDiem(DiemSV diemSV , int type)
+        public FormEditDiem(DiemSV diemSV , int type)
         {
             InitializeComponent();
             adminBUS = new AdminBUS();

@@ -13,9 +13,9 @@ using DOT;
 
 namespace PresentationLayer
 {
-    public partial class FormThemMonHoc : Form
+    public partial class FormEditMonHoc : Form
     {
-        public FormThemMonHoc()
+        public FormEditMonHoc()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace PresentationLayer
 
         AdminBUS adminBUS;
         MonHoc monHoc;
-        public FormThemMonHoc(MonHoc monhoc,int type)
+        public FormEditMonHoc(MonHoc monhoc,int type)
         {
             InitializeComponent();
             adminBUS = new AdminBUS();

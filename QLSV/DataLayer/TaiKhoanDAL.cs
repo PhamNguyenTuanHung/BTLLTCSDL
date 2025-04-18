@@ -98,7 +98,7 @@ namespace DataLayer
         new SqlParameter("@username", username),
         new SqlParameter("@password", password)
             };
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
     }

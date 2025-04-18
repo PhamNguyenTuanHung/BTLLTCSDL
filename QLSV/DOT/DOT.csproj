@@ -98,7 +98,9 @@
     <Compile Include="DiemSV.cs" />
     <Compile Include="IThucThe.cs" />
     <Compile Include="GiangVien.cs" />
+    <Compile Include="Khoa.cs" />
     <Compile Include="LichThi.cs" />
+    <Compile Include="Lop.cs" />
     <Compile Include="LopMonHoc.cs" />
     <Compile Include="MonMoDangKy.cs" />
     <Compile Include="MonHoc.cs" />

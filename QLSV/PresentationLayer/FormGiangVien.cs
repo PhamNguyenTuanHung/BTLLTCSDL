@@ -103,6 +103,15 @@ namespace PresentationLayer
                 lbLop.Text = dt.Rows[0]["Ma_Lop"].ToString();
                 lbKhoa.Text = dt.Rows[0]["Ma_Khoa"].ToString();
                 lbGioiTinh.Text = dt.Rows[0]["Gioi_Tinh"].ToString();
+                if (dt.Rows[0]["Anh"] != DBNull.Value)
+                {
+                    byte[] imageBytes = (byte[])dt.Rows[0]["Anh"];
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pbAnhGV.Image = Image.FromStream(ms);
+                    }
+                }
+                else pbAnhGV.Image = null;
             }
             else
             {
@@ -252,7 +261,7 @@ namespace PresentationLayer
 
         private void btnSuaDiem_Click(object sender, EventArgs e)
         {
-            new FormThemDiem(diemSV, 0).ShowDialog();
+            new FormEditDiem(diemSV, 0).ShowDialog();
             GetLecturerClassInfo();
         }
 
@@ -318,6 +327,12 @@ namespace PresentationLayer
         private void pbAnhGV_Click(object sender, EventArgs e)
         {
 
+            
+            
+        }
+
+        private void btnAnh_Click(object sender, EventArgs e)
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;";
 
@@ -329,18 +344,20 @@ namespace PresentationLayer
                 {
                     if (gvBUS.ChangeImageBUS(imageBytes, gv.MSGV))
                         MessageBox.Show("Thành công");
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    if(imageBytes.Length > 0)
                     {
-                        pbAnhGV.Image = Image.FromStream(ms);
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            pbAnhGV.Image = Image.FromStream(ms);
+                        }
+                        btnAnh.Text = "Đổi ảnh";
                     }
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show(ex.Message);
                 }
             }
-            
         }
     }
 }

@@ -14,9 +14,9 @@ using DOT;
 
 namespace PresentationLayer
 {
-    public partial class FormThemLopMonHoc : Form
+    public partial class FormEditLopMonHoc : Form
     {
-        public FormThemLopMonHoc()
+        public FormEditLopMonHoc()
         {
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace PresentationLayer
 
 
 
-        public FormThemLopMonHoc(LopMonHoc lopMonHoc, int Type)
+        public FormEditLopMonHoc(LopMonHoc lopMonHoc, int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 

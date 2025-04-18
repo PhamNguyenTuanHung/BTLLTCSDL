@@ -8,6 +8,7 @@ using DataLayer;
 using System.Data;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace BusinessLayer
 {
@@ -97,7 +98,21 @@ namespace BusinessLayer
 
         }
 
+        public DataTable GetClassBUS()
+        {
+            return adminDAL.GetClassDAL();
+        }
+
+        public DataTable GetDepartmentsBUS()
+        {
+            return adminDAL.GetDepartmentsDAL();
+        }
         //Hàm thêm
+
+        public bool InsertClassBUSDAL(Lop lop )
+        {
+            return adminDAL.InsertClassDAL(lop);
+        }
 
         public bool InsertCourseForRegistrationBUS(MonMoDangKy monMoDangKy)
         {
@@ -145,10 +160,23 @@ namespace BusinessLayer
         {
             return adminDAL.InsertAccountDAL(taiKhoan);
         }
-
+        public bool InsertDepartmentBUS(Khoa khoa)
+        {
+            return adminDAL.InsertDepartmentDAL(khoa);
+        }
 
 
         //Hàm xóa
+
+        public bool DeleteDepartmentBUS(string maKhoa)
+        {
+            return adminDAL.DeleteDepartmentDAL(maKhoa);
+        }
+
+        public bool DeleteClassBUS(string maLop )
+        {
+            return adminDAL.DeleteClassDAL(maLop);
+        }
         public bool DeleteStudentBUS(string mssv)
         {
             return adminDAL.DeleteStudentDAL(mssv);
@@ -194,6 +222,15 @@ namespace BusinessLayer
             return adminDAL.DeleteCourseFromRegistrationDAL(maMonMoDangKy);
         }
         // Hàm cập nhật dữ liệu
+
+        public bool UpdateDepartmentBUS(Khoa khoa)
+        {
+            return adminDAL.UpdateDepartmentDAL(khoa);
+        }
+        public bool UpdateClasstBUS(Lop lop)
+        {
+            return adminDAL.UpdateClassDAL(lop);
+        }
 
         public bool UpdateCourseFromRegistrationBUS(MonMoDangKy monMoDangKy)
         {

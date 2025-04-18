@@ -53,7 +53,7 @@ namespace DataLayer
         }
 
         // Phương thức thực thi truy vấn không trả về dữ liệu (INSERT, UPDATE, DELETE)
-        public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
+        public static int MyExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
             try
             {
@@ -70,48 +70,6 @@ namespace DataLayer
                     }
                 }
             }
-           /* catch (SqlException ex)
-            {
-                *//*switch (ex.Number)
-                {
-                    case 2627: // Vi phạm PRIMARY KEY hoặc UNIQUE
-                        throw new Exception("Lỗi: Trùng khóa chính. Dữ liệu đã tồn tại!");
-
-                   // case 547: // Vi phạm ràng buộc FOREIGN KEY hoặc CHECK constraint
-                     //   throw new Exception("Lỗi: Không thể thực hiện do dữ liệu bị ràng buộc!");
-
-                    case 208: // Bảng hoặc cột không tồn tại
-                        throw new Exception("Lỗi: Bảng hoặc cột không tồn tại!");
-
-                    case 4060: // Database không tồn tại hoặc bị khóa
-                        throw new Exception("Lỗi: Không thể kết nối đến cơ sở dữ liệu!");
-
-                    case 18456: // Sai tài khoản đăng nhập SQL Server
-                        throw new Exception("Lỗi: Sai tên đăng nhập hoặc mật khẩu!");
-
-                    case 233: // SQL Server không phản hồi
-                        throw new Exception("Lỗi: Máy chủ SQL không phản hồi. Kiểm tra kết nối!");
-
-                    case 53: // Không thể kết nối đến SQL Server
-                        throw new Exception("Lỗi: Không thể kết nối đến máy chủ SQL. Kiểm tra mạng hoặc firewall!");
-
-                    case 8152: // Dữ liệu nhập vào quá dài
-                        throw new Exception("Lỗi: Giá trị nhập vào quá dài!");
-
-                    case 245: // Kiểu dữ liệu sai (Data type mismatch)
-                        throw new Exception("Lỗi: Dữ liệu không đúng định dạng!");
-
-                    case 2601: // Vi phạm UNIQUE Constraint khi UPDATE
-                        throw new Exception("Lỗi: Dữ liệu bị ràng buộc bởi một UNIQUE constraint!");
-
-                    case 2628: // Dữ liệu bị cắt ngắn khi INSERT hoặc UPDATE
-                        throw new Exception("Lỗi: Dữ liệu nhập vào quá lớn!");
-
-                    default:*//*
-                        throw new Exception("Lỗi SQL: " + ex.Message);
-                }
-            
-            }*/
 
             catch (Exception ex) // Bắt lỗi khác
             {

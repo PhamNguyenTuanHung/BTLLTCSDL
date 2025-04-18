@@ -12,9 +12,9 @@ using DOT;
 
 namespace PresentationLayer.FormThem
 {
-    public partial class FormThemMonMoDangKy : Form
+    public partial class FormEditMonMoDangKy : Form
     {
-        public FormThemMonMoDangKy()
+        public FormEditMonMoDangKy()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace PresentationLayer.FormThem
 
 
 
-        public FormThemMonMoDangKy(MonMoDangKy monMoDangKy, int Type)
+        public FormEditMonMoDangKy(MonMoDangKy monMoDangKy, int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 

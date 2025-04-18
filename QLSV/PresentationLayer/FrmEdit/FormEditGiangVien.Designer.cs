@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class FormThemGiangVien
+    partial class FormEditGiangVien
     {
         /// <summary>
         /// Required designer variable.
@@ -68,6 +68,7 @@
             this.btnThem.TabIndex = 8;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // panel2
             // 
@@ -94,7 +95,7 @@
             this.pbAnh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbAnh.Location = new System.Drawing.Point(3, 3);
             this.pbAnh.Name = "pbAnh";
-            this.pbAnh.Size = new System.Drawing.Size(458, 93);
+            this.pbAnh.Size = new System.Drawing.Size(458, 99);
             this.pbAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbAnh.TabIndex = 15;
             this.pbAnh.TabStop = false;
@@ -105,7 +106,7 @@
             this.btnThemAnh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnThemAnh.Location = new System.Drawing.Point(467, 3);
             this.btnThemAnh.Name = "btnThemAnh";
-            this.btnThemAnh.Size = new System.Drawing.Size(120, 93);
+            this.btnThemAnh.Size = new System.Drawing.Size(120, 99);
             this.btnThemAnh.TabIndex = 14;
             this.btnThemAnh.Text = "Thêm ảnh";
             this.btnThemAnh.UseVisualStyleBackColor = true;
@@ -123,7 +124,7 @@
             // dtNgaySinh
             // 
             this.dtNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtNgaySinh.Location = new System.Drawing.Point(203, 103);
+            this.dtNgaySinh.Location = new System.Drawing.Point(203, 100);
             this.dtNgaySinh.Name = "dtNgaySinh";
             this.dtNgaySinh.Size = new System.Drawing.Size(423, 22);
             this.dtNgaySinh.TabIndex = 8;
@@ -131,7 +132,7 @@
             // lbl
             // 
             this.lbl.AutoSize = true;
-            this.lbl.Location = new System.Drawing.Point(4, 34);
+            this.lbl.Location = new System.Drawing.Point(4, 33);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(52, 16);
             this.lbl.TabIndex = 6;
@@ -139,7 +140,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(203, 168);
+            this.txtEmail.Location = new System.Drawing.Point(203, 164);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(423, 22);
             this.txtEmail.TabIndex = 5;
@@ -147,7 +148,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 100);
+            this.label9.Location = new System.Drawing.Point(4, 97);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 16);
             this.label9.TabIndex = 5;
@@ -155,7 +156,7 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(203, 37);
+            this.txtHoTen.Location = new System.Drawing.Point(203, 36);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(423, 22);
             this.txtHoTen.TabIndex = 1;
@@ -221,7 +222,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 67);
+            this.label8.Location = new System.Drawing.Point(4, 65);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 16);
             this.label8.TabIndex = 4;
@@ -237,7 +238,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 231);
+            this.label12.Location = new System.Drawing.Point(4, 225);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(30, 16);
             this.label12.TabIndex = 2;
@@ -246,7 +247,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 165);
+            this.label13.Location = new System.Drawing.Point(4, 161);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 16);
             this.label13.TabIndex = 8;
@@ -255,7 +256,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 198);
+            this.label14.Location = new System.Drawing.Point(4, 193);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 16);
             this.label14.TabIndex = 8;
@@ -264,7 +265,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 133);
+            this.label1.Location = new System.Drawing.Point(4, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 16);
             this.label1.TabIndex = 11;
@@ -272,7 +273,7 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(203, 136);
+            this.txtDiaChi.Location = new System.Drawing.Point(203, 132);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(423, 22);
             this.txtDiaChi.TabIndex = 3;
@@ -285,19 +286,19 @@
             this.tableLayoutPanel1.Controls.Add(this.pbAnh, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnThemAnh, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(203, 234);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(203, 228);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 99);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 105);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // cbGioiTinhGV
             // 
             this.cbGioiTinhGV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGioiTinhGV.FormattingEnabled = true;
-            this.cbGioiTinhGV.Location = new System.Drawing.Point(203, 70);
+            this.cbGioiTinhGV.Location = new System.Drawing.Point(203, 68);
             this.cbGioiTinhGV.Name = "cbGioiTinhGV";
             this.cbGioiTinhGV.Size = new System.Drawing.Size(423, 24);
             this.cbGioiTinhGV.TabIndex = 13;
@@ -306,18 +307,18 @@
             // 
             this.cbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKhoa.FormattingEnabled = true;
-            this.cbKhoa.Location = new System.Drawing.Point(203, 201);
+            this.cbKhoa.Location = new System.Drawing.Point(203, 196);
             this.cbKhoa.Name = "cbKhoa";
             this.cbKhoa.Size = new System.Drawing.Size(423, 24);
             this.cbKhoa.TabIndex = 14;
             // 
-            // FormThemGiangVien
+            // FormEditGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "FormThemGiangVien";
+            this.Name = "FormEditGiangVien";
             this.Text = "FormThemGiangVien";
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAnh)).EndInit();

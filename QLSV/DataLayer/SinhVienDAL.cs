@@ -120,7 +120,7 @@ namespace DataLayer
                     new SqlParameter("@MaLop", malopmonhoc),
                     new SqlParameter("@NgayDK", date)
                     };
-                return DBProviderDAL.ExecuteNonQuery(query,parameters) > 0;
+                return DBProviderDAL.MyExecuteNonQuery(query,parameters) > 0;
 
         }
 
@@ -135,7 +135,7 @@ namespace DataLayer
                     new SqlParameter("@MSSV", mssv),
                     new SqlParameter("@malopmonhoc",malopmonhoc)
                     };
-                return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+                return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -149,8 +149,8 @@ namespace DataLayer
             try
             {
                 string query = "SELECT DangKy.Ma_Lop_Mon_Hoc,Ten_Mon_Hoc,Ngay_Dang_Ky,So_Tin_Chi " +
-                    "\r\nFROM DangKy,LopMo,LopMonHoc,MonHoc" +
-                    "\r\nWHERE DangKy.Ma_Lop_Mon_Hoc=LopMo.Ma_Lop_Mon_Hoc " +
+                    "\r\nFROM DangKy,MonMoDangKy,LopMonHoc,MonHoc" +
+                    "\r\nWHERE DangKy.Ma_Lop_Mon_Hoc=MonMoDangKy.Ma_Lop_Mon_Hoc " +
                     "\r\nAND MSSV=@mssv AND DangKy.Ma_Lop_Mon_Hoc=LopMonHoc.Ma_Lop_Mon_Hoc" +
                     "\r\nAND LopMonHoc.Ma_Mon_Hoc=MonHoc.Ma_Mon_Hoc ";
                 SqlParameter[] parameters = new SqlParameter[]
@@ -166,22 +166,24 @@ namespace DataLayer
         }
 
         //Danh sách môn học có thể đăng kí
-        public DataTable GetAvailableCoursesDAL()
+        public DataTable GetAvailableCoursesDAL(string maHocKy)
         {
             try
             {
-                string query = "SELECT LopMonHoc.Ma_Lop_Mon_Hoc,MonHoc.Ma_Mon_Hoc,MonHoc.Ten_Mon_Hoc," +
-                    "\r\nThoiKhoaBieu.Ngay_Hoc,ThoiKhoaBieu.Gio_Bat_Dau,ThoiKhoaBieu.Gio_Ket_Thuc," +
-                    "\r\nThoiKhoaBieu.Phong_Hoc,MonHoc.So_Tin_Chi,LopMo.So_Luong_Toi_Da," +
-                    "\r\n    (SELECT COUNT(*) \r\n     " +
-                    "FROM DangKy \r\n     " +
-                    "WHERE DangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc) AS So_Luong_Da_DK" +
-                    "\r\nFROM LopMo, LopMonHoc, MonHoc, ThoiKhoaBieu" +
-                    "\r\nWHERE LopMonHoc.Ma_Hoc_Ky = 'HK3_24_25' " +
-                    "\r\n    AND LopMo.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +
-                    "\r\n    AND LopMonHoc.Ma_Mon_Hoc = MonHoc.Ma_Mon_Hoc " +
-                    "\r\n    AND ThoiKhoaBieu.Ma_Lop_Mon_Hoc = LopMo.Ma_Lop_Mon_Hoc;";
-                 return DBProviderDAL.GetDataTable(query);
+                string query = "\r\nSELECT LopMonHoc.Ma_Lop_Mon_Hoc, MonHoc.Ma_Mon_Hoc, MonHoc.Ten_Mon_Hoc," +
+                    "\r\n       ThoiKhoaBieu.Ngay_Hoc, ThoiKhoaBieu.Gio_Bat_Dau, ThoiKhoaBieu.Gio_Ket_Thuc," +
+                    "\r\n       ThoiKhoaBieu.Phong_Hoc, MonHoc.So_Tin_Chi, MonMoDangKy.So_Luong_Toi_Da," +
+                    "\r\n       (SELECT COUNT(*) " +
+                    "\r\n        FROM DangKy" +
+                    " \r\n        WHERE DangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc) AS So_Luong_Da_DK" +
+                    "\r\nFROM MonMoDangKy, LopMonHoc, MonHoc, ThoiKhoaBieu" +
+                    "\r\nWHERE LopMonHoc.Ma_Hoc_Ky = @MaHocKy" +
+                    "\r\n  AND MonMoDangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +
+                    "\r\n  AND LopMonHoc.Ma_Mon_Hoc = MonHoc.Ma_Mon_Hoc" +
+                    "\r\n  AND ThoiKhoaBieu.Ma_Lop_Mon_Hoc = MonMoDangKy.Ma_Lop_Mon_Hoc";
+                SqlParameter[] sqlParameter = new SqlParameter[] {
+                    new SqlParameter("@MaHocKy", maHocKy) };
+                 return DBProviderDAL.GetDataTable(query,sqlParameter);
             }
             catch (Exception ex)
             {
@@ -236,7 +238,7 @@ namespace DataLayer
                 new SqlParameter("@MSSV", mssv),
                 new SqlParameter("@Anh",anh)
             };
-            return DBProviderDAL.ExecuteNonQuery(query, parameters) > 0;
+            return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
     }
 }
