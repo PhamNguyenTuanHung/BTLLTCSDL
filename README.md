@@ -1,6 +1,7 @@
 # 📘 Phần Mềm Quản Lý Sinh Viên
 
-Phần mềm Quản lý Sinh viên là một ứng dụng Windows Forms được phát triển nhằm hỗ trợ các trường học, trung tâm hoặc tổ chức giáo dục dễ dàng quản lý thông tin sinh viên như: hồ sơ cá nhân, điểm số, lớp học, và các thao tác tìm kiếm, thống kê liên quan.
+Phần mềm Quản lý Sinh viên là một ứng dụng Windows Forms được phát triển nhằm hỗ trợ các trường học, trung tâm hoặc tổ chức giáo dục dễ dàng quản lý thông tin sinh viên như: 
+hồ sơ cá nhân, điểm số, lớp học, và các thao tác tìm kiếm, thống kê liên quan.
 
 ---
 
@@ -20,9 +21,6 @@ Phần mềm Quản lý Sinh viên là một ứng dụng Windows Forms được
 
 - 👨‍💻 Ngôn ngữ: C# (.NET Framework)
 - 🖼️ Giao diện: Windows Forms (WinForms)
-- 🗄️ Cơ sở dữ liệu: SQL Server (hoặc SQLite tùy phiên bản)
-- 🔐 Entity Framework (nếu có dùng ORM)
-- 📦 Crystal Reports (nếu có in báo cáo)
-
+- 🗄️ Cơ sở dữ liệu: SQL Server 
 ---
 
