@@ -91,7 +91,7 @@ namespace PresentationLayer
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             Form formLogin = new FormDangNhap();
-            if (DialogResult.OK==MessageBox.Show("Bạn muốn đăng xuất","Đăng xuất",MessageBoxButtons.OKCancel))
+            if (DialogResult.OK==MessageBox.Show("Bạn muốn đăng xuất?","Đăng xuất",MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
             {
                 this.Hide();
                 formLogin.Show();
@@ -107,6 +107,10 @@ namespace PresentationLayer
         private void btnKhoa_Click(object sender, EventArgs e)
         {
             LoadData("Khoa");
+        }
+
+        private void pHienThiForm_Paint(object sender, PaintEventArgs e)
+        {
         }
     }
 }

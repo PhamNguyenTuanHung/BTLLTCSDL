@@ -44,13 +44,13 @@ namespace PresentationLayer.FrmEdit
                 btnThem.Enabled = true;
                 btnThem.Visible = true;
                 btnSua.Enabled = false;
-                btnSua.Visible = false;
+                //btnSua.Visible = false;
             }
             else
             {
                 txtMaKhoa.ReadOnly = true;
                 btnThem.Enabled = false;
-                btnThem.Visible = false;
+                //btnThem.Visible = false;
                 btnSua.Enabled = true;
                 btnSua.Visible = true;
             }

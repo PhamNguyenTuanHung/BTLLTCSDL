@@ -40,10 +40,10 @@
             this.btnMonDangKy = new System.Windows.Forms.Button();
             this.btnDiem = new System.Windows.Forms.Button();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
-            this.btnDangXuat = new System.Windows.Forms.Button();
-            this.pHienThiForm = new System.Windows.Forms.Panel();
             this.btnLop = new System.Windows.Forms.Button();
             this.btnKhoa = new System.Windows.Forms.Button();
+            this.btnDangXuat = new System.Windows.Forms.Button();
+            this.pHienThiForm = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -240,25 +240,6 @@
             this.btnTaiKhoan.UseVisualStyleBackColor = false;
             this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDangXuat.Location = new System.Drawing.Point(3, 394);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(156, 45);
-            this.btnDangXuat.TabIndex = 1;
-            this.btnDangXuat.Text = "Đăng xuất";
-            this.btnDangXuat.UseVisualStyleBackColor = true;
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
-            // 
-            // pHienThiForm
-            // 
-            this.pHienThiForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pHienThiForm.Location = new System.Drawing.Point(173, 4);
-            this.pHienThiForm.Name = "pHienThiForm";
-            this.pHienThiForm.Size = new System.Drawing.Size(623, 442);
-            this.pHienThiForm.TabIndex = 1;
-            // 
             // btnLop
             // 
             this.btnLop.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -281,12 +262,34 @@
             this.btnKhoa.UseVisualStyleBackColor = true;
             this.btnKhoa.Click += new System.EventHandler(this.btnKhoa_Click);
             // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDangXuat.Location = new System.Drawing.Point(3, 394);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(156, 45);
+            this.btnDangXuat.TabIndex = 1;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.UseVisualStyleBackColor = true;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // pHienThiForm
+            // 
+            this.pHienThiForm.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.pHienThiForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pHienThiForm.Location = new System.Drawing.Point(173, 4);
+            this.pHienThiForm.Name = "pHienThiForm";
+            this.pHienThiForm.Size = new System.Drawing.Size(623, 442);
+            this.pHienThiForm.TabIndex = 1;
+            this.pHienThiForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pHienThiForm_Paint);
+            // 
             // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.DoubleBuffered = true;
             this.Name = "FrmAdmin";
             this.Text = "FrmAdmin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

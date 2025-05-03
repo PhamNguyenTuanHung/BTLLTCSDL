@@ -50,7 +50,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(320, 314);
+            this.btnThem.Location = new System.Drawing.Point(213, 290);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(161, 48);
             this.btnThem.TabIndex = 16;
@@ -60,7 +60,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(320, 314);
+            this.btnSua.Location = new System.Drawing.Point(380, 290);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(161, 48);
             this.btnSua.TabIndex = 15;
@@ -88,7 +88,7 @@
             this.tableLayoutPanel2.Controls.Add(this.txtDQT, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.txtDT, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.cbMSSV, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(108, 26);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.49275F));
@@ -219,15 +219,16 @@
             this.cbMSSV.Size = new System.Drawing.Size(387, 24);
             this.cbMSSV.TabIndex = 2;
             // 
-            // FormThemDiem
+            // FormEditDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(615, 350);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
-            this.Name = "FormThemDiem";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "FormEditDiem";
             this.Text = "FormThemDiem";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

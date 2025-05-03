@@ -176,7 +176,6 @@ namespace PresentationLayer
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.AllowUserToAddRows = false;
             dgv.ReadOnly = true;
-
         }
 
 

@@ -70,6 +70,7 @@
             this.dgv.RowTemplate.Height = 24;
             this.dgv.Size = new System.Drawing.Size(1029, 178);
             this.dgv.TabIndex = 4;
+            this.dgv.VirtualMode = true;
             this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
             // 
             // panel2
@@ -92,7 +93,7 @@
             this.btnXoa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnXoa.BackgroundImage")));
             this.btnXoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(593, 2);
+            this.btnXoa.Location = new System.Drawing.Point(583, 9);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(50, 50);
             this.btnXoa.TabIndex = 8;
@@ -103,7 +104,7 @@
             // 
             this.btnThem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThem.BackgroundImage")));
             this.btnThem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnThem.Location = new System.Drawing.Point(466, 3);
+            this.btnThem.Location = new System.Drawing.Point(456, 10);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(50, 50);
             this.btnThem.TabIndex = 8;
@@ -113,7 +114,7 @@
             // btnExcel
             // 
             this.btnExcel.AutoSize = true;
-            this.btnExcel.Location = new System.Drawing.Point(765, 15);
+            this.btnExcel.Location = new System.Drawing.Point(684, 20);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(100, 31);
             this.btnExcel.TabIndex = 7;
@@ -126,7 +127,7 @@
             this.btnSua.AutoSize = true;
             this.btnSua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSua.BackgroundImage")));
             this.btnSua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSua.Location = new System.Drawing.Point(530, 2);
+            this.btnSua.Location = new System.Drawing.Point(520, 9);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(50, 50);
             this.btnSua.TabIndex = 6;
@@ -136,7 +137,7 @@
             // btnTK
             // 
             this.btnTK.AutoSize = true;
-            this.btnTK.Location = new System.Drawing.Point(330, 14);
+            this.btnTK.Location = new System.Drawing.Point(313, 20);
             this.btnTK.Name = "btnTK";
             this.btnTK.Size = new System.Drawing.Size(94, 30);
             this.btnTK.TabIndex = 1;
@@ -147,7 +148,7 @@
             // txtTimKiem
             // 
             this.txtTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTimKiem.Location = new System.Drawing.Point(133, 20);
+            this.txtTimKiem.Location = new System.Drawing.Point(133, 25);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(174, 22);
             this.txtTimKiem.TabIndex = 0;
@@ -156,7 +157,7 @@
             // 
             this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb.FormattingEnabled = true;
-            this.cb.Location = new System.Drawing.Point(22, 18);
+            this.cb.Location = new System.Drawing.Point(22, 23);
             this.cb.Name = "cb";
             this.cb.Size = new System.Drawing.Size(99, 24);
             this.cb.TabIndex = 5;
