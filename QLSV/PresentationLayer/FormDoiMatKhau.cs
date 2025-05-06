@@ -97,5 +97,10 @@ namespace PresentationLayer
                 this.Close();
             }
         }
+
+        private void FormDoiMatKhau_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

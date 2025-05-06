@@ -47,12 +47,12 @@ namespace PresentationLayer.FormThem
                 btnThem.Enabled = true;
                 btnThem.Visible = true;
                 btnSua.Enabled = false;
-                //btnSua.Visible = false;
+                btnSua.Visible = false;
             }
             else
             {
                 btnThem.Enabled = false;
-                //btnThem.Visible = false;
+                btnThem.Visible = false;
                 btnSua.Enabled = true;
                 btnSua.Visible = true;
             }
