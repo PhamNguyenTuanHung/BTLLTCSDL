@@ -44,7 +44,7 @@
             // 
             this.txtOldPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOldPass.Location = new System.Drawing.Point(229, 41);
-            this.txtOldPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtOldPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtOldPass.Name = "txtOldPass";
             this.txtOldPass.PasswordChar = '*';
             this.txtOldPass.Size = new System.Drawing.Size(282, 26);
@@ -54,7 +54,7 @@
             // 
             this.txtNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewPass.Location = new System.Drawing.Point(229, 86);
-            this.txtNewPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNewPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(282, 26);
@@ -64,7 +64,7 @@
             // 
             this.txtConfirmPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmPass.Location = new System.Drawing.Point(229, 138);
-            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '*';
             this.txtConfirmPass.Size = new System.Drawing.Size(282, 26);
@@ -111,7 +111,7 @@
             this.btnDoiMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoiMK.ForeColor = System.Drawing.Color.Blue;
             this.btnDoiMK.Location = new System.Drawing.Point(240, 184);
-            this.btnDoiMK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDoiMK.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoiMK.Name = "btnDoiMK";
             this.btnDoiMK.Size = new System.Drawing.Size(165, 34);
             this.btnDoiMK.TabIndex = 4;
@@ -125,7 +125,7 @@
             this.btnThoat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
             this.btnThoat.Location = new System.Drawing.Point(409, 184);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(102, 34);
             this.btnThoat.TabIndex = 5;
@@ -140,7 +140,7 @@
             this.checkShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkShow.ForeColor = System.Drawing.Color.White;
             this.checkShow.Location = new System.Drawing.Point(39, 194);
-            this.checkShow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkShow.Margin = new System.Windows.Forms.Padding(2);
             this.checkShow.Name = "checkShow";
             this.checkShow.Size = new System.Drawing.Size(169, 24);
             this.checkShow.TabIndex = 3;
@@ -163,10 +163,13 @@
             this.Controls.Add(this.txtConfirmPass);
             this.Controls.Add(this.txtNewPass);
             this.Controls.Add(this.txtOldPass);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDoiMatKhau";
-            this.Text = "FormDoiMatKhau";
+            this.Text = "Đổi mật khẩu";
             this.Load += new System.EventHandler(this.FormDoiMatKhau_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

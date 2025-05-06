@@ -281,10 +281,13 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormEditThoiKhoaBieu";
-            this.Text = "FormThemThoiKhoaBieu";
+            this.Text = "Thêm thời khóa biểu";
             this.Load += new System.EventHandler(this.FormEditThoiKhoaBieu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

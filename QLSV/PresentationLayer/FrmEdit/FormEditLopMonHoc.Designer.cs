@@ -112,7 +112,7 @@
             this.txtMaLopMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaLopMH.ForeColor = System.Drawing.Color.White;
             this.txtMaLopMH.Location = new System.Drawing.Point(151, 3);
-            this.txtMaLopMH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaLopMH.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaLopMH.Name = "txtMaLopMH";
             this.txtMaLopMH.Size = new System.Drawing.Size(290, 26);
             this.txtMaLopMH.TabIndex = 1;
@@ -122,7 +122,7 @@
             this.txtSL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSL.ForeColor = System.Drawing.Color.White;
             this.txtSL.Location = new System.Drawing.Point(151, 178);
-            this.txtSL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSL.Margin = new System.Windows.Forms.Padding(2);
             this.txtSL.Name = "txtSL";
             this.txtSL.Size = new System.Drawing.Size(290, 26);
             this.txtSL.TabIndex = 1;
@@ -134,7 +134,7 @@
             this.cbMSGV.ForeColor = System.Drawing.Color.White;
             this.cbMSGV.FormattingEnabled = true;
             this.cbMSGV.Location = new System.Drawing.Point(151, 38);
-            this.cbMSGV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMSGV.Margin = new System.Windows.Forms.Padding(2);
             this.cbMSGV.Name = "cbMSGV";
             this.cbMSGV.Size = new System.Drawing.Size(290, 28);
             this.cbMSGV.TabIndex = 2;
@@ -146,7 +146,7 @@
             this.cbMaMH.ForeColor = System.Drawing.Color.White;
             this.cbMaMH.FormattingEnabled = true;
             this.cbMaMH.Location = new System.Drawing.Point(151, 73);
-            this.cbMaMH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaMH.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaMH.Name = "cbMaMH";
             this.cbMaMH.Size = new System.Drawing.Size(290, 28);
             this.cbMaMH.TabIndex = 2;
@@ -158,7 +158,7 @@
             this.cbMaHK.ForeColor = System.Drawing.Color.White;
             this.cbMaHK.FormattingEnabled = true;
             this.cbMaHK.Location = new System.Drawing.Point(151, 108);
-            this.cbMaHK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaHK.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaHK.Name = "cbMaHK";
             this.cbMaHK.Size = new System.Drawing.Size(290, 28);
             this.cbMaHK.TabIndex = 2;
@@ -169,7 +169,7 @@
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.Location = new System.Drawing.Point(248, 266);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(121, 74);
             this.btnThem.TabIndex = 13;
@@ -183,7 +183,7 @@
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Location = new System.Drawing.Point(248, 266);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(121, 39);
             this.btnSua.TabIndex = 12;
@@ -212,7 +212,7 @@
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.ForeColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(88, 32);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -243,7 +243,7 @@
             this.cbMaKhoa.ForeColor = System.Drawing.Color.White;
             this.cbMaKhoa.FormattingEnabled = true;
             this.cbMaKhoa.Location = new System.Drawing.Point(151, 143);
-            this.cbMaKhoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaKhoa.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaKhoa.Name = "cbMaKhoa";
             this.cbMaKhoa.Size = new System.Drawing.Size(290, 28);
             this.cbMaKhoa.TabIndex = 4;
@@ -257,10 +257,13 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnSua);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormEditLopMonHoc";
-            this.Text = "FormThemLopMonHoc";
+            this.Text = "Thêm lớp môn học";
             this.Load += new System.EventHandler(this.FormThemLopMonHoc_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -82,7 +82,7 @@
             this.txtMaMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaMH.ForeColor = System.Drawing.Color.Black;
             this.txtMaMH.Location = new System.Drawing.Point(302, 74);
-            this.txtMaMH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaMH.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaMH.Name = "txtMaMH";
             this.txtMaMH.Size = new System.Drawing.Size(150, 29);
             this.txtMaMH.TabIndex = 1;
@@ -92,7 +92,7 @@
             this.txtTenMonHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenMonHoc.ForeColor = System.Drawing.Color.Black;
             this.txtTenMonHoc.Location = new System.Drawing.Point(302, 115);
-            this.txtTenMonHoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenMonHoc.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenMonHoc.Name = "txtTenMonHoc";
             this.txtTenMonHoc.Size = new System.Drawing.Size(150, 29);
             this.txtTenMonHoc.TabIndex = 2;
@@ -102,7 +102,7 @@
             this.txtSoTinChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoTinChi.ForeColor = System.Drawing.Color.Black;
             this.txtSoTinChi.Location = new System.Drawing.Point(302, 154);
-            this.txtSoTinChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSoTinChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoTinChi.Name = "txtSoTinChi";
             this.txtSoTinChi.Size = new System.Drawing.Size(150, 29);
             this.txtSoTinChi.TabIndex = 3;
@@ -112,7 +112,7 @@
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Location = new System.Drawing.Point(212, 227);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(121, 39);
             this.btnSua.TabIndex = 10;
@@ -126,7 +126,7 @@
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.Location = new System.Drawing.Point(212, 227);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(164, 66);
             this.btnThem.TabIndex = 11;
@@ -152,7 +152,7 @@
             this.txtHeSoQT.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHeSoQT.ForeColor = System.Drawing.Color.Black;
             this.txtHeSoQT.Location = new System.Drawing.Point(302, 188);
-            this.txtHeSoQT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHeSoQT.Margin = new System.Windows.Forms.Padding(2);
             this.txtHeSoQT.Name = "txtHeSoQT";
             this.txtHeSoQT.Size = new System.Drawing.Size(150, 29);
             this.txtHeSoQT.TabIndex = 3;
@@ -173,10 +173,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormEditMonHoc";
-            this.Text = "FormThemMonHoc";
+            this.Text = "Thêm môn học";
             this.Load += new System.EventHandler(this.FormThemMonHoc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

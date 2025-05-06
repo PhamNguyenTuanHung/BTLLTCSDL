@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQuenMatKhau));
             this.label1 = new System.Windows.Forms.Label();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.btnGuiMa = new System.Windows.Forms.Button();
@@ -60,7 +61,7 @@
             // 
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaiKhoan.Location = new System.Drawing.Point(244, 66);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(242, 24);
             this.txtTaiKhoan.TabIndex = 0;
@@ -70,7 +71,7 @@
             this.btnGuiMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuiMa.ForeColor = System.Drawing.Color.Green;
             this.btnGuiMa.Location = new System.Drawing.Point(244, 264);
-            this.btnGuiMa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuiMa.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuiMa.Name = "btnGuiMa";
             this.btnGuiMa.Size = new System.Drawing.Size(111, 34);
             this.btnGuiMa.TabIndex = 6;
@@ -94,7 +95,7 @@
             // 
             this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.Location = new System.Drawing.Point(244, 144);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(242, 24);
             this.txtCode.TabIndex = 2;
@@ -105,7 +106,7 @@
             this.btnNhapMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhapMa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnNhapMa.Location = new System.Drawing.Point(359, 264);
-            this.btnNhapMa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNhapMa.Margin = new System.Windows.Forms.Padding(2);
             this.btnNhapMa.Name = "btnNhapMa";
             this.btnNhapMa.Size = new System.Drawing.Size(127, 34);
             this.btnNhapMa.TabIndex = 7;
@@ -121,7 +122,7 @@
             "Sinh viên",
             "Giáo viên"});
             this.cbLoaiTK.Location = new System.Drawing.Point(244, 104);
-            this.cbLoaiTK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbLoaiTK.Margin = new System.Windows.Forms.Padding(2);
             this.cbLoaiTK.Name = "cbLoaiTK";
             this.cbLoaiTK.Size = new System.Drawing.Size(242, 26);
             this.cbLoaiTK.TabIndex = 1;
@@ -167,7 +168,7 @@
             // 
             this.txtNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewPass.Location = new System.Drawing.Point(244, 181);
-            this.txtNewPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNewPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(242, 24);
@@ -177,7 +178,7 @@
             // 
             this.txtConfirmPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmPass.Location = new System.Drawing.Point(244, 217);
-            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtConfirmPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '*';
             this.txtConfirmPass.Size = new System.Drawing.Size(242, 24);
@@ -189,7 +190,7 @@
             this.btnDoiMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoiMatKhau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDoiMatKhau.Location = new System.Drawing.Point(244, 302);
-            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.Size = new System.Drawing.Size(242, 34);
             this.btnDoiMatKhau.TabIndex = 8;
@@ -203,7 +204,7 @@
             this.checkShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkShow.ForeColor = System.Drawing.Color.White;
             this.checkShow.Location = new System.Drawing.Point(73, 271);
-            this.checkShow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkShow.Margin = new System.Windows.Forms.Padding(2);
             this.checkShow.Name = "checkShow";
             this.checkShow.Size = new System.Drawing.Size(158, 22);
             this.checkShow.TabIndex = 5;
@@ -231,10 +232,13 @@
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormQuenMatKhau";
-            this.Text = "QuenMatKhau";
+            this.Text = "Quên mật khẩu";
             this.Load += new System.EventHandler(this.FormQuenMatKhau_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

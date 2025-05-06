@@ -1,30 +1,102 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\",
+  "WorkspaceRootPath": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|h:\\t\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\ltcsdl\\ltcsdlvh\\btlltcsdl-master (1)\\btlltcsdl-master\\qlsv\\presentationlayer\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formdoimatkhau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formdoimatkhau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|h:\\t\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\ltcsdl\\ltcsdlvh\\btlltcsdl-master (1)\\btlltcsdl-master\\qlsv\\presentationlayer\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\asus\\source\\repos\\btlltcsdl111\\qlsv\\presentationlayer\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|h:\\t\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\ltcsdl\\ltcsdlvh\\btlltcsdl-master (1)\\btlltcsdl-master\\qlsv\\presentationlayer\\formadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\asus\\source\\repos\\btlltcsdl111\\qlsv\\presentationlayer\\frmedit\\formeditmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|h:\\t\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\ltcsdl\\ltcsdlvh\\btlltcsdl-master (1)\\btlltcsdl-master\\qlsv\\presentationlayer\\frmedit\\formeditthoikhoabieu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|c:\\users\\asus\\source\\repos\\btlltcsdl111\\qlsv\\datalayer\\dbproviderdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\dbproviderdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formquenmatkhau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formquenmatkhau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditthoikhoabieu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditthoikhoabieu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\presentationlayer\\ucchucnangchung.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\ucchucnangchung.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formedittaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formedittaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|h:\\t\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\ltcsdl\\ltcsdlvh\\btlltcsdl-master (1)\\btlltcsdl-master\\qlsv\\presentationlayer\\frmedit\\formeditmonmodangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditmonmodangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditmonmodangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditlopmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditlopmonhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditlop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditlop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditlichthi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditlichthi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditkhoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditkhoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditdiem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditdiem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmedit\\formeditgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\ucchucnangchung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\ucchucnangchung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formsinhvien.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formsinhvien.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\formsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\ucchucnangchung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\ucchucnangchung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\presentationlayer\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,85 +106,286 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ucChucNangChung.resx",
-              "DocumentMoniker": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\ucChucNangChung.resx",
-              "RelativeDocumentMoniker": "PresentationLayer\\ucChucNangChung.resx",
-              "ToolTip": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\ucChucNangChung.resx",
-              "RelativeToolTip": "PresentationLayer\\ucChucNangChung.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-05-05T03:59:24.854Z",
-              "IsPinned": true,
+              "DocumentIndex": 2,
+              "Title": "FormEditMonHoc.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonHoc.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditMonHoc.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonHoc.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditMonHoc.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:20:04.111Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\packages.config",
+              "RelativeDocumentMoniker": "PresentationLayer\\packages.config",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\packages.config",
+              "RelativeToolTip": "PresentationLayer\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-06T05:09:25.522Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmAdmin.cs",
-              "DocumentMoniker": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmAdmin.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FrmAdmin.cs",
-              "ToolTip": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmAdmin.cs",
-              "RelativeToolTip": "PresentationLayer\\FrmAdmin.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAIwCQAAAASAAAAAAAAAA==",
+              "Title": "FormDoiMatKhau.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormDoiMatKhau.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormDoiMatKhau.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormDoiMatKhau.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FormDoiMatKhau.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:23:12.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmAdmin.cs [Design]",
-              "DocumentMoniker": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmAdmin.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FrmAdmin.cs",
-              "ToolTip": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmAdmin.cs [Design]",
-              "RelativeToolTip": "PresentationLayer\\FrmAdmin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:23:10.088Z",
+              "WhenOpened": "2025-05-06T04:51:09.748Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormAdmin.cs [Design]",
-              "DocumentMoniker": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FormAdmin.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FormAdmin.cs",
-              "ToolTip": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FormAdmin.cs [Design]",
-              "RelativeToolTip": "PresentationLayer\\FormAdmin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:23:06.502Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FormEditThoiKhoaBieu.cs [Design]",
-              "DocumentMoniker": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
-              "ToolTip": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs [Design]",
-              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs [Design]",
+              "Title": "DBProviderDAL.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\DataLayer\\DBProviderDAL.cs",
+              "RelativeDocumentMoniker": "DataLayer\\DBProviderDAL.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\DataLayer\\DBProviderDAL.cs",
+              "RelativeToolTip": "DataLayer\\DBProviderDAL.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:21:52.915Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-06T05:23:20.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormGiangVien.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormGiangVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormGiangVien.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormGiangVien.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FormGiangVien.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:27:31.814Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "FormQuenMatKhau.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormQuenMatKhau.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormQuenMatKhau.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormQuenMatKhau.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FormQuenMatKhau.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:56:56.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormSinhVien.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormSinhVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormSinhVien.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormSinhVien.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FormSinhVien.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:58:22.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FormEditThoiKhoaBieu.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T18:21:52.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FormEditTaiKhoan.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditTaiKhoan.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditTaiKhoan.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditTaiKhoan.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditTaiKhoan.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:08:03.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FormEditSinhVien.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditSinhVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditSinhVien.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditSinhVien.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditSinhVien.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:06:55.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "FormEditMonMoDangKy.cs [Design]",
-              "DocumentMoniker": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs",
-              "ToolTip": "H:\\T\u00E0i li\u1EC7u m\u00F4n h\u1ECDc\\LTCSDL\\LTCSDLvH\\BTLLTCSDL-master (1)\\BTLLTCSDL-master\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs [Design]",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs [Design]",
               "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:18:56.078Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-06T05:06:12.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FormEditLopMonHoc.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditLopMonHoc.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditLopMonHoc.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditLopMonHoc.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditLopMonHoc.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:05:16.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FormEditLop.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditLop.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditLop.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditLop.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditLop.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:04:41.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FormEditLichThi.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditLichThi.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditLichThi.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditLichThi.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditLichThi.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:03:57.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FormEditKhoa.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditKhoa.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditKhoa.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditKhoa.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditKhoa.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:02:57.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FormEditGiangVien.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditGiangVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditGiangVien.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditGiangVien.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditGiangVien.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:01:22.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FormEditDiem.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditDiem.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditDiem.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmEdit\\FormEditDiem.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditDiem.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T05:00:44.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FormDangNhap.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormDangNhap.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormDangNhap.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormDangNhap.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\FormDangNhap.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:51:05.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ucChucNangChung.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\ucChucNangChung.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\ucChucNangChung.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\ucChucNangChung.cs [Design]",
+              "RelativeToolTip": "PresentationLayer\\ucChucNangChung.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:07:29.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "FormGiangVien.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormGiangVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormGiangVien.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormGiangVien.cs",
+              "RelativeToolTip": "PresentationLayer\\FormGiangVien.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAASwAQBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:27:33.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "FormSinhVien.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormSinhVien.Designer.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormSinhVien.Designer.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormSinhVien.Designer.cs",
+              "RelativeToolTip": "PresentationLayer\\FormSinhVien.Designer.cs",
+              "ViewState": "AgIAAA8BAAAAAAAAAAArwB4BAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:20:31.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FormSinhVien.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormSinhVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormSinhVien.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FormSinhVien.cs",
+              "RelativeToolTip": "PresentationLayer\\FormSinhVien.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAArwNEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:15:17.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ucChucNangChung.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\ucChucNangChung.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\ucChucNangChung.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\ucChucNangChung.cs",
+              "RelativeToolTip": "PresentationLayer\\ucChucNangChung.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAhwFIBAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T02:39:51.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FrmAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmAdmin.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmAdmin.cs",
+              "ToolTip": "C:\\Users\\Asus\\source\\repos\\BTLLTCSDL111\\QLSV\\PresentationLayer\\FrmAdmin.cs",
+              "RelativeToolTip": "PresentationLayer\\FrmAdmin.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAA1wEcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T18:23:12.376Z"
             }
           ]
         }

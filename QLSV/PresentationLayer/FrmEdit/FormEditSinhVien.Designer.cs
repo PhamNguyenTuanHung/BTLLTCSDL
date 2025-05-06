@@ -192,7 +192,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(152, 117);
+            this.txtEmail.Location = new System.Drawing.Point(152, 116);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(318, 20);
@@ -201,7 +201,7 @@
             // 
             // txtDRL
             // 
-            this.txtDRL.Location = new System.Drawing.Point(152, 98);
+            this.txtDRL.Location = new System.Drawing.Point(152, 97);
             this.txtDRL.Margin = new System.Windows.Forms.Padding(2);
             this.txtDRL.Name = "txtDRL";
             this.txtDRL.Size = new System.Drawing.Size(318, 20);
@@ -222,7 +222,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 134);
+            this.label10.Location = new System.Drawing.Point(3, 133);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 13);
@@ -251,7 +251,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 96);
+            this.label11.Location = new System.Drawing.Point(3, 95);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 13);
@@ -262,7 +262,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 172);
+            this.label12.Location = new System.Drawing.Point(3, 171);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 13);
@@ -273,7 +273,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 115);
+            this.label13.Location = new System.Drawing.Point(3, 114);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(37, 13);
@@ -284,7 +284,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 153);
+            this.label14.Location = new System.Drawing.Point(3, 152);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 13);
@@ -294,7 +294,7 @@
             // 
             // txtKhoaHoc
             // 
-            this.txtKhoaHoc.Location = new System.Drawing.Point(152, 136);
+            this.txtKhoaHoc.Location = new System.Drawing.Point(152, 135);
             this.txtKhoaHoc.Margin = new System.Windows.Forms.Padding(2);
             this.txtKhoaHoc.Name = "txtKhoaHoc";
             this.txtKhoaHoc.Size = new System.Drawing.Size(318, 20);
@@ -305,7 +305,7 @@
             // 
             this.cbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLop.FormattingEnabled = true;
-            this.cbLop.Location = new System.Drawing.Point(152, 155);
+            this.cbLop.Location = new System.Drawing.Point(152, 154);
             this.cbLop.Margin = new System.Windows.Forms.Padding(2);
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(318, 21);
@@ -340,13 +340,13 @@
             this.tableLayoutPanel1.Controls.Add(this.pbAnh, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnThemAnh, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(152, 174);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(152, 173);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(443, 97);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(443, 98);
             this.tableLayoutPanel1.TabIndex = 12;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -356,7 +356,7 @@
             this.pbAnh.Location = new System.Drawing.Point(2, 2);
             this.pbAnh.Margin = new System.Windows.Forms.Padding(2);
             this.pbAnh.Name = "pbAnh";
-            this.pbAnh.Size = new System.Drawing.Size(310, 93);
+            this.pbAnh.Size = new System.Drawing.Size(310, 94);
             this.pbAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbAnh.TabIndex = 15;
             this.pbAnh.TabStop = false;
@@ -372,7 +372,7 @@
             this.btnThemAnh.Location = new System.Drawing.Point(316, 2);
             this.btnThemAnh.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemAnh.Name = "btnThemAnh";
-            this.btnThemAnh.Size = new System.Drawing.Size(125, 93);
+            this.btnThemAnh.Size = new System.Drawing.Size(125, 94);
             this.btnThemAnh.TabIndex = 14;
             this.btnThemAnh.Text = "Thêm ảnh";
             this.btnThemAnh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -424,10 +424,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormEditSinhVien";
-            this.Text = "FormThemSinhVien";
+            this.Text = "Chỉnh sửa thông tin sinh viên";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
