@@ -55,7 +55,7 @@ namespace PresentationLayer
                 btnThem.Enabled = true;
                 btnThem.Visible = true;
                 btnSua.Enabled = false;
-                //btnSua.Visible = false;
+                btnSua.Visible = false;
                 label12.Visible = false;
                 txtDiemTK.Visible = false;
             }
@@ -71,7 +71,7 @@ namespace PresentationLayer
                 cbMSSV.Enabled = false;
                 txtLanThi.Enabled = false;
                 btnThem.Enabled = false;
-                //btnThem.Visible = false;
+                btnThem.Visible = false;
                 btnSua.Enabled = true;
                 btnSua.Visible = true;
             }

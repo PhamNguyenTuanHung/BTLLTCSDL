@@ -239,22 +239,36 @@ namespace PresentationLayer
         }
 
 
+        private decimal ParseDecimalSafe(object value)
+        {
+            if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
+                return 0m;
+
+            if (decimal.TryParse(value.ToString(), out decimal result))
+                return result;
+
+            return 0; // Trả về 0 nếu không thể parse
+        }
+
+
         private void dgvThongTinLop_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvThongTinLop.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvThongTinLop.SelectedRows[0];
+
                 diemSV = new DiemSV
                 (
-                    row.Cells["MSSV"].Value.ToString(),   // Giả sử cột MSSV có tên là "MSSV"
-                    row.Cells["Ma_Mon_Hoc"].Value.ToString(), // Giả sử cột Ho_Ten có tên là "Ho_Ten"
-                    row.Cells["Ma_Hoc_Ky"].Value.ToString(),
-                    Math.Round(decimal.Parse(row.Cells["Diem_Qua_Trinh"].Value.ToString()),1),  // Cột Diem_Qua_Trinh
-                    Math.Round(decimal.Parse(row.Cells["Diem_Thi"].Value.ToString()), 1),
-                    Math.Round(decimal.Parse(row.Cells["Diem_Tong_Ket"].Value.ToString()), 1),  // Cột Diem_Thi   
-                    int.Parse(row.Cells["Lan_Thi"].Value.ToString()) // Cột Diem_Tong_Ket
+                    row.Cells["MSSV"].Value?.ToString(),  // Giả sử cột MSSV có tên là "MSSV"
+                    row.Cells["Ma_Mon_Hoc"].Value?.ToString(), // Giả sử cột Ma_Mon_Hoc có tên là "Ma_Mon_Hoc"
+                    row.Cells["Ma_Hoc_Ky"].Value?.ToString(),
+                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Qua_Trinh"].Value), 1),  // Kiểm tra null và parse
+                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Thi"].Value), 1),  // Kiểm tra null và parse
+                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Tong_Ket"].Value), 1),  // Kiểm tra null và parse
+                    int.TryParse(row.Cells["Lan_Thi"].Value?.ToString(), out int lanThi) ? lanThi : 0 // Kiểm tra Lan_Thi
                 );
             }
+
         }
 
 
@@ -358,6 +372,21 @@ namespace PresentationLayer
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void dgvThongTinLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FormGiangVien_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimKiemSinhVien_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

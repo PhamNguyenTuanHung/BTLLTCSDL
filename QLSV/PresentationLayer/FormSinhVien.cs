@@ -425,6 +425,7 @@ namespace PresentationLayer
             FilterDataGridView(maHocKyDiem, dgvDiem, "Ma_Hoc_Ky");
         }
 
+
         private void btnAnh_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
