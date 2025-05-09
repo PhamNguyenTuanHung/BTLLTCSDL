@@ -13,9 +13,17 @@ namespace DataLayer
     public class TaiKhoanDAl
     {
         //KIểm tra tồn tại tài khoản
-        public bool CheckAccountExistsDAL(string username)
+        public bool CheckAccountExistsDAL(string username,int accountType)
         {
-            string query = "SELECT * FROM TaiKhoan WHERE Ten_Dang_Nhap = @username";
+            string query = "";
+            if (accountType == 1)
+            {
+                query = "SELECT * FROM SinhVien WHERE MSSV = @username";
+            }
+            else
+            {
+                query = "SELECT * FROM GiangVien WHERE MSGV = @username";
+            }
 
             SqlParameter[] parameters =
                 {
@@ -42,8 +50,8 @@ namespace DataLayer
             {
                 query = @"
                 SELECT Email 
-                FROM GiaoVien 
-                WHERE GiaoVien.MSGV = @username";
+                FROM GiangVien 
+                WHERE GiangVien.MSGV = @username";
             }
 
             SqlParameter[] parameters =

@@ -24,11 +24,11 @@ namespace BusinessLayer
             }
         }
 
-        public bool CheckAccountExistsBUS(string taiKhoan)
+        public bool CheckAccountExistsBUS(string username,int type)
         {
             try
             {
-                return taiKhoanDAl.CheckAccountExistsDAL(taiKhoan);
+                return taiKhoanDAl.CheckAccountExistsDAL(username,type);
 
             }
             catch (Exception ex)

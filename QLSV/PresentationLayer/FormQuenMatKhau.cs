@@ -20,13 +20,13 @@ namespace PresentationLayer
         int loaiTaiKhoan;
         TaiKhoanBUS taiKhoanBUS;
         TaiKhoan taiKhoan;
+        private Timer timer;
+        private int countdown = 60; // 60 giây
         public FormQuenMatKhau()
         {
             InitializeComponent();
         }
         int randomNumber;
-        
-
         string fromEmail = "phamnguyentuanhung2004@gmail.com";
         string password = "BeUyen12052004"; // Nên dùng mật khẩu ứng dụng nếu là Gmail
 
@@ -58,7 +58,7 @@ namespace PresentationLayer
 
         }
 
-        private void btnGuiMa_Click(object sender, EventArgs e)
+        private async void btnGuiMa_Click(object sender, EventArgs e)
         {
             
             try
@@ -69,14 +69,24 @@ namespace PresentationLayer
                     return;
                 }
               
-                if (taiKhoanBUS.CheckAccountExistsBUS(txtTaiKhoan.Text))
+                if (taiKhoanBUS.CheckAccountExistsBUS(txtTaiKhoan.Text,int.Parse(cbLoaiTK.SelectedValue.ToString())))
                 {
                     string Email = taiKhoanBUS.GetAccountEmailBUS(txtTaiKhoan.Text, loaiTaiKhoan);
-                    GuiEamil(Email);
+                    await Task.Run(()=> GuiEamil(Email));
                     btnNhapMa.Visible = true;
                     txtCode.Visible = true;
-                    
                     label2.Visible = true;
+                    btnDoiMatKhau.Visible = true;
+                    btnGuiMa.Enabled = false; // Vô hiệu hóa nút
+                    countdown = 60;
+
+                    // Cập nhật text nếu muốn
+                    btnGuiMa.Text = $"Chờ {countdown}s";
+
+                    timer = new Timer();
+                    timer.Interval = 1000; // 1 giây
+                    timer.Tick += Timer_Tick;
+                    timer.Start();
                 }
                 else
                 {
@@ -89,6 +99,18 @@ namespace PresentationLayer
                 MessageBox.Show("Lỗi khi kiểm tra tài khoản: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            countdown--;
+            btnGuiMa.Text = $"Chờ {countdown}s";
+
+            if (countdown == 0)
+            {
+                timer.Stop();
+                btnGuiMa.Enabled = true;
+                btnGuiMa.Text = "Gửi lại"; // Reset lại nội dung nút nếu cần
+            }
         }
 
         private void cbLoaiTK_SelectedIndexChanged(object sender, EventArgs e)
