@@ -71,5 +71,40 @@ BEGIN
 END;
 
 
+//Thêm trigger quản lý số lượng đăng kí môn học
+CREATE TRIGGER trg_GioiHanDangKy
+ON DangKy
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @MaxRegistrations INT;  -- Giới hạn số lượng đăng ký tối đa
+    DECLARE @CurrentRegistrations INT;
+	DECLARE @MaLopMonHoc nvarchar;
+
+    -- Lấy mã môn học từ bản ghi vừa được chèn vào bảng DangKy
+    SELECT @MaLopMonHoc = Ma_Lop_Mon_Hoc FROM inserted;
+
+	 SELECT @MaxRegistrations = MonMoDangKy.So_Luong_Toi_Da
+    FROM MonMoDangKy
+    WHERE Ma_Lop_Mon_Hoc = @MaLopMonHoc;
+
+    -- Kiểm tra số lượng đăng ký hiện tại trong bảng DangKy
+    SELECT @CurrentRegistrations = COUNT(*) 
+    FROM DangKy,inserted
+	WHERE DangKy.Ma_Lop_Mon_Hoc= inserted.Ma_Lop_Mon_Hoc;
+
+    -- Kiểm tra nếu số lượng đăng ký đã đạt giới hạn
+    IF @CurrentRegistrations > @MaxRegistrations
+    BEGIN
+        -- Xóa bản ghi vừa chèn để không làm vi phạm giới hạn
+        DELETE FROM DangKy
+        WHERE ID IN (SELECT ID FROM inserted);
+
+        -- Thông báo lỗi
+        RAISERROR ('Đã đạt giới hạn đăng ký. Không thể đăng ký thêm.', 16, 1);
+    END
+END;
+
+
 
 

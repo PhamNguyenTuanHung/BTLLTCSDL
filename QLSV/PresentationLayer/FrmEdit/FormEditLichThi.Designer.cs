@@ -76,6 +76,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(592, 263);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
@@ -211,7 +212,7 @@
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.Location = new System.Drawing.Point(316, 345);
+            this.btnThem.Location = new System.Drawing.Point(293, 345);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(191, 81);
@@ -224,12 +225,15 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(316, 345);
+            this.btnSua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.Location = new System.Drawing.Point(293, 345);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(161, 48);
-            this.btnSua.TabIndex = 15;
+            this.btnSua.Size = new System.Drawing.Size(190, 81);
+            this.btnSua.TabIndex = 18;
             this.btnSua.Text = "Sửa";
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -239,9 +243,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.btnSua);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormEditLichThi";
@@ -261,7 +265,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.ComboBox cbMaLopMonHoc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtNgayThi;
@@ -269,5 +272,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtKetThuc;
+        private System.Windows.Forms.Button btnSua;
     }
 }

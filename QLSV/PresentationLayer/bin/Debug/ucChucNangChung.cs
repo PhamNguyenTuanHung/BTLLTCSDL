@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Data.Entity.ModelConfiguration.Configuration;
-using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Reflection;
-using System.Web.Security;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using BusinessLayer;
 using DOT;
 using PresentationLayer.FormThem;
 using PresentationLayer.FrmEdit;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -449,12 +442,13 @@ namespace PresentationLayer
                                 case "TaiKhoan":
                                     TaiKhoan taiKhoan = new TaiKhoan();
                                     taiKhoan = ConvertDGVRowToObject<TaiKhoan>(row);
+                                    
                                     check = adminBUS.DeleteAccountBUS(taiKhoan.TenDangNhap);
                                     break;
-                                case "MoMoDangKy":
+                                case "MonMoDangKy":
                                     MonMoDangKy monMoDangKy = new MonMoDangKy();
                                     monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(row);
-                                    check = adminBUS.DeleteAccountBUS(monMoDangKy.MaLopMo);
+                                    check=adminBUS.DeleteCourseFromRegistrationDAL(monMoDangKy.MaLopMo);
                                     break;
                                 case "Lop":
                                     Lop lop = new Lop();
@@ -550,7 +544,7 @@ namespace PresentationLayer
             }
             else
             {
-                btnSua.Enabled=false;
+                btnSua.Enabled = false;
                 btnXoa.Enabled = false;
             }
         }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer;
 using DOT;
 
@@ -66,11 +61,7 @@ namespace BusinessLayer
         // đăng kí môn
         public bool RegisterCourseBUS(string studentId, string courseId, DateTime date)
         {
-
-            
-                return sinhvienDAL.RegisterCourseDAL(studentId, courseId, date);
-            
-            
+                return sinhvienDAL.RegisterCourseDAL(studentId, courseId, date);    
         }
 
         //Hủy đăng kí môn

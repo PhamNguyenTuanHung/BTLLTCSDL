@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Net.NetworkInformation;
-using System.Web.UI.WebControls;
 using DOT;
 
 namespace DataLayer
@@ -172,10 +170,10 @@ namespace DataLayer
             {
                 string query = "\r\nSELECT LopMonHoc.Ma_Lop_Mon_Hoc, MonHoc.Ma_Mon_Hoc, MonHoc.Ten_Mon_Hoc," +
                     "\r\n       ThoiKhoaBieu.Ngay_Hoc, ThoiKhoaBieu.Gio_Bat_Dau, ThoiKhoaBieu.Gio_Ket_Thuc," +
-                    "\r\n       ThoiKhoaBieu.Phong_Hoc, MonHoc.So_Tin_Chi, MonMoDangKy.So_Luong_Toi_Da," +
+                    "\r\n       ThoiKhoaBieu.Phong_Hoc, MonHoc.So_Tin_Chi, LopMonHoc.So_Luong_Dang_Ky_Toi_Da," +
                     "\r\n       (SELECT COUNT(*) " +
                     "\r\n        FROM DangKy" +
-                    " \r\n        WHERE DangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc) AS So_Luong_Da_DK" +
+                    " \r\n       WHERE DangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc) AS So_Luong_Da_Dang_Ky" +
                     "\r\nFROM MonMoDangKy, LopMonHoc, MonHoc, ThoiKhoaBieu" +
                     "\r\nWHERE LopMonHoc.Ma_Hoc_Ky = @MaHocKy" +
                     "\r\n  AND MonMoDangKy.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc" +

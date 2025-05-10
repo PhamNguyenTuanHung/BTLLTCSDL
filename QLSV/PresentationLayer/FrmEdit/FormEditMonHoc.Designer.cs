@@ -35,10 +35,10 @@
             this.txtMaMH = new System.Windows.Forms.TextBox();
             this.txtTenMonHoc = new System.Windows.Forms.TextBox();
             this.txtSoTinChi = new System.Windows.Forms.TextBox();
-            this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHeSoQT = new System.Windows.Forms.TextBox();
+            this.btnSua = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -104,28 +104,15 @@
             this.txtSoTinChi.Size = new System.Drawing.Size(199, 34);
             this.txtSoTinChi.TabIndex = 3;
             // 
-            // btnSua
-            // 
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(283, 279);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(161, 48);
-            this.btnSua.TabIndex = 10;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.Location = new System.Drawing.Point(283, 279);
+            this.btnThem.Location = new System.Drawing.Point(295, 310);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(219, 81);
+            this.btnThem.Size = new System.Drawing.Size(183, 81);
             this.btnThem.TabIndex = 11;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -153,15 +140,30 @@
             this.txtHeSoQT.Size = new System.Drawing.Size(199, 34);
             this.txtHeSoQT.TabIndex = 3;
             // 
+            // btnSua
+            // 
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.Location = new System.Drawing.Point(295, 315);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(190, 76);
+            this.btnSua.TabIndex = 17;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // FormEditMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.txtHeSoQT);
             this.Controls.Add(this.txtSoTinChi);
             this.Controls.Add(this.txtTenMonHoc);
@@ -187,9 +189,9 @@
         private System.Windows.Forms.TextBox txtMaMH;
         private System.Windows.Forms.TextBox txtTenMonHoc;
         private System.Windows.Forms.TextBox txtSoTinChi;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtHeSoQT;
+        private System.Windows.Forms.Button btnSua;
     }
 }

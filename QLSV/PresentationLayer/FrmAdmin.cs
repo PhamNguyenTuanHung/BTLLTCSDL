@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BusinessLayer;
 
 namespace PresentationLayer
 {
@@ -190,8 +183,9 @@ namespace PresentationLayer
             if (DialogResult.OK==MessageBox.Show("Bạn muốn đăng xuất","Đăng xuất",MessageBoxButtons.OKCancel))
             {
                 this.Hide();
-                formLogin.Show();
-                formLogin.FormClosed += (s, args) => this.Close();
+                formLogin.ShowDialog();
+                this.Close();
+                
             }
         }
 
@@ -225,6 +219,11 @@ namespace PresentationLayer
             btnLichThi.BackColor = SystemColors.Window;
             btnTKB.BackColor = SystemColors.Window;
             LoadData("Khoa");
+        }
+
+        private void ucChucNangChung_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

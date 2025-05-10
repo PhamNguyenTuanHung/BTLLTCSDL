@@ -54,10 +54,10 @@
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.Location = new System.Drawing.Point(108, 295);
+            this.btnThem.Location = new System.Drawing.Point(275, 293);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(329, 76);
+            this.btnThem.Size = new System.Drawing.Size(257, 76);
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -69,7 +69,7 @@
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
-            this.btnSua.Location = new System.Drawing.Point(443, 295);
+            this.btnSua.Location = new System.Drawing.Point(275, 293);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(257, 76);

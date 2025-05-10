@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -42,7 +38,7 @@ namespace PresentationLayer.FormThem
 
             if (Type == 0 && monMoDangKy != null)
             {
-                // Nếu là sửa, hiển thị thông tin sinh viên lên form
+                // Nếu là sửa, hiển thị thông tin lên form
                 ShowCourseFromRegistrationDetails(monMoDangKy);
             }
         }
@@ -83,15 +79,13 @@ namespace PresentationLayer.FormThem
         }
         private void ShowCourseFromRegistrationDetails(MonMoDangKy monMoDangKy)
         {
-            txtSL.Text = monMoDangKy.SoLuongToiDa.ToString();
             int indexMaHK = cbMaHK.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == monMoDangKy.MaHocKy);
+                 .FindIndex(item => item == monMoDangKy.MaHocKy.Trim());
 
             if (indexMaHK >= 0)
                 cbMaHK.SelectedIndex = indexMaHK;
-
 
             int indexMaLMH = cbMaLMH.Items
                  .Cast<string>()
@@ -113,13 +107,6 @@ namespace PresentationLayer.FormThem
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtSL.Text) ||
-                !int.TryParse(txtSL.Text, out int diem))
-            {
-                MessageBox.Show("Điểm rèn luyện phải là số từ 0 đến 100.");
-                txtSL.Focus();
-                return false;
-            }
 
 
             if (cbMaHK.SelectedIndex == -1)
@@ -139,8 +126,7 @@ namespace PresentationLayer.FormThem
                 if (ValidatCourseFromRegistrationForm() != true) return;
                     monMoDangKy = new MonMoDangKy(
                     cbMaLMH.SelectedValue.ToString(),
-                    cbMaHK.SelectedValue.ToString(),
-                    int.Parse(txtSL.Text)
+                    cbMaHK.SelectedValue.ToString()
                     );
 
                 if (adminBUS.InsertCourseForRegistrationBUS(monMoDangKy))
@@ -164,8 +150,7 @@ namespace PresentationLayer.FormThem
                 if (ValidatCourseFromRegistrationForm() != true) return;
                 monMoDangKy = new MonMoDangKy(
                 cbMaLMH.SelectedValue.ToString(),
-                cbMaHK.SelectedValue.ToString(),
-                int.Parse(txtSL.Text)
+                cbMaHK.SelectedValue.ToString()
                 );
 
                 if (adminBUS.InsertCourseForRegistrationBUS(monMoDangKy))
@@ -178,6 +163,11 @@ namespace PresentationLayer.FormThem
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FormEditMonMoDangKy_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -67,9 +67,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(4, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 20);
+            this.label2.Size = new System.Drawing.Size(106, 20);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Giờ kết thúc";
+            this.label2.Text = "Giờ bắt đầu";
             // 
             // label5
             // 
@@ -90,9 +90,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(4, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 20);
+            this.label3.Size = new System.Drawing.Size(111, 20);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Giờ bắt đầu";
+            this.label3.Text = "Giờ kết thúc";
             // 
             // label4
             // 
@@ -242,10 +242,10 @@
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.Location = new System.Drawing.Point(316, 345);
+            this.btnThem.Location = new System.Drawing.Point(283, 340);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(179, 80);
+            this.btnThem.Size = new System.Drawing.Size(190, 64);
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -254,13 +254,16 @@
             // 
             // btnSua
             // 
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(316, 345);
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.Location = new System.Drawing.Point(283, 340);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(161, 48);
-            this.btnSua.TabIndex = 15;
+            this.btnSua.Size = new System.Drawing.Size(190, 64);
+            this.btnSua.TabIndex = 18;
             this.btnSua.Text = "Sửa";
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -270,9 +273,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.btnSua);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -295,7 +298,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.ComboBox cbMaLopMonHoc;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbNgayHoc;
@@ -304,5 +306,6 @@
         private System.Windows.Forms.TextBox txtPhongHoc;
         private System.Windows.Forms.DateTimePicker dtNgayBatDau;
         private System.Windows.Forms.DateTimePicker dtNgayKetThuc;
+        private System.Windows.Forms.Button btnSua;
     }
 }

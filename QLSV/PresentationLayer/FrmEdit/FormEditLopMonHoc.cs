@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -25,6 +19,7 @@ namespace PresentationLayer
         LopMonHoc lopMonHoc;
         List<string> primaryKeys, foriegnKeys;
         Dictionary<string,List<string>> foriegnKeyValues;
+        int indexMaHK=0, indexMaMH=0, indexMSGV = 0, indexMaKhoa=0;
 
 
 
@@ -58,16 +53,16 @@ namespace PresentationLayer
         {
             //Lấy dữ liệu từ các key khóa ngoai tương ứng
             cbMaHK.DataSource = this.foriegnKeyValues["Ma_Hoc_Ky"];
-            cbMaHK.SelectedIndex = 0;
+            cbMaHK.SelectedIndex = indexMaHK;
 
             cbMSGV.DataSource = this.foriegnKeyValues["MSGV"];
-            cbMSGV.SelectedIndex = 0;
+            cbMSGV.SelectedIndex = indexMSGV;
 
             cbMaMH.DataSource = this.foriegnKeyValues["Ma_Mon_Hoc"];
-            cbMaMH.SelectedIndex = 0;
+            cbMaMH.SelectedIndex = indexMaMH;
 
             cbMaKhoa.DataSource = this.foriegnKeyValues["Ma_Khoa"]; ;
-            cbMaKhoa.SelectedIndex = 0;
+            cbMaKhoa.SelectedIndex = indexMaKhoa;
 
         }
         private void CheckAddOrUpdate(int type)
@@ -91,39 +86,36 @@ namespace PresentationLayer
 
         private void ShowCourseClassDetails(LopMonHoc lopMonHoc)
         {
-            txtMaLopMH.Text = lopMonHoc.MaLopMonHoc;
+            txtMaLopMH.Text = lopMonHoc.MaLopMonHoc.Trim();
+            
             txtSL.Text=lopMonHoc.SoLuongDangKyToiDa.ToString();
-            int indexMaHK = cbMaHK.Items
+
+            indexMaHK = cbMaHK.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == lopMonHoc.MaHocKi);
-
+                 .FindIndex(item => item == lopMonHoc.MaHocKi.Trim());
             if (indexMaHK >= 0)
                 cbMaHK.SelectedIndex = indexMaHK;
 
 
-            int indexMaMH = cbMaMH.Items
+            indexMaMH = cbMaMH.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == lopMonHoc.MaMonHoc);
-
+                 .FindIndex(item => item == lopMonHoc.MaMonHoc.Trim());
             if (indexMaMH >= 0)
                 cbMaMH.SelectedIndex = indexMaMH;
 
-            int indexMSGV = cbMSGV.Items
+            indexMSGV = cbMSGV.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == lopMonHoc.MSGV);
-
+                 .FindIndex(item => item == lopMonHoc.MSGV.Trim());
             if (indexMSGV >= 0)
                 cbMSGV.SelectedIndex = indexMSGV;
 
-
-            int indexMaKhoa = cbMaKhoa.Items
+            indexMaKhoa = cbMaKhoa.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == lopMonHoc.MaKhoa);
-
+                 .FindIndex(item => item == lopMonHoc.MaKhoa.Trim());
             if (indexMaKhoa >= 0)
                 cbMaKhoa.SelectedIndex =indexMaKhoa;
 
@@ -195,6 +187,12 @@ namespace PresentationLayer
                 if (adminBUS.InsertCourseClassBUS(lopMonHoc))
                 {
                     MessageBox.Show("Thêm thành công");
+                    if (MessageBox.Show("Bạn có muốn thêm thời khóa biểu cho lớp môn học này?","Thêm thời khóa biểu", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        ThoiKhoaBieu thoiKhoaBieu = new ThoiKhoaBieu(txtMaLopMH.Text);
+                        FormEditThoiKhoaBieu formEditThoiKhoaBieu = new FormEditThoiKhoaBieu(thoiKhoaBieu,1);
+                        formEditThoiKhoaBieu.ShowDialog();
+                    }
                     this.Close();
                 }
             }

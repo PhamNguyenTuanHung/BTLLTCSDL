@@ -57,7 +57,6 @@ namespace PresentationLayer
         {
             List<string> gioiTinhList = new List<string> {"Nam", "Nữ" };
             cbGioiTinhGV.DataSource = gioiTinhList;
-            cbGioiTinhGV.SelectedIndex = 0;
 
             cbKhoa.DataSource = foreignKeyValues["Ma_Khoa"];
             cbKhoa.SelectedIndex = 0;
@@ -66,11 +65,10 @@ namespace PresentationLayer
         {
             txtMSGV.Text = giangVien.MSGV;
             txtHoTen.Text = giangVien.HoTen;
-            if (giangVien.GioiTinh == "Nam")
-            {
-                cbGioiTinhGV.SelectedIndex = 0;  // Chọn "Nam"
-            }
-            else cbGioiTinhGV.SelectedIndex = 1;  // Chọn "Nữ"
+            if (giangVien.GioiTinh.Trim() == "Nam") 
+                cbGioiTinhGV.SelectedIndex = 0;
+            else cbGioiTinhGV.SelectedIndex = 1;
+            cbGioiTinhGV.SelectedItem = giangVien.GioiTinh;
 
             dtNgaySinh.Value = giangVien.NgaySinh;
             txtEmail.Text = giangVien.Email;
@@ -266,6 +264,11 @@ namespace PresentationLayer
                     }
                 }
             }
+
+        }
+
+        private void cbGioiTinhGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

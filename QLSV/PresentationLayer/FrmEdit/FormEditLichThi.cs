@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -156,7 +152,7 @@ namespace PresentationLayer.FormThem
             int indexMaHK = cbMaHK.Items
                  .Cast<string>()
                  .ToList()
-                 .FindIndex(item => item == lichThi.MaHocKy);
+                 .FindIndex(item => item == lichThi.MaHocKy.Trim());
 
             if (indexMaHK >= 0)
                 cbMaHK.SelectedIndex = indexMaHK;

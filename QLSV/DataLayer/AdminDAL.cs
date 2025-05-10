@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using DOT;
 namespace DataLayer
 {
@@ -314,13 +309,12 @@ namespace DataLayer
 
         public bool InsertCourseForRegistrationDAL(MonMoDangKy monMoDangKy)
         {
-            string query = "INSERT INTO MonMoDangKy (Ma_Lop_Mon_Hoc,Ma_Hoc_Ky,So_Luong_Toi_Da) " +
-                           "VALUES @MaLopMonHoc,@MaHocKi,@soluongtoida";
+            string query = "INSERT INTO MonMoDangKy (Ma_Lop_Mon_Hoc,Ma_Hoc_Ky)  " +
+                           "VALUES (@MaLopMonHoc,@MaHocKy)";
 
             SqlParameter[] parameters = {
              new SqlParameter("@MaLopMonHoc", monMoDangKy.MaLopMonHoc),
-            new SqlParameter("@MaHocKi", monMoDangKy.MaHocKy),
-            new SqlParameter("@SLDangKyToiDa", monMoDangKy.SoLuongToiDa)
+            new SqlParameter("@MaHocKy", monMoDangKy.MaHocKy)
         };
 
             return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
@@ -386,7 +380,7 @@ namespace DataLayer
         public bool InsertCourseClassDAL(LopMonHoc lopMonHoc)
         {
 
-            string query = "INSERT INTO LopMonHoc (Ma_Lop_Mon_Hoc, Ma_Mon_Hoc, MSGV, Ma_Hoc_Ky, Ma_Khoa, So_Luong_DK_Toi_Da) " +
+            string query = "INSERT INTO LopMonHoc (Ma_Lop_Mon_Hoc, Ma_Mon_Hoc, MSGV, Ma_Hoc_Ky, Ma_Khoa, So_Luong_Dang_Ky_Toi_Da) " +
                            "VALUES (@MaLopMonHoc, @MaMonHoc, @MSGV, @MaHocKi, @MaKhoa, @SLDangKyToiDa)";
 
             SqlParameter[] parameters = {
@@ -502,14 +496,14 @@ namespace DataLayer
             return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
         }
 
-        public bool DeleteCourseFromRegistrationDAL(string maMonMoDangKy)
+        public bool DeleteCourseFromRegistrationDAL(string maLopMo)
         {
-            string query = "DELETE FROM MonMoDangKy" +
-                           " WHERE Ma_Lop_Mo = @MaLopMo";
+            string query = "DELETE FROM MonMoDangKy " +
+                           "WHERE Ma_Lop_Mo = @MaLopMo";
 
             SqlParameter[] parameters =
                 {
-                    new SqlParameter("@MaLopMonHoc", maMonMoDangKy)
+                    new SqlParameter("@MaLopMo", maLopMo)
                 };
 
             return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;
@@ -614,14 +608,13 @@ namespace DataLayer
         public bool UpdateCourseFromRegistrationDAL(MonMoDangKy monMoDangKy)
         {
             string query = "Update  MonMoDangKy " +
-                           "SET  Ma_Lop_Mon_Hoc = @MaLopMonHoc, Ma_Hoc_Ky = @MaHocKi,So_Luong_Toi_Da =@soluongtoida" +
+                           "SET  Ma_Lop_Mon_Hoc = @MaLopMonHoc, Ma_Hoc_Ky = @MaHocKi" +
                            "WHERE Ma_Lop_Mo=@MaLopMo";
             
             SqlParameter[] parameters = {
             new SqlParameter("@MaLopMo", monMoDangKy.MaLopMo),
             new SqlParameter("@MaLopMonHoc", monMoDangKy.MaLopMonHoc),
             new SqlParameter("@MaHocKi", monMoDangKy.MaHocKy),
-            new SqlParameter("@SLDangKyToiDa", monMoDangKy.SoLuongToiDa)
         };
 
             return DBProviderDAL.MyExecuteNonQuery(query, parameters) > 0;

@@ -16,10 +16,12 @@ namespace DOT
         private string phongHoc;
         private DateTime ngayBD;
         private DateTime ngayKT;
-        private int  maTKB;
+        private int maTKB;
 
         public ThoiKhoaBieu() { }
-
+        public ThoiKhoaBieu(string maLopMonHoc) {
+            this.maLopMonHoc= maLopMonHoc;
+        }
         public ThoiKhoaBieu( string maLopMonHoc, string ngayHoc, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongHoc, DateTime ngayBD, DateTime ngayKT)
         {
             this.maLopMonHoc = maLopMonHoc;

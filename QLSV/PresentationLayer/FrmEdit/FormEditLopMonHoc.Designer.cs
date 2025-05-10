@@ -40,10 +40,10 @@
             this.cbMaMH = new System.Windows.Forms.ComboBox();
             this.cbMaHK = new System.Windows.Forms.ComboBox();
             this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.cbMaKhoa = new System.Windows.Forms.ComboBox();
+            this.btnSua = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,64 +98,64 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(4, 216);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(186, 46);
+            this.label5.Size = new System.Drawing.Size(239, 25);
             this.label5.TabIndex = 0;
             this.label5.Text = "Số lượng đăng ký tối đa";
             // 
             // txtMaLopMH
             // 
             this.txtMaLopMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLopMH.ForeColor = System.Drawing.Color.White;
-            this.txtMaLopMH.Location = new System.Drawing.Point(201, 3);
+            this.txtMaLopMH.ForeColor = System.Drawing.Color.Black;
+            this.txtMaLopMH.Location = new System.Drawing.Point(281, 3);
             this.txtMaLopMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaLopMH.Name = "txtMaLopMH";
-            this.txtMaLopMH.Size = new System.Drawing.Size(385, 30);
+            this.txtMaLopMH.Size = new System.Drawing.Size(307, 30);
             this.txtMaLopMH.TabIndex = 1;
             // 
             // txtSL
             // 
             this.txtSL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSL.ForeColor = System.Drawing.Color.White;
-            this.txtSL.Location = new System.Drawing.Point(201, 218);
+            this.txtSL.ForeColor = System.Drawing.Color.Black;
+            this.txtSL.Location = new System.Drawing.Point(281, 218);
             this.txtSL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSL.Name = "txtSL";
-            this.txtSL.Size = new System.Drawing.Size(385, 30);
+            this.txtSL.Size = new System.Drawing.Size(307, 30);
             this.txtSL.TabIndex = 1;
             // 
             // cbMSGV
             // 
             this.cbMSGV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMSGV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMSGV.ForeColor = System.Drawing.Color.White;
+            this.cbMSGV.ForeColor = System.Drawing.Color.Black;
             this.cbMSGV.FormattingEnabled = true;
-            this.cbMSGV.Location = new System.Drawing.Point(201, 46);
+            this.cbMSGV.Location = new System.Drawing.Point(281, 46);
             this.cbMSGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMSGV.Name = "cbMSGV";
-            this.cbMSGV.Size = new System.Drawing.Size(385, 33);
+            this.cbMSGV.Size = new System.Drawing.Size(307, 33);
             this.cbMSGV.TabIndex = 2;
             // 
             // cbMaMH
             // 
             this.cbMaMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMaMH.ForeColor = System.Drawing.Color.White;
+            this.cbMaMH.ForeColor = System.Drawing.Color.Black;
             this.cbMaMH.FormattingEnabled = true;
-            this.cbMaMH.Location = new System.Drawing.Point(201, 89);
+            this.cbMaMH.Location = new System.Drawing.Point(281, 89);
             this.cbMaMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMaMH.Name = "cbMaMH";
-            this.cbMaMH.Size = new System.Drawing.Size(385, 33);
+            this.cbMaMH.Size = new System.Drawing.Size(307, 33);
             this.cbMaMH.TabIndex = 2;
             // 
             // cbMaHK
             // 
             this.cbMaHK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaHK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMaHK.ForeColor = System.Drawing.Color.White;
+            this.cbMaHK.ForeColor = System.Drawing.Color.Black;
             this.cbMaHK.FormattingEnabled = true;
-            this.cbMaHK.Location = new System.Drawing.Point(201, 132);
+            this.cbMaHK.Location = new System.Drawing.Point(281, 132);
             this.cbMaHK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMaHK.Name = "cbMaHK";
-            this.cbMaHK.Size = new System.Drawing.Size(385, 33);
+            this.cbMaHK.Size = new System.Drawing.Size(307, 33);
             this.cbMaHK.TabIndex = 2;
             // 
             // btnThem
@@ -163,35 +163,22 @@
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
-            this.btnThem.Location = new System.Drawing.Point(331, 327);
+            this.btnThem.Location = new System.Drawing.Point(307, 337);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(161, 91);
+            this.btnThem.Size = new System.Drawing.Size(190, 71);
             this.btnThem.TabIndex = 13;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // btnSua
-            // 
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(331, 327);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(161, 48);
-            this.btnSua.TabIndex = 12;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.44595F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.55405F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.86971F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.13029F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtMaLopMH, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -205,7 +192,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.cbMaKhoa, 1, 4);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(117, 39);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -234,13 +221,28 @@
             // 
             this.cbMaKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMaKhoa.ForeColor = System.Drawing.Color.White;
+            this.cbMaKhoa.ForeColor = System.Drawing.Color.Black;
             this.cbMaKhoa.FormattingEnabled = true;
-            this.cbMaKhoa.Location = new System.Drawing.Point(201, 175);
+            this.cbMaKhoa.Location = new System.Drawing.Point(281, 175);
             this.cbMaKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMaKhoa.Name = "cbMaKhoa";
-            this.cbMaKhoa.Size = new System.Drawing.Size(385, 33);
+            this.cbMaKhoa.Size = new System.Drawing.Size(307, 33);
             this.cbMaKhoa.TabIndex = 4;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.Location = new System.Drawing.Point(307, 337);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(190, 71);
+            this.btnSua.TabIndex = 17;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // FormEditLopMonHoc
             // 
@@ -248,9 +250,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.btnSua);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormEditLopMonHoc";
@@ -275,9 +277,9 @@
         private System.Windows.Forms.ComboBox cbMaMH;
         private System.Windows.Forms.ComboBox cbMaHK;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbMaKhoa;
+        private System.Windows.Forms.Button btnSua;
     }
 }

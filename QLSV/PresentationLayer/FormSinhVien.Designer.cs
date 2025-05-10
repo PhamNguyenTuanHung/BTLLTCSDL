@@ -523,7 +523,7 @@
             this.btnDangXuat.Location = new System.Drawing.Point(597, 356);
             this.btnDangXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(192, 50);
+            this.btnDangXuat.Size = new System.Drawing.Size(192, 48);
             this.btnDangXuat.TabIndex = 3;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -535,7 +535,7 @@
             this.btnDoiMK.AutoSize = true;
             this.btnDoiMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoiMK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnDoiMK.Location = new System.Drawing.Point(425, 356);
+            this.btnDoiMK.Location = new System.Drawing.Point(394, 358);
             this.btnDoiMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoiMK.Name = "btnDoiMK";
             this.btnDoiMK.Size = new System.Drawing.Size(197, 48);

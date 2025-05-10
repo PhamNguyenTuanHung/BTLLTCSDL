@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\",
+  "WorkspaceRootPath": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv\\qlsv\\presentationlayer\\frmedit\\formeditsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditsinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|c:\\users\\blue\\desktop\\qlsv - copy\\qlsv\\datalayer\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C97F882C-D673-4BAE-B67F-B94028C6EC03}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\admindal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv\\qlsv\\presentationlayer\\frmedit\\formeditmonmodangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditmonmodangky.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv - copy\\qlsv\\presentationlayer\\ucchucnangchung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\ucchucnangchung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv\\qlsv\\presentationlayer\\frmedit\\formeditdiem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditdiem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\blue\\desktop\\qlsv - copy\\qlsv\\presentationlayer\\formgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\formgiangvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\presentationlayer\\frmedit\\formeditthoikhoabieu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E4D341-2C42-4BDC-9925-882798D73DA8}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\frmedit\\formeditthoikhoabieu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,47 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormEditSinhVien.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\PresentationLayer\\FrmEdit\\FormEditSinhVien.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditSinhVien.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\PresentationLayer\\FrmEdit\\FormEditSinhVien.cs [Design]",
-              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditSinhVien.cs [Design]",
+              "Title": "AdminDAL.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\DataLayer\\AdminDAL.cs",
+              "RelativeDocumentMoniker": "DataLayer\\AdminDAL.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\DataLayer\\AdminDAL.cs",
+              "RelativeToolTip": "DataLayer\\AdminDAL.cs",
+              "ViewState": "AQIAAPgAAAAAAAAAAAAmwP4AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T04:24:41.323Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-10T12:38:05.738Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormEditMonMoDangKy.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs [Design]",
-              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditMonMoDangKy.cs [Design]",
+              "Title": "ucChucNangChung.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\PresentationLayer\\ucChucNangChung.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\ucChucNangChung.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\PresentationLayer\\ucChucNangChung.cs",
+              "RelativeToolTip": "PresentationLayer\\ucChucNangChung.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T04:24:38.625Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-10T12:37:14.832Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FormEditDiem.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\PresentationLayer\\FrmEdit\\FormEditDiem.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditDiem.cs",
-              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV\\QLSV\\PresentationLayer\\FrmEdit\\FormEditDiem.cs [Design]",
-              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditDiem.cs [Design]",
+              "Title": "FormGiangVien.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\PresentationLayer\\FormGiangVien.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FormGiangVien.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\PresentationLayer\\FormGiangVien.cs",
+              "RelativeToolTip": "PresentationLayer\\FormGiangVien.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T04:23:44.191Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-10T12:36:07.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormEditThoiKhoaBieu.cs",
+              "DocumentMoniker": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
+              "RelativeDocumentMoniker": "PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
+              "ToolTip": "C:\\Users\\BLUE\\Desktop\\QLSV - Copy\\QLSV\\PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
+              "RelativeToolTip": "PresentationLayer\\FrmEdit\\FormEditThoiKhoaBieu.cs",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAqwJsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T09:56:43.076Z",
+              "EditorCaption": ""
             }
           ]
         }

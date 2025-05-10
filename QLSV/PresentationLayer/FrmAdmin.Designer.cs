@@ -299,6 +299,7 @@
             this.ucChucNangChung.Name = "ucChucNangChung";
             this.ucChucNangChung.Size = new System.Drawing.Size(906, 491);
             this.ucChucNangChung.TabIndex = 0;
+            this.ucChucNangChung.Load += new System.EventHandler(this.ucChucNangChung_Load);
             // 
             // FrmAdmin
             // 

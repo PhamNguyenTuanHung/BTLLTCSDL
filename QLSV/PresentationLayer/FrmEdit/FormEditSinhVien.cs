@@ -69,11 +69,7 @@ namespace PresentationLayer
         {
             txtMSSV.Text = sv.MSSV;
             txtHoTen.Text = sv.HoTen;
-            if (sv.GioiTinh == "Nam")
-            {
-                cbGioiTinh.SelectedIndex = 0;  // Chọn "Nam"
-            }
-            else    cbGioiTinh.SelectedIndex = 1;  // Chọn "Nữ"
+            cbGioiTinh.SelectedItem = sv.GioiTinh.Trim();
           
             dtNgaySinh.Value = sv.NgaySinh;
             txtEmail.Text = sv.Email;

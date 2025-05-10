@@ -217,9 +217,9 @@ namespace BusinessLayer
             
             return adminDAL.DeleteAccountDAL(tenDangNhap);
         }
-        public bool DeleteCourseFromRegistrationDAL(string maMonMoDangKy)
+        public bool DeleteCourseFromRegistrationDAL(string maLopMo)
         {
-            return adminDAL.DeleteCourseFromRegistrationDAL(maMonMoDangKy);
+            return adminDAL.DeleteCourseFromRegistrationDAL(maLopMo);
         }
         // Hàm cập nhật dữ liệu
 

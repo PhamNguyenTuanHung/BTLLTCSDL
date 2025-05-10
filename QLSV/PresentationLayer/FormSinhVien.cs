@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
-using System.IO;
 
 namespace PresentationLayer
 {
@@ -188,6 +183,14 @@ namespace PresentationLayer
 
                 if (dt.Columns.Contains("Gio_KT"))
                     dgv.Columns["Gio_KT"].HeaderText = "Giờ kết thúc";
+
+                if (dt.Columns.Contains("So_Luong_Dang_Ky_Toi_Da"))
+                    dgv.Columns["So_Luong_Dang_Ky_Toi_Da"].HeaderText = "Số lượng tối đa";
+
+                if (dt.Columns.Contains("So_Luong_Da_Dang_Ky"))
+                    dgv.Columns["So_Luong_Da_Dang_Ky"].HeaderText = "Số lượng đã đăng ký";
+
+
 
             }
             //Cài dặt hiển thị cho dgv

@@ -93,3 +93,18 @@ C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTC
 C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\BusinessLayer\obj\Debug\Business.EA331CBA.Up2Date
 C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\DataLayer.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\DOT.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\System.CodeDom.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\DataLayer.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\DOT.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\bin\Debug\System.CodeDom.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\obj\Debug\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\obj\Debug\Business.EA331CBA.Up2Date
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\BusinessLayer\obj\Debug\BusinessLayer.pdb
