@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -15,18 +9,18 @@ namespace PresentationLayer
 {
     public partial class FormEditDiem : Form
     {
+        private readonly AdminBUS adminBUS;
+        private DiemSV diemSV;
+
+        private List<string> foriegnKeys;
+        private Dictionary<string, List<string>> foriegnKeyValues;
+
         public FormEditDiem()
         {
             InitializeComponent();
         }
 
-
-        AdminBUS adminBUS;
-        DiemSV diemSV;
-
-        List<string> foriegnKeys;
-        Dictionary<string, List<string>> foriegnKeyValues;
-        public FormEditDiem(DiemSV diemSV , int type)
+        public FormEditDiem(DiemSV diemSV, int type)
         {
             InitializeComponent();
             adminBUS = new AdminBUS();
@@ -36,18 +30,17 @@ namespace PresentationLayer
             LoadComboBox();
 
             if (type == 0 && diemSV != null)
-            {
                 // Nếu là sửa, hiển thị thông tin sinh viên lên form
                 ShowGradeDetails(diemSV);
-            }
         }
 
 
         private void LoadKeys(string tableName)
         {
-            this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( tableName);
+            foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS(tableName);
         }
+
         private void CheckAddOrUpdate(int type)
         {
             if (type == 1)
@@ -80,9 +73,8 @@ namespace PresentationLayer
 
         public bool ValidateGradetForm()
         {
-
             if (string.IsNullOrWhiteSpace(txtDQT.Text) ||
-                !decimal.TryParse(txtDQT.Text, out decimal diemQT) || diemQT < 0 || diemQT > 10)
+                !decimal.TryParse(txtDQT.Text, out var diemQT) || diemQT < 0 || diemQT > 10)
             {
                 MessageBox.Show("Điểm phải từ 0 đến 10.");
                 txtDQT.Focus();
@@ -90,9 +82,10 @@ namespace PresentationLayer
             }
 
             if (string.IsNullOrWhiteSpace(txtDT.Text) ||
-               !decimal.TryParse(txtDT.Text, out decimal diemThi) || diemThi < 0 || diemThi > 10)
+                !decimal.TryParse(txtDT.Text, out var diemThi) || diemThi < 0 || diemThi > 10)
             {
-                MessageBox.Show("Điểm phải từ 0 đến 10."); txtDQT.Focus();
+                MessageBox.Show("Điểm phải từ 0 đến 10.");
+                txtDQT.Focus();
                 txtDT.Focus();
                 return false;
             }
@@ -107,30 +100,30 @@ namespace PresentationLayer
             txtLanThi.Text = diemSV.LanThi.ToString();
 
             txtDiemTK.Text = diemSV.DiemTongKet.ToString();
-            int indexMaHK = cbMaHK.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == diemSV.MaHocKy);
+            var indexMaHK = cbMaHK.Items
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == diemSV.MaHocKy);
 
             if (indexMaHK >= 0)
                 cbMaHK.SelectedIndex = indexMaHK;
 
 
-            int indexMaMH = cbMaMonHoc.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == diemSV.MaMonHoc);
+            var indexMaMH = cbMaMonHoc.Items
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == diemSV.MaMonHoc);
 
             if (indexMaMH >= 0)
                 cbMaMonHoc.SelectedIndex = indexMaMH;
 
-            int indexMSSV = cbMSSV.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == diemSV.MSSV);
+            var indexMSSV = cbMSSV.Items
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == diemSV.MSSV);
             cbMSSV.SelectedIndex = indexMSSV;
-
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -144,21 +137,19 @@ namespace PresentationLayer
                         Math.Round(decimal.Parse(txtDQT.Text), 1),
                         Math.Round(decimal.Parse(txtDT.Text), 1),
                         int.Parse(txtLanThi.Text)
-                        );
+                    );
                     if (adminBUS.InsertGradeBUS(diemSV))
                     {
                         MessageBox.Show("Thêm thành công");
-                        this.Close();
+                        Close();
                     }
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }
-
 
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -174,11 +165,11 @@ namespace PresentationLayer
                         Math.Round(decimal.Parse(txtDQT.Text), 1),
                         Math.Round(decimal.Parse(txtDT.Text), 1),
                         int.Parse(txtLanThi.Text)
-                        );
+                    );
                     if (adminBUS.UpdateGradeBUS(diemSV))
                     {
                         MessageBox.Show("Sửa thành công");
-                        this.Close();
+                        Close();
                     }
                     else
                     {
@@ -195,15 +186,14 @@ namespace PresentationLayer
         private void LoadComboBox()
         {
             //Lấy dữ liệu từ các key khóa ngoai tương ứng
-            cbMaHK.DataSource = this.foriegnKeyValues["Ma_Hoc_Ky"];
+            cbMaHK.DataSource = foriegnKeyValues["Ma_Hoc_Ky"];
             cbMaHK.SelectedIndex = 0;
 
-            cbMSSV.DataSource = this.foriegnKeyValues["MSSV"];
+            cbMSSV.DataSource = foriegnKeyValues["MSSV"];
             cbMSSV.SelectedIndex = 0;
 
-            cbMaMonHoc.DataSource = this.foriegnKeyValues["Ma_Mon_Hoc"];
+            cbMaMonHoc.DataSource = foriegnKeyValues["Ma_Mon_Hoc"];
             cbMaMonHoc.SelectedIndex = 0;
-
         }
     }
 }

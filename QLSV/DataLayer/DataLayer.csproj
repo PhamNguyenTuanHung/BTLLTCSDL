@@ -88,7 +88,6 @@
     <Compile Include="AdminDAL.cs" />
     <Compile Include="DBProviderDAL.cs" />
     <Compile Include="GiangVienDAL.cs" />
-    <Compile Include="Repository.cs" />
     <Compile Include="SinhVienDAL.cs" />
     <Compile Include="TaiKhoanDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

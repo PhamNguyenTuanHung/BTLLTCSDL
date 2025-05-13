@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -15,10 +7,11 @@ namespace PresentationLayer
 {
     public partial class FormDoiMatKhau : Form
     {
-        private SinhVien sv;
-        private TaiKhoan tk;
-        private GiangVien gv;
+        private readonly GiangVien gv;
+        private readonly SinhVien sv;
+        private readonly TaiKhoan tk;
         public string newPass;
+
         public FormDoiMatKhau(TaiKhoan tk)
         {
             this.tk = tk;
@@ -26,8 +19,9 @@ namespace PresentationLayer
             label1.Visible = false;
 
             txtOldPass.Visible = false;
-            txtOldPass.Text=tk.MatKhau;
+            txtOldPass.Text = tk.MatKhau;
         }
+
         public FormDoiMatKhau(SinhVien sv, TaiKhoan tk)
         {
             this.sv = sv;
@@ -55,52 +49,48 @@ namespace PresentationLayer
                 MessageBox.Show("Mật khẩu mới không khớp!");
                 return;
             }
+
             if (tk.LoaiTaiKhoan == 1)
             {
-                SinhVienBUS sinhVienBUS = new SinhVienBUS();
-                if (sinhVienBUS.ChangePasswordBUS(sv.MSSV, txtNewPass.Text) == true)
+                var sinhVienBUS = new SinhVienBUS();
+                if (sinhVienBUS.ChangePasswordBUS(sv.MSSV, txtNewPass.Text))
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!");
                     newPass = txtNewPass.Text;
-                    this.DialogResult = DialogResult.OK; 
-                    this.Close();
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
             }
 
             if (tk.LoaiTaiKhoan == 2)
             {
-                GiangVienBUS giangVienBUS = new GiangVienBUS();
-                if (giangVienBUS.ChangePasswordBUS(gv.MSGV, txtNewPass.Text) == true)
+                var giangVienBUS = new GiangVienBUS();
+                if (giangVienBUS.ChangePasswordBUS(gv.MSGV, txtNewPass.Text))
                 {
                     MessageBox.Show("Đổi mật khẩu thành công!");
                     newPass = txtNewPass.Text;
-                    this.DialogResult = DialogResult.OK; 
-                    this.Close();
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
             }
         }
 
         private void check_CheckedChanged(object sender, EventArgs e)
         {
-            bool isChecked = checkShow.Checked;
+            var isChecked = checkShow.Checked;
             txtOldPass.PasswordChar = isChecked ? '\0' : '*';
             txtNewPass.PasswordChar = isChecked ? '\0' : '*';
             txtConfirmPass.PasswordChar = isChecked ? '\0' : '*';
-            
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult result=MessageBox.Show("Thoát","Bạn có muốn thoát", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            var result = MessageBox.Show("Thoát", "Bạn có muốn thoát", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes) Close();
         }
 
         private void FormDoiMatKhau_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

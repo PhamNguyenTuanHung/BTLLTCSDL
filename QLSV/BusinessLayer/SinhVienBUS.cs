@@ -7,7 +7,7 @@ namespace BusinessLayer
 {
     public class SinhVienBUS
     {
-        private SinhVienDAL sinhvienDAL = new SinhVienDAL();
+        private readonly SinhVienDAL sinhvienDAL = new SinhVienDAL();
 
         public DataTable GetStudentInfoTableBUS(string studentId)
         {
@@ -61,7 +61,7 @@ namespace BusinessLayer
         // đăng kí môn
         public bool RegisterCourseBUS(string studentId, string courseId, DateTime date)
         {
-                return sinhvienDAL.RegisterCourseDAL(studentId, courseId, date);    
+            return sinhvienDAL.RegisterCourseDAL(studentId, courseId, date);
         }
 
         //Hủy đăng kí môn
@@ -106,8 +106,7 @@ namespace BusinessLayer
         //Lấy danh sách môn học đăng kí
         public DataTable GetAvailableCoursesBUS(string maHocKy)
         {
-                return sinhvienDAL.GetAvailableCoursesDAL(maHocKy);
-           
+            return sinhvienDAL.GetAvailableCoursesDAL(maHocKy);
         }
 
         //Lấy danh sách học kì
@@ -130,7 +129,7 @@ namespace BusinessLayer
         }
 
         //Sủa ảnh
-         
+
         public bool ChangeImageBUS(byte[] anh, string msss)
         {
             return sinhvienDAL.ChangeImageDAL(anh, msss);

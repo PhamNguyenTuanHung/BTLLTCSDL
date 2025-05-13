@@ -1,64 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DOT
 {
     public class GiangVien : IThucThe
     {
-        public GiangVien() { }
-
-
-        string msgv;
-        string hoten;
-        string gioitinh;
-        DateTime ngaysinh;
-        string email;
-        string diachi;
-        string makhoa;
-        byte[] anh;
-        public GiangVien(string msgv, string hotengv, string gioitinh, DateTime ngaysinh, string email, string diachi, string makhoa, byte[]anh)
+        public GiangVien()
         {
-            this.msgv = msgv;
-            this.hoten = hotengv;
-            this.gioitinh = gioitinh;
-            this.ngaysinh = ngaysinh;
-            this.email = email;
-            this.diachi = diachi;
-            this.makhoa = makhoa;
-            this.anh = anh;
         }
 
-        public string MSGV { get => msgv; set => msgv = value; }
-        public string HoTen { get => hoten; set =>hoten= value; }
-        public string GioiTinh { get => gioitinh; set => gioitinh = value; }
-        public DateTime NgaySinh { get => ngaysinh; set => ngaysinh = value; }
-        public string Email { get => email; set => email = value; }
-        public string DiaChi { get => diachi; set => diachi = value; }
-        public string MaKhoa { get => makhoa; set => makhoa = value; }
+        public GiangVien(string msgv, string hotengv, string gioitinh, DateTime ngaysinh,  string diachi, string email,
+            string makhoa, byte[] anh)
+        {
+            this.MSGV = msgv;
+            this.HoTen = hotengv;
+            this.GioiTinh = gioitinh;
+            this.NgaySinh = ngaysinh;
+            this.Email = email;
+            this.DiaChi = diachi;
+            this.MaKhoa = makhoa;
+            this.Anh = anh;
+        }
 
-        public byte[] Anh { get => anh; set => anh = value; }
+        public string MSGV { get; set; }
+
+        public string HoTen { get; set; }
+
+        public string GioiTinh { get; set; }
+
+        public DateTime NgaySinh { get; set; }
+
+        public string Email { get; set; }
+
+        public string DiaChi { get; set; }
+
+        public string MaKhoa { get; set; }
+
+        public byte[] Anh { get; set; }
 
         // Implement Interface
-        public string LayTenThucThe() => "Giảng viên";
+        public string LayTenThucThe()
+        {
+            return "Giảng viên";
+        }
 
         public Dictionary<string, object> LayDuLieuThucThe()
         {
             return new Dictionary<string, object>
-        {
-            { "MSGV", msgv },
-            { "Họ tên", hoten },
-            { "Giới tính", gioitinh },
-            { "Ngày sinh", ngaysinh },
-            { "Email", email },
-            { "Địa chỉ", diachi },
-            { "Mã khoa", makhoa },
-            {"Ảnh",anh }
-        };
+            {
+                { "MSGV", MSGV },
+                { "Họ tên", HoTen },
+                { "Giới tính", GioiTinh },
+                { "Ngày sinh", NgaySinh },
+                { "Email", Email },
+                { "Địa chỉ", DiaChi },
+                { "Mã khoa", MaKhoa },
+                { "Ảnh", Anh }
+            };
         }
-
-
     }
 }

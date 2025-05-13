@@ -1,67 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DOT
 {
     public class LichThi : IThucThe
     {
-        private string maLichThi;
-        private string maLopMonHoc;
-        private string maHocKy;
-        private DateTime ngayThi;
-        private TimeSpan gioBatDau;
-        private TimeSpan gioKetThuc;
-        private string phongThi;
-
-        public LichThi() { }
-
-        public LichThi(string maLichThi, string maLopMonHoc, string maHocKy, DateTime ngayThi, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongThi)
+        public LichThi()
         {
-            this.maLopMonHoc = maLopMonHoc;
-            this.maHocKy = maHocKy;
-            this.ngayThi = ngayThi;
-            this.gioBatDau = gioBatDau;
-            this.gioKetThuc = gioKetThuc;
-            this.phongThi = phongThi;
-            this.maLichThi = maLichThi;
         }
 
-        public LichThi(string maLopMonHoc, string maHocKy, DateTime ngayThi, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongThi)
+        public LichThi(string maLichThi, string maLopMonHoc, string maHocKy, DateTime ngayThi, TimeSpan gioBatDau,
+            TimeSpan gioKetThuc, string phongThi)
         {
-            this.maLopMonHoc = maLopMonHoc;
-            this.maHocKy = maHocKy;
-            this.ngayThi = ngayThi;
-            this.gioBatDau = gioBatDau;
-            this.gioKetThuc = gioKetThuc;
-            this.phongThi = phongThi;
+            this.MaLopMonHoc = maLopMonHoc;
+            this.MaHocKy = maHocKy;
+            this.NgayThi = ngayThi;
+            this.GioBatDau = gioBatDau;
+            this.GioKetThuc = gioKetThuc;
+            this.PhongThi = phongThi;
+            this.MaLichThi = maLichThi;
         }
 
-        public string MaLichThi { get => maLichThi; set => maLichThi = value; }
-        public string MaLopMonHoc { get => maLopMonHoc; set => maLopMonHoc = value; }
-        public string MaHocKy { get => maHocKy; set => maHocKy = value; }
-        public DateTime NgayThi { get => ngayThi; set => ngayThi = value; }
-        public TimeSpan GioBatDau { get => gioBatDau; set => gioBatDau = value; }
-        public TimeSpan GioKetThuc { get => gioKetThuc; set => gioKetThuc = value; }
-        public string PhongThi { get => phongThi; set => phongThi = value; }
+        public LichThi(string maLopMonHoc, string maHocKy, DateTime ngayThi, TimeSpan gioBatDau, TimeSpan gioKetThuc,
+            string phongThi)
+        {
+            this.MaLopMonHoc = maLopMonHoc;
+            this.MaHocKy = maHocKy;
+            this.NgayThi = ngayThi;
+            this.GioBatDau = gioBatDau;
+            this.GioKetThuc = gioKetThuc;
+            this.PhongThi = phongThi;
+        }
+
+        public string MaLichThi { get; set; }
+
+        public string MaLopMonHoc { get; set; }
+
+        public string MaHocKy { get; set; }
+
+        public DateTime NgayThi { get; set; }
+
+        public TimeSpan GioBatDau { get; set; }
+
+        public TimeSpan GioKetThuc { get; set; }
+
+        public string PhongThi { get; set; }
 
         // Implement IThucThe
-        public string LayTenThucThe() => "Lịch thi";
+        public string LayTenThucThe()
+        {
+            return "Lịch thi";
+        }
 
         public Dictionary<string, object> LayDuLieuThucThe()
         {
             return new Dictionary<string, object>
-        {
-            { "Mã lớp môn học", MaLopMonHoc },
-            { "Mã học kỳ", MaHocKy },
-            { "Ngày thi", NgayThi },
-            { "Giờ bắt đầu", GioBatDau },
-            { "Giờ kết thúc", GioKetThuc },
-            { "Phòng thi", PhongThi }
-        };
+            {
+                { "Mã lớp môn học", MaLopMonHoc },
+                { "Mã học kỳ", MaHocKy },
+                { "Ngày thi", NgayThi },
+                { "Giờ bắt đầu", GioBatDau },
+                { "Giờ kết thúc", GioKetThuc },
+                { "Phòng thi", PhongThi }
+            };
         }
     }
-
 }

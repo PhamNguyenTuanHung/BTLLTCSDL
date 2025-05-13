@@ -1,54 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DOT
 {
     public class LopMonHoc : IThucThe
     {
-        string malopmonhoc;
-        string mamonhoc;
-        string msgv;
-        string mahocki;
-        string makhoa;
-        int soluongdangkytoida;
-
-        public LopMonHoc() { }
-        public LopMonHoc(string malopmonhoc, string mamonhoc, string msgv, string mahocki, string makhoa, int sldangkytoida)
+        public LopMonHoc()
         {
-            this.malopmonhoc = malopmonhoc;
-            this.mamonhoc = mamonhoc;
-            this.msgv = msgv;
-            this.mahocki = mahocki;
-            this.makhoa = makhoa;
-            this.soluongdangkytoida = sldangkytoida;
         }
 
-        public string MaMonHoc { get => mamonhoc; set => mamonhoc = value; }
-        public string MaLopMonHoc { get => malopmonhoc; set => malopmonhoc = value; }
-        public string MSGV { get => msgv; set => msgv = value; }
-        public string MaHocKi { get => mahocki; set => mahocki = value; }
-        public string MaKhoa { get => makhoa; set => makhoa = value; }
-        public int SoLuongDangKyToiDa { get => soluongdangkytoida;set => soluongdangkytoida = value;}
+        public LopMonHoc(string malopmonhoc, string mamonhoc, string msgv, string mahocky, string makhoa,
+            int sldangkytoida)
+        {
+            this.MaLopMonHoc = malopmonhoc;
+            this.MaMonHoc = mamonhoc;
+            this.MSGV = msgv;
+            this.MaHocKy = mahocky;
+            this.MaKhoa = makhoa;
+            SoLuongDangKyToiDa = sldangkytoida;
+        }
+
+        public string MaMonHoc { get; set; }
+
+        public string MaLopMonHoc { get; set; }
+
+        public string MSGV { get; set; }
+
+        public string MaHocKy { get; set; }
+
+        public string MaKhoa { get; set; }
+
+        public int SoLuongDangKyToiDa { get; set; }
 
         //Implement Interface
-        public string LayTenThucThe() => "Lớp Môn Học";
+        public string LayTenThucThe()
+        {
+            return "Lớp Môn Học";
+        }
 
         public Dictionary<string, object> LayDuLieuThucThe()
         {
             return new Dictionary<string, object>
-        {
-            { "Mã Lớp Môn Học", malopmonhoc },
-            { "Mã Môn Học", mamonhoc },
-            { "Mã Giảng Viên", msgv },
-            { "Mã Học Kỳ", mahocki },
-            { "Mã Khoa", makhoa },
-            { "Số Lượng Đăng Kí Tối Đa", soluongdangkytoida }
-        };
+            {
+                { "Mã Lớp Môn Học", MaLopMonHoc },
+                { "Mã Môn Học", MaMonHoc },
+                { "Mã Giảng Viên", MSGV },
+                { "Mã Học Kỳ", MaHocKy },
+                { "Mã Khoa", MaKhoa },
+                { "Số Lượng Đăng Kí Tối Đa", SoLuongDangKyToiDa }
+            };
         }
-
-
     }
 }

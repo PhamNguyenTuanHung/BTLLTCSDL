@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -15,13 +16,13 @@ namespace PresentationLayer
 {
     public partial class ucChucNangChung : UserControl
     {
+        private readonly AdminBUS adminBUS;
         private DataTable dt; // Dữ liệu của DataGridView
+        private Dictionary<string, List<string>> foreignKeyValues;
+        private string keyword;
 
-        List<string> primaryKeys, foreignKeys;
-        Dictionary<string,List<string>> foreignKeyValues;
+        private List<string> primaryKeys, foreignKeys;
         public string tableName;
-        AdminBUS adminBUS;
-        string keyword;
 
         public ucChucNangChung()
         {
@@ -34,23 +35,19 @@ namespace PresentationLayer
         public ucChucNangChung(string TableName)
         {
             InitializeComponent();
-
         }
 
-        void LoadComboBox(string TableName)
+        private void LoadComboBox(string TableName)
         {
-            this.tableName = TableName;
-            this.primaryKeys = adminBUS.GetPrimaryKeysBUS(tableName);
-            this.foreignKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foreignKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS(tableName);
-            List<string> allValues = new List<string>();
+            tableName = TableName;
+            primaryKeys = adminBUS.GetPrimaryKeysBUS(tableName);
+            foreignKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            foreignKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS(tableName);
+            var allValues = new List<string>();
 
             if (foreignKeyValues == null) return;
 
-            foreach (var key in foreignKeyValues.Keys)
-            {
-                allValues.AddRange(foreignKeyValues[key]);
-            }
+            foreach (var key in foreignKeyValues.Keys) allValues.AddRange(foreignKeyValues[key]);
 
             // Loại bỏ trùng lặp
             allValues = allValues.Distinct().ToList();
@@ -175,47 +172,50 @@ namespace PresentationLayer
         }
 
 
-
         public static T ConvertDataGridViewRowToObject<T>(DataGridViewRow row) where T : new()
         {
-            T obj = new T();
+            var obj = new T();
             foreach (DataGridViewCell cell in row.Cells)
             {
                 // Tìm thuộc tính trong lớp T dựa trên tên cột
-                PropertyInfo prop = typeof(T).GetProperty(cell.OwningColumn.Name.Replace("_", ""), BindingFlags.Public | BindingFlags.Instance);
+                var prop = typeof(T).GetProperty(cell.OwningColumn.Name.Replace("_", ""),
+                    BindingFlags.Public | BindingFlags.Instance);
                 if (prop != null && cell.Value != null && cell.Value != DBNull.Value)
                 {
-                    object value = cell.Value;
+                    var value = cell.Value;
 
                     // Nếu là kiểu Nullable, lấy kiểu gốc
-                    Type targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                    var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
 
                     // Chuyển đổi kiểu dữ liệu chính xác
-                    object safeValue = Convert.ChangeType(value, targetType);
+                    var safeValue = Convert.ChangeType(value, targetType);
                     prop.SetValue(obj, safeValue);
                 }
             }
+
             return obj;
         }
 
         public static T ConvertDGVRowToObject<T>(DataGridViewRow dgvrow) where T : new()
         {
-            T obj = new T();
+            var obj = new T();
             foreach (DataGridViewCell cell in dgvrow.Cells)
             {
-                PropertyInfo prop = typeof(T).GetProperty(cell.OwningColumn.Name.Replace("_", ""), BindingFlags.Public | BindingFlags.Instance);
+                var prop = typeof(T).GetProperty(cell.OwningColumn.Name.Replace("_", ""),
+                    BindingFlags.Public | BindingFlags.Instance);
                 if (prop != null && cell.Value != DBNull.Value)
                 {
-                    object value = cell.Value;
+                    var value = cell.Value;
 
                     // Nếu là kiểu Nullable, ta phải lấy kiểu gốc
-                    Type targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                    var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
 
                     // Chuyển đổi kiểu dữ liệu chính xác
-                    object safeValue = Convert.ChangeType(value, targetType);
+                    var safeValue = Convert.ChangeType(value, targetType);
                     prop.SetValue(obj, safeValue);
                 }
             }
+
             return obj;
         }
 
@@ -258,25 +258,35 @@ namespace PresentationLayer
                 case "Khoa":
                     dt = adminBUS.GetDepartmentsBUS();
                     break;
-                default:
-                    break;
             }
-
         }
+
         private void btnTK_Click(object sender, EventArgs e)
         {
             if (dt != null)
             {
-                string keyword = txtTimKiem.Text.Trim().ToLower();
-
+                var keyword = txtTimKiem.Text.Trim().ToLower();
 
                 if (string.IsNullOrWhiteSpace(keyword))
                 {
+                    // Nếu không có từ khóa tìm kiếm, xóa bộ lọc
                     dt.DefaultView.RowFilter = string.Empty;
                 }
                 else
                 {
-                    dt.DefaultView.RowFilter = $"[{dt.Columns[0].ColumnName}] LIKE '%{keyword}%' OR [{dt.Columns[1].ColumnName}] LIKE '%{keyword}%' ";
+                    // Duyệt qua tất cả các cột trong DataTable để tìm kiếm
+                    var filterExpression = string.Join(" OR ", dt.Columns.Cast<DataColumn>()
+                        .Where(c => c.DataType == typeof(string)) // Tìm kiếm chỉ trên các cột kiểu chuỗi
+                        .Select(c => $"[{c.ColumnName}] LIKE '%{keyword}%'"));
+
+                    if (string.IsNullOrEmpty(filterExpression))
+                    {
+                        MessageBox.Show("Không có cột chuỗi để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        dt.DefaultView.RowFilter = filterExpression;
+                    }
                 }
             }
             else
@@ -284,37 +294,39 @@ namespace PresentationLayer
                 MessageBox.Show("Chưa chọn cột tìm kiếm hoặc chưa có dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
             switch (tableName)
             {
                 case "GiangVien":
-                    new FormEditGiangVien(null, 1).ShowDialog(); ;
+                    new FormEditGiangVien(null, 1).ShowDialog();
+                    ;
                     break;
                 case "SinhVien":
                     new FormEditSinhVien(null, 1).ShowDialog();
                     break;
                 case "MonHoc":
-                    new FormEditMonHoc(null, 1).ShowDialog(); 
+                    new FormEditMonHoc(null, 1).ShowDialog();
                     break;
                 case "LopMonHoc":
-                    new FormEditLopMonHoc(null,1).ShowDialog();
+                    new FormEditLopMonHoc(null, 1).ShowDialog();
                     break;
                 case "ThoiKhoaBieu":
-                    new FormEditThoiKhoaBieu(null,1).ShowDialog();
+                    new FormEditThoiKhoaBieu(null, 1).ShowDialog();
                     break;
                 case "Diem":
-                    new FormEditDiem(null,1).ShowDialog();
+                    new FormEditDiem(null, 1).ShowDialog();
                     break;
                 case "LichThi":
-                    new FormEditLichThi(null,1).ShowDialog();
+                    new FormEditLichThi(null, 1).ShowDialog();
                     break;
                 case "TaiKhoan":
-                    new FormThemTaiKhoan(null,1).ShowDialog();
+                    new FormThemTaiKhoan(null, 1).ShowDialog();
                     break;
-                case "MonMoDangKy": 
-                    new FormEditMonMoDangKy(null,1).ShowDialog();
+                case "MonMoDangKy":
+                    new FormEditMonMoDangKy(null, 1).ShowDialog();
                     break;
                 case "Lop":
                     new FormEditLop(null, 1).ShowDialog();
@@ -322,11 +334,11 @@ namespace PresentationLayer
                 case "Khoa":
                     new FormEditKhoa(null, 1).ShowDialog();
                     break;
-                default:
-                    break;
             }
+
             LoadData();
         }
+
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count > 0)
@@ -337,65 +349,63 @@ namespace PresentationLayer
                 switch (tableName)
                 {
                     case "GiangVien":
-                        GiangVien giangVien = ConvertDataGridViewRowToObject<GiangVien>(row);
+                        var giangVien = ConvertDataGridViewRowToObject<GiangVien>(row);
                         new FormEditGiangVien(giangVien, 0).ShowDialog();
                         break;
                     case "SinhVien":
-                        SinhVien sinhVien = ConvertDataGridViewRowToObject<SinhVien>(row);
+                        var sinhVien = ConvertDataGridViewRowToObject<SinhVien>(row);
                         new FormEditSinhVien(sinhVien, 0).ShowDialog();
                         break;
                     case "MonHoc":
-                        MonHoc monHoc = ConvertDataGridViewRowToObject<MonHoc>(row);
+                        var monHoc = ConvertDataGridViewRowToObject<MonHoc>(row);
                         new FormEditMonHoc(monHoc, 0).ShowDialog();
                         break;
                     case "LopMonHoc":
-                        LopMonHoc lopMonHoc = ConvertDataGridViewRowToObject<LopMonHoc>(row);
+                        var lopMonHoc = ConvertDataGridViewRowToObject<LopMonHoc>(row);
                         new FormEditLopMonHoc(lopMonHoc, 0).ShowDialog();
                         break;
                     case "ThoiKhoaBieu":
-                        ThoiKhoaBieu thoiKhoaBieu = ConvertDataGridViewRowToObject<ThoiKhoaBieu>(row);
+                        var thoiKhoaBieu = ConvertDataGridViewRowToObject<ThoiKhoaBieu>(row);
                         new FormEditThoiKhoaBieu(thoiKhoaBieu, 0).ShowDialog();
                         break;
                     case "Diem":
-                        DiemSV diemSV = ConvertDataGridViewRowToObject<DiemSV>(row);
+                        var diemSV = ConvertDataGridViewRowToObject<DiemSV>(row);
                         new FormEditDiem(diemSV, 0).ShowDialog();
                         break;
                     case "LichThi":
-                        LichThi lichThi = ConvertDataGridViewRowToObject<LichThi>(row);
+                        var lichThi = ConvertDataGridViewRowToObject<LichThi>(row);
                         new FormEditLichThi(lichThi, 0).ShowDialog();
                         break;
                     case "TaiKhoan":
-                        TaiKhoan taiKhoan = ConvertDataGridViewRowToObject<TaiKhoan>(row);
+                        var taiKhoan = ConvertDataGridViewRowToObject<TaiKhoan>(row);
                         new FormThemTaiKhoan(taiKhoan, 0).ShowDialog();
                         break;
                     case "MonMoDangKy":
-                        MonMoDangKy monMoDangKy = new MonMoDangKy();
+                        var monMoDangKy = new MonMoDangKy();
                         monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(row);
                         new FormEditMonMoDangKy(monMoDangKy, 0).ShowDialog();
                         break;
                     case "Lop":
-                        Lop lop = new Lop();
+                        var lop = new Lop();
                         lop = ConvertDGVRowToObject<Lop>(row);
                         new FormEditLop(lop, 0).ShowDialog();
                         break;
                     case "Khoa":
-                        Khoa khoa = new Khoa();
+                        var khoa = new Khoa();
                         khoa = ConvertDGVRowToObject<Khoa>(row);
                         new FormEditKhoa(khoa, 0).ShowDialog();
                         break;
-                    default:
-                        break;
                 }
+
                 LoadData();
-            }  
-
-
+            }
         }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
             {
-                bool check = false;
+                var check = false;
                 if (MessageBox.Show("Bạn muốn xóa", "Xóa", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     if (dgv.SelectedRows.Count > 0)
                     {
@@ -404,76 +414,80 @@ namespace PresentationLayer
                             switch (tableName)
                             {
                                 case "GiangVien":
-                                    GiangVien gv = new GiangVien();
+                                    var gv = new GiangVien();
                                     gv = ConvertDGVRowToObject<GiangVien>(row);
                                     check = adminBUS.DeleteLecturerBUS(gv.MSGV);
                                     break;
                                 case "SinhVien":
-                                    SinhVien sv = new SinhVien();
+                                    var sv = new SinhVien();
                                     sv = ConvertDGVRowToObject<SinhVien>(row);
                                     check = adminBUS.DeleteStudentBUS(sv.MSSV);
                                     break;
                                 case "MonHoc":
-                                    MonHoc mh = new MonHoc();
+                                    var mh = new MonHoc();
                                     mh = ConvertDGVRowToObject<MonHoc>(row);
                                     check = adminBUS.DeleteCourseBUS(mh.MaMonHoc);
                                     break;
                                 case "LopMonHoc":
-                                    LopMonHoc lopMonHoc = new LopMonHoc();
+                                    var lopMonHoc = new LopMonHoc();
                                     lopMonHoc = ConvertDGVRowToObject<LopMonHoc>(row);
                                     check = adminBUS.DeleteCourseClassBUS(lopMonHoc.MaLopMonHoc);
                                     break;
                                 case "ThoiKhoaBieu":
-                                    ThoiKhoaBieu tkb = new ThoiKhoaBieu();
+                                    var tkb = new ThoiKhoaBieu();
                                     tkb = ConvertDGVRowToObject<ThoiKhoaBieu>(row);
                                     check = adminBUS.DeleteScheduleBUS(tkb.MaTKB.ToString());
                                     break;
                                 case "Diem":
-                                    DiemSV diemSV = new DiemSV();
+                                    var diemSV = new DiemSV();
                                     diemSV = ConvertDGVRowToObject<DiemSV>(row);
                                     check = adminBUS.DeleteGradeBUS(diemSV.MSSV, diemSV.MaHocKy, diemSV.MaMonHoc);
                                     break;
                                 case "LichThi":
-                                    LichThi lichThi = new LichThi();
+                                    var lichThi = new LichThi();
                                     lichThi = ConvertDGVRowToObject<LichThi>(row);
                                     check = adminBUS.DeleteExamScheduleBUS(lichThi.MaLichThi);
 
                                     break;
                                 case "TaiKhoan":
-                                    TaiKhoan taiKhoan = new TaiKhoan();
+                                    var taiKhoan = new TaiKhoan();
                                     taiKhoan = ConvertDGVRowToObject<TaiKhoan>(row);
-                                    
+
                                     check = adminBUS.DeleteAccountBUS(taiKhoan.TenDangNhap);
                                     break;
                                 case "MonMoDangKy":
-                                    MonMoDangKy monMoDangKy = new MonMoDangKy();
+                                    var monMoDangKy = new MonMoDangKy();
                                     monMoDangKy = ConvertDGVRowToObject<MonMoDangKy>(row);
-                                    check=adminBUS.DeleteCourseFromRegistrationDAL(monMoDangKy.MaLopMo);
+                                    check = adminBUS.DeleteCourseFromRegistrationDAL(monMoDangKy.MaLopMo);
                                     break;
                                 case "Lop":
-                                    Lop lop = new Lop();
+                                    var lop = new Lop();
                                     lop = ConvertDGVRowToObject<Lop>(row);
                                     check = adminBUS.DeleteClassBUS(lop.MaLop);
                                     break;
                                 case "Khoa":
-                                    Khoa khoa = new Khoa();
+                                    var khoa = new Khoa();
                                     khoa = ConvertDGVRowToObject<Khoa>(row);
                                     check = adminBUS.DeleteDepartmentBUS(khoa.MaKhoa);
                                     break;
                             }
+
                             LoadData();
                             if (check) MessageBox.Show("Xóa thành công");
                             else MessageBox.Show("Xóa thất bại");
                         }
                     }
-                    else return;
+                    else
+                    {
+                        return;
+                    }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             if (dgv.Rows.Count == 0)
@@ -484,39 +498,34 @@ namespace PresentationLayer
 
 
             // Mở hộp thoại lưu file
-            SaveFileDialog sfd = new SaveFileDialog
+            var sfd = new SaveFileDialog
             {
-
                 Filter = "Excel Files|*.xlsx",
                 Title = "Lưu file Excel",
                 FileName = "new.xlsx"
             };
 
             if (sfd.ShowDialog() == DialogResult.OK)
-            {
                 try
                 {
                     // Khởi tạo ứng dụng Excel
-                    Excel.Application excelApp = new Excel.Application();
-                    Excel.Workbook workbook = excelApp.Workbooks.Add();
-                    Excel.Worksheet worksheet = (Excel.Worksheet)workbook.ActiveSheet;
+                    var excelApp = new Excel.Application();
+                    var workbook = excelApp.Workbooks.Add();
+                    var worksheet = (Excel.Worksheet)workbook.ActiveSheet;
 
                     // Ghi tiêu đề cột
-                    for (int i = 0; i < dgv.Columns.Count; i++)
+                    for (var i = 0; i < dgv.Columns.Count; i++)
                     {
                         worksheet.Cells[1, i + 1] = dgv.Columns[i].HeaderText;
                         ((Excel.Range)worksheet.Cells[1, i + 1]).Font.Bold = true;
-                        ((Excel.Range)worksheet.Cells[1, i + 1]).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        ((Excel.Range)worksheet.Cells[1, i + 1]).Interior.Color =
+                            ColorTranslator.ToOle(Color.LightGray);
                     }
 
                     // Ghi dữ liệu từ DataGridView vào Excel
-                    for (int i = 0; i < dgv.Rows.Count; i++)
-                    {
-                        for (int j = 0; j < dgv.Columns.Count; j++)
-                        {
-                            worksheet.Cells[i + 2, j + 1] = dgv.Rows[i].Cells[j].Value?.ToString();
-                        }
-                    }
+                    for (var i = 0; i < dgv.Rows.Count; i++)
+                    for (var j = 0; j < dgv.Columns.Count; j++)
+                        worksheet.Cells[i + 2, j + 1] = dgv.Rows[i].Cells[j].Value?.ToString();
 
                     // Tự động căn chỉnh độ rộng cột
                     worksheet.Columns.AutoFit();
@@ -526,15 +535,16 @@ namespace PresentationLayer
                     workbook.Close();
                     excelApp.Quit();
 
-                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
-            }
-
         }
+
         private void dgv_SelectionChanged(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count > 0)
@@ -548,11 +558,12 @@ namespace PresentationLayer
                 btnXoa.Enabled = false;
             }
         }
+
         private void FilterDataGridView(string keyword, DataGridView dgv, List<string> columnNames)
         {
             if (dgv.DataSource != null)
             {
-                DataTable dt = (DataTable)dgv.DataSource;
+                var dt = (DataTable)dgv.DataSource;
 
                 // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
                 if (keyword == "0")
@@ -561,19 +572,25 @@ namespace PresentationLayer
                 }
                 else
                 {
-
                     // Tạo một danh sách các điều kiện lọc cho mỗi cột
-                    string filter = string.Join(" OR ", columnNames.Select(col => $"[{col}] LIKE '%{keyword}%'"));
+                    var filter = string.Join(" OR ", columnNames.Select(col => $"[{col}] LIKE '%{keyword}%'"));
 
                     // Áp dụng filter vào DataTable
                     dt.DefaultView.RowFilter = filter;
                 }
+
                 dgv.DataSource = dt;
             }
         }
+
         private void cb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ( cb.SelectedIndex == 0 ) { keyword = "0"; return; }
+            if (cb.SelectedIndex == 0)
+            {
+                keyword = "0";
+                return;
+            }
+
             keyword = cb.SelectedValue.ToString();
             FilterDataGridView(keyword, dgv, foreignKeys);
         }

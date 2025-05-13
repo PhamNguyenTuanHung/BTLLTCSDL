@@ -9,7 +9,6 @@ namespace PresentationLayer
         public FrmAdmin()
         {
             InitializeComponent();
-
         }
 
 
@@ -28,11 +27,13 @@ namespace PresentationLayer
             btnTKB.BackColor = SystemColors.Window;
             LoadData("GiangVien");
         }
+
         public void LoadData(string tableName)
         {
             ucChucNangChung.tableName = tableName;
             ucChucNangChung.LoadData();
         }
+
         private void btnGiangVien_Click(object sender, EventArgs e)
         {
             btnSinhVien.BackColor = SystemColors.Window;
@@ -180,12 +181,11 @@ namespace PresentationLayer
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             Form formLogin = new FormDangNhap();
-            if (DialogResult.OK==MessageBox.Show("Bạn muốn đăng xuất","Đăng xuất",MessageBoxButtons.OKCancel))
+            if (DialogResult.OK == MessageBox.Show("Bạn muốn đăng xuất", "Đăng xuất", MessageBoxButtons.OKCancel))
             {
-                this.Hide();
+                Hide();
                 formLogin.ShowDialog();
-                this.Close();
-                
+                Close();
             }
         }
 
@@ -223,7 +223,6 @@ namespace PresentationLayer
 
         private void ucChucNangChung_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

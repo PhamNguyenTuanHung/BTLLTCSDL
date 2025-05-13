@@ -1,30 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DOT;
-using DataLayer;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Runtime.InteropServices.WindowsRuntime;
+using DataLayer;
+using DOT;
 
 namespace BusinessLayer
 {
     public class AdminBUS
     {
-        private AdminDAL adminDAL = new AdminDAL();
+        private readonly AdminDAL adminDAL = new AdminDAL();
 
         public List<string> GetTableNameDAL()
         {
-
-
             return adminDAL.GetTableNameDAL();
         }
+
         public List<string> GetPrimaryKeysBUS(string tableName)
         {
-
             return adminDAL.GetPrimaryKeysDAL(tableName);
         }
 
@@ -37,12 +28,11 @@ namespace BusinessLayer
         {
             return adminDAL.GetForeignKeyValuesWithReferencedTablesDAL(tableName);
         }
+
         //Lấy dữ liệu
         public DataTable GetLecturersListBUS()
         {
-
             return adminDAL.GetLecturersListDAL();
-
         }
 
         public DataTable GetStudentsListBUS()
@@ -52,50 +42,38 @@ namespace BusinessLayer
 
         public DataTable GetAllRegisteredCoursesBUS()
         {
-           return adminDAL.GetAllRegisteredCoursesDAL();
+            return adminDAL.GetAllRegisteredCoursesDAL();
         }
 
 
         public DataTable GetSubjectsListBUS()
         {
-
             return adminDAL.GetSubjectsListDAL();
-
         }
 
         public DataTable GetClassListBUS()
         {
-
             return adminDAL.GetClassListDAL();
-
         }
 
         public DataTable GetScheduleBUS()
         {
-
             return adminDAL.GetScheduleDAL();
-
         }
 
         public DataTable GetExamScheduleBUS()
         {
-
             return adminDAL.GetExamScheduleDAL();
-
         }
 
         public DataTable GetStudentGradesBUS()
         {
-
             return adminDAL.GetStudentGradesDAL();
-
         }
 
         public DataTable GetAccountListBUS()
         {
-
             return adminDAL.GetAccountListsDAL();
-
         }
 
         public DataTable GetClassBUS()
@@ -109,7 +87,7 @@ namespace BusinessLayer
         }
         //Hàm thêm
 
-        public bool InsertClassBUSDAL(Lop lop )
+        public bool InsertClassBUSDAL(Lop lop)
         {
             return adminDAL.InsertClassDAL(lop);
         }
@@ -131,8 +109,6 @@ namespace BusinessLayer
 
         public bool InsertCourseBUS(MonHoc mh)
         {
-
-
             return adminDAL.InsertCourseDAL(mh);
         }
 
@@ -160,6 +136,7 @@ namespace BusinessLayer
         {
             return adminDAL.InsertAccountDAL(taiKhoan);
         }
+
         public bool InsertDepartmentBUS(Khoa khoa)
         {
             return adminDAL.InsertDepartmentDAL(khoa);
@@ -173,10 +150,11 @@ namespace BusinessLayer
             return adminDAL.DeleteDepartmentDAL(maKhoa);
         }
 
-        public bool DeleteClassBUS(string maLop )
+        public bool DeleteClassBUS(string maLop)
         {
             return adminDAL.DeleteClassDAL(maLop);
         }
+
         public bool DeleteStudentBUS(string mssv)
         {
             return adminDAL.DeleteStudentDAL(mssv);
@@ -214,9 +192,9 @@ namespace BusinessLayer
 
         public bool DeleteAccountBUS(string tenDangNhap)
         {
-            
             return adminDAL.DeleteAccountDAL(tenDangNhap);
         }
+
         public bool DeleteCourseFromRegistrationDAL(string maLopMo)
         {
             return adminDAL.DeleteCourseFromRegistrationDAL(maLopMo);
@@ -227,6 +205,7 @@ namespace BusinessLayer
         {
             return adminDAL.UpdateDepartmentDAL(khoa);
         }
+
         public bool UpdateClasstBUS(Lop lop)
         {
             return adminDAL.UpdateClassDAL(lop);
@@ -241,6 +220,7 @@ namespace BusinessLayer
         {
             return adminDAL.UpdateStudentDAL(sv);
         }
+
         public bool UpdateLecturerBUS(GiangVien gv)
         {
             return adminDAL.UpdateLecturerDAL(gv);

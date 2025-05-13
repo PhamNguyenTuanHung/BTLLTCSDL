@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using BusinessLayer;
@@ -10,24 +9,23 @@ namespace PresentationLayer
 {
     public partial class FormEditLopMonHoc : Form
     {
+        private readonly AdminBUS adminBUS;
+        private List<string> foriegnKeys;
+        private Dictionary<string, List<string>> foriegnKeyValues;
+        private int indexMaHK, indexMaMH, indexMSGV, indexMaKhoa;
+        private LopMonHoc lopMonHoc;
+
         public FormEditLopMonHoc()
         {
             InitializeComponent();
         }
-
-        AdminBUS adminBUS;
-        LopMonHoc lopMonHoc;
-        List<string> primaryKeys, foriegnKeys;
-        Dictionary<string,List<string>> foriegnKeyValues;
-        int indexMaHK=0, indexMaMH=0, indexMSGV = 0, indexMaKhoa=0;
-
 
 
         public FormEditLopMonHoc(LopMonHoc lopMonHoc, int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 
-            this.lopMonHoc =lopMonHoc ?? new LopMonHoc(); // Nếu sinhVien null, tạo một đối tượng mới
+            this.lopMonHoc = lopMonHoc ?? new LopMonHoc(); // Nếu sinhVien null, tạo một đối tượng mới
 
             adminBUS = new AdminBUS(); // Khởi tạo lớp quản lý
 
@@ -37,34 +35,32 @@ namespace PresentationLayer
             LoadComboBox();
 
             if (Type == 0 && lopMonHoc != null)
-            {
                 // Nếu là sửa, hiển thị thông tin sinh viên lên form
                 ShowCourseClassDetails(lopMonHoc);
-            }
         }
 
         private void LoadKeys(string tableName)
         {
-            this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( tableName);
+            foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS(tableName);
         }
 
         private void LoadComboBox()
         {
             //Lấy dữ liệu từ các key khóa ngoai tương ứng
-            cbMaHK.DataSource = this.foriegnKeyValues["Ma_Hoc_Ky"];
+            cbMaHK.DataSource = foriegnKeyValues["Ma_Hoc_Ky"];
             cbMaHK.SelectedIndex = indexMaHK;
 
-            cbMSGV.DataSource = this.foriegnKeyValues["MSGV"];
+            cbMSGV.DataSource = foriegnKeyValues["MSGV"];
             cbMSGV.SelectedIndex = indexMSGV;
 
-            cbMaMH.DataSource = this.foriegnKeyValues["Ma_Mon_Hoc"];
+            cbMaMH.DataSource = foriegnKeyValues["Ma_Mon_Hoc"];
             cbMaMH.SelectedIndex = indexMaMH;
 
-            cbMaKhoa.DataSource = this.foriegnKeyValues["Ma_Khoa"]; ;
+            cbMaKhoa.DataSource = foriegnKeyValues["Ma_Khoa"];
             cbMaKhoa.SelectedIndex = indexMaKhoa;
-
         }
+
         private void CheckAddOrUpdate(int type)
         {
             if (type == 1)
@@ -87,38 +83,37 @@ namespace PresentationLayer
         private void ShowCourseClassDetails(LopMonHoc lopMonHoc)
         {
             txtMaLopMH.Text = lopMonHoc.MaLopMonHoc.Trim();
-            
-            txtSL.Text=lopMonHoc.SoLuongDangKyToiDa.ToString();
+
+            txtSL.Text = lopMonHoc.SoLuongDangKyToiDa.ToString();
 
             indexMaHK = cbMaHK.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == lopMonHoc.MaHocKi.Trim());
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == lopMonHoc.MaHocKy.Trim());
             if (indexMaHK >= 0)
                 cbMaHK.SelectedIndex = indexMaHK;
 
 
             indexMaMH = cbMaMH.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == lopMonHoc.MaMonHoc.Trim());
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == lopMonHoc.MaMonHoc);
             if (indexMaMH >= 0)
                 cbMaMH.SelectedIndex = indexMaMH;
 
             indexMSGV = cbMSGV.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == lopMonHoc.MSGV.Trim());
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == lopMonHoc.MSGV.Trim());
             if (indexMSGV >= 0)
                 cbMSGV.SelectedIndex = indexMSGV;
 
             indexMaKhoa = cbMaKhoa.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == lopMonHoc.MaKhoa.Trim());
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == lopMonHoc.MaKhoa.Trim());
             if (indexMaKhoa >= 0)
-                cbMaKhoa.SelectedIndex =indexMaKhoa;
-
+                cbMaKhoa.SelectedIndex = indexMaKhoa;
         }
 
         public bool ValidateCousersClassForm()
@@ -138,7 +133,7 @@ namespace PresentationLayer
             }
 
             if (string.IsNullOrWhiteSpace(txtSL.Text) ||
-                !int.TryParse(txtSL.Text, out int diem))
+                !int.TryParse(txtSL.Text, out var diem))
             {
                 MessageBox.Show("Điểm rèn luyện phải là số từ 0 đến 100.");
                 txtSL.Focus();
@@ -166,6 +161,7 @@ namespace PresentationLayer
                 cbMSGV.Focus();
                 return false;
             }
+
             return true;
         }
 
@@ -173,41 +169,6 @@ namespace PresentationLayer
         {
             try
             {
-              
-                if (ValidateCousersClassForm() != true) return;
-                lopMonHoc = new LopMonHoc(
-                    txtMaLopMH.Text,
-                    cbMaMH.SelectedValue.ToString(),
-                    cbMSGV.SelectedValue.ToString(),
-                    cbMaHK.SelectedValue.ToString(),
-                    cbMaKhoa.SelectedValue.ToString(),
-                    int.Parse( txtSL.Text)
-                    ); 
-
-                if (adminBUS.InsertCourseClassBUS(lopMonHoc))
-                {
-                    MessageBox.Show("Thêm thành công");
-                    if (MessageBox.Show("Bạn có muốn thêm thời khóa biểu cho lớp môn học này?","Thêm thời khóa biểu", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        ThoiKhoaBieu thoiKhoaBieu = new ThoiKhoaBieu(txtMaLopMH.Text);
-                        FormEditThoiKhoaBieu formEditThoiKhoaBieu = new FormEditThoiKhoaBieu(thoiKhoaBieu,1);
-                        formEditThoiKhoaBieu.ShowDialog();
-                    }
-                    this.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
                 if (ValidateCousersClassForm() != true) return;
                 lopMonHoc = new LopMonHoc(
                     txtMaLopMH.Text,
@@ -216,12 +177,46 @@ namespace PresentationLayer
                     cbMaHK.SelectedValue.ToString(),
                     cbMaKhoa.SelectedValue.ToString(),
                     int.Parse(txtSL.Text)
-                    );
+                );
+
+                if (adminBUS.InsertCourseClassBUS(lopMonHoc))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    if (MessageBox.Show("Bạn có muốn thêm thời khóa biểu cho lớp môn học này?", "Thêm thời khóa biểu",
+                            MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        var thoiKhoaBieu = new ThoiKhoaBieu(txtMaLopMH.Text);
+                        var formEditThoiKhoaBieu = new FormEditThoiKhoaBieu(thoiKhoaBieu, 1);
+                        formEditThoiKhoaBieu.ShowDialog();
+                    }
+
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ValidateCousersClassForm() != true) return;
+                lopMonHoc = new LopMonHoc(
+                    txtMaLopMH.Text,
+                    cbMaMH.SelectedValue.ToString(),
+                    cbMSGV.SelectedValue.ToString(),
+                    cbMaHK.SelectedValue.ToString(),
+                    cbMaKhoa.SelectedValue.ToString(),
+                    int.Parse(txtSL.Text)
+                );
 
                 if (adminBUS.UpdateCourseClassBUS(lopMonHoc))
                 {
                     MessageBox.Show("Sửa thành công");
-                    this.Close();
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -231,12 +226,8 @@ namespace PresentationLayer
         }
 
 
-
         private void FormThemLopMonHoc_Load(object sender, EventArgs e)
         {
-
         }
-
-
     }
 }

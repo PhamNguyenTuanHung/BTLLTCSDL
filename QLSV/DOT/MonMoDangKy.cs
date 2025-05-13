@@ -2,28 +2,28 @@
 {
     public class MonMoDangKy
     {
-
-        public MonMoDangKy() { }
-        string malopmo;
-        string malopmonhoc;
-        string mahocky;
-
-        public string MaLopMo { get => malopmo; set => malopmo = value; }
-        public string MaLopMonHoc { get => malopmonhoc; set => malopmonhoc = value; }
-        public string MaHocKy { get => mahocky; set => mahocky = value; }
-
-
-        public MonMoDangKy( string malopmonhoc, string mahocky)
+        public MonMoDangKy()
         {
-            this.malopmonhoc = malopmonhoc;
-            this.mahocky = mahocky;
+        }
+
+
+        public MonMoDangKy(string malopmonhoc, string mahocky)
+        {
+            this.MaLopMonHoc = malopmonhoc;
+            this.MaHocKy = mahocky;
         }
 
         public MonMoDangKy(string malopmo, string malopmonhoc, string mahocky)
         {
-            this.malopmo = malopmo;
-            this.malopmonhoc = malopmonhoc;
-            this.mahocky = mahocky;
+            this.MaLopMo = malopmo;
+            this.MaLopMonHoc = malopmonhoc;
+            this.MaHocKy = mahocky;
         }
+
+        public string MaLopMo { get; set; }
+
+        public string MaLopMonHoc { get; set; }
+
+        public string MaHocKy { get; set; }
     }
 }

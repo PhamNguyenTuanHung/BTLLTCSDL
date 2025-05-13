@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PresentationLayer
 {
     public partial class FormGiangVien : Form
     {
-        private GiangVien gv;
-        private TaiKhoan tk;
-        private GiangVienBUS gvBUS;
+        private readonly GiangVien gv;
+        private readonly TaiKhoan tk;
         private DiemSV diemSV;
+        private GiangVienBUS gvBUS;
+
         public FormGiangVien(GiangVien gv, TaiKhoan tk)
         {
             this.gv = gv;
@@ -93,7 +89,7 @@ namespace PresentationLayer
         public void GetLecturerInfo()
         {
             gvBUS = new GiangVienBUS();
-            DataTable dt = gvBUS.GetLecturerInfoTableBUS(gv.MSGV);
+            var dt = gvBUS.GetLecturerInfoTableBUS(gv.MSGV);
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
                 lbMSGV.Text = dt.Rows[0]["MSGV"].ToString();
@@ -105,63 +101,66 @@ namespace PresentationLayer
                 lbGioiTinh.Text = dt.Rows[0]["Gioi_Tinh"].ToString();
                 if (dt.Rows[0]["Anh"] != DBNull.Value)
                 {
-                    byte[] imageBytes = (byte[])dt.Rows[0]["Anh"];
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    var imageBytes = (byte[])dt.Rows[0]["Anh"];
+                    using (var ms = new MemoryStream(imageBytes))
                     {
                         pbAnhGV.Image = Image.FromStream(ms);
                     }
+                    btnAnh.Text = "Đổi ảnh";
                 }
-                else pbAnhGV.Image = null;
+                else
+                {
+                    pbAnhGV.Image = null;
+                }
             }
             else
             {
-                MessageBox.Show("Không có dữ liệu sinh viên!");
+                MessageBox.Show("Không có dữ liệu giảng viên!");
             }
         }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbLopSV.SelectedItem == null) return; // Tránh lỗi nếu chưa chọn
-            GiangVienBUS giangVienBL = new GiangVienBUS();
-            string malopmonhoc = cbLopSV.SelectedValue.ToString(); // Lấy đúng giá trị môn học
-            DataTable dt = new DataTable();
+            var giangVienBL = new GiangVienBUS();
+            var malopmonhoc = cbLopSV.SelectedValue.ToString(); // Lấy đúng giá trị môn học
+            var dt = new DataTable();
             dt = giangVienBL.GetStudentGradesBUS(gv.MSGV, malopmonhoc);
             LoadData(dt, dgvThongTinLop);
         }
 
         private void GetLecturerClassInfo()
         {
-            
-            GiangVienBUS gvBUS = new GiangVienBUS();
-            DataTable dt = new DataTable();
+            var gvBUS = new GiangVienBUS();
+            var dt = new DataTable();
             dt = gvBUS.GetClassListBUS(gv.MSGV);
             cbLopSV.DataSource = dt;
-            cbLopSV.DisplayMember= "Ten_Mon_Hoc";
+            cbLopSV.DisplayMember = "Ten_Mon_Hoc";
             cbLopSV.ValueMember = "Ma_Lop_Mon_Hoc";
-            cbLopSV.DataSource = dt ;
-            if (cbLopSV.Items.Count > 0)
-            {
-                cbLopSV.SelectedIndex = 0; // Chọn mặc định môn đầu tiên
-            }
+            cbLopSV.DataSource = dt;
+            if (cbLopSV.Items.Count > 0) cbLopSV.SelectedIndex = 0; // Chọn mặc định môn đầu tiên
         }
-        public void StudentGrades(string msgv,string malopmonhoc)
+
+        public void StudentGrades(string msgv, string malopmonhoc)
         {
-            DataTable dt = new DataTable();
-            GiangVienBUS gvBUS = new GiangVienBUS();
-            dt =gvBUS.GetStudentGradesBUS(msgv, malopmonhoc);
+            var dt = new DataTable();
+            var gvBUS = new GiangVienBUS();
+            dt = gvBUS.GetStudentGradesBUS(msgv, malopmonhoc);
             dgvThongTinLop.DataSource = dt;
         }
 
         private void Schedule()
         {
-            GiangVienBUS giangVienBL = new GiangVienBUS();
-            DataTable dt = giangVienBL.GetLecturerScheduleBUS(gv.MSGV);
+            var giangVienBL = new GiangVienBUS();
+            var dt = giangVienBL.GetLecturerScheduleBUS(gv.MSGV);
             LoadData(dt, dgvTKB);
         }
+
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int TabIndex = tabControl.SelectedIndex;
-            SinhVienBUS sinhVienBUS = new SinhVienBUS();
-            DataTable dt = new DataTable();
+            var TabIndex = tabControl.SelectedIndex;
+            var sinhVienBUS = new SinhVienBUS();
+            var dt = new DataTable();
             switch (TabIndex)
             {
                 case 0:
@@ -173,8 +172,6 @@ namespace PresentationLayer
                 case 2:
                     Schedule();
                     break;
-                default:
-                    break;
             }
         }
 
@@ -182,31 +179,45 @@ namespace PresentationLayer
         {
             if (dgv.DataSource != null)
             {
-                DataTable dt = (DataTable)dgv.DataSource;
+                DataTable dt = null;
 
-                string keyword = txt.Text.Trim().ToLower();
+                if (dgv.DataSource is DataView view)
+                    dt = view.Table;
+                else if (dgv.DataSource is DataTable table)
+                    dt = table;
 
-                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
-                if (string.IsNullOrWhiteSpace(keyword))
+                if (dt != null)
                 {
-                    dt.DefaultView.RowFilter = string.Empty;
-                }
-                else
-                {
-                    if (dgv == dgvThongTinLop)
+                    var keyword = txt.Text.Trim().ToLower();
+
+                    if (string.IsNullOrWhiteSpace(keyword))
                     {
-                        string filter = $"[Ten_Day_Du] LIKE '%{keyword}%' ";              
-                        dt.DefaultView.RowFilter = filter; ;
+                        dt.DefaultView.RowFilter = string.Empty;
                     }
-                    if (dgv == dgvTKB)
+                    else
                     {
-                        string filter = $"[Ten_Mon_Hoc] LIKE '%{keyword}%' ";
-                        dt.DefaultView.RowFilter = filter; ;
+                        var filterExpression = string.Join(" OR ", dt.Columns.Cast<DataColumn>()
+                            .Where(c => c.DataType == typeof(string))
+                            .Select(c => $"[{c.ColumnName}] LIKE '%{keyword}%'"));
+
+                        if (string.IsNullOrEmpty(filterExpression))
+                        {
+                            MessageBox.Show("Không có cột chuỗi để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            dt.DefaultView.RowFilter = filterExpression;
+                        }
                     }
+
+                    dgv.DataSource = dt.DefaultView; // cập nhật lại DataSource để hiển thị kết quả lọc
                 }
-                dgv.DataSource = dt;
             }
-            else MessageBox.Show("Dữ liệu null");
+            else
+            {
+                MessageBox.Show("Dữ liệu null");
+            }
+
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -221,21 +232,19 @@ namespace PresentationLayer
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            FormDoiMatKhau formDoiMatKhau = new FormDoiMatKhau(gv,tk);
-            this.Enabled = false;
+            var formDoiMatKhau = new FormDoiMatKhau(gv, tk);
+            Enabled = false;
             if (formDoiMatKhau.ShowDialog() == DialogResult.OK)
-            {
                 tk.MatKhau = formDoiMatKhau.newPass; // Cập nhật mật khẩu mới
-            }
-            this.Enabled = true;
+            Enabled = true;
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            FormDangNhap form = new FormDangNhap();
-            this.Hide();
+            var form = new FormDangNhap();
+            Hide();
             form.ShowDialog();
-            this.Close();
+            Close();
         }
 
 
@@ -244,7 +253,7 @@ namespace PresentationLayer
             if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
                 return 0m;
 
-            if (decimal.TryParse(value.ToString(), out decimal result))
+            if (decimal.TryParse(value.ToString(), out var result))
                 return result;
 
             return 0; // Trả về 0 nếu không thể parse
@@ -255,22 +264,22 @@ namespace PresentationLayer
         {
             if (dgvThongTinLop.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dgvThongTinLop.SelectedRows[0];
+                var row = dgvThongTinLop.SelectedRows[0];
 
                 diemSV = new DiemSV
                 (
-                    row.Cells["MSSV"].Value?.ToString(),  // Giả sử cột MSSV có tên là "MSSV"
+                    row.Cells["MSSV"].Value?.ToString(), // Giả sử cột MSSV có tên là "MSSV"
                     row.Cells["Ma_Mon_Hoc"].Value?.ToString(), // Giả sử cột Ma_Mon_Hoc có tên là "Ma_Mon_Hoc"
                     row.Cells["Ma_Hoc_Ky"].Value?.ToString(),
-                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Qua_Trinh"].Value), 1),  // Kiểm tra null và parse
-                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Thi"].Value), 1),  // Kiểm tra null và parse
-                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Tong_Ket"].Value), 1),  // Kiểm tra null và parse
-                    int.TryParse(row.Cells["Lan_Thi"].Value?.ToString(), out int lanThi) ? lanThi : 0 // Kiểm tra Lan_Thi
+                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Qua_Trinh"].Value), 1), // Kiểm tra null và parse
+                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Thi"].Value), 1), // Kiểm tra null và parse
+                    Math.Round(ParseDecimalSafe(row.Cells["Diem_Tong_Ket"].Value), 1), // Kiểm tra null và parse
+                    int.TryParse(row.Cells["Lan_Thi"].Value?.ToString(), out var lanThi)
+                        ? lanThi
+                        : 0 // Kiểm tra Lan_Thi
                 );
             }
-
         }
-
 
 
         private void btnSuaDiem_Click(object sender, EventArgs e)
@@ -288,7 +297,7 @@ namespace PresentationLayer
             }
 
             // Mở hộp thoại lưu file
-            SaveFileDialog sfd = new SaveFileDialog
+            var sfd = new SaveFileDialog
             {
                 Filter = "Excel Files|*.xlsx",
                 Title = "Lưu file Excel",
@@ -296,30 +305,26 @@ namespace PresentationLayer
             };
 
             if (sfd.ShowDialog() == DialogResult.OK)
-            {
                 try
                 {
                     // Khởi tạo ứng dụng Excel
-                    Excel.Application excelApp = new Excel.Application();
-                    Excel.Workbook workbook = excelApp.Workbooks.Add();
-                    Excel.Worksheet worksheet = (Excel.Worksheet)workbook.ActiveSheet;
+                    var excelApp = new Excel.Application();
+                    var workbook = excelApp.Workbooks.Add();
+                    var worksheet = (Excel.Worksheet)workbook.ActiveSheet;
 
                     // Ghi tiêu đề cột
-                    for (int i = 0; i < dgvThongTinLop.Columns.Count; i++)
+                    for (var i = 0; i < dgvThongTinLop.Columns.Count; i++)
                     {
                         worksheet.Cells[1, i + 1] = dgvThongTinLop.Columns[i].HeaderText;
                         ((Excel.Range)worksheet.Cells[1, i + 1]).Font.Bold = true;
-                        ((Excel.Range)worksheet.Cells[1, i + 1]).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        ((Excel.Range)worksheet.Cells[1, i + 1]).Interior.Color =
+                            ColorTranslator.ToOle(Color.LightGray);
                     }
 
                     // Ghi dữ liệu từ DataGridView vào Excel
-                    for (int i = 0; i < dgvThongTinLop.Rows.Count; i++)
-                    {
-                        for (int j = 0; j < dgvThongTinLop.Columns.Count; j++)
-                        {
-                            worksheet.Cells[i + 2, j + 1] = dgvThongTinLop.Rows[i].Cells[j].Value?.ToString();
-                        }
-                    }
+                    for (var i = 0; i < dgvThongTinLop.Rows.Count; i++)
+                    for (var j = 0; j < dgvThongTinLop.Columns.Count; j++)
+                        worksheet.Cells[i + 2, j + 1] = dgvThongTinLop.Rows[i].Cells[j].Value?.ToString();
 
                     // Tự động căn chỉnh độ rộng cột
                     worksheet.Columns.AutoFit();
@@ -329,41 +334,36 @@ namespace PresentationLayer
                     workbook.Close();
                     excelApp.Quit();
 
-                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
-            }
-        }
-
-        private void pbAnhGV_Click(object sender, EventArgs e)
-        {
-
-            
-            
         }
 
         private void btnAnh_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath = openFileDialog.FileName;
-                byte[] imageBytes = File.ReadAllBytes(filePath); // Chuyển ảnh thành mảng byte
+                var filePath = openFileDialog.FileName;
+                var imageBytes = File.ReadAllBytes(filePath); // Chuyển ảnh thành mảng byte
                 try
                 {
                     if (gvBUS.ChangeImageBUS(imageBytes, gv.MSGV))
                         MessageBox.Show("Thành công");
-                    if(imageBytes.Length > 0)
+                    if (imageBytes.Length > 0)
                     {
-                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        using (var ms = new MemoryStream(imageBytes))
                         {
                             pbAnhGV.Image = Image.FromStream(ms);
                         }
+
                         btnAnh.Text = "Đổi ảnh";
                     }
                 }
@@ -374,19 +374,5 @@ namespace PresentationLayer
             }
         }
 
-        private void dgvThongTinLop_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void FormGiangVien_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTimKiemSinhVien_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

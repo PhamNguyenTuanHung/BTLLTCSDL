@@ -1,27 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PresentationLayer
 {
     public partial class FormEditSinhVien : Form
     {
-
-        AdminBUS adminBUS ;
-        SinhVien sinhVien;
-        byte[] imageBytes;
-        List<string> primaryKeys, foriegnKeys;
-        Dictionary<string,List<string>> foriegnKeyValues;
+        private readonly AdminBUS adminBUS;
+        private List<string> foriegnKeys;
+        private Dictionary<string, List<string>> foriegnKeyValues;
+        private byte[] imageBytes;
+        private SinhVien sinhVien;
 
         public FormEditSinhVien()
         {
@@ -29,7 +23,7 @@ namespace PresentationLayer
         }
 
 
-        public FormEditSinhVien(SinhVien sinhVien,int Type)
+        public FormEditSinhVien(SinhVien sinhVien, int Type)
         {
             InitializeComponent(); // Khởi tạo giao diện form
 
@@ -43,54 +37,54 @@ namespace PresentationLayer
             LoadComboBox();
 
             if (Type == 0 && sinhVien != null)
-            {
                 // Nếu là sửa, hiển thị thông tin sinh viên lên form
                 ShowStudentDetails(sinhVien);
-            }
         }
 
 
         private void LoadKeys(string tableName)
         {
-            this.foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
-            this.foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( tableName);
+            foriegnKeys = adminBUS.GetForiegnKeysBUS(tableName);
+            foriegnKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS(tableName);
         }
 
 
         private void LoadComboBox()
         {
             cbLop.DataSource = foriegnKeyValues["Ma_Lop"];
-            List<string> gioiTinhList = new List<string> {"Nam", "Nữ" };
+            var gioiTinhList = new List<string> { "Nam", "Nữ" };
             cbGioiTinh.DataSource = gioiTinhList;
             cbLop.SelectedIndex = 0;
             cbGioiTinh.SelectedIndex = 0;
         }
+
         private void ShowStudentDetails(SinhVien sv)
         {
             txtMSSV.Text = sv.MSSV;
             txtHoTen.Text = sv.HoTen;
             cbGioiTinh.SelectedItem = sv.GioiTinh.Trim();
-          
+
             dtNgaySinh.Value = sv.NgaySinh;
             txtEmail.Text = sv.Email;
             txtDiaChi.Text = sv.DiaChi;
             txtKhoaHoc.Text = sv.KhoaHoc;
             txtDRL.Text = sv.DiemRenLuyen.ToString();
-            int index = cbLop.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == sv.MaLop);
+            var index = cbLop.Items
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == sv.MaLop);
 
             if (index >= 0)
                 cbLop.SelectedIndex = index;
 
             if (sv.Anh != null && sv.Anh.Length > 0)
             {
-                using (MemoryStream ms = new MemoryStream(sv.Anh))
+                using (var ms = new MemoryStream(sv.Anh))
                 {
                     pbAnh.Image = Image.FromStream(ms);
                     pbAnh.SizeMode = PictureBoxSizeMode.Zoom;
                 }
+
                 btnThemAnh.Text = "Đổi ảnh";
             }
             else
@@ -131,7 +125,7 @@ namespace PresentationLayer
             }
 
             if (string.IsNullOrWhiteSpace(txtDRL.Text) ||
-                !float.TryParse(txtDRL.Text, out float diem) || diem < 0 || diem > 100)
+                !float.TryParse(txtDRL.Text, out var diem) || diem < 0 || diem > 100)
             {
                 MessageBox.Show("Điểm rèn luyện phải là số từ 0 đến 100.");
                 txtDRL.Focus();
@@ -158,6 +152,7 @@ namespace PresentationLayer
                 cbLop.Focus();
                 return false;
             }
+
             return true;
         }
 
@@ -167,9 +162,9 @@ namespace PresentationLayer
             if (type == 1)
             {
                 btnThem.Enabled = true;
-                btnThem.Visible= true;
+                btnThem.Visible = true;
                 btnSua.Enabled = false;
-                btnSua.Visible=false;
+                btnSua.Visible = false;
             }
             else
             {
@@ -178,8 +173,9 @@ namespace PresentationLayer
                 btnThem.Visible = false;
                 btnSua.Enabled = true;
                 btnSua.Visible = true;
-            }    
+            }
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -193,22 +189,22 @@ namespace PresentationLayer
                     txtEmail.Text,
                     txtDiaChi.Text,
                     txtKhoaHoc.Text,
-                    double.TryParse(txtDRL.Text, out double drl) ? drl : 0,
+                    double.TryParse(txtDRL.Text, out var drl) ? drl : 0,
                     cbLop.SelectedValue?.ToString() ?? "",
                     imageBytes ?? null
-            ); ;
+                );
+                ;
 
                 if (adminBUS.InsertStudentBUS(sinhVien))
                 {
                     MessageBox.Show("Thêm thành công");
-                    this.Close();
+                    Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message) ;
+                MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -224,15 +220,16 @@ namespace PresentationLayer
                     txtEmail.Text,
                     txtDiaChi.Text,
                     txtKhoaHoc.Text,
-                    double.TryParse(txtDRL.Text, out double drl) ? drl : 0,
+                    double.TryParse(txtDRL.Text, out var drl) ? drl : 0,
                     cbLop.SelectedValue?.ToString() ?? "",
                     imageBytes ?? null
-            ); ;
+                );
+                ;
 
                 if (adminBUS.UpdateStudentBUS(sinhVien))
                 {
                     MessageBox.Show("Sửa thành công");
-                    this.Close();
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -243,138 +240,113 @@ namespace PresentationLayer
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void pbAnh_Click(object sender, EventArgs e)
         {
-
         }
 
         private void lblMSSV_Click(object sender, EventArgs e)
         {
-
         }
 
         private void dtNgaySinh_ValueChanged(object sender, EventArgs e)
         {
-
         }
 
         private void cbGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void lbl_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label8_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void txtDRL_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label9_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label10_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtHoTen_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void txtMSSV_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label11_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label12_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label13_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label14_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtKhoaHoc_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void cbLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtDiaChi_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void btnThemAnh_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (var openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Ảnh (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"; // Chỉ chọn file ảnh
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
+                    var filePath = openFileDialog.FileName;
 
                     try
                     {
@@ -384,7 +356,7 @@ namespace PresentationLayer
                         // Nếu mảng byte không rỗng, hiển thị ảnh trong PictureBox
                         if (imageBytes.Length > 0)
                         {
-                            using (MemoryStream ms = new MemoryStream(imageBytes))
+                            using (var ms = new MemoryStream(imageBytes))
                             {
                                 pbAnh.Image = Image.FromStream(ms);
                             }
@@ -400,11 +372,11 @@ namespace PresentationLayer
                     catch (Exception ex)
                     {
                         // Xử lý lỗi khi đọc ảnh
-                        MessageBox.Show("Lỗi khi đọc ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi khi đọc ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                 }
             }
-
         }
     }
 }
