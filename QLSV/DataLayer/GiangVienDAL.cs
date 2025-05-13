@@ -13,8 +13,8 @@ namespace DataLayer
                 GiangVien gv = null;
                 using (var conn = DBProviderDAL.Connect())
                 {
-                    var query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiangVien,Lop" +
-                                " WHERE Lop.MSGVCN=@msgv";
+                    var query = "SELECT GiangVien.* FROM GiangVien" +
+                                " WHERE GiangVien.MSGV=@msgv ";
                     var cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@msgv", msgv);
                     conn.Open();
@@ -43,8 +43,8 @@ namespace DataLayer
         {
             try
             {
-                var query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiangVien,Lop"
-                            + " WHERE Lop.MSGVCN=@msgv";
+                var query = "SELECT GiangVien.*,Lop.Ma_Lop FROM GiangVien,Lop" +
+                                " WHERE GiangVien.MSGV=@msgv and GiangVien.MSGV=Lop.MSGVCN";
                 var parameters = new[]
                 {
                     new SqlParameter("@msgv", msgv)
@@ -82,14 +82,16 @@ namespace DataLayer
                 var query = "\tSELECT \n    " +
                     "GiangVien.MSGV,\n   " +
                     " LopMonHoc.Ma_Lop_Mon_Hoc,\n   " +
-                    " STRING_AGG(\n        CONVERT(NVARCHAR, ThoiKhoaBieu.Ngay_Hoc, 103) +" +
-                    " ' (' + \n        CONVERT(NVARCHAR, ThoiKhoaBieu.Gio_Bat_Dau, 108) +" +
-                    " ' - ' + \n        CONVERT(NVARCHAR, ThoiKhoaBieu.Gio_Ket_Thuc, 108) + ')', \n  ', ') " +
-                    "AS Lich_Hoc\nFROM \n    ThoiKhoaBieu\nJOIN \n " +
-                    "   LopMonHoc ON ThoiKhoaBieu.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc\nJOIN \n   " +
-                    " GiangVien ON GiangVien.MSGV = LopMonHoc.MSGV\nGROUP BY \n  " +
-                    "  GiangVien.MSGV, LopMonHoc.Ma_Lop_Mon_Hoc\nORDER BY \n  " +
-                    "  GiangVien.MSGV, LopMonHoc.Ma_Lop_Mon_Hoc;";
+                    " STRING_AGG(\nCONVERT(NVARCHAR, ThoiKhoaBieu.Ngay_Hoc, 103) +" +
+                    " ' (' + \nCONVERT(NVARCHAR, ThoiKhoaBieu.Gio_Bat_Dau, 108) +" +
+                    " ' - ' + \nCONVERT(NVARCHAR, ThoiKhoaBieu.Gio_Ket_Thuc, 108) + ')', \n  ', ') " +
+                    "AS Lich_Hoc\n" +
+                    "FROM  ThoiKhoaBieu\n" +
+                    "JOIN LopMonHoc ON ThoiKhoaBieu.Ma_Lop_Mon_Hoc = LopMonHoc.Ma_Lop_Mon_Hoc\n" +
+                    "JOIN GiangVien ON GiangVien.MSGV = LopMonHoc.MSGV\n " +
+                    "AND GiangVien.MSGV=@msgv " +
+                    "GROUP BY GiangVien.MSGV, LopMonHoc.Ma_Lop_Mon_Hoc\n" +
+                    "ORDER BY GiangVien.MSGV, LopMonHoc.Ma_Lop_Mon_Hoc;";
                 var parameters = new[]
                 {
                     new SqlParameter("@msgv", msgv)

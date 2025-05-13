@@ -47,7 +47,7 @@ namespace PresentationLayer
                 taikhoan.LoaiTaiKhoan = 1;
                 var svBUS = new SinhVienBUS();
                 var sv = svBUS.GetStudentDetailsBUS(txt_TaiKhoan.Text);
-                Form form = new FormSinhVien(sv, taikhoan);
+                FormSinhVien form = new FormSinhVien(sv, taikhoan);
                 Hide();
                 form.ShowDialog();
                 Close();
@@ -56,18 +56,19 @@ namespace PresentationLayer
             if (CheckLogin.LoaiTaiKhoan == 2)
             {
                 taikhoan.LoaiTaiKhoan = 2;
-                var gvBUS = new GiangVienBUS();
-                var gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
-                Form form = new FormGiangVien(gv, taikhoan);
+
+                GiangVienBUS gvBUS = new GiangVienBUS();
+                GiangVien gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
+                FormGiangVien formGiangVien = new FormGiangVien(gv, taikhoan);
                 Hide();
-                form.ShowDialog();
+                formGiangVien.ShowDialog();
                 Close();
             }
 
             if (CheckLogin.LoaiTaiKhoan == 3)
             {
                 taikhoan.LoaiTaiKhoan = 3;
-                var formAdmin = new FrmAdmin();
+                FrmAdmin formAdmin = new FrmAdmin();
                 Hide();
                 formAdmin.ShowDialog();
                 Close();

@@ -70,12 +70,13 @@ namespace DataLayer
                     {
                         TenDangNhap = dt.Rows[0]["Ten_Dang_Nhap"].ToString(),
                         MatKhau = dt.Rows[0]["Mat_Khau"].ToString(),
-                        LoaiTaiKhoan = Convert.ToInt32(dt.Rows[0]["Loai_Tai_Khoan"])
+                        LoaiTaiKhoan = Convert.ToInt32(dt.Rows[0]["Loai_Tai_Khoan"]),
+                        TrangThai = Convert.ToInt32(dt.Rows[0]["Trang_Thai"])
                     };
             }
             catch (Exception ex)
             {
-                throw new Exception("Error while validating login: " + ex.Message);
+                throw new Exception("Lỗi đăng nhập: " + ex.Message);
             }
 
             return null;

@@ -12,8 +12,8 @@ namespace PresentationLayer
 {
     public partial class FormGiangVien : Form
     {
-        private readonly GiangVien gv;
-        private readonly TaiKhoan tk;
+        private GiangVien gv;
+        private TaiKhoan tk;
         private DiemSV diemSV;
         private GiangVienBUS gvBUS;
 
