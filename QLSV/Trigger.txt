@@ -71,5 +71,114 @@ BEGIN
 END;
 
 
+//Thêm trigger quản lý số lượng đăng kí môn học
+CREATE TRIGGER trg_GioiHanDangKy
+ON DangKy
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @MaxRegistrations INT;  -- Giới hạn số lượng đăng ký tối đa
+    DECLARE @CurrentRegistrations INT;
+	DECLARE @MaLopMonHoc nvarchar;
+
+    -- Lấy mã môn học từ bản ghi vừa được chèn vào bảng DangKy
+    SELECT @MaLopMonHoc = Ma_Lop_Mon_Hoc FROM inserted;
+
+	 SELECT @MaxRegistrations = MonMoDangKy.So_Luong_Toi_Da
+    FROM MonMoDangKy
+    WHERE Ma_Lop_Mon_Hoc = @MaLopMonHoc;
+
+    -- Kiểm tra số lượng đăng ký hiện tại trong bảng DangKy
+    SELECT @CurrentRegistrations = COUNT(*) 
+    FROM DangKy,inserted
+	WHERE DangKy.Ma_Lop_Mon_Hoc= inserted.Ma_Lop_Mon_Hoc;
+
+    -- Kiểm tra nếu số lượng đăng ký đã đạt giới hạn
+    IF @CurrentRegistrations > @MaxRegistrations
+    BEGIN
+        -- Xóa bản ghi vừa chèn để không làm vi phạm giới hạn
+        DELETE FROM DangKy
+        WHERE ID IN (SELECT ID FROM inserted);
+
+        -- Thông báo lỗi
+        RAISERROR ('Đã đạt giới hạn đăng ký. Không thể đăng ký thêm.', 16, 1);
+    END
+END;
 
 
+
+
+	-- Kiêm tra trùng lịch đăng ký
+CREATE TRIGGER TR_CheckTrungLichDangKy
+ON DangKy
+AFTER INSERT
+AS
+BEGIN
+    -- Ngăn chặn việc đếm số hàng bị ảnh hưởng
+    SET NOCOUNT ON;
+
+    -- Lấy thông tin về đăng ký mới được chèn
+    DECLARE @MSSV VARCHAR(10);
+    DECLARE @MaLopMonHoc VARCHAR(10);
+
+    SELECT @MSSV = i.MSSV, @MaLopMonHoc = i.Ma_Lop_Mon_Hoc
+    FROM inserted i;
+
+    -- Kiểm tra xem sinh viên này có đăng ký môn học nào trùng lịch không
+    IF EXISTS (
+        SELECT 1
+        FROM DangKy dk1
+        JOIN LopMonHoc lmh1 ON dk1.Ma_Lop_Mon_Hoc = lmh1.Ma_Lop_Mon_Hoc
+        JOIN ThoiKhoaBieu tkb1 ON lmh1.Ma_Lop_Mon_Hoc = tkb1.Ma_Lop_Mon_Hoc
+        JOIN DangKy dk2 ON dk1.MSSV = dk2.MSSV AND dk1.Ma_Lop_Mon_Hoc <> dk2.Ma_Lop_Mon_Hoc
+        JOIN LopMonHoc lmh2 ON dk2.Ma_Lop_Mon_Hoc = lmh2.Ma_Lop_Mon_Hoc
+        JOIN ThoiKhoaBieu tkb2 ON lmh2.Ma_Lop_Mon_Hoc = tkb2.Ma_Lop_Mon_Hoc
+        WHERE dk1.MSSV = @MSSV
+          AND dk1.Ma_Lop_Mon_Hoc = @MaLopMonHoc
+          AND tkb1.Ngay_Hoc = tkb2.Ngay_Hoc
+          AND (
+              (tkb1.Gio_Bat_Dau < tkb2.Gio_Ket_Thuc AND tkb1.Gio_Ket_Thuc > tkb2.Gio_Bat_Dau)
+          )
+    )
+    BEGIN
+        -- Nếu tìm thấy môn học trùng lịch, hủy bỏ thao tác INSERT và thông báo lỗi
+        RAISERROR('Không thể đăng ký. Môn học này trùng lịch với một môn học khác mà bạn đã đăng ký.', 16, 1);
+        ROLLBACK TRANSACTION;
+        RETURN;
+    END;
+END;
+GO
+
+//kiểm tra trùng lịch dạy cảu gv
+CREATE TRIGGER TR_PreventGiaoVienTrungLich
+ON ThoiKhoaBieu
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        JOIN LopMonHoc lmh_i ON i.Ma_Lop_Mon_Hoc = lmh_i.Ma_Lop_Mon_Hoc
+        JOIN LopMonHoc lmh ON lmh.MSGV = lmh_i.MSGV AND lmh.Ma_Lop_Mon_Hoc <> lmh_i.Ma_Lop_Mon_Hoc
+        JOIN ThoiKhoaBieu tkb_i ON i.Ma_Lop_Mon_Hoc = tkb_i.Ma_Lop_Mon_Hoc
+        JOIN ThoiKhoaBieu tkb ON tkb.Ma_Lop_Mon_Hoc = lmh.Ma_Lop_Mon_Hoc
+        WHERE 
+            tkb_i.Ngay_Hoc = tkb.Ngay_Hoc AND
+            (
+                tkb_i.Gio_Bat_Dau < tkb.Gio_Ket_Thuc AND
+                tkb_i.Gio_Ket_Thuc > tkb.Gio_Bat_Dau
+            )
+            AND (
+                -- kiểm tra khoảng thời gian tồn tại chung (nếu có Ngay_BD, Ngay_KT)
+                (tkb_i.Ngay_BD IS NULL OR tkb.Ngay_KT IS NULL OR tkb_i.Ngay_BD <= tkb.Ngay_KT) AND
+                (tkb_i.Ngay_KT IS NULL OR tkb.Ngay_BD IS NULL OR tkb_i.Ngay_KT >= tkb.Ngay_BD)
+            )
+    )
+    BEGIN
+        RAISERROR('Không thể thực hiện thao tác. Giáo viên này bị trùng lịch dạy.', 16, 1);
+        ROLLBACK TRANSACTION;
+    END
+END;
+GO

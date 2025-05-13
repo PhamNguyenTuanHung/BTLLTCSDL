@@ -67,6 +67,7 @@
             this.tpGV.TabIndex = 0;
             this.tpGV.Text = "Giáo viên";
             this.tpGV.UseVisualStyleBackColor = true;
+            this.tpGV.Click += new System.EventHandler(this.tpGV_Click);
             // 
             // tpSV
             // 

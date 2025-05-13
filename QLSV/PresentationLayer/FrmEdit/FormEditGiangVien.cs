@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -15,15 +11,15 @@ namespace PresentationLayer
 {
     public partial class FormEditGiangVien : Form
     {
+        private readonly AdminBUS adminBUS;
+        private Dictionary<string, List<string>> foreignKeyValues;
+        private GiangVien giangVien;
+        private byte[] imageBytes;
+
         public FormEditGiangVien()
         {
             InitializeComponent();
         }
-
-        AdminBUS adminBUS;
-        GiangVien giangVien;
-        byte[] imageBytes;
-        Dictionary<string,List<String>> foreignKeyValues;
 
 
         public FormEditGiangVien(GiangVien giangVien, int Type)
@@ -40,45 +36,42 @@ namespace PresentationLayer
 
             LoadComboBox();
             if (Type == 0 && giangVien != null)
-            {
                 // Nếu là sửa, hiển thị thông tin sinh viên lên form
                 ShowLecturerDetails(giangVien);
-            }
         }
 
 
         private void LoadKeys(string tableName)
         {
-            this.foreignKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS( "GiangVien");
+            foreignKeyValues = adminBUS.GetForeignKeyValuesWithReferencedTablesBUS("GiangVien");
         }
 
 
         private void LoadComboBox()
         {
-            List<string> gioiTinhList = new List<string> {"Nam", "Nữ" };
+            var gioiTinhList = new List<string> { "Nam", "Nữ" };
             cbGioiTinhGV.DataSource = gioiTinhList;
-            cbGioiTinhGV.SelectedIndex = 0;
 
             cbKhoa.DataSource = foreignKeyValues["Ma_Khoa"];
             cbKhoa.SelectedIndex = 0;
         }
+
         private void ShowLecturerDetails(GiangVien giangVien)
         {
             txtMSGV.Text = giangVien.MSGV;
             txtHoTen.Text = giangVien.HoTen;
-            if (giangVien.GioiTinh == "Nam")
-            {
-                cbGioiTinhGV.SelectedIndex = 0;  // Chọn "Nam"
-            }
-            else cbGioiTinhGV.SelectedIndex = 1;  // Chọn "Nữ"
+            if (giangVien.GioiTinh.Trim() == "Nam")
+                cbGioiTinhGV.SelectedIndex = 0;
+            else cbGioiTinhGV.SelectedIndex = 1;
+            cbGioiTinhGV.SelectedItem = giangVien.GioiTinh;
 
             dtNgaySinh.Value = giangVien.NgaySinh;
             txtEmail.Text = giangVien.Email;
             txtDiaChi.Text = giangVien.DiaChi;
-            int index = cbKhoa.Items
-                 .Cast<string>()
-                 .ToList()
-                 .FindIndex(item => item == giangVien.MaKhoa);
+            var index = cbKhoa.Items
+                .Cast<string>()
+                .ToList()
+                .FindIndex(item => item == giangVien.MaKhoa);
 
             if (index >= 0)
                 cbKhoa.SelectedIndex = index;
@@ -86,11 +79,12 @@ namespace PresentationLayer
 
             if (giangVien.Anh != null && giangVien.Anh.Length > 0)
             {
-                using (MemoryStream ms = new MemoryStream(giangVien.Anh))
+                using (var ms = new MemoryStream(giangVien.Anh))
                 {
                     pbAnh.Image = Image.FromStream(ms);
                     pbAnh.SizeMode = PictureBoxSizeMode.Zoom;
                 }
+
                 btnThemAnh.Text = "Đổi ảnh";
             }
             else
@@ -114,6 +108,13 @@ namespace PresentationLayer
             {
                 MessageBox.Show("Vui lòng nhập Họ tên.");
                 txtHoTen.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Địa chỉ.");
+                txtDiaChi.Focus();
                 return false;
             }
 
@@ -145,6 +146,7 @@ namespace PresentationLayer
                 cbKhoa.Focus();
                 return false;
             }
+
             return true;
         }
 
@@ -167,6 +169,7 @@ namespace PresentationLayer
                 btnSua.Visible = true;
             }
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -181,12 +184,13 @@ namespace PresentationLayer
                     txtEmail.Text,
                     cbKhoa.SelectedValue?.ToString() ?? "",
                     imageBytes ?? null
-            ); ;
+                );
+                ;
 
                 if (adminBUS.InsertLecturerBUS(giangVien))
                 {
                     MessageBox.Show("Thêm thành công");
-                    this.Close();
+                    Close();
                 }
                 else
                 {
@@ -197,7 +201,6 @@ namespace PresentationLayer
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -210,16 +213,18 @@ namespace PresentationLayer
                     txtHoTen.Text,
                     cbGioiTinhGV.SelectedValue?.ToString().Trim() ?? "",
                     dtNgaySinh.Value,
-                    txtEmail.Text,
                     txtDiaChi.Text,
+                    txtEmail.Text,
+                    
                     cbKhoa.SelectedValue?.ToString() ?? "",
                     imageBytes ?? null
-            ); ;
+                );
+                ;
 
                 if (adminBUS.UpdateLecturerBUS(giangVien))
                 {
                     MessageBox.Show("Sửa thành công");
-                    this.Close();
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -230,13 +235,13 @@ namespace PresentationLayer
 
         private void btnThemAnh_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (var openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Ảnh (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"; // Chỉ chọn file ảnh
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
+                    var filePath = openFileDialog.FileName;
 
                     try
                     {
@@ -246,7 +251,7 @@ namespace PresentationLayer
                         // Nếu mảng byte không rỗng, hiển thị ảnh trong PictureBox
                         if (imageBytes.Length > 0)
                         {
-                            using (MemoryStream ms = new MemoryStream(imageBytes))
+                            using (var ms = new MemoryStream(imageBytes))
                             {
                                 pbAnh.Image = Image.FromStream(ms);
                             }
@@ -262,11 +267,15 @@ namespace PresentationLayer
                     catch (Exception ex)
                     {
                         // Xử lý lỗi khi đọc ảnh
-                        MessageBox.Show("Lỗi khi đọc ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi khi đọc ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                 }
             }
+        }
 
+        private void cbGioiTinhGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

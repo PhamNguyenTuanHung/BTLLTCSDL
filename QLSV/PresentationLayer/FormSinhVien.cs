@@ -1,28 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
-using System.IO;
 
 namespace PresentationLayer
 {
     public partial class FormSinhVien : Form
     {
-        private SinhVien sinhVien;
+        private readonly List<string> danhSachDangKy = new List<string>();
+        private readonly List<string> danhSachHuyDangKy = new List<string>();
+        private readonly string maHK;
+        private readonly SinhVien sinhVien;
+        private readonly TaiKhoan taiKhoan;
+        private byte[] imageBytes;
+        private string maHocKyTKB, maHocKyDiem;
         private SinhVienBUS sVBus;
-        private TaiKhoan taiKhoan;
-        List<string> ThemMonDK, XoaMonDk;
-        string maHocKyTKB,maHocKyDiem,maHK;
-        byte[] imageBytes;
 
         public FormSinhVien(SinhVien sinhvien, TaiKhoan taikhoan)
         {
@@ -37,10 +34,10 @@ namespace PresentationLayer
         //Thêm thông tin cho các combox Học kì
         private void LoadComboBoxSemester()
         {
-            DataTable dt = new DataTable();
+            var dt = new DataTable();
             dt = sVBus.GetSemesterBUS();
             //thêm hàng tất cả để bỏ lọc
-            DataRow dr = dt.NewRow();
+            var dr = dt.NewRow();
             dr["Ma_Hoc_Ky"] = 0;
             dr["Ten_Hoc_Ky"] = "Tất cả";
             dt.Rows.InsertAt(dr, 0);
@@ -52,7 +49,7 @@ namespace PresentationLayer
             cbHocKyDiem.DataSource = dt.Copy();
             cbHocKyDiem.DisplayMember = "Ten_Hoc_Ky";
             cbHocKyDiem.ValueMember = "Ma_Hoc_Ky";
-            cbHocKyDiem.SelectedValue=0;
+            cbHocKyDiem.SelectedValue = 0;
             maHocKyDiem = cbHocKyDiem.SelectedValue.ToString();
 
 
@@ -68,12 +65,12 @@ namespace PresentationLayer
             maHocKyTKB = cbHocKyTKB.SelectedValue.ToString();
 
             cbHocKyTKB.SelectedIndexChanged += cbHocKyTKB_SelectedIndexChanged;
-
         }
+
         private void ThongTinSVPL()
         {
             sVBus = new SinhVienBUS();
-            DataTable dt = sVBus.GetStudentInfoTableBUS(sinhVien.MSSV);
+            var dt = sVBus.GetStudentInfoTableBUS(sinhVien.MSSV);
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra nếu có dữ liệu
             {
                 lbMSSV.Text = dt.Rows[0]["MSSV"].ToString();
@@ -88,43 +85,67 @@ namespace PresentationLayer
                 if (dt.Rows[0]["Anh"] != DBNull.Value)
                 {
                     imageBytes = (byte[])dt.Rows[0]["Anh"];
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    using (var ms = new MemoryStream(imageBytes))
                     {
                         pbAnhSV.Image = Image.FromStream(ms);
                     }
                 }
-                else pbAnhSV.Image = null;
+                else
+                {
+                    pbAnhSV.Image = null;
+                }
+
                 if (imageBytes != null) btnAnh.Text = "Đổi ảnh";
             }
-           
+
             else
             {
                 MessageBox.Show("Không có dữ liệu sinh viên!");
             }
-
         }
 
-        private void Search(DataGridView dgv,TextBox txt)
+        private void Search(DataGridView dgv, TextBox txt)
         {
             if (dgv.DataSource != null)
             {
-                DataTable dt = (DataTable)dgv.DataSource;
+                DataTable dt = null;
 
-                string keyword = txt.Text.Trim().ToLower();
+                if (dgv.DataSource is DataView view)
+                    dt = view.Table;
+                else if (dgv.DataSource is DataTable table)
+                    dt = table;
 
-                // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
-                if (string.IsNullOrWhiteSpace(keyword))
+                if (dt != null)
                 {
-                    dt.DefaultView.RowFilter = string.Empty;
+                    var keyword = txt.Text.Trim().ToLower();
+
+                    if (string.IsNullOrWhiteSpace(keyword))
+                    {
+                        dt.DefaultView.RowFilter = string.Empty;
+                    }
+                    else
+                    {
+                        var filterExpression = string.Join(" OR ", dt.Columns.Cast<DataColumn>()
+                            .Where(c => c.DataType == typeof(string))
+                            .Select(c => $"[{c.ColumnName}] LIKE '%{keyword}%'"));
+
+                        if (string.IsNullOrEmpty(filterExpression))
+                        {
+                            MessageBox.Show("Không có cột chuỗi để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            dt.DefaultView.RowFilter = filterExpression;
+                        }
+                    }
+
+                    dgv.DataSource = dt.DefaultView; // cập nhật lại DataSource để hiển thị kết quả lọc
                 }
-                else
-                {
-                    string filter = $"[Ten_Mon_Hoc] LIKE '%{keyword}%'";
-                    dt.DefaultView.RowFilter = filter; ;
-                }
-                dgv.DataSource = dt;
             }
-            else MessageBox.Show("Dữ liệu null");
+            else
+            {
+                MessageBox.Show("Dữ liệu null");
+            }
         }
 
         //hàm load dữ liệu cho các tab
@@ -189,31 +210,37 @@ namespace PresentationLayer
                 if (dt.Columns.Contains("Gio_KT"))
                     dgv.Columns["Gio_KT"].HeaderText = "Giờ kết thúc";
 
+                if (dt.Columns.Contains("So_Luong_Dang_Ky_Toi_Da"))
+                    dgv.Columns["So_Luong_Dang_Ky_Toi_Da"].HeaderText = "Số lượng tối đa";
+
+                if (dt.Columns.Contains("So_Luong_Da_Dang_Ky"))
+                    dgv.Columns["So_Luong_Da_Dang_Ky"].HeaderText = "Số lượng đã đăng ký";
             }
+
             //Cài dặt hiển thị cho dgv
             dgv.Dock = DockStyle.Fill;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AllowUserToAddRows = false;
         }
+
         private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int TabIndex = TabMain.SelectedIndex;
-            DataTable dt = new DataTable();
+            var TabIndex = TabMain.SelectedIndex;
+            var dt = new DataTable();
             switch (TabIndex)
             {
-
                 case 0:
                     ThongTinSVPL();
                     break;
                 case 1:
-                    dt =sVBus.GetStudentGradesBUS(sinhVien.MSSV);
-                    LoadData(dgvDiem,dt);
+                    dt = sVBus.GetStudentGradesBUS(sinhVien.MSSV);
+                    LoadData(dgvDiem, dt);
                     FilterDataGridView(maHocKyDiem, dgvDiem, "Ma_Hoc_Ky");
                     break;
                 case 2:
                     dt = sVBus.GetStudentScheduleBUS(sinhVien.MSSV);
-                    LoadData(dgvTKB,dt);
+                    LoadData(dgvTKB, dt);
                     FilterDataGridView(maHocKyTKB, dgvTKB, "Ma_Hoc_Ky");
                     break;
                 case 3:
@@ -223,43 +250,35 @@ namespace PresentationLayer
                 case 4:
                     dt = sVBus.GetAvailableCoursesBUS(maHK);
                     dt.Columns.Add("Chon", typeof(bool));
-                    DataTable dt1= new DataTable();
-                    dt1=sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
+                    var dt1 = new DataTable();
+                    dt1 = sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        string MaLopMonHoc = row["Ma_Lop_Mon_Hoc"].ToString();
+                        var MaLopMonHoc = row["Ma_Lop_Mon_Hoc"].ToString();
 
                         // Kiểm tra xem môn học này có trong danh sách đã đăng ký không
-                        bool isRegistered = dt1.AsEnumerable().Any(r => r["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+                        var isRegistered = dt1.AsEnumerable().Any(r => r["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
 
                         // Nếu có, set giá trị của cột checkbox thành true
-                        if (isRegistered)
-                        {
-                            row["Chon"] = true;
-                        }
+                        if (isRegistered) row["Chon"] = true;
                     }
+
                     LoadData(dgvDSMonDK, dt);
                     LoadData(dgvMonDK, dt1);
                     break;
-                default:
-                    break;
             }
-
         }
-
-        List<string> danhSachDangKy = new List<string>();
-        List<string> danhSachHuyDangKy = new List<string>();
 
         private void dgvDSMonDK_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || !(dgvDSMonDK.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)) return;
             dgvDSMonDK.EndEdit(); // Cập nhật trạng thái ngay lập tức
 
-            bool isChecked = Convert.ToBoolean(dgvDSMonDK.Rows[e.RowIndex].Cells["Chon"].Value);
-            string MaLopMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ma_Lop_Mon_Hoc"].Value?.ToString();
-            string TenMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ten_Mon_Hoc"].Value?.ToString();
-            int SoTinChi = Convert.ToInt32(dgvDSMonDK.Rows[e.RowIndex].Cells["So_Tin_Chi"].Value);
+            var isChecked = Convert.ToBoolean(dgvDSMonDK.Rows[e.RowIndex].Cells["Chon"].Value);
+            var MaLopMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ma_Lop_Mon_Hoc"].Value?.ToString();
+            var TenMonHoc = dgvDSMonDK.Rows[e.RowIndex].Cells["Ten_Mon_Hoc"].Value?.ToString();
+            var SoTinChi = Convert.ToInt32(dgvDSMonDK.Rows[e.RowIndex].Cells["So_Tin_Chi"].Value);
 
             // Nếu đã check 
             if (isChecked)
@@ -272,7 +291,7 @@ namespace PresentationLayer
                 }
 
                 //Kiểm tra coi datagridview Môn đăng kí có dữ liệu chưa
-                DataTable dt = (DataTable)dgvMonDK.DataSource ?? new DataTable();
+                var dt = (DataTable)dgvMonDK.DataSource ?? new DataTable();
                 // Nếu chưa
                 if (dt.Columns.Count == 0)
                 {
@@ -281,8 +300,9 @@ namespace PresentationLayer
                     dt.Columns.Add("Ngay_Dang_Ky", typeof(DateTime));
                     dt.Columns.Add("So_Tin_Chi", typeof(int));
                 }
+
                 // kiểm tra có môn này trong bảng chưa
-                bool isExist = dt.AsEnumerable().Any(row => row["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+                var isExist = dt.AsEnumerable().Any(row => row["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
                 // Thêm vào dgv nếu chưa có
                 if (!isExist)
                 {
@@ -302,15 +322,13 @@ namespace PresentationLayer
                 }
 
                 //tương tự như trên
-                DataTable dt = (DataTable)dgvMonDK.DataSource;
+                var dt = (DataTable)dgvMonDK.DataSource;
                 if (dt != null)
                 {
                     // xóa các môn ra khỏi bảng
-                    DataRow rowToDelete = dt.AsEnumerable().FirstOrDefault(row => row["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
-                    if (rowToDelete != null)
-                    {
-                        dt.Rows.Remove(rowToDelete);
-                    }
+                    var rowToDelete = dt.AsEnumerable()
+                        .FirstOrDefault(row => row["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+                    if (rowToDelete != null) dt.Rows.Remove(rowToDelete);
                 }
             }
         }
@@ -319,35 +337,28 @@ namespace PresentationLayer
         {
             try
             {
-                foreach (string maLop in danhSachDangKy)
-                {
-                    sVBus.RegisterCourseBUS(sinhVien.MSSV, maLop, DateTime.Now);
-                }
+                foreach (var maLop in danhSachDangKy) sVBus.RegisterCourseBUS(sinhVien.MSSV, maLop, DateTime.Now);
 
-                foreach (string maLop in danhSachHuyDangKy)
-                {
-                    sVBus.UnregisterCourseBUS(sinhVien.MSSV, maLop);
-                }
+                foreach (var maLop in danhSachHuyDangKy) sVBus.UnregisterCourseBUS(sinhVien.MSSV, maLop);
 
-                MessageBox.Show("Cập nhật đăng ký môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataTable dt = sVBus.GetAvailableCoursesBUS(maHK);
+                MessageBox.Show("Cập nhật đăng ký môn học thành công!", "Thông báo", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                var dt = sVBus.GetAvailableCoursesBUS(maHK);
                 dt.Columns.Add("Chon", typeof(bool));
-                DataTable dt1 = new DataTable();
+                var dt1 = new DataTable();
                 dt1 = sVBus.GetRegisteredCoursesBUS(sinhVien.MSSV);
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    string MaLopMonHoc = row["Ma_Lop_Mon_Hoc"].ToString();
+                    var MaLopMonHoc = row["Ma_Lop_Mon_Hoc"].ToString();
 
                     // Kiểm tra xem môn học này có trong danh sách đã đăng ký không
-                    bool isRegistered = dt1.AsEnumerable().Any(r => r["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
+                    var isRegistered = dt1.AsEnumerable().Any(r => r["Ma_Lop_Mon_Hoc"].ToString() == MaLopMonHoc);
 
                     // Nếu có, set giá trị của cột checkbox thành true
-                    if (isRegistered)
-                    {
-                        row["Chon"] = true;
-                    }
+                    if (isRegistered) row["Chon"] = true;
                 }
+
                 LoadData(dgvDSMonDK, dt);
                 LoadData(dgvMonDK, dt1);
                 danhSachDangKy.Clear();
@@ -355,33 +366,27 @@ namespace PresentationLayer
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message); 
+                MessageBox.Show(ex.Message);
             }
-            
         }
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            FormDoiMatKhau form = new FormDoiMatKhau(sinhVien, taiKhoan);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                taiKhoan.MatKhau = form.newPass; // Cập nhật mật khẩu mới
-            }
-
+            var form = new FormDoiMatKhau(sinhVien, taiKhoan);
+            if (form.ShowDialog() == DialogResult.OK) taiKhoan.MatKhau = form.newPass; // Cập nhật mật khẩu mới
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             Form form = new FormDangNhap();
-            this.Hide();
+            Hide();
             form.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void btnTimKiemTKB_Click(object sender, EventArgs e)
         {
-            Search(dgvTKB,txtTimKiemTKB);
+            Search(dgvTKB, txtTimKiemTKB);
         }
 
         private void btnTimKiemDiem_Click(object sender, EventArgs e)
@@ -393,6 +398,7 @@ namespace PresentationLayer
         {
             Search(dgvLichThi, txtTimKiemLichThi);
         }
+
         private void btnTimKiemMonDangKi_Click(object sender, EventArgs e)
         {
             Search(dgvDSMonDK, txtTimKiemMonDK);
@@ -402,7 +408,7 @@ namespace PresentationLayer
         {
             if (dgv.DataSource != null)
             {
-                DataTable dt = (DataTable)dgv.DataSource;
+                var dt = (DataTable)dgv.DataSource;
 
                 // Nếu không nhập gì, hiển thị lại toàn bộ dữ liệu
                 if (keyword == "0")
@@ -411,9 +417,11 @@ namespace PresentationLayer
                 }
                 else
                 {
-                    string filter = $"[{columnName}] LIKE '%{keyword}%'";
-                    dt.DefaultView.RowFilter = filter; ;
+                    var filter = $"[{columnName}] LIKE '%{keyword}%'";
+                    dt.DefaultView.RowFilter = filter;
+                    ;
                 }
+
                 dgv.DataSource = dt;
             }
         }
@@ -425,28 +433,28 @@ namespace PresentationLayer
             FilterDataGridView(maHocKyDiem, dgvDiem, "Ma_Hoc_Ky");
         }
 
+
         private void btnAnh_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (var openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
-                    byte[] imageBytes = File.ReadAllBytes(filePath); // Chuyển ảnh thành mảng byte
+                    var filePath = openFileDialog.FileName;
+                    var imageBytes = File.ReadAllBytes(filePath); // Chuyển ảnh thành mảng byte
                     try
                     {
                         if (sVBus.ChangeImageBUS(imageBytes, sinhVien.MSSV))
                             MessageBox.Show("Thành công");
-                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        using (var ms = new MemoryStream(imageBytes))
                         {
                             pbAnhSV.Image = Image.FromStream(ms);
                         }
                     }
                     catch (Exception ex)
                     {
-
                         MessageBox.Show(ex.Message);
                     }
                 }
@@ -455,8 +463,6 @@ namespace PresentationLayer
 
         private void pbAnhSV_Click(object sender, EventArgs e)
         {
-            
-            
         }
 
         private void cbHocKyTKB_SelectedIndexChanged(object sender, EventArgs e)

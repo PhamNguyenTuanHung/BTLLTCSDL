@@ -1,43 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DOT
 {
-    public class TaiKhoan :IThucThe
+    public class TaiKhoan : IThucThe
     {
-        private string tenDangNhap;
-        private string matKhau;
-        private int loaiTaiKhoan;
-        private int trangThai;
-        public TaiKhoan() { }
-        public TaiKhoan(string taiKhoan, string matKhau, int loaiTaiKhoan, int trangThai)
+        public TaiKhoan()
         {
-            this.tenDangNhap = taiKhoan;
-            this.matKhau = matKhau;
-            this.loaiTaiKhoan = loaiTaiKhoan;
-            this.trangThai = trangThai;
         }
 
-        public string TenDangNhap { get=> this.tenDangNhap; set=> tenDangNhap =value; }
-        public string MatKhau { get=>matKhau; set => matKhau =value; }
-        public int LoaiTaiKhoan { get => loaiTaiKhoan; set =>loaiTaiKhoan=value; }
+        public TaiKhoan(string taiKhoan, string matKhau, int loaiTaiKhoan, int trangThai)
+        {
+            TenDangNhap = taiKhoan;
+            this.MatKhau = matKhau;
+            this.LoaiTaiKhoan = loaiTaiKhoan;
+            this.TrangThai = trangThai;
+        }
 
-        public int TrangThai { get=>trangThai; set=>trangThai=value; }
+        public string TenDangNhap { get; set; }
+
+        public string MatKhau { get; set; }
+
+        public int LoaiTaiKhoan { get; set; }
+
+        public int TrangThai { get; set; }
 
 
-        public string LayTenThucThe() => "Tài khoản";
+        public string LayTenThucThe()
+        {
+            return "Tài khoản";
+        }
+
         public Dictionary<string, object> LayDuLieuThucThe()
         {
             return new Dictionary<string, object>
-        {
-            { "Tên đăng nhập ", tenDangNhap  },
-            { "Mật khẩu", matKhau },
-            {"Loại tài khoản",loaiTaiKhoan },
-                {"Trạng thái",trangThai }
-        };
+            {
+                { "Tên đăng nhập ", TenDangNhap },
+                { "Mật khẩu", MatKhau },
+                { "Loại tài khoản", LoaiTaiKhoan },
+                { "Trạng thái", TrangThai }
+            };
         }
     }
 }

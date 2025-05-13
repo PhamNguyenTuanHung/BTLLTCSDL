@@ -1,45 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DOT
 {
     public class MonHoc : IThucThe
     {
-        string mamonhoc;
-        string tenmonhoc;
-        int sotinchi;
-        decimal hesoqt;
-
-        public MonHoc() { }
+        public MonHoc()
+        {
+        }
 
         public MonHoc(string mamonhoc, string tenmonhoc, int sotinchi, decimal hesoqt)
         {
-            this.mamonhoc = mamonhoc;
-            this.tenmonhoc = tenmonhoc;
-            this.sotinchi = sotinchi;
-            this.hesoqt = hesoqt;
+            this.MaMonHoc = mamonhoc;
+            this.TenMonHoc = tenmonhoc;
+            this.SoTinChi = sotinchi;
+            this.HeSoQT = hesoqt;
         }
 
-        public string MaMonHoc { get => mamonhoc; set => mamonhoc = value; }
-        public string TenMonHoc { get => tenmonhoc; set => tenmonhoc = value; }
-        public int SoTinChi { get => sotinchi; set => sotinchi = value; }
-        
-        public decimal HeSoQT { get=>hesoqt; set => hesoqt = value; }
+        public string MaMonHoc { get; set; }
 
-        public string LayTenThucThe() => "Môn Học";
+        public string TenMonHoc { get; set; }
+
+        public int SoTinChi { get; set; }
+
+        public decimal HeSoQT { get; set; }
+
+        public string LayTenThucThe()
+        {
+            return "Môn Học";
+        }
 
         public Dictionary<string, object> LayDuLieuThucThe()
         {
             return new Dictionary<string, object>
-        {
-            { "Hệ số quá trình", hesoqt },
-            { "Mã Môn Học", mamonhoc },
-            { "Tên Môn Học", tenmonhoc },
-            { "Số Tín Chỉ", sotinchi }
-        };
+            {
+                { "Hệ số quá trình", HeSoQT },
+                { "Mã Môn Học", MaMonHoc },
+                { "Tên Môn Học", TenMonHoc },
+                { "Số Tín Chỉ", SoTinChi }
+            };
         }
     }
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 using DOT;
@@ -14,8 +7,9 @@ namespace PresentationLayer
 {
     public partial class FormDangNhap : Form
     {
-        TaiKhoan taikhoan = new TaiKhoan();
-        TaiKhoanBUS taikhoanBAL = new TaiKhoanBUS();
+        private readonly TaiKhoan taikhoan = new TaiKhoan();
+        private readonly TaiKhoanBUS taikhoanBAL = new TaiKhoanBUS();
+
         public FormDangNhap()
         {
             InitializeComponent();
@@ -29,6 +23,7 @@ namespace PresentationLayer
                 txt_TaiKhoan.Focus();
                 return;
             }
+
             if (txt_MatKhau.Text == "")
             {
                 MessageBox.Show("Nhập mật khẩu");
@@ -39,7 +34,7 @@ namespace PresentationLayer
             taikhoan.TenDangNhap = txt_TaiKhoan.Text;
             taikhoan.MatKhau = txt_MatKhau.Text;
 
-            TaiKhoan CheckLogin = taikhoanBAL.ValidateLoginBUS(taikhoan);
+            var CheckLogin = taikhoanBAL.ValidateLoginBUS(taikhoan);
             if (CheckLogin == null)
             {
                 MessageBox.Show("Thông tin tài khoản mật khẩu không chính xác");
@@ -47,53 +42,48 @@ namespace PresentationLayer
                 return;
             }
 
-            if (CheckLogin.LoaiTaiKhoan ==1)
-            { 
+            if (CheckLogin.LoaiTaiKhoan == 1)
+            {
                 taikhoan.LoaiTaiKhoan = 1;
-                SinhVienBUS svBUS = new SinhVienBUS();
-                SinhVien sv = svBUS.GetStudentDetailsBUS(txt_TaiKhoan.Text); 
-                Form form = new FormSinhVien(sv,taikhoan);
-                this.Hide();
+                var svBUS = new SinhVienBUS();
+                var sv = svBUS.GetStudentDetailsBUS(txt_TaiKhoan.Text);
+                Form form = new FormSinhVien(sv, taikhoan);
+                Hide();
                 form.ShowDialog();
-                this.Close();
-            }   
-            
-            if (CheckLogin.LoaiTaiKhoan ==2)
+                Close();
+            }
+
+            if (CheckLogin.LoaiTaiKhoan == 2)
             {
                 taikhoan.LoaiTaiKhoan = 2;
-                GiangVienBUS gvBUS = new GiangVienBUS();
-                GiangVien gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
-                Form form = new FormGiangVien(gv,taikhoan);
-                this.Hide();
+                var gvBUS = new GiangVienBUS();
+                var gv = gvBUS.GetLecturerInfoBUS(txt_TaiKhoan.Text);
+                Form form = new FormGiangVien(gv, taikhoan);
+                Hide();
                 form.ShowDialog();
-                this.Close();
-            }    
-            if (CheckLogin.LoaiTaiKhoan ==3)
+                Close();
+            }
+
+            if (CheckLogin.LoaiTaiKhoan == 3)
             {
                 taikhoan.LoaiTaiKhoan = 3;
-                FrmAdmin formAdmin = new FrmAdmin();
-                this.Hide();
+                var formAdmin = new FrmAdmin();
+                Hide();
                 formAdmin.ShowDialog();
-                this.Close();
-                return;
-            }    
-            
+                Close();
+            }
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)
         {
-
-            DialogResult result = MessageBox.Show(
+            var result = MessageBox.Show(
                 "Bạn có chắc chắn muốn thoát không?",
                 "Xác nhận thoát",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
-                );
+            );
 
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            if (result == DialogResult.Yes) Application.Exit();
         }
 
         private void CheckBoxHienThiMK_CheckedChanged(object sender, EventArgs e)
@@ -103,23 +93,17 @@ namespace PresentationLayer
 
         private void btnQuenMK_Click(object sender, EventArgs e)
         {
-            
-            this.Hide();
+            Hide();
 
-            using (FormQuenMatKhau frm = new FormQuenMatKhau())
+            using (var frm = new FormQuenMatKhau())
             {
-                DialogResult result = frm.ShowDialog();
+                var result = frm.ShowDialog();
 
-                if (result == DialogResult.Yes)  // Nếu thành công
-                {
-                    this.Show(); // Hiện lại form đăng nhập
-                }
+                if (result == DialogResult.Yes) // Nếu thành công
+                    Show(); // Hiện lại form đăng nhập
                 else
-                {
-                    this.Close(); // Đóng ứng dụng
-                }
+                    Close(); // Đóng ứng dụng
             }
-
         }
     }
 }

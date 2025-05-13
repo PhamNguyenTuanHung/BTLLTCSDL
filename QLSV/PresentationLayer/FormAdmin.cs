@@ -86,5 +86,10 @@ namespace PresentationLayer
             userControls[tabName].LoadData();
             
         }
+
+        private void tpGV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

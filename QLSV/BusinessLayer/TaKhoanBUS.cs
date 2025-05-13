@@ -1,8 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
-using System.Linq.Expressions;
-using System.Reflection.Emit;
-using System.Text;
 using DataLayer;
 using DOT;
 
@@ -10,7 +6,7 @@ namespace BusinessLayer
 {
     public class TaiKhoanBUS
     {
-        private TaiKhoanDAl taiKhoanDAl = new TaiKhoanDAl();
+        private readonly TaiKhoanDAl taiKhoanDAl = new TaiKhoanDAl();
 
         public TaiKhoan ValidateLoginBUS(TaiKhoan TaiKhoan)
         {
@@ -24,12 +20,11 @@ namespace BusinessLayer
             }
         }
 
-        public bool CheckAccountExistsBUS(string taiKhoan)
+        public bool CheckAccountExistsBUS(string username, int type)
         {
             try
             {
-                return taiKhoanDAl.CheckAccountExistsDAL(taiKhoan);
-
+                return taiKhoanDAl.CheckAccountExistsDAL(username, type);
             }
             catch (Exception ex)
             {
@@ -37,7 +32,7 @@ namespace BusinessLayer
             }
         }
 
-        public string GetAccountEmailBUS(string taiKhoan,int loaiTaiKhoan)
+        public string GetAccountEmailBUS(string taiKhoan, int loaiTaiKhoan)
         {
             try
             {
@@ -49,7 +44,7 @@ namespace BusinessLayer
             }
         }
 
-        public bool ChangePasswordBUS(string taiKhoan,string matKhau)
+        public bool ChangePasswordBUS(string taiKhoan, string matKhau)
         {
             try
             {
@@ -57,7 +52,6 @@ namespace BusinessLayer
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

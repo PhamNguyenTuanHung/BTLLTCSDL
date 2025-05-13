@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 
 namespace DataLayer
 {
     public class DBProviderDAL
     {
-        private static readonly string connectionString = @"Data Source=BLUE\BLUE;Initial Catalog=DB_QLSV;Integrated Security=True;";
+        private static readonly string connectionString =
+            @"Data Source=BLUE\BLUE;Initial Catalog=DB_QLSV;Integrated Security=True;";
 
         // Phương thức kết nối cơ bản
         public static SqlConnection Connect()
         {
             try
             {
-                SqlConnection sqlCon = new SqlConnection(connectionString);
+                var sqlCon = new SqlConnection(connectionString);
                 return sqlCon;
             }
             catch (Exception ex)
@@ -28,18 +28,15 @@ namespace DataLayer
         {
             try
             {
-                using (SqlConnection connect = Connect())
+                using (var connect = Connect())
                 {
                     connect.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, connect))
+                    using (var cmd = new SqlCommand(query, connect))
                     {
-                        if (parameters != null && parameters.Length > 0)
+                        if (parameters != null && parameters.Length > 0) cmd.Parameters.AddRange(parameters);
+                        using (var da = new SqlDataAdapter(cmd))
                         {
-                            cmd.Parameters.AddRange(parameters);
-                        }
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
+                            var dt = new DataTable();
                             da.Fill(dt);
                             return dt;
                         }
@@ -57,15 +54,12 @@ namespace DataLayer
         {
             try
             {
-                using (SqlConnection connect = Connect())
+                using (var connect = Connect())
                 {
                     connect.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, connect))
+                    using (var cmd = new SqlCommand(query, connect))
                     {
-                        if (parameters != null && parameters.Length > 0)
-                        {
-                            cmd.Parameters.AddRange(parameters);
-                        }
+                        if (parameters != null && parameters.Length > 0) cmd.Parameters.AddRange(parameters);
                         return cmd.ExecuteNonQuery(); // Thực thi truy vấn và trả về số hàng bị ảnh hưởng
                     }
                 }
@@ -76,6 +70,5 @@ namespace DataLayer
                 throw new Exception($"Lỗi: {ex.Message}", ex);
             }
         }
-
     }
 }

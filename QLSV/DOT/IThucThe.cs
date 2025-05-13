@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DOT
 {
@@ -11,5 +7,4 @@ namespace DOT
         string LayTenThucThe(); // Lấy tên thực thể (Sinh viên, Giáo viên...)
         Dictionary<string, object> LayDuLieuThucThe(); // Trả về danh sách thông tin dưới dạng key-value
     }
-
 }

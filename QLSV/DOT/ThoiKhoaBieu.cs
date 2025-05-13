@@ -1,72 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DOT
 {
     public class ThoiKhoaBieu : IThucThe
     {
-        private string maLopMonHoc;
-        private string ngayHoc;
-        private TimeSpan gioBatDau;
-        private TimeSpan gioKetThuc;
-        private string phongHoc;
-        private DateTime ngayBD;
-        private DateTime ngayKT;
-        private int  maTKB;
-
-        public ThoiKhoaBieu() { }
-
-        public ThoiKhoaBieu( string maLopMonHoc, string ngayHoc, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongHoc, DateTime ngayBD, DateTime ngayKT)
+        public ThoiKhoaBieu()
         {
-            this.maLopMonHoc = maLopMonHoc;
-            this.ngayHoc = ngayHoc;
-            this.gioBatDau = gioBatDau;
-            this.gioKetThuc = gioKetThuc;
-            this.phongHoc = phongHoc;
-            this.ngayBD = ngayBD;
-            this.ngayKT = ngayKT;
         }
 
-        public ThoiKhoaBieu(int maTKB,string maLopMonHoc, string ngayHoc, TimeSpan gioBatDau, TimeSpan gioKetThuc, string phongHoc, DateTime ngayBD, DateTime ngayKT)
+        public ThoiKhoaBieu(string maLopMonHoc)
         {
-            this.maTKB=maTKB;
-            this.maLopMonHoc = maLopMonHoc;
-            this.ngayHoc = ngayHoc;
-            this.gioBatDau = gioBatDau;
-            this.gioKetThuc = gioKetThuc;
-            this.phongHoc = phongHoc;
-            this.ngayBD = ngayBD;
-            this.ngayKT = ngayKT;
+            this.MaLopMonHoc = maLopMonHoc;
         }
-        public string MaLopMonHoc { get => maLopMonHoc; set => maLopMonHoc = value; }
-        public string NgayHoc { get => ngayHoc; set => ngayHoc = value; }
-        public TimeSpan GioBatDau { get => gioBatDau; set => gioBatDau = value; }
-        public TimeSpan GioKetThuc { get => gioKetThuc; set => gioKetThuc = value; }
-        public string PhongHoc { get => phongHoc; set => phongHoc = value; }
-        public DateTime NgayBD { get => ngayBD; set => ngayBD = value; }
-        public DateTime NgayKT { get => ngayKT; set => ngayKT = value; }
 
-        public int MaTKB { get=>maTKB; set => maTKB = value; }
-        public string LayTenThucThe() => "Thời Khóa Biểu";
+        public ThoiKhoaBieu(string maLopMonHoc, string ngayHoc, TimeSpan gioBatDau, TimeSpan gioKetThuc,
+            string phongHoc, DateTime ngayBD, DateTime ngayKT)
+        {
+            this.MaLopMonHoc = maLopMonHoc;
+            this.NgayHoc = ngayHoc;
+            this.GioBatDau = gioBatDau;
+            this.GioKetThuc = gioKetThuc;
+            this.PhongHoc = phongHoc;
+            this.NgayBD = ngayBD;
+            this.NgayKT = ngayKT;
+        }
+
+        public ThoiKhoaBieu(int maTKB, string maLopMonHoc, string ngayHoc, TimeSpan gioBatDau, TimeSpan gioKetThuc,
+            string phongHoc, DateTime ngayBD, DateTime ngayKT)
+        {
+            this.MaTKB = maTKB;
+            this.MaLopMonHoc = maLopMonHoc;
+            this.NgayHoc = ngayHoc;
+            this.GioBatDau = gioBatDau;
+            this.GioKetThuc = gioKetThuc;
+            this.PhongHoc = phongHoc;
+            this.NgayBD = ngayBD;
+            this.NgayKT = ngayKT;
+        }
+
+        public string MaLopMonHoc { get; set; }
+
+        public string NgayHoc { get; set; }
+
+        public TimeSpan GioBatDau { get; set; }
+
+        public TimeSpan GioKetThuc { get; set; }
+
+        public string PhongHoc { get; set; }
+
+        public DateTime NgayBD { get; set; }
+
+        public DateTime NgayKT { get; set; }
+
+        public int MaTKB { get; set; }
+
+        public string LayTenThucThe()
+        {
+            return "Thời Khóa Biểu";
+        }
 
         public Dictionary<string, object> LayDuLieuThucThe()
         {
             return new Dictionary<string, object>
-        {
-            { "Mã TKB",maTKB},
-            { "Mã Lớp Môn Học", maLopMonHoc },
-            { "Ngày Học", ngayHoc },
-            { "Giờ Bắt Đầu", gioBatDau },
-            { "Giờ Kết Thúc", gioKetThuc },
-            { "Phòng Học", phongHoc },
-            { "Ngày Bắt Đầu", ngayBD },
-            { "Ngày Kết Thúc", ngayKT }
-        };
+            {
+                { "Mã TKB", MaTKB },
+                { "Mã Lớp Môn Học", MaLopMonHoc },
+                { "Ngày Học", NgayHoc },
+                { "Giờ Bắt Đầu", GioBatDau },
+                { "Giờ Kết Thúc", GioKetThuc },
+                { "Phòng Học", PhongHoc },
+                { "Ngày Bắt Đầu", NgayBD },
+                { "Ngày Kết Thúc", NgayKT }
+            };
         }
     }
-
 }

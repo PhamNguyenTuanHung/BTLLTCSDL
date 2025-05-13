@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using DataLayer;
 using DOT;
 
 namespace BusinessLayer
 {
     public class GiangVienBUS
-    { 
+    {
         private readonly GiangVienDAL gvDAL = new GiangVienDAL();
 
         public GiangVien GetLecturerInfoBUS(string msgv)
         {
-
             return gvDAL.GetLecturerInfoDAL(msgv);
         }
 
@@ -21,9 +18,10 @@ namespace BusinessLayer
         {
             return gvDAL.GetLecturerInfoTableDAL(msgv);
         }
+
         public DataTable GetLecturerScheduleBUS(string msgv)
         {
-            return gvDAL.GetLecturerScheduleDAL(msgv) ;
+            return gvDAL.GetLecturerScheduleDAL(msgv);
         }
 
         public DataTable GetClassListBUS(string msgv)
@@ -44,7 +42,7 @@ namespace BusinessLayer
             {
                 return gvDAL.GetStudentGradesDAL(msgv, mamonhoc);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -59,14 +57,14 @@ namespace BusinessLayer
             catch (Exception ex)
             {
                 throw ex;
-            } 
+            }
         }
 
         public bool UpdateStudentGradesBUS(string mssv, string mamonhoc, double diemQT, double diemThi, double diemTK)
         {
             try
             {
-                return gvDAL.UpdateStudentGradesDAL(mssv, mamonhoc,diemQT,diemThi,diemTK);
+                return gvDAL.UpdateStudentGradesDAL(mssv, mamonhoc, diemQT, diemThi, diemTK);
             }
             catch (Exception ex)
             {

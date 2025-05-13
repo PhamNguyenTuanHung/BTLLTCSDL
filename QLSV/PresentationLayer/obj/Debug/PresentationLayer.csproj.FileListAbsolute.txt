@@ -230,7 +230,6 @@ C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\bin\Debug\ru\Microsoft.Data.Sq
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
-C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormAdmin.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDangNhap.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDoiMatKhau.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormGiangVien.resources
@@ -255,3 +254,542 @@ C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.Fo
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditSinhVien.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditThoiKhoaBieu.resources
 C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditKhoa.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.exe
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.resx
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.cs
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.Designer.cs
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe.config
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BusinessLayer.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DOT.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Buffers.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.CodeDom.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Memory.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DataLayer.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DOT.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.dll.config
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Buffers.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.CodeDom.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Memory.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.xml
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DataLayer.pdb
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormAdmin.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDangNhap.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDoiMatKhau.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormGiangVien.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormSinhVien.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditDiem.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditGiangVien.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditKhoa.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditLichThi.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditLop.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditLopMonHoc.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditMonHoc.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditMonMoDangKy.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditSinhVien.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemTaiKhoan.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditThoiKhoaBieu.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmAdmin.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.Properties.Resources.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormQuenMatKhau.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.ucChucNangChung.resources
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.GenerateResource.cache
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Downloads\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\Presenta.9C561136.Up2Date
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.exe
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.resx
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.cs
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.Designer.cs
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe.config
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BusinessLayer.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DOT.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.SqlServer.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Buffers.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.CodeDom.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ComponentModel.Annotations.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Memory.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DataLayer.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BusinessLayer.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DOT.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.SqlServer.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.dll.config
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Buffers.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.CodeDom.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Memory.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.xml
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DataLayer.pdb
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormAdmin.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDangNhap.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDoiMatKhau.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormGiangVien.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormSinhVien.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditDiem.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditGiangVien.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditKhoa.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditLichThi.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditLop.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditLopMonHoc.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditMonHoc.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditMonMoDangKy.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditSinhVien.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemTaiKhoan.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditThoiKhoaBieu.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmAdmin.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.Properties.Resources.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormQuenMatKhau.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.ucChucNangChung.resources
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.GenerateResource.cache
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInputs.cache
+H:\Tài liệu môn học\LTCSDL\LTCSDLvH\BTLLTCSDL-master (1)\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\Presenta.9C561136.Up2Date
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.exe
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.resx
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.cs
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.Designer.cs
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe.config
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\PresentationLayer.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BusinessLayer.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DOT.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Buffers.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.CodeDom.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Memory.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DataLayer.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DOT.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MailKit.dll.config
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\MimeKit.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Buffers.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.CodeDom.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Memory.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.xml
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\DataLayer.pdb
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDangNhap.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDoiMatKhau.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormGiangVien.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormSinhVien.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditDiem.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditGiangVien.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditKhoa.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditLichThi.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditLop.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditLopMonHoc.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditMonHoc.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditMonMoDangKy.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditSinhVien.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemTaiKhoan.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditThoiKhoaBieu.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmAdmin.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.Properties.Resources.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormQuenMatKhau.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.ucChucNangChung.resources
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.GenerateResource.cache
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInputs.cache
+C:\Users\BLUE\Downloads\BTLLTCSDL-master_8be0a1b53d862d331de1a95fa57e20f5\BTLLTCSDL-master\QLSV\PresentationLayer\obj\Debug\Presenta.9C561136.Up2Date
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.resx
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.cs
+C:\Users\BLUE\Desktop\QLSV\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.Designer.cs
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.resx
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.cs
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\ucChucNangChung.Designer.cs
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe.config
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\PresentationLayer.exe
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\PresentationLayer.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\BusinessLayer.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\DOT.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\MimeKit.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Buffers.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.CodeDom.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Memory.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\DataLayer.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\DOT.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Bcl.HashCode.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Data.SqlClient.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.Identity.Client.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\MimeKit.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\MimeKit.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Buffers.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.CodeDom.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Collections.Immutable.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Formats.Asn1.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Memory.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\System.ValueTuple.xml
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\DataLayer.pdb
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.AssemblyReference.cache
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDangNhap.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormDoiMatKhau.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormGiangVien.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormSinhVien.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditDiem.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditGiangVien.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditKhoa.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditLichThi.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmEdit.FormEditLop.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditLopMonHoc.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditMonHoc.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormEditMonMoDangKy.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditSinhVien.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormThem.FormThemTaiKhoan.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormEditThoiKhoaBieu.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FrmAdmin.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.Properties.Resources.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.FormQuenMatKhau.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.ucChucNangChung.resources
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.GenerateResource.cache
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.csproj.CoreCompileInputs.cache
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\Presenta.9C561136.Up2Date
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.exe
+C:\Users\BLUE\Desktop\QLSV - Copy\QLSV\PresentationLayer\obj\Debug\PresentationLayer.pdb
