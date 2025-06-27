@@ -9,7 +9,7 @@ BEGIN
     INSERT INTO TaiKhoan (Ten_Dang_Nhap, Mat_Khau, Loai_Tai_Khoan,Trang_Thai)
     SELECT 
         i.MSSV,               -- Tên đăng nhập là MSSV
-        'pass123',             -- Mật khẩu mặc định (có thể hash trước)
+        'pass123',             -- Mật khẩu mặc định 
         1,            -- Loại tài khoản mặc định
 		1
     FROM inserted i;
@@ -27,7 +27,7 @@ BEGIN
     SELECT 
         i.MSGV,               -- Tên đăng nhập là MSGV
         i.MSGV,               -- Tên đăng nhập là MSGV
-        'pass123',             -- Mật khẩu mặc định (có thể hash trước)
+        'pass123',             -- Mật khẩu mặc định
         2,            -- Loại tài khoản mặc định
 		1-- Trạng thái mặc định
     FROM inserted i;
@@ -171,7 +171,7 @@ BEGIN
                 tkb_i.Gio_Ket_Thuc > tkb.Gio_Bat_Dau
             )
             AND (
-                -- kiểm tra khoảng thời gian tồn tại chung (nếu có Ngay_BD, Ngay_KT)
+                -- kiểm tra khoảng thời gian tồn tại chung 
                 (tkb_i.Ngay_BD IS NULL OR tkb.Ngay_KT IS NULL OR tkb_i.Ngay_BD <= tkb.Ngay_KT) AND
                 (tkb_i.Ngay_KT IS NULL OR tkb.Ngay_BD IS NULL OR tkb_i.Ngay_KT >= tkb.Ngay_BD)
             )

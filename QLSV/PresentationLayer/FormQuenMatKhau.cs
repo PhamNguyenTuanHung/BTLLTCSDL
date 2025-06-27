@@ -11,9 +11,9 @@ namespace PresentationLayer
     public partial class FormQuenMatKhau : Form
     {
         private int countdown = 60; // 60 giây
-        private string fromEmail = "phamnguyentuanhung2004@gmail.com";
+        private string fromEmail = "yourAccount";
         private int loaiTaiKhoan;
-        private string password = "BeUyen12052004"; // Nên dùng mật khẩu ứng dụng nếu là Gmail
+        private string password = "yourPass"; // Nên dùng mật khẩu ứng dụng nếu là Gmail
 
         private int randomNumber;
 

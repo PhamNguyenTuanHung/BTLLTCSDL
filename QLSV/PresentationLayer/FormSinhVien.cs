@@ -159,6 +159,9 @@ namespace PresentationLayer
                 if (dt.Columns.Contains("Phong_Thi"))
                     dgv.Columns["Phong_Thi"].HeaderText = "Phòng thi";
 
+                if (dt.Columns.Contains("Lan_Thi"))
+                    dgv.Columns["Lan_Thi"].HeaderText = "Lần thi";
+
                 if (dt.Columns.Contains("Ten_Mon_Hoc"))
                     dgv.Columns["Ten_Mon_Hoc"].HeaderText = "Tên môn học";
 
@@ -463,6 +466,11 @@ namespace PresentationLayer
 
         private void pbAnhSV_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnDoiMK_Click_1(object sender, EventArgs e)
+        {
+
         }
 
         private void cbHocKyTKB_SelectedIndexChanged(object sender, EventArgs e)
